@@ -25,16 +25,13 @@ CMD ["bun", "main.js"]
 
 # Done
 FROM nginx:alpine AS nginx
-#FROM haproxy:alpine AS web-builder
 WORKDIR /app
 ARG DIST_PATH
 RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
 COPY ./$DIST_PATH /usr/share/nginx/html
-#COPY ./apps/users/client/k8s/base/haproxy.cfg /etc/haproxy/haproxy.cfg
 ENV PORT=80
 EXPOSE ${PORT}
 CMD ["nginx", "-g", "daemon off;"]
-#CMD ["haproxy", "start"]
 
 # Done
 FROM scratch AS scratch
@@ -48,6 +45,7 @@ COPY $DIST_PATH ./app
 EXPOSE ${PORT}
 ENTRYPOINT ["/app"]
 
+# Done
 FROM alpine AS alpine
 WORKDIR /
 ARG DIST_PATH
@@ -58,3 +56,17 @@ EXPOSE ${PORT}
 COPY $DIST_PATH ./app
 EXPOSE ${PORT}
 ENTRYPOINT ["/app"]
+
+
+FROM debian:buster-slim AS rust
+#FROM alpine AS rust
+#FROM alpine AS rust
+#WORKDIR /
+#ARG DIST_PATH
+#RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
+#COPY $DIST_PATH /bin/
+COPY target/release/api_rest1 /bin/
+ENV PORT=8080
+EXPOSE ${PORT}
+CMD api_rest1
+#ENTRYPOINT ["/bin/bash", "/bin/api_rest1"]

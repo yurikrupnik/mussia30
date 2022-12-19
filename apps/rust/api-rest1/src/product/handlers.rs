@@ -6,9 +6,25 @@ use mongodb::{
     bson::{doc, oid::ObjectId},
     Client, Collection,
 };
+// use utoipa::{IntoParams, ToSchema};
 
 pub const DB_NAME: &str = "rustApp";
 
+/// Create new Product to shared in mongodb.
+///
+/// Post a new `Product` in request body as json to store it. Api will return
+/// created `Product` on success or `ErrorResponse::Conflict` if product with same id already exists.
+///
+/// One could call the api with.
+/// ```text
+/// curl localhost:8080/products -d '{"name": "Product 2"}'
+/// ```
+#[utoipa::path(
+request_body = Product,
+responses(
+(status = 201, description = "Product created successfully", body = Product),
+)
+)]
 #[post("/products")]
 pub async fn add_product(client: web::Data<Client>, body: web::Json<Product>) -> impl Responder {
     let collection: Collection<Product> = client.database(DB_NAME).collection(Product::COLLECTION);
@@ -20,7 +36,7 @@ pub async fn add_product(client: web::Data<Client>, body: web::Json<Product>) ->
     info!("save resource, new_id={}", new_id);
     let res = collection.find_one(doc! {"_id": new_id}, None).await;
     match res {
-        Ok(Some(payload)) => HttpResponse::Ok().json(payload),
+        Ok(Some(payload)) => HttpResponse::Created().json(payload),
         Ok(None) => HttpResponse::NotFound().body(format!("No user found with id {}", new_id)),
         Err(err) => HttpResponse::InternalServerError().body(err.to_string()),
     }
@@ -43,6 +59,19 @@ pub async fn get_product(client: web::Data<Client>, path: web::Path<String>) -> 
     }
 }
 
+/// Get list of products.
+///
+/// List todos from mongodb.
+///
+/// One could call the api endpoit with following curl.
+/// ```text
+/// curl localhost:8080/products
+/// ```
+#[utoipa::path(
+responses(
+(status = 200, description = "List current product items", body = [Product])
+)
+)]
 #[get("/products")]
 pub async fn get_products(client: web::Data<Client>) -> impl Responder {
     let collection: Collection<Product> = client.database(DB_NAME).collection(Product::COLLECTION);

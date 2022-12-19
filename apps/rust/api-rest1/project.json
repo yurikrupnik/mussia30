@@ -34,6 +34,23 @@
         "failOnWarnings": true,
         "noDeps": true
       }
+    },
+    "docker-regular": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ],
+      "options": {
+        "parallel": false,
+        "commands": [
+          "docker build --target rust --build-arg DIST_PATH=target/release/api-rest1 . -t yurikrupnik/rust-api-rest1",
+          "docker push yurikrupnik/rust-api-rest1"
+        ]
+      }
     }
   },
   "tags": []
