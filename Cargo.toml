@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "libs/rust/mongo",
+    "apps/rust/api-rest1",
+    "apps/rust/api-graphql",
+    "apps/rust/api-rest"
+]
