@@ -13,7 +13,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-// Default error handler
+// DefaultErrorHandler Default error handler
 func DefaultErrorHandler(c *fiber.Ctx, err error) error {
 	// Default 500 statuscode
 	code := fiber.StatusInternalServerError
@@ -42,17 +42,17 @@ func createHandlerCreate[T interface{}](collection string) fiber.Handler {
 		var payload T
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		defer cancel()
+		fmt.Println(">>>>>>payload", payload)
 		//validate the request body
 		if err := c.BodyParser(&payload); err != nil {
 			return c.Status(http.StatusBadRequest).JSON(err.Error())
 		}
-		fmt.Println(">>>>>>payload", payload)
 		result, err := go_mongodb.Mg.Db.Collection(collection).InsertOne(ctx, payload)
 		if err != nil {
 			//return c.Status(http.StatusInternalServerError).JSON(UserResponse{Status: http.StatusInternalServerError, Message: "error", Data: &fiber.Map{"data": err.Error()}})
 		}
-		fmt.Println("result", result)
 		fmt.Println(">>>>>>payload", payload)
+		fmt.Println("result", result)
 		return c.Status(http.StatusCreated).JSON(result)
 	}
 }

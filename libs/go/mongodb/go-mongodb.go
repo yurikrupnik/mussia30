@@ -11,11 +11,12 @@ import (
 )
 
 // todo remove!!!!
-var mongoUrl string = "mongodb+srv://yurikrupnik:T4eXKj1RBI4VnszC@cluster0.rdmew.mongodb.net/?retryWrites=true&w=majority"
+// var mongoUrl string = "mongodb+srv://yurikrupnik:T4eXKj1RBI4VnszC@cluster0.rdmew.mongodb.net/?retryWrites=true&w=majority"
+var mongoUrl string = "mongodb://localhost:27017"
 
 // todo add back for env vars
 // var mongoUrl = go_myutils.Getenv("MONGO_URI", "mongodb://localhost/mussia12")
-var dbName = go_shared.Getenv("DB_NAME", "mussia12")
+var dbName = go_shared.Getenv("DB_NAME", "rustApp")
 
 // MongoInstance contains the Mongo client and database objects
 type MongoInstance struct {
@@ -24,34 +25,6 @@ type MongoInstance struct {
 }
 
 var Mg MongoInstance
-
-//func (m *MongoInstance) Get(it int) {
-//	cursor, err := m.Db.Collection("users").Find(ctx, query)
-//	if err != nil {
-//		return c.Status(http.StatusInternalServerError).SendString(err.Error())
-//	}
-//	//defer cursor.Close(ctx)
-//	var users []User = make([]User, 0)
-//
-//	// iterate the cursor and decode each item into an Employee
-//	//if err := cursor.All(c.Context(), &users); err != nil {
-//	//  return c.Status(http.StatusInternalServerError).SendString(err.Error())
-//	//}
-//
-//	for cursor.Next(ctx) {
-//		var user User
-//		err := cursor.Decode(&user)
-//		if err != nil {
-//			fmt.Println(err)
-//			//return err
-//			//log.Fatal("fatal")
-//			//log.Panic("panic")
-//		}
-//		users = append(users, user)
-//	}
-//	// return employees list in JSON format
-//	return c.Status(http.StatusOK).JSON(users)
-//}
 
 func NewDB() MongoInstance {
 	client, err := mongo.NewClient(options.Client().ApplyURI(mongoUrl))
