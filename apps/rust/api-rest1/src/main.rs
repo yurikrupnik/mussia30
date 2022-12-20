@@ -11,6 +11,7 @@ use actix_web::{
 };
 use env_logger::Env;
 use futures::future::LocalBoxFuture;
+use mongo::ErrorResponse;
 use mongodb::Client;
 use std::{
     env,
@@ -44,8 +45,8 @@ user::get_user,
 user::update_user,
 ),
 components(
-schemas(product::Product, product::ErrorResponse),
-schemas(todo::Todo, todo::TodoUpdateRequest, todo::ErrorResponse),
+schemas(product::Product, ErrorResponse),
+schemas(todo::Todo, todo::TodoUpdateRequest, ErrorResponse),
 schemas(user::User),
 ),
 tags(
@@ -83,11 +84,13 @@ async fn main() -> std::io::Result<()> {
     let store = web::Data::new(todo::TodoStore::default());
     // data here
     let client_data = web::Data::new(client); // used for product api
+    let endpoint = "users";
     HttpServer::new(move || {
         App::new()
             .wrap(Logger::default())
             .configure(todo::configure(store.clone()))
-            .configure(user::create_config_by_type::<user::User>())
+            // .configure(user::create_config_by_type::<user::User>())
+            .configure(user::create_config_by_type::<user::User>(endpoint))
             .app_data(client_data.clone())
             .service(product::add_product)
             .service(product::get_product)
@@ -193,7 +196,7 @@ where
                 } else {
                     return response(
                         req,
-                        HttpResponse::Unauthorized().json(todo::ErrorResponse::Unauthorized(
+                        HttpResponse::Unauthorized().json(ErrorResponse::Unauthorized(
                             String::from("incorrect api key"),
                         )),
                     );
@@ -205,9 +208,8 @@ where
                 } else {
                     return response(
                         req,
-                        HttpResponse::Unauthorized().json(todo::ErrorResponse::Unauthorized(
-                            String::from("missing api key"),
-                        )),
+                        HttpResponse::Unauthorized()
+                            .json(ErrorResponse::Unauthorized(String::from("missing api key"))),
                     );
                 }
             }

@@ -1,24 +1,6 @@
 use crate::user::User;
-use actix_web::{
-    delete, get, guard, http, middleware::Logger, post, web, App, HttpRequest, HttpResponse,
-    HttpServer, Responder, Result, Route,
-};
-use inject::Provider;
-use log::info;
-use mongo::MongoRepo;
-use serde::{Deserialize, Serialize};
-use utoipa::ToSchema;
-
-/// Todo endpoint error responses
-#[derive(Serialize, Deserialize, Clone, ToSchema)]
-enum ErrorResponse {
-    /// When Todo is not found by search term.
-    NotFound(String),
-    /// When there is a conflict storing a new todo.
-    Conflict(String),
-    /// When todo enpoint was called without correct credentials
-    Unauthorized(String),
-}
+use actix_web::{web, HttpResponse, Responder};
+use mongo::{ErrorResponse, MongoRepo};
 
 /// Get list of users.
 ///

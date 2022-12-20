@@ -1,14 +1,14 @@
 use std::sync::Mutex;
 
+use crate::{LogApiKey, RequireApiKey};
 use actix_web::{
     delete, get, post, put,
     web::{Data, Json, Path, Query, ServiceConfig},
     HttpResponse, Responder,
 };
+use mongo::ErrorResponse;
 use serde::{Deserialize, Serialize};
 use utoipa::{IntoParams, ToSchema};
-
-use crate::{LogApiKey, RequireApiKey};
 
 #[derive(Default)]
 pub struct TodoStore {
@@ -50,17 +50,6 @@ pub struct TodoUpdateRequest {
     value: Option<String>,
     /// Optional check status to mark is the task done or not.
     checked: Option<bool>,
-}
-
-/// Todo endpoint error responses
-#[derive(Serialize, Deserialize, Clone, ToSchema)]
-pub enum ErrorResponse {
-    /// When Todo is not found by search term.
-    NotFound(String),
-    /// When there is a conflict storing a new todo.
-    Conflict(String),
-    /// When todo enpoint was called without correct credentials
-    Unauthorized(String),
 }
 
 /// Get list of todos.

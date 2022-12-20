@@ -6,7 +6,7 @@ use mongodb::{
         doc,
         oid::{Error, ObjectId},
     },
-    results::{DeleteResult, InsertOneResult},
+    results::DeleteResult,
     Client, Collection,
 };
 use serde::{de::DeserializeOwned, Serialize};

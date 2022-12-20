@@ -1,7 +1,6 @@
 use crate::product::model::Product;
 use actix_web::{delete, get, post, put, web, HttpResponse, Responder};
 use futures::TryStreamExt;
-use log::*;
 use mongodb::{
     bson::{doc, oid::ObjectId},
     Client, Collection,

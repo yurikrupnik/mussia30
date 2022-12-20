@@ -2,25 +2,26 @@ use crate::user::handlers::{add_user, delete_user, drop_users, get_user, update_
 use actix_web::{web, HttpResponse};
 use futures::executor::block_on;
 use mongo::MongoRepo;
-use plurals::{Lang, Plural};
 use serde::{de::DeserializeOwned, Serialize};
 
 async fn inits<T>(cfg: &mut web::ServiceConfig)
 where
     T: Serialize + DeserializeOwned + Sync + Send + Unpin + 'static,
 {
+    // let repository = MongoRepo::<T>::init("rustApp", endpoint).await;
     let repository = MongoRepo::<T>::init("rustApp", "users").await;
     let data: web::Data<MongoRepo<T>> = web::Data::new(repository);
     cfg.app_data(data);
 }
 
-pub fn create_config_by_type<T>() -> impl FnOnce(&mut web::ServiceConfig)
+pub fn create_config_by_type<'a, T>(s: &str) -> impl FnOnce(&mut web::ServiceConfig) + '_
 where
-    T: Serialize + DeserializeOwned + Sync + Send + Unpin + 'static,
+    T: Serialize + DeserializeOwned + Sync + Send + Unpin + 'static + 'a,
 {
     move |cfg: &mut web::ServiceConfig| {
         block_on(inits::<T>(cfg));
         // cfg.service(web::scope("/users").service());
+        let url = format!("/{}", s);
         cfg.service(
             web::resource("/users")
                 .route(web::post().to(add_user))

@@ -1549,6 +1549,7 @@ dependencies = [
  "futures",
  "mongodb",
  "serde",
+ "utoipa",
 ]
 
 [[package]]

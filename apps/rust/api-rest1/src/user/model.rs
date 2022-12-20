@@ -23,14 +23,14 @@ pub struct User {
     pub email: String,
 }
 
-impl User {
-    pub const COLLECTION: &'static str = "users";
-
-    pub fn get_collection<'a>(num: u8) -> &'a str {
-        const FOOT: Lang = Lang::En {
-            singular: "user",
-            plural: "users",
-        };
-        FOOT.fmt(num)
-    }
-}
+// impl User {
+//     pub const COLLECTION: &'static str = "users";
+//
+//     pub fn get_collection<'a>(num: u8) -> &'a str {
+//         const FOOT: Lang = Lang::En {
+//             singular: "user",
+//             plural: "users",
+//         };
+//         FOOT.fmt(num)
+//     }
+// }
