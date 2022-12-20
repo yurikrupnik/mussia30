@@ -1,6 +1,7 @@
 // mods
 mod product;
 mod todo;
+mod user;
 // libs for app
 // core
 use actix_web::{
@@ -24,8 +25,6 @@ use utoipa_swagger_ui::SwaggerUi;
 const API_KEY_NAME: &str = "todo_apikey";
 const API_KEY: &str = "utoipa-rocks";
 
-// product::add_product,
-
 #[derive(OpenApi)]
 #[openapi(
 paths(
@@ -37,14 +36,22 @@ todo::delete_todo,
 todo::get_todo_by_id,
 todo::update_todo,
 todo::search_todos,
+user::user_list,
+user::add_user,
+user::delete_user,
+user::drop_users,
+user::get_user,
+user::update_user,
 ),
 components(
 schemas(product::Product, product::ErrorResponse),
 schemas(todo::Todo, todo::TodoUpdateRequest, todo::ErrorResponse),
+schemas(user::User),
 ),
 tags(
 (name = "todo", description = "Todo management endpoints."),
 (name = "product", description = "Products management endpoints."),
+(name = "user", description = "Users management endpoints."),
 ),
 modifiers(&SecurityAddon)
 )]
@@ -66,14 +73,13 @@ impl Modify for SecurityAddon {
 async fn main() -> std::io::Result<()> {
     env::set_var("RUST_LOG", "debug");
     env::set_var("RUST_BACKTRACE", "1");
-    // env_logger::init();
+
     env_logger::init_from_env(Env::default().default_filter_or("info"));
 
     let openapi = ApiDoc::openapi();
 
     let uri = env::var("MONGODB_URI").unwrap_or_else(|_| "mongodb://localhost:27017".into());
     let client = Client::with_uri_str(uri).await.expect("failed to connect");
-    // let collection: Collection<Product> = client.database(db_name).collection(coll_name);
     let store = web::Data::new(todo::TodoStore::default());
     // data here
     let client_data = web::Data::new(client); // used for product api
@@ -81,8 +87,8 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .wrap(Logger::default())
             .configure(todo::configure(store.clone()))
+            .configure(user::create_config_by_type::<user::User>())
             .app_data(client_data.clone())
-            // .app_data(products_data.clone())
             .service(product::add_product)
             .service(product::get_product)
             .service(product::get_products)

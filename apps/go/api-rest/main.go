@@ -23,7 +23,7 @@ import (
 // 	Name string             `json:"name" bson:"name,omitempty" validate:"required,min=3,max=36"`
 // }
 
-var userCollection = "users"
+var userCollection = "user"
 
 // var notificationCollection = "notifications"
 

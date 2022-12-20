@@ -1,25 +1,15 @@
-use crate::{bson, doc, handle_create, post, Error};
-use actix_web::{web, HttpResponse, Responder};
-use futures::{StreamExt, TryStream, TryStreamExt};
-// use mongodb::bson::oid::ObjectId;
-use mongodb::results::{DeleteResult, InsertOneResult};
-use mongodb::{Client, Collection};
-use serde::{de::DeserializeOwned, Deserialize, Serialize};
-// use std::arch::asm;
-// use std::fmt::format;
-
-use fake::{Dummy, Fake, Faker};
-// use rand::rngs::StdRng;
-// use rand::SeedableRng;
-
+use actix_web::{web, HttpResponse};
 use async_trait::async_trait;
-
-#[async_trait]
-pub trait Api<T> {
-    async fn get_all(&self) -> HttpResponse;
-    async fn get_one(&self, db: MongoRepo<T>, body: web::Json<T>) -> HttpResponse;
-    // async fn create_item(&self, db: MongoRepo<T>, body: web::Json<T>) -> HttpResponse;
-}
+use futures::TryStreamExt;
+use mongodb::{
+    bson::{
+        doc,
+        oid::{Error, ObjectId},
+    },
+    results::{DeleteResult, InsertOneResult},
+    Client, Collection,
+};
+use serde::{de::DeserializeOwned, Serialize};
 
 pub struct MongoRepo<T> {
     col: Collection<T>,
@@ -36,16 +26,22 @@ where
         let col = client.database(db_name).collection(col_name);
         Self { col }
     }
-    pub async fn create(&self, item: T) -> Result<InsertOneResult, Error> {
+    pub async fn create(&self, item: T) -> Result<Option<T>, Error> {
         let item = self
             .col
             .insert_one(item, None)
             .await
             .expect("Error creating item");
-        Ok(item)
+        // let new_id = item.inserted_id.as_str().unwrap();
+        let obj_id = item.inserted_id.as_object_id().unwrap();
+        let filter = doc! {"_id": obj_id};
+        // let result = self.find_by_id(new_id).await.expect("Error finding item");
+        // todo reuse find_by_id
+        let result = self.col.find_one(filter, None).await.expect("As");
+        Ok(result)
     }
-    pub async fn delete(&self, id: &String) -> Result<DeleteResult, Error> {
-        let obj_id = bson::oid::ObjectId::parse_str(id).unwrap();
+    pub async fn delete(&self, id: &str) -> Result<DeleteResult, Error> {
+        let obj_id = ObjectId::parse_str(id).unwrap();
         let filter = doc! {"_id": obj_id};
         let user_detail = self
             .col
@@ -54,6 +50,13 @@ where
             .expect("Error deleting item");
 
         Ok(user_detail)
+    }
+    pub async fn drop_db(&self) -> Result<(), Error> {
+        self.col
+            .drop(None)
+            .await
+            .expect("Error dropping collection");
+        Ok(())
     }
     pub async fn list(&self) -> Result<Vec<T>, Error> {
         let mut cursor = self
@@ -71,6 +74,41 @@ where
         }
         Ok(users)
     }
+    pub async fn find_by_id(&self, id: &str) -> Result<Option<T>, Error> {
+        let obj_id = ObjectId::parse_str(id).unwrap();
+        let filter = doc! {"_id": obj_id};
+        let result = self
+            .col
+            .find_one(filter, None)
+            .await
+            .expect("Error finding item");
+
+        Ok(result)
+    }
+    pub async fn update_by_id(&self, id: &str) -> Result<Option<T>, Error> {
+        let obj_id = ObjectId::parse_str(id).unwrap();
+        let filter = doc! {"_id": obj_id};
+        let new_doc = doc! {
+            "$set":
+                {
+                    // "email": item.name.clone()
+                },
+        };
+        let result = self
+            .col
+            .find_one_and_update(filter, new_doc, None)
+            .await
+            .expect("Error finding item");
+
+        Ok(result)
+    }
+}
+
+#[async_trait]
+pub trait Api<T> {
+    async fn get_all(&self) -> HttpResponse;
+    async fn get_one(&self, db: MongoRepo<T>, body: web::Json<T>) -> HttpResponse;
+    // async fn create_item(&self, db: MongoRepo<T>, body: web::Json<T>) -> HttpResponse;
 }
 
 #[async_trait]

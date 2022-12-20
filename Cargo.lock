@@ -279,6 +279,7 @@ dependencies = [
  "log",
  "mongo",
  "mongodb",
+ "plurals",
  "rand",
  "schemars",
  "serde",
@@ -1545,6 +1546,7 @@ version = "0.1.0"
 dependencies = [
  "actix-web",
  "async-trait",
+ "futures",
  "mongodb",
  "serde",
 ]
@@ -1778,6 +1780,12 @@ name = "pkg-config"
 version = "0.3.26"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6ac9a59f73473f1b8d852421e59e64809f025994837ef743615c6d0c5b305160"
+
+[[package]]
+name = "plurals"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e8a6a5b354a442649e8c8abcd2e52c759d8f220eeb5e16a1569cfa20439ad492"
 
 [[package]]
 name = "ppv-lite86"

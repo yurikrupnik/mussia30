@@ -8,7 +8,7 @@ use futures::executor::block_on;
 
 mod model;
 
-use crate::model::{Api, MongoRepo};
+use crate::model::MongoRepo;
 pub use model::Todo;
 
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
