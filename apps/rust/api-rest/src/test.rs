@@ -31,8 +31,8 @@ async fn test() {
     .await;
 
     let user = User {
-      id: None,
-      first_name: "Jane".into(),
+        id: None,
+        first_name: "Jane".into(),
         last_name: "Doe".into(),
         username: "janedoe".into(),
         email: "example@example.com".into(),

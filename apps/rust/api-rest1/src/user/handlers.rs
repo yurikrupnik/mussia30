@@ -1,6 +1,8 @@
 use crate::user::User;
 use actix_web::{web, HttpResponse, Responder};
 use mongo::{ErrorResponse, MongoRepo};
+use schemars::_private::NoSerialize;
+use validator::Validate;
 
 /// Get list of users.
 ///
@@ -45,6 +47,12 @@ responses(
 )
 )]
 pub async fn add_user(db: web::Data<MongoRepo<User>>, body: web::Json<User>) -> impl Responder {
+    match body.validate() {
+        Ok(_) => (),
+        Err(e) => {
+            return HttpResponse::BadRequest().json(e.errors());
+        }
+    }
     let result = db.create(body.clone()).await;
     match result {
         Ok(res) => HttpResponse::Created().json(res),

@@ -1,5 +1,5 @@
-use actix_web::{web, HttpResponse};
-use async_trait::async_trait;
+// use actix_web::HttpResponse;
+// use async_trait::async_trait;
 use futures::TryStreamExt;
 use mongodb::{
     bson::{
@@ -104,32 +104,32 @@ where
     }
 }
 
-#[async_trait]
-pub trait Api<T> {
-    async fn get_all(&self) -> HttpResponse;
-    async fn get_one(&self, db: MongoRepo<T>, body: web::Json<T>) -> HttpResponse;
-    // async fn create_item(&self, db: MongoRepo<T>, body: web::Json<T>) -> HttpResponse;
-}
-
-#[async_trait]
-impl<T> Api<T> for MongoRepo<T>
-where
-    T: Serialize + DeserializeOwned + Sync + Send + Unpin,
-{
-    async fn get_all(&self) -> HttpResponse {
-        let result = MongoRepo::list(self).await;
-        // let result = db.list().await;
-        match result {
-            Ok(res) => HttpResponse::Ok().json(res),
-            Err(err) => HttpResponse::InternalServerError().body(err.to_string()),
-        }
-    }
-    async fn get_one(&self, db: MongoRepo<T>, body: web::Json<T>) -> HttpResponse {
-        let result = self::MongoRepo::list(self).await;
-        // let result = dblist(self).await;
-        match result {
-            Ok(res) => HttpResponse::Ok().json(res),
-            Err(err) => HttpResponse::InternalServerError().body(err.to_string()),
-        }
-    }
-}
+// #[async_trait]
+// pub trait Api<T> {
+//     async fn get_all(&self) -> HttpResponse;
+//     async fn get_one(&self, db: MongoRepo<T>, body: web::Json<T>) -> HttpResponse;
+//     // async fn create_item(&self, db: MongoRepo<T>, body: web::Json<T>) -> HttpResponse;
+// }
+//
+// #[async_trait]
+// impl<T> Api<T> for MongoRepo<T>
+// where
+//     T: Serialize + DeserializeOwned + Sync + Send + Unpin,
+// {
+//     async fn get_all(&self) -> HttpResponse {
+//         let result = MongoRepo::list(self).await;
+//         // let result = db.list().await;
+//         match result {
+//             Ok(res) => HttpResponse::Ok().json(res),
+//             Err(err) => HttpResponse::InternalServerError().body(err.to_string()),
+//         }
+//     }
+//     async fn get_one(&self, db: MongoRepo<T>, body: web::Json<T>) -> HttpResponse {
+//         let result = self::MongoRepo::list(self).await;
+//         // let result = dblist(self).await;
+//         match result {
+//             Ok(res) => HttpResponse::Ok().json(res),
+//             Err(err) => HttpResponse::InternalServerError().body(err.to_string()),
+//         }
+//     }
+// }

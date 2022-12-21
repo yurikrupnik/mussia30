@@ -79,18 +79,20 @@ async fn main() -> std::io::Result<()> {
 
     let openapi = ApiDoc::openapi();
 
+    // todo struct to document
+    // todo move swagger to other file
     let uri = env::var("MONGODB_URI").unwrap_or_else(|_| "mongodb://localhost:27017".into());
     let client = Client::with_uri_str(uri).await.expect("failed to connect");
     let store = web::Data::new(todo::TodoStore::default());
     // data here
     let client_data = web::Data::new(client); // used for product api
-    let endpoint = "users";
     HttpServer::new(move || {
         App::new()
             .wrap(Logger::default())
             .configure(todo::configure(store.clone()))
-            // .configure(user::create_config_by_type::<user::User>())
-            .configure(user::create_config_by_type::<user::User>(endpoint))
+            .configure(user::create_config_by_type::<user::User>(
+                user::User::get_collection(2),
+            ))
             .app_data(client_data.clone())
             .service(product::add_product)
             .service(product::get_product)
