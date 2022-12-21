@@ -1,6 +1,4 @@
-use std::sync::Mutex;
-
-use crate::{LogApiKey, RequireApiKey};
+use crate::swagger::{LogApiKey, RequireApiKey};
 use actix_web::{
     delete, get, post, put,
     web::{Data, Json, Path, Query, ServiceConfig},
@@ -8,6 +6,7 @@ use actix_web::{
 };
 use mongo::ErrorResponse;
 use serde::{Deserialize, Serialize};
+use std::sync::Mutex;
 use utoipa::{IntoParams, ToSchema};
 
 #[derive(Default)]
