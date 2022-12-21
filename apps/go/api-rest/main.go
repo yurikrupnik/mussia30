@@ -86,6 +86,7 @@ func main() {
 	// Default middleware config
 	app.Use(logger.New())
 	//app.Use(csrf.New()) // todo check it - forbidden post events
+	// todo cors in prod!
 	app.Use(cors.New())
 	apiGroup := app.Group("api")
 	apiGroup1 := app.Group("v1")

@@ -1,6 +1,15 @@
-import { render } from 'solid-js/web';
+import { render } from "solid-js/web";
+import { Router } from "@solidjs/router";
+import App from "./App";
+// import { QueryClient, QueryClientProvider } from '@tanstack/solid-query'
+// fails with vite
+// const queryClient = new QueryClient()
 
-import './index.css';
-import App from './App';
-
-render(App, document.getElementById('root'));
+render(
+  () => (
+      <Router>
+          <App />
+      </Router>
+  ),
+  document.getElementById("root") as HTMLElement
+);

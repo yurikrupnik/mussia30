@@ -1,7 +1,6 @@
 use crate::user::User;
 use actix_web::{web, HttpResponse, Responder};
 use mongo::{ErrorResponse, MongoRepo};
-use schemars::_private::NoSerialize;
 use validator::Validate;
 
 /// Get list of users.

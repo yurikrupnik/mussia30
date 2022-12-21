@@ -1,14 +1,10 @@
 use actix_web::{
     dev::{Service, ServiceRequest, ServiceResponse, Transform},
-    middleware::Logger,
-    web, App, HttpResponse, HttpServer,
+    HttpResponse,
 };
 use futures::future::LocalBoxFuture;
 use mongo::ErrorResponse;
-use std::{
-    env,
-    future::{self, Ready},
-};
+use std::future::{self, Ready};
 use utoipa::{
     openapi::security::{ApiKey, ApiKeyValue, SecurityScheme},
     Modify, OpenApi,

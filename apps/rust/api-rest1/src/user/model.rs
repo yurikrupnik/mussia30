@@ -3,7 +3,7 @@ use mongodb::bson::oid::ObjectId;
 use plurals::{Lang, Plural};
 use serde::{Deserialize, Serialize};
 use utoipa::ToSchema;
-use validator::{Validate, ValidationError};
+use validator::Validate;
 
 #[derive(Clone, ToSchema, Debug, PartialEq, Eq, Deserialize, Serialize, Validate)]
 struct Id {
