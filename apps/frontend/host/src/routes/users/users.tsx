@@ -21,7 +21,9 @@ const Predictions = () => {
   });
   return (
     <div>
-      <h1>Predictions</h1>
+      <h1 class="text-3xl font-bold underline">
+        Users
+      </h1>
       <div>
         data here
         <For each={data()}>
