@@ -1,4 +1,4 @@
-import { createEffect, createSignal, For } from 'solid-js';
+import { For, createResource } from 'solid-js';
 import axios from 'axios';
 // import { User, UserDocument } from '@nx-go-playground/api/usesssrs';
 
@@ -11,24 +11,40 @@ function getUsers() {
       .then((r: any) => r.data)
   );
 }
+function deleteUser(id: string) {
+  return axios.delete(`http://localhost:8080/api/users/${id}`);
+}
 
-const Predictions = () => {
-  const [data, setData] = createSignal([]);
-  createEffect(() => {
-    getUsers().then((res: any) => {
-      setData(res);
+const Users = () => {
+  // const [data, setData] = createSignal([]);
+  const [data] = createResource(getUsers, { initialValue: [] });
+  // console.log('data', data());
+  // createEffect(() => {
+  //   // getUsers();
+  //   //   .then(setData);
+  // });
+
+  const deleteItem = (id: string) => {
+    deleteUser(id).then(() => {
+      getUsers();
     });
-  });
+  };
   return (
     <div>
-      <h1 class="text-3xl font-bold underline">
-        Users
-      </h1>
+      <h1 class="text-3xl font-bold underline">Users</h1>
       <div>
         data here
         <For each={data()}>
           {(item: any) => {
-            return <div>{item.id}</div>;
+            return (
+              <div class="flex items-stretch">
+                <div class="py-6 w-full">{item.lastName}</div>
+                <div class="py-6 w-full">{item.firstName}</div>
+                <div class="py-6 w-full">
+                  <button onclick={() => deleteItem(item.id)}>Delete</button>
+                </div>
+              </div>
+            );
           }}
         </For>
       </div>
@@ -36,4 +52,4 @@ const Predictions = () => {
   );
 };
 
-export default Predictions;
+export default Users;

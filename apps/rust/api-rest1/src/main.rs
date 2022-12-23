@@ -101,7 +101,7 @@ async fn main() -> std::io::Result<()> {
                 print!("origin {}, url {}", origin.is_empty(), _req_head.uri);
                 true
             })
-            .allowed_methods(vec!["GET", "POST"])
+            .allowed_methods(vec!["GET", "POST", "DELETE", "PUT"])
             .max_age(3600);
         App::new()
             .service(
