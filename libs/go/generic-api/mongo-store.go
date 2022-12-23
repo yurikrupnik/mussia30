@@ -20,7 +20,7 @@ func newMongoStore[T any](db string, url string) (UserSvc[T], error) {
 	//uri := "http://host.docker.internal:27017"
 	//uri := "mongodb://localhost/db" // compose local gow run main.go
 	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
-	con := client.Database(url).Collection(url)
+	con := client.Database(db).Collection(url)
 	if err != nil {
 		log.Println("error connecting mongo")
 		return nil, err

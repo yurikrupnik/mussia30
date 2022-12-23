@@ -5,7 +5,6 @@ use mongodb::{
     bson::{doc, oid::ObjectId},
     Client, Collection,
 };
-// use utoipa::{IntoParams, ToSchema};
 
 pub const DB_NAME: &str = "rustApp";
 

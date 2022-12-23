@@ -1,6 +1,7 @@
 use crate::user::User;
 use actix_web::{web, HttpResponse, Responder};
 use mongo::{ErrorResponse, MongoRepo};
+use serde::{de::DeserializeOwned, Serialize};
 use validator::Validate;
 
 /// Get list of users.
@@ -13,14 +14,16 @@ use validator::Validate;
 /// ```
 #[utoipa::path(
 get,
-path = "/users",
+path = "/api/users",
 responses(
 (status = 200, description = "Users found successfully", body = [User]),
 ),
 params(
 )
 )]
-pub async fn user_list(db: web::Data<MongoRepo<User>>) -> impl Responder {
+pub async fn user_list<T: Serialize + DeserializeOwned + Sync + Send + Unpin + 'static>(
+    db: web::Data<MongoRepo<T>>,
+) -> impl Responder {
     let results = db.list().await;
     match results {
         Ok(res) => HttpResponse::Ok().json(res),
@@ -35,11 +38,11 @@ pub async fn user_list(db: web::Data<MongoRepo<User>>) -> impl Responder {
 ///
 /// One could call the api with following curl.
 /// ```text
-/// curl localhost:8080/users -d '{"first_name": "Test name", "last_name": "Test last", "email": "a@a.com", "username": "test"}'
+/// curl -X POST -H "Content-Type: application/json" -d '{"firstName": "Test name", "lastName": "Test last", "email": "a@a.com", "username": "test"}' localhost:8080/users
 /// ```
 #[utoipa::path(
 post,
-path = "/users",
+path = "/api/users",
 request_body = User,
 responses(
 (status = 201, description = "User created successfully", body = User),
@@ -64,7 +67,7 @@ pub async fn add_user(db: web::Data<MongoRepo<User>>, body: web::Json<User>) -> 
 /// Return found `User` with status 200 or 404 not found if `User` is not found from shared in-memory storage.
 #[utoipa::path(
 get,
-path = "/users/{id}",
+path = "/api/users/{id}",
 responses(
 (status = 200, description = "User found from db", body = User),
 (status = 404, description = "User not found by id", body = ErrorResponse, example = json!(ErrorResponse::NotFound(String::from("id = 1"))))
@@ -94,7 +97,7 @@ pub async fn get_user(db: web::Data<MongoRepo<User>>, path: web::Path<String>) -
 /// If storage does not contain `User` with given id 404 not found will be returned.
 #[utoipa::path(
 delete,
-path = "/users/{id}",
+path = "/api/users/{id}",
 responses(
 (status = 200, description = "User deleted successfully"),
 (status = 401, description = "Unauthorized to delete User", body = ErrorResponse, example = json!(ErrorResponse::Unauthorized(String::from("missing api key")))),
@@ -135,7 +138,7 @@ pub async fn delete_user(db: web::Data<MongoRepo<User>>, path: web::Path<String>
 /// If storage does not contain `User` with given id 404 not found will be returned.
 #[utoipa::path(
 delete,
-path = "/users",
+path = "/api/users",
 responses(
 (status = 200, description = "User deleted successfully"),
 ),
@@ -157,7 +160,7 @@ pub async fn drop_users(db: web::Data<MongoRepo<User>>) -> HttpResponse {
 /// If todo is not found then 404 not found is returned.
 #[utoipa::path(
 put,
-path = "/users/{id}",
+path = "/api/users/{id}",
 request_body = User,
 responses(
 (status = 200, description = "User updated successfully", body = User),

@@ -101,7 +101,7 @@ pub async fn create_todo(todo: Json<Todo>, todo_store: Data<TodoStore>) -> impl 
         .unwrap_or_else(|| {
             todos.push(todo.clone());
 
-            HttpResponse::Ok().json(todo)
+            HttpResponse::Created().json(todo)
         })
 }
 

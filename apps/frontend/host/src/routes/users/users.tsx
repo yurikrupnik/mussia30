@@ -5,7 +5,7 @@ import axios from 'axios';
 function getUsers() {
   return (
     axios
-      .get('http://localhost:8080/users')
+      .get('http://localhost:8080/api/users')
       // .get('http://localhost:4000/api/users')
       // .get('/api/projects')
       .then((r: any) => r.data)
@@ -26,7 +26,7 @@ const Predictions = () => {
         data here
         <For each={data()}>
           {(item: any) => {
-            return <div>{item._id}</div>;
+            return <div>{item.id}</div>;
           }}
         </For>
       </div>

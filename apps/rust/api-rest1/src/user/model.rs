@@ -2,37 +2,42 @@ use mongo::serialize_object_id;
 use mongodb::bson::oid::ObjectId;
 use plurals::{Lang, Plural};
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 use utoipa::ToSchema;
 use validator::Validate;
 
-#[derive(Clone, ToSchema, Debug, PartialEq, Eq, Deserialize, Serialize, Validate)]
-struct Id {
+#[derive(Clone, ToSchema, Debug, PartialEq, Eq, Deserialize, Serialize, Validate, TS)]
+pub struct Id {
     #[serde(
-        rename = "_id",
+        rename(deserialize = "_id"),
         serialize_with = "serialize_object_id",
         skip_serializing_if = "Option::is_none"
     )]
+    #[ts(type = "string")]
     pub id: Option<ObjectId>,
 }
 
+#[derive(Clone, ToSchema, Debug, PartialEq, Eq, Serialize, Deserialize, TS)]
+pub struct Pagination {
+    limit: u64,
+    offset: u64,
+    total: u64,
+}
+
+// #[serde(deny_unknown_fields)]
+// #[serde(rename_all = "snake_case")]
 /// Request to update existing `User` item.
-#[derive(Clone, ToSchema, Debug, PartialEq, Eq, Deserialize, Serialize, Validate)]
-#[serde(deny_unknown_fields)]
-#[serde(rename_all = "snake_case")]
+#[derive(Clone, ToSchema, Debug, PartialEq, Eq, Deserialize, Serialize, Validate, TS)]
+#[ts(export)]
 pub struct User {
-    #[serde(
-        rename = "_id",
-        serialize_with = "serialize_object_id",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub id: Option<ObjectId>,
-    // #[serde(flatten)]
-    // id: Id,
+    #[serde(flatten)]
+    id: Id,
     #[schema(default = "Jon")]
     #[validate(length(min = 2))]
-    #[serde(rename(deserialize = "first_name"))]
+    #[serde(rename = "firstName")]
     pub first_name: String,
     #[schema(default = "Doe")]
+    #[serde(rename = "lastName")]
     pub last_name: String,
     #[schema(default = "job-doe")]
     pub username: String,

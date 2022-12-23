@@ -41,7 +41,7 @@ user::update_user,
 components(
 schemas(product::Product, ErrorResponse),
 schemas(todo::Todo, todo::TodoUpdateRequest, ErrorResponse),
-schemas(user::User),
+schemas(user::User, user::Id, user::Pagination),
 ),
 tags(
 (name = "todo", description = "Todo management endpoints."),
