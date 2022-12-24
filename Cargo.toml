@@ -1,5 +1,7 @@
 [workspace]
 members = [
+    "libs/rust/graphql/starwars2",
+    "libs/rust/graphql/starwars",
     "libs/rust/mongo",
     "apps/rust/api-rest1",
     "apps/rust/api-graphql",

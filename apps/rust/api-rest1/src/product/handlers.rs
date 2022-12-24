@@ -1,8 +1,10 @@
 use crate::product::model::Product;
+// use crate::user::User;
 use actix_web::{delete, get, post, put, web, HttpResponse, Responder};
 use futures::TryStreamExt;
 use mongodb::{
     bson::{doc, oid::ObjectId},
+    options::FindOptions,
     Client, Collection,
 };
 
@@ -73,8 +75,20 @@ responses(
 pub async fn get_products(client: web::Data<Client>) -> impl Responder {
     let collection: Collection<Product> = client.database(DB_NAME).collection(Product::COLLECTION);
     // let filter = doc! {"name": "product 1".to_string()};
-    let mut cursor = collection.find(None, None).await.expect("failed fetching");
+    // let find_options = FindOptions::builder().sort(doc! { "title": 1,  }).build();
+    // let projection = doc! {"userId": 1};
+    let find_options = FindOptions::builder()
+        // .projection(projection)
+        .limit(10)
+        .build();
+
+    let mut cursor = collection
+        // .clone_with_type()
+        .find(None, find_options)
+        .await
+        .expect("failed fetching");
     let mut payload: Vec<Product> = Vec::new();
+
     while let Some(product) = cursor
         .try_next()
         .await

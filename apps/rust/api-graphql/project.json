@@ -15,6 +15,14 @@
         }
       }
     },
+    "serve": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "cargo watch -x run",
+        "cwd": "apps/rust/api-graphql/"
+      }
+    },
     "test": {
       "executor": "@nxrs/cargo:test",
       "options": {}
