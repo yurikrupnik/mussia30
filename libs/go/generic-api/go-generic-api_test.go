@@ -5,7 +5,7 @@ import (
 )
 
 func TestGenericApi(t *testing.T) {
-  result := "GenericApi works"
+	result := "GenericApi works"
 	if result != "GenericApi works" {
 		t.Error("Expected GenericApi to append 'works'")
 	}

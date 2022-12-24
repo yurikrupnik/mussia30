@@ -10,9 +10,6 @@ use utoipa::{
     Modify, OpenApi,
 };
 
-// mod product;
-// mod todo;
-// mod user;
 use crate::product;
 use crate::todo;
 use crate::user;
