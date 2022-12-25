@@ -13,7 +13,8 @@
         "outputPath": "dist/apps/node/api-graphql",
         "main": "apps/node/api-graphql/src/main.ts",
         "tsConfig": "apps/node/api-graphql/tsconfig.app.json",
-        "assets": ["apps/node/api-graphql/src/assets"]
+        "assets": ["apps/node/api-graphql/src/assets"],
+        "generatePackageJson": true
       },
       "configurations": {
         "production": {

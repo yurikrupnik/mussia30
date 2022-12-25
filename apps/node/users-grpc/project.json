@@ -13,7 +13,8 @@
         "outputPath": "dist/apps/node/users-grpc",
         "main": "apps/node/users-grpc/src/main.ts",
         "tsConfig": "apps/node/users-grpc/tsconfig.app.json",
-        "assets": ["apps/node/users-grpc/src/assets"]
+        "assets": ["apps/node/users-grpc/src/assets"],
+        "generatePackageJson": true
       },
       "configurations": {
         "production": {
