@@ -5,7 +5,6 @@ import {
   QueryOptions,
   LeanDocument,
   HydratedDocument,
-  ModifyResult,
   UpdateQuery,
 } from 'mongoose';
 
