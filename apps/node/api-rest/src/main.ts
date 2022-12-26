@@ -38,7 +38,7 @@ async function bootstrap() {
 
   const logger = app.get(Logger);
   const docs = app.get(SwaggerModule);
-  docs.setup(app, globalPrefix, 'Rest  API', 'General use api');
+  docs.setup(app, globalPrefix, 'Rest API', 'General use api');
 
   const port = configService.get('PORT') || 8080;
   await app.listen(port, () => {
