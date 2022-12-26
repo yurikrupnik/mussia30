@@ -2,7 +2,6 @@ use actix_web::{guard, web, App, HttpResponse, HttpServer, Result};
 use async_graphql::{http::GraphiQLSource, EmptyMutation, EmptySubscription, Schema};
 use async_graphql_actix_web::{GraphQLRequest, GraphQLResponse};
 use starwars::{QueryRoot, StarWars, StarWarsSchema};
-// use starwars2::{Episode, StarWars, StarWarsChar,schema };
 
 async fn index(schema: web::Data<StarWarsSchema>, req: GraphQLRequest) -> GraphQLResponse {
     schema.execute(req.into_inner()).await.into()
