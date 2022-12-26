@@ -19,8 +19,5 @@ install-viz:
 build-all:
   pnpm nx affected --target=build --parallel --max-parallel=10 --prod
 
-# Todo
-# convert go struct to ts
-# https://github.com/tkrajina/typescriptify-golang-structs
 cargo-unused-deps:
   cargo +nightly udeps --all-targets
