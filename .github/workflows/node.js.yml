@@ -19,6 +19,8 @@ jobs:
         with:
           go-version: '1.19.4'
           run_install: true
+          check-latest: true
+          cache: true
       - run: rustup toolchain install stable --profile minimal
       - uses: Swatinem/rust-cache@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -48,6 +50,8 @@ jobs:
       - uses: actions/setup-go@v3
         with:
           go-version: 1.19.4
+          check-latest: true
+          cache: true
       - run: rustup toolchain install stable --profile minimal
       - uses: Swatinem/rust-cache@v2
       - name: Use Node.js
@@ -77,6 +81,8 @@ jobs:
       - uses: actions/setup-go@v3
         with:
           go-version: '1.19.4'
+          check-latest: true
+          cache: true
       - run: rustup toolchain install stable --profile minimal
       - uses: Swatinem/rust-cache@v2
       - run: go version
