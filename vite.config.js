@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
 import WindiCSS from 'vite-plugin-windicss';
-import yargs from 'yargs';
-const argv = yargs.argv;
-const { port, open } = argv;
-
-console.log(argv);
+// import yargs from 'yargs';
+// const argv = yargs.argv;
+// const { port, open } = argv;
+//
+// console.log(argv);
 
 export default defineConfig(async () => {
   return {
@@ -13,8 +13,8 @@ export default defineConfig(async () => {
       // manifest: true,
     },
     server: {
-      port,
-      open,
+      // port,
+      // open,
     },
     plugins: [solidPlugin(), WindiCSS()],
   };
