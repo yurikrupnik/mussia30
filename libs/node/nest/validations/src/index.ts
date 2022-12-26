@@ -1,1 +1,1 @@
-export * from './lib/node-nest-validations';
+export * from './lib/validations';
