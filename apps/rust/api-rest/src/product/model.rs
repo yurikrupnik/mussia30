@@ -21,7 +21,6 @@ pub struct Product {
     pub is_true: bool,
     #[serde(serialize_with = "serialize_object_id")]
     #[ts(type = "string")]
-    // pub user_id: A,
     pub user_id: Option<ObjectId>,
 }
 
