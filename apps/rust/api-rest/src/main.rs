@@ -1,10 +1,8 @@
-// mods
 mod product;
 mod swagger;
 mod todo;
 mod user;
-// libs for app
-// core
+
 use actix_cors::Cors;
 use actix_web::{middleware::Logger, web, App, HttpServer};
 use env_logger::Env;
