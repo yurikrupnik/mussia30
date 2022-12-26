@@ -27,7 +27,7 @@ pub fn configure(store: Data<TodoStore>) -> impl FnOnce(&mut ServiceConfig) {
     }
 }
 
-/// Task to do.
+/// Task todo.
 #[derive(Serialize, Deserialize, ToSchema, Clone, Debug)]
 pub struct Todo {
     /// Unique id for the todo item.
