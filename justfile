@@ -22,3 +22,5 @@ build-all:
 # Todo
 # convert go struct to ts
 # https://github.com/tkrajina/typescriptify-golang-structs
+cargo-unused-deps:
+  cargo +nightly udeps --all-targets
