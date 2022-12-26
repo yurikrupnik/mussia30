@@ -42,7 +42,7 @@ specifiers:
   eslint: ~8.15.0
   eslint-config-prettier: 8.5.0
   eslint-plugin-cypress: ^2.10.3
-  eslint-plugin-solid: 0.4.3
+  eslint-plugin-solid: 0.9.1
   express: ^4.18.2
   faker: ^6.6.6
   firebase-admin: ^11.4.1
@@ -126,7 +126,7 @@ devDependencies:
   eslint: 8.15.0
   eslint-config-prettier: 8.5.0_eslint@8.15.0
   eslint-plugin-cypress: 2.12.1_eslint@8.15.0
-  eslint-plugin-solid: 0.4.3_7xejdone6kwdndpjp5nwx3ofcu
+  eslint-plugin-solid: 0.9.1_7xejdone6kwdndpjp5nwx3ofcu
   jest: 28.1.3_zfha7dvnw4nti6zkbsmhmn6xo4
   jest-environment-jsdom: 28.1.3
   nx: 15.4.1
@@ -7482,8 +7482,8 @@ packages:
       globals: 11.12.0
     dev: true
 
-  /eslint-plugin-solid/0.4.3_7xejdone6kwdndpjp5nwx3ofcu:
-    resolution: {integrity: sha512-4Hv5q/Ko3g9E2n2tZBaPAYCb3w+TFxn2uOLSa6MWWsLauUE/PzPPAjGVGMezuB4ICy2tOuICDZO4q8XoOR84/w==}
+  /eslint-plugin-solid/0.9.1_7xejdone6kwdndpjp5nwx3ofcu:
+    resolution: {integrity: sha512-2pkdVRG2pOpXjbBn1VhRlxc0NcMViB5xQtjNPX3IiovJ4q1fuLHe9eqVOMeDYiHt2xsajq3R6t5reN6Qv8DAEA==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
