@@ -5,6 +5,7 @@ default:
     @just --list --unsorted
 
 # todo with all ts configs!
+# https://github.com/stephenh/ts-proto#nestjs-support
 # generate rust structs and ts interfaces
 proto-generate:
   protoc --rust_out ./libs/rust/grpc/src/generated --plugin=node_modules/ts-proto/protoc-gen-ts_proto --ts_proto_opt=nestJs=true,addGrpcMetadata=true,addNestjsRestParameter=true --ts_proto_out=./libs/node/grpc/src ./_proto/* --ts_proto_opt=esModuleInterop=true

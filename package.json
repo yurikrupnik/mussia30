@@ -6,7 +6,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "docker-regular": "GOOS=linux GOARCH=amd64 pnpm nx run-many --parallel --max-parallel=3 --target=docker-regular",
+    "docker-regular": "GOOS=linux GOARCH=amd64 pnpm nx run-many --parallel --max-parallel=3 --target=docker-regular"
   },
   "private": true,
   "devDependencies": {
