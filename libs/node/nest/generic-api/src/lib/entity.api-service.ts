@@ -3,7 +3,8 @@ import {
   FilterQuery,
   QueryOptions,
   LeanDocument,
-  HydratedDocument, UpdateQuery,
+  HydratedDocument,
+  UpdateQuery,
 } from 'mongoose';
 import { EntityRepository } from './entity.repository';
 

@@ -6,8 +6,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "docker-regular": "GOOS=linux GOARCH=amd64 pnpm nx run-many --parallel --max-parallel=3 --target=docker-regular",
-    "predocker-regular": "rimraf dist"
+    "docker-regular": "GOOS=linux GOARCH=amd64 pnpm nx run-many --parallel --max-parallel=3 --target=docker-regular"
   },
   "private": true,
   "devDependencies": {
@@ -47,6 +46,7 @@
     "solid-testing-library": "^0.5.0",
     "ts-jest": "28.0.8",
     "ts-node": "10.9.1",
+    "ts-proto": "^1.136.1",
     "typescript": "4.9.4",
     "vite": "^3.0.5",
     "vite-plugin-solid": "2.2.6",
@@ -55,6 +55,8 @@
   },
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
+    "@grpc/grpc-js": "^1.8.0",
+    "@grpc/proto-loader": "^0.7.4",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",

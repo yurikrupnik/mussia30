@@ -19,6 +19,7 @@
       "@mussia30/node/firebase-admin": [
         "libs/node/firebase-admin/src/index.ts"
       ],
+      "@mussia30/node/grpc": ["libs/node/grpc/src/index.ts"],
       "@mussia30/node/nest/auth": ["libs/node/nest/auth/src/index.ts"],
       "@mussia30/node/nest/envs": ["libs/node/nest/envs/src/index.ts"],
       "@mussia30/node/nest/errors": ["libs/node/nest/errors/src/index.ts"],
