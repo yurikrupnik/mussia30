@@ -9,6 +9,9 @@ default:
 # generate rust structs and ts interfaces
 proto-generate:
   protoc --rust_out ./libs/rust/grpc/src/generated --plugin=node_modules/ts-proto/protoc-gen-ts_proto --ts_proto_opt=nestJs=true,addGrpcMetadata=true,addNestjsRestParameter=true --ts_proto_out=./libs/node/grpc/src ./_proto/* --ts_proto_opt=esModuleInterop=true
+# daily github actions
+daily:
+  echo sjal
 
 #local-mongodb-docker-compose:
 #  echo stam
