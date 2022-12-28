@@ -4,8 +4,8 @@ resources:
   - deployment.yml
   # - ingress.yaml
 commonLabels:
-  demo: profile-api-label
-  service: node-api-rest
+  demo: node-api-label
+  service: users
   my-type: server
 #namespace: users
 #  - servi

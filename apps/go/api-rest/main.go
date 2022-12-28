@@ -2,17 +2,18 @@ package main
 
 import (
 	"fmt"
+	"log"
+	go_fiber_helpers "mussia30/libs/go/fiber-helpers"
+	go_generic_api "mussia30/libs/go/generic-api"
+	go_models_user "mussia30/libs/go/models/user"
+	go_shared "mussia30/libs/go/shared"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/monitor"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"log"
-	go_fiber_helpers "mussia30/libs/go/fiber-helpers"
-	"mussia30/libs/go/generic-api"
-	"mussia30/libs/go/models/user"
-	go_shared "mussia30/libs/go/shared"
 )
 
 type Project struct {
@@ -24,16 +25,32 @@ var db = "goApp"
 var userCollection = "users"
 var projectsCollection = "projects"
 
+func updateById[T any](c *fiber.Ctx) error {
+//  id := c.Params("id")
+//  objId, _ := primitive.ObjectIDFromHex(id)
+//  var user T
+//  if err := c.BodyParser(&user); err != nil {
+//    return c.Status(fiber.StatusBadRequest).JSON(err.Error())
+//  }
+//  err := h.Svc.update(objId, &user)
+//  if err != nil {
+//    return c.Status(fiber.StatusBadRequest).JSON(err.Error())
+//  }
+  return c.SendString("updated")
+}
+
 func main() {
 	app := fiber.New(fiber.Config{
 		ErrorHandler: go_fiber_helpers.DefaultErrorHandler,
 	})
-
+//    router := api.Group(name)
 	app.Use(recover.New())
 	app.Use(logger.New())
 	//app.Use(csrf.New()) // todo check it - forbidden post events!
 	// todo cors in prod!
 	app.Use(cors.New())
+
+    app.Get("/api/test", updateById[go_models_user.User])
 	apiGroup := app.Group("api")
 	//	users.New[users.User](apiGroup, db, userCollection)
 	go_generic_api.New[go_models_user.User](apiGroup, db, userCollection)

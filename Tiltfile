@@ -7,7 +7,7 @@ local_resource('pnpm', cmd='pnpm install', deps=['package.json', 'pnpm-lock.yaml
 # include('./k8s/helm/Tiltfile')
 
 include('./apps/go/api-rest/Tiltfile')
-# include('./apps/users/api/Tiltfile')
+# include('./apps/node/api-rest/Tiltfile')
 # include('./apps/users/client/Tiltfile')
 # include('./apps/auth-app/Tiltfile')
 # include('./apps/infra/commdands/Tiltfile')

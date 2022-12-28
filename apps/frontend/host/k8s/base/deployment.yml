@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-host
+#  namespace: mussia30
+  labels:
+    app: frontend-host
+    version: v1
+spec:
+  replicas: 1
+
+  template:
+    metadata:
+      name: frontend-host
+      labels:
+        app: frontend-host
+        version: v1
+      annotations:
+        "linkerd.io/inject": "enabled"
+        "consul.hashicorp.com/connect-inject": "true"
+        "consul.hashicorp.com/connect-service": "frontend-host"
+        "consul.hashicorp.com/connect-service-protocol": "http"
+        "consul.hashicorp.com/service-meta-version": "v.1.1"
+        "prometheus.io/scrape": "true"
+        "prometheus.io/port": "9102"
+    spec:
+      serviceAccountName: frontend-host
+      containers:
+        - name: frontend-host
+          ports:
+            - containerPort: 80
+              name: http
+          #          image: europe-west1-docker.pkg.dev/maya-mussia/nx-go-playground/frontend-host:latest
+          image: yurikrupnik/frontend-host:latest
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            #            - mountPath: /etc/nginx/conf.d
+            - mountPath: /etc/nginx/templates
+              name: nginx-config
+          env: # not` working only front end
+            - name: UPSTREAM_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: upstream_host
+                  name: proxy-envs
+            - name: UPSTREAM_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: upstream_port
+                  name: proxy-envs
+            - name: UPSTREAM_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: upstream_name
+                  name: proxy-envs
+          #          command: [ "node", "main.js" ]
+          #            - node
+          #            - main.js
+#          env:
+#            - name: MONGO_URI
+#              value: mongodb+srv://yurikrupnik:T4eXKj1RBI4VnszC@cluster0.rdmew.mongodb.net/
+            #            - name: PROJECT_ID
+            #              value: mussia14
+            #            - name: FIREBASE_DATABASE_URL
+            #              valueFrom:
+            #                secretKeyRef:
+            #                  key: firebase-database-url
+            #                  name: firebase-secret
+            #            - name: FIREBASE_PRIVATE_KEY
+            #              valueFrom:
+            #                secretKeyRef:
+            #                  key: firebase-private-key
+            #                  name: firebase-secret
+            #            - name: FIREBASE_CLIENT_EMAIL
+            #              valueFrom:
+            #                secretKeyRef:
+            #                  key: firebase-client-email
+          #                  name: firebase-secret
+
+
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: frontend-host
+      version: v1
