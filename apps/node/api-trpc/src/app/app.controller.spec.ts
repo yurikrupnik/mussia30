@@ -4,7 +4,9 @@
 // import { AppService } from './app.service';
 
 describe('AppController', () => {
-  expect(1).toEqual(1);
+  test('AppController', () => {
+    expect(1).toEqual(1);
+  });
   // let app: TestingModule;
   //
   // beforeAll(async () => {

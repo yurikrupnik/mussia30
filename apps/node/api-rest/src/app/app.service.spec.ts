@@ -3,7 +3,9 @@
 // import { AppService } from './app.service';
 
 describe('AppService', () => {
-  expect(1).toEqual(1);
+  it('should test', function () {
+    expect(1).toEqual(1);
+  });
   // let service: AppService;
   //
   // beforeAll(async () => {
