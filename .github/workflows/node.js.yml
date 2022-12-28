@@ -64,6 +64,7 @@ jobs:
           check-latest: true
           cache: true
       - run: rustup toolchain install stable --profile minimal
+      - run: rustup show
       - uses: Swatinem/rust-cache@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3

@@ -25,5 +25,6 @@ install-viz:
 build-all:
   pnpm nx affected --target=build --parallel --max-parallel=10 --prod
 
+# Check for unused packages.
 cargo-unused-deps:
   cargo +nightly udeps --all-targets
