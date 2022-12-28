@@ -9,7 +9,7 @@ import { LoggerModule } from '@mussia30/node/nest/logger';
 // import { TcpUserController } from './tcp/tcp-users.controller';
 // import { PostsController } from './posts/posts.controller';
 // import { RedisUserController } from './redis-user/redis-user.controller';
-import { GrpcController } from './app.controller'; // grpc controller
+// import { GrpcController } from './app.controller'; // grpc controller
 
 // import { PubSubModule } from './pubsub/pubsub.module';
 //import { FriendsModule } from './friends/friends.module';
@@ -33,7 +33,7 @@ import { GrpcController } from './app.controller'; // grpc controller
     // PostsController,
     // RedisUserController,
     // TcpUserController,
-    GrpcController,
+    // GrpcController,
   ],
 })
 export class AppModule {}

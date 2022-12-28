@@ -20,7 +20,7 @@ run-titl-cluster:
   tilt up
 
 create-local-cluster:
-  ctlptl create cluster kind --registry=ctlptl-registry
+  -ctlptl create cluster kind --registry=ctlptl-registry
   just install-linkerd
   just run-titl-cluster
 

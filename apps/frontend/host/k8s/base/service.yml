@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: node-api-rest-service
+  name: frontend-host-service
   labels:
-    run: node-api-rest-service
+    run: frontend-host-service
 spec:
   type: ClusterIP
   ports:
@@ -12,4 +12,4 @@ spec:
       port: 8080
       targetPort: 8080
   selector:
-    app: node-api-rest
+    app: frontend-host
