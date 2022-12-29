@@ -81,7 +81,11 @@ jobs:
       #      - run: which nx
       - uses: mansagroup/nrwl-nx-action@v3
         with:
-          targets: lint,build,test
+          targets: lint,build,test,docker-local
+      - uses: mansagroup/nrwl-nx-action@v3
+        with:
+          targets: lint,build,test,docker-local
+          affected: false
 #      - run: npx nx-cloud start-ci-run
 ##      - run: pnpm nx run-many --target=e2e --all --skip-nx-cache
 #      - run: pnpm nx run-many --target=test --all --skip-nx-cache
