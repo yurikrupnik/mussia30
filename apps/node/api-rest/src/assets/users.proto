@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package app;
+
+// Declare a service for each controller you have
+service AppController {
+  // Declare an rpc for each method that is called via gRPC
+  rpc CreateUser (User) returns (User) {};
+  rpc GetUser (getUserRequestDto) returns (User) {};
+  rpc DeleteUser (deleteUserRequestDto) returns (VoidResponse) {};
+  rpc updateUser (updateUserRequestDto) returns (User) {};
+  rpc GetUsers (getUsersRequestDto) returns (Users) {};
+  rpc GetUsersStream (getUsersRequestDto) returns (stream User) {};
+}
+message getUsersRequestDto {
+  string limit = 1;
+  repeated string projection = 2;
+}
+
+message updateUserRequestDto {
+  string id = 1;
+}
+
+message VoidResponse {};
+message deleteUserRequestDto {
+  string id = 1;
+}
+
+message getUserRequestDto {
+  string id = 1;
+  repeated string projection = 2;
+}
+
+message User {
+  optional string _id = 1;
+  string name = 2;
+  string email = 3;
+  string tenantId = 4;
+  string role = 5;
+  string provider = 6;
+  string password = 7;
+  string updatedAt = 8;
+  string createdAt = 9;
+}
+
+message Users {
+  repeated User data = 1;
+}

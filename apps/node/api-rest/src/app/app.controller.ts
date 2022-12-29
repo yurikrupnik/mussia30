@@ -47,21 +47,21 @@ enum Projection {
 
 export class CreateUserDto extends OmitType(User, ['_id'] as const) {}
 
-@Controller('grpc-user')
+@Controller('grpc-users')
 export class GrpcController {
-  @Client({
-    transport: Transport.GRPC,
-    options: {
-      package: 'app',
-      protoPath: join(process.cwd(), '_proto/users.proto'),
-    },
-  })
-  private client: ClientGrpc;
+  // @Client({
+  //   transport: Transport.GRPC,
+  //   options: {
+  //     package: 'app',
+  //     protoPath: join(process.cwd(), '_proto/users.proto'),
+  //   },
+  // })
+  // private client: ClientGrpc;
 
   private grpcService: IGrpcService;
 
   onModuleInit() {
-    this.grpcService = this.client.getService<IGrpcService>('AppController');
+    // this.grpcService = this.client.getService<IGrpcService>('AppController');
   }
 
   // Done
