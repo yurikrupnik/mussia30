@@ -63,7 +63,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
-      - run: pnpm nx run-many --target=lint --parallel --max-parallel=3
+      - run: pnpm nx run-many --target=lint --parallel --max-parallel=3 --skip-nx-cache
   build:
     runs-on: ubuntu-latest
     steps:
@@ -106,7 +106,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
-      - run: pnpm nx run-many --target=build --parallel --max-parallel=3 --prod
+      - run: pnpm nx run-many --target=build --parallel --max-parallel=3 --prod --skip-nx-cache
   test:
     runs-on: ubuntu-latest
     steps:
@@ -147,7 +147,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
-      - run: pnpm nx run-many --target=test --parallel --max-parallel=3
+      - run: pnpm nx run-many --target=test --parallel --max-parallel=3 --skip-nx-cache
   e2e:
     runs-on: ubuntu-latest
     steps:
@@ -190,4 +190,4 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - run: pnpm run cypress:install
-      - run: pnpm nx run-many --target=e2e --parallel --max-parallel=3 --headless
+      - run: pnpm nx run-many --target=e2e --parallel --max-parallel=3 --headless --skip-nx-cache
