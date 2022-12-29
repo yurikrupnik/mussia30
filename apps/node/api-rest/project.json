@@ -63,13 +63,17 @@
         {
           "target": "build",
           "projects": "self"
+        },
+        {
+          "target": "lint",
+          "projects": "self"
         }
       ],
       "options": {
         "parallel": false,
         "commands": [
-          "docker build --target node --build-arg DIST_PATH=dist/apps/node/api-rest . -t yurikrupnik/node-api-rest",
-          "docker push yurikrupnik/node-api-rest"
+          "docker buildx build --target node --build-arg DIST_PATH=dist/apps/node/api-rest . -t yurikrupnik/node-api-rest --push",
+          "echo hello"
         ]
       }
     }
