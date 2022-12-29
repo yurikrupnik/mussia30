@@ -3,7 +3,7 @@ import { Body, Controller, Param, Query } from '@nestjs/common';
 // import { CreateRedisUserDto } from './dto/create-redis-user.dto';
 // import { UpdateRedisUserDto } from './dto/update-redis-user.dto';
 import { Client, ClientGrpc, Transport } from '@nestjs/microservices';
-import { Observable, map, first } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { join } from 'path';
 import { User } from '@mussia30/node/nest/users-api';
 import {
@@ -13,7 +13,21 @@ import {
   SwaggerGetDecorators,
 } from '@mussia30/node/nest/swagger';
 import { OmitType, PartialType } from '@nestjs/swagger';
-import { GrpcStreamCall } from '@nestjs/microservices';
+import { Metadata, MetadataOptions } from '@grpc/grpc-js';
+// import { GrpcStreamCall } from '@nestjs/microservices';
+import { users, service, commons } from '@mussia30/node/grpc';
+import {
+  APP_CONTROLLER_SERVICE_NAME,
+  APP_PACKAGE_NAME,
+  AppControllerClient,
+  DeleteUserRequestDto,
+  GetUserRequestDto,
+  GetUsersRequestDto,
+  UpdateUserRequestDto,
+  Users,
+  VoidResponse,
+} from '../../../../../libs/node/grpc/src/_proto/users';
+// const { UpdateUserRequestDto, AppControllerController } = users;
 
 interface GetDto {
   data: User[];
@@ -25,6 +39,26 @@ export interface IGrpcService {
   createUser(body: Partial<User>): Observable<User>;
   getUser(body: GetItemRequestDto): Observable<User>;
   deleteUser(body: Omit<GetItemRequestDto, 'projection'>): Observable<User>;
+}
+
+export interface CopyWithoutMetadata {
+  createUser(request: User): Promise<User> | Observable<User> | User;
+
+  getUser(request: GetUserRequestDto): Promise<User> | Observable<User> | User;
+
+  deleteUser(
+    request: DeleteUserRequestDto
+  ): Promise<VoidResponse> | Observable<VoidResponse> | VoidResponse;
+
+  updateUser(
+    request: UpdateUserRequestDto
+  ): Promise<User> | Observable<User> | User;
+
+  getUsers(
+    request: GetUsersRequestDto
+  ): Promise<Users> | Observable<Users> | Users;
+
+  getUsersStream(request: GetUsersRequestDto): Observable<User>;
 }
 
 interface GetItemsRequestDto {
@@ -49,19 +83,22 @@ export class CreateUserDto extends OmitType(User, ['_id'] as const) {}
 
 @Controller('grpc-users')
 export class GrpcController {
-  // @Client({
-  //   transport: Transport.GRPC,
-  //   options: {
-  //     package: 'app',
-  //     protoPath: join(process.cwd(), '_proto/users.proto'),
-  //   },
-  // })
-  // private client: ClientGrpc;
+  @Client({
+    transport: Transport.GRPC,
+    options: {
+      package: users.APP_PACKAGE_NAME, // "app"
+      protoPath: join(process.cwd(), '_proto/users.proto'),
+    },
+  })
+  private client: ClientGrpc;
 
-  private grpcService: IGrpcService;
+  private grpcService: users.AppControllerClient;
+  // private grpcService: IGrpcService;
 
   onModuleInit() {
-    // this.grpcService = this.client.getService<IGrpcService>('AppController');
+    this.grpcService = this.client.getService<users.AppControllerClient>(
+      users.APP_CONTROLLER_SERVICE_NAME
+    );
   }
 
   // Done
@@ -93,6 +130,8 @@ export class GrpcController {
     };
     console.log({ payload });
     // return this.grpcService.GetUsersStream(payload).
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return this.grpcService.getUsers(payload).pipe(
       map((response) => {
         return response.data;
@@ -102,8 +141,14 @@ export class GrpcController {
 
   // Done
   @SwaggerPostDecorators(User)
-  create(@Body() body: CreateUserDto) {
-    return this.grpcService.createUser(body);
+  create(@Body() body: users.User) {
+    const meta = new Metadata({
+      waitForReady: true,
+      cacheableRequest: false,
+      idempotentRequest: true,
+      corked: true,
+    });
+    return this.grpcService.createUser(body, meta, {});
   }
 
   // Done
@@ -117,7 +162,13 @@ export class GrpcController {
       projection:
         typeof projection === 'string' ? projection.split(',') : projection,
     };
-    return this.grpcService.getUser(payload);
+    const meta = new Metadata({
+      waitForReady: true,
+      cacheableRequest: false,
+      idempotentRequest: true,
+      corked: true,
+    });
+    return this.grpcService.getUser(payload, meta, {});
   }
 
   // Done
@@ -126,6 +177,13 @@ export class GrpcController {
     const payload = {
       id,
     };
-    return this.grpcService.deleteUser(payload);
+
+    const meta = new Metadata({
+      waitForReady: true,
+      cacheableRequest: false,
+      idempotentRequest: true,
+      corked: true,
+    });
+    return this.grpcService.deleteUser(payload, meta, {});
   }
 }

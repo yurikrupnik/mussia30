@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rust-api-rest
+#  namespace: mussia30
+  labels:
+    app: rust-api-rest
+    version: v1
+spec:
+  replicas: 1
+
+  template:
+    metadata:
+      name: rust-api-rest
+      labels:
+        app: rust-api-rest
+        version: v1
+      annotations:
+        "linkerd.io/inject": "enabled"
+        "consul.hashicorp.com/connect-inject": "true"
+        "consul.hashicorp.com/connect-service": "rust-api-rest"
+        "consul.hashicorp.com/connect-service-protocol": "http"
+        "consul.hashicorp.com/service-meta-version": "v.1.1"
+        "prometheus.io/scrape": "true"
+        "prometheus.io/port": "9102"
+    spec:
+      serviceAccountName: rust-api-rest
+      containers:
+        - name: go-api-rest
+          #          image: europe-west1-docker.pkg.dev/maya-mussia/nx-go-playground/go-api-rest:latest
+          image: yurikrupnik/rust-api-rest:latest
+          imagePullPolicy: IfNotPresent
+          #          command: [ "rust", "main.js" ]
+          #            - rust
+          #            - main.js
+          env:
+            - name: MONGO_URI
+              value: mongodb+srv://yurikrupnik:T4eXKj1RBI4VnszC@cluster0.rdmew.mongodb.net/
+            #            - name: PROJECT_ID
+            #              value: mussia14
+            #            - name: FIREBASE_DATABASE_URL
+            #              valueFrom:
+            #                secretKeyRef:
+            #                  key: firebase-database-url
+            #                  name: firebase-secret
+            #            - name: FIREBASE_PRIVATE_KEY
+            #              valueFrom:
+            #                secretKeyRef:
+            #                  key: firebase-private-key
+            #                  name: firebase-secret
+            #            - name: FIREBASE_CLIENT_EMAIL
+            #              valueFrom:
+            #                secretKeyRef:
+            #                  key: firebase-client-email
+          #                  name: firebase-secret
+
+
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: rust-api-rest
+      version: v1

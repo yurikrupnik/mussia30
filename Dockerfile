@@ -2,6 +2,7 @@
 # Done!
 FROM node:18-alpine AS node
 WORKDIR /app
+#COPY ./_proto .
 ARG DIST_PATH
 RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
 ENV NODE_ENV=$NODE_ENV
@@ -28,6 +29,7 @@ FROM nginx:alpine AS nginx
 WORKDIR /app
 ARG DIST_PATH
 RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
+RUN echo "$DIST_PATH"
 COPY ./$DIST_PATH /usr/share/nginx/html
 ENV PORT=80
 EXPOSE ${PORT}
@@ -65,8 +67,8 @@ FROM debian:buster-slim AS rust
 #ARG DIST_PATH
 #RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
 #COPY $DIST_PATH /bin/
-COPY target/release/api_rest1 /bin/
+COPY target/release/api_rest /bin/
 ENV PORT=8080
 EXPOSE ${PORT}
-CMD api_rest1
+CMD api_rest
 #ENTRYPOINT ["/bin/bash", "/bin/api_rest1"]

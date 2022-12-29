@@ -16,7 +16,7 @@ export abstract class EntityRepository<
   CreateDto,
   UpdateDto extends UpdateQuery<T>
 > {
-  constructor(protected readonly model: Model<T>) {}
+  protected constructor(protected readonly model: Model<T>) {}
 
   findById(
     id: string,

@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-host-service
+  name: rust-api-rest-service
   labels:
-    run: frontend-host-service
+    run: rust-api-rest-service
 spec:
   type: ClusterIP
   ports:
     - name: http
       protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 8080
+      targetPort: 8080
   selector:
-    app: frontend-host
+    app: rust-api-rest

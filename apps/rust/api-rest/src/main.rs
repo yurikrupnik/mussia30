@@ -86,7 +86,7 @@ async fn main() -> std::io::Result<()> {
     // create_swagger_func_way();
     // todo struct to document
     // todo move swagger to other file
-    let uri = env::var("MONGODB_URI").unwrap_or_else(|_| "mongodb://localhost:27017".into());
+    let uri = env::var("MONGO_URI").unwrap_or_else(|_| "mongodb://localhost:27017".into());
     let client = Client::with_uri_str(uri).await.expect("failed to connect");
     let store = web::Data::new(todo::TodoStore::default());
     // data here

@@ -1,19 +1,11 @@
 import { Controller } from '@nestjs/common';
-import { GrpcMethod, GrpcStreamMethod } from '@nestjs/microservices';
+import { GrpcMethod } from '@nestjs/microservices'; // GrpcStreamMethod
 import { ServerUnaryCall, Metadata } from '@grpc/grpc-js';
 import { AppService } from './app.service';
-import { User } from '@mussia30/node/nest/users-api';
+// import { User } from '@mussia30/node/nest/users-api';
+import { users } from '@mussia30/node/grpc';
 
-interface GetItemRequestDto {
-  id: string;
-  projection: Array<string>;
-}
-
-interface GetItemsRequestDto {
-  limit: number;
-  projection: Array<string>;
-}
-
+users.AppControllerControllerMethods();
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
@@ -21,36 +13,39 @@ export class AppController {
   @GrpcMethod('AppController', 'GetUsers')
   // @GrpcStreamMethod('AppController')
   getData(
-    body: GetItemsRequestDto,
+    body: users.GetUsersRequestDto,
     metadata: Metadata,
     call: ServerUnaryCall<any, any>
   ) {
-    console.log({ body });
-    console.log({ metadata });
-    console.log({ call });
+    // console.log({ body });
+    // console.log({ metadata });
+    // console.log({ call });
     return this.appService
-      .findAll({}, body.projection, { limit: body.limit })
+      .findAll({}, body.projection, {
+        limit: parseInt(body.limit, 10),
+        projection: body.projection,
+      })
       .then((res) => {
         return { data: res };
       });
   }
-  // @GrpcMethod('AppController', 'GetUser')
-  @GrpcStreamMethod('AppController')
-  getUser(body: GetItemRequestDto, metadata: Metadata) {
-    console.log({ metadata });
+  @GrpcMethod('AppController', 'GetUser')
+  // @GrpcStreamMethod('AppController')
+  getUser(body: users.GetUserRequestDto, metadata: Metadata) {
+    // console.log({ metadata });
     return this.appService.findById(body.id, body.projection);
   }
 
   // done
   @GrpcMethod('AppController', 'CreateUser')
-  create(data: Partial<User>) {
+  create(data: Partial<users.User>) {
     console.log('data', data);
     return this.appService.create(data);
   }
 
   // done
   @GrpcMethod('AppController', 'DeleteUser')
-  delete(body: Omit<GetItemRequestDto, 'projection'>) {
+  delete(body: Omit<users.GetUserRequestDto, 'projection'>) {
     return this.appService.delete(body.id);
   }
 }
