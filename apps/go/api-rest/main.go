@@ -26,31 +26,31 @@ var userCollection = "users"
 var projectsCollection = "projects"
 
 func updateById[T any](c *fiber.Ctx) error {
-//  id := c.Params("id")
-//  objId, _ := primitive.ObjectIDFromHex(id)
-//  var user T
-//  if err := c.BodyParser(&user); err != nil {
-//    return c.Status(fiber.StatusBadRequest).JSON(err.Error())
-//  }
-//  err := h.Svc.update(objId, &user)
-//  if err != nil {
-//    return c.Status(fiber.StatusBadRequest).JSON(err.Error())
-//  }
-  return c.SendString("updated")
+	//  id := c.Params("id")
+	//  objId, _ := primitive.ObjectIDFromHex(id)
+	//  var user T
+	//  if err := c.BodyParser(&user); err != nil {
+	//    return c.Status(fiber.StatusBadRequest).JSON(err.Error())
+	//  }
+	//  err := h.Svc.update(objId, &user)
+	//  if err != nil {
+	//    return c.Status(fiber.StatusBadRequest).JSON(err.Error())
+	//  }
+	return c.SendString("updated")
 }
 
 func main() {
 	app := fiber.New(fiber.Config{
 		ErrorHandler: go_fiber_helpers.DefaultErrorHandler,
 	})
-//    router := api.Group(name)
+	//    router := api.Group(name)
 	app.Use(recover.New())
 	app.Use(logger.New())
 	//app.Use(csrf.New()) // todo check it - forbidden post events!
 	// todo cors in prod!
 	app.Use(cors.New())
 
-    app.Get("/api/test", updateById[go_models_user.User])
+	app.Get("/api/test", updateById[go_models_user.User])
 	apiGroup := app.Group("api")
 	//	users.New[users.User](apiGroup, db, userCollection)
 	go_generic_api.New[go_models_user.User](apiGroup, db, userCollection)

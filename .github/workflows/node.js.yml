@@ -177,4 +177,5 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
+      - run: pnpm run cypress:install
       - run: pnpm nx affected --target=e2e --parallel --max-parallel=3
