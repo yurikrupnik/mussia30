@@ -79,12 +79,15 @@ jobs:
       #      - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
       #      - run: yarn add dotenv
       #      - run: which nx
-      - run: npx nx-cloud start-ci-run
-#      - run: pnpm nx run-many --target=e2e --all --skip-nx-cache
-      - run: pnpm nx run-many --target=test --all --skip-nx-cache
-      - run: pnpm nx run-many --target=docker-regular --all --skip-nx-cache
-      - run: pnpm nx run-many --target=build --all --skip-nx-cache
-      - run: pnpm nx run-many --target=build --all --skip-nx-cache
+      - uses: mansagroup/nrwl-nx-action@v3
+        with:
+          targets: lint,build,test,e2e
+#      - run: npx nx-cloud start-ci-run
+##      - run: pnpm nx run-many --target=e2e --all --skip-nx-cache
+#      - run: pnpm nx run-many --target=test --all --skip-nx-cache
+#      - run: pnpm nx run-many --target=docker-regular --all --skip-nx-cache
+#      - run: pnpm nx run-many --target=build --all --skip-nx-cache
+#      - run: pnpm nx run-many --target=build --all --skip-nx-cache
 #      #      - run: yarn nx run-many --target=lint --parallel --max-parallel=4 --all
 #      - run: yarn lint
 #      - run: yarn build
@@ -94,51 +97,50 @@ jobs:
 #        run: npx nx-cloud stop-all-agents
 #        if: ${{ always() }}
 
-  agents:
-    runs-on: ubuntu-latest
-    name: Agent 1
-    timeout-minutes: 20
-    strategy:
-      matrix:
-        agent: [ 1, 2, 3 ]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v3
-      - uses: actions/setup-go@v3
-        with:
-          go-version: '1.19.4'
-          run_install: true
-          check-latest: true
-          cache: true
-      - run: rustup toolchain install stable --profile minimal
-      - run: rustup show
-      - uses: Swatinem/rust-cache@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-      - name: Installall dependencies
-        run: pnpm install
-      - name: Start Nx Agent ${{ matrix.agent }}
-        run: npx nx-cloud start-agent
-      - run: which nx
+#  agents:
+#    runs-on: ubuntu-latest
+#    name: Agent 1
+#    timeout-minutes: 20
+#    strategy:
+#      matrix:
+#        agent: [ 1, 2, 3 ]
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+#        uses: nrwl/nx-set-shas@v3
+#      - uses: actions/setup-go@v3
+#        with:
+#          go-version: '1.19.4'
+#          run_install: true
+#          check-latest: true
+#          cache: true
+#      - run: rustup toolchain install stable --profile minimal
+#      - run: rustup show
+#      - uses: Swatinem/rust-cache@v2
+#      - name: Use Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: 18
+#      - uses: pnpm/action-setup@v2
+#        name: Install pnpm
+#        id: pnpm-install
+#        with:
+#          version: 7
+#          run_install: false
+#      - name: Get pnpm store directory
+#        id: pnpm-cache
+#        shell: bash
+#        run: |
+#          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+#
+#      - uses: actions/cache@v3
+#        name: Setup pnpm cache
+#        with:
+#          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+#          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+#          restore-keys: |
+#            ${{ runner.os }}-pnpm-store-
+#      - name: Installall dependencies
+#        run: pnpm install
+#      - name: Start Nx Agent ${{ matrix.agent }}
+#        run: npx nx-cloud start-agent
