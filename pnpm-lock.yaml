@@ -26,7 +26,7 @@ specifiers:
   '@nrwl/nx-cloud': latest
   '@nrwl/workspace': 15.4.2
   '@nx-go/nx-go': ^2.7.0
-  '@nx-tools/nx-container': ^4.0.2
+  '@nx-tools/nx-container': 4.0.2
   '@nxext/solid': ^14.0.2
   '@nxrs/cargo': ^0.3.3
   '@solidjs/router': ^0.6.0
