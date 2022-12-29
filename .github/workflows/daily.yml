@@ -1,31 +1,73 @@
-name: Daily Ci
+name: Node.js CI
+  #on:
+  #  # Triggers the workflow on push or pull request events but only for the master branch
+  #  schedule:
+  #    - cron: 0 8 * * *
+
+  # Allows you to run this workflow manually from the Actions tab
+#  workflow_dispatch:
+#
+#env:
+#  NX_CLOUD_DISTRIBUTED_EXECUTION: true
+#  PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+#  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+#  NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-# Controls when the workflow will run
-#on:
-#  # Triggers the workflow on push or pull request events but only for the master branch
-#  schedule:
-#    - cron: 0 8 * * *
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-env:
-  NX_CLOUD_DISTRIBUTED_EXECUTION: true
-  PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
-  main:
+  lint:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' }}
     steps:
       - uses: actions/checkout@v3
-        name: Checkout [main]
+        with:
+          fetch-depth: 0
+      #      - uses: extractions/setup-just@v1
+      #        with:
+      #          just-version: 0.8 # optional semver specification, otherwise latest
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '1.19.4'
+          run_install: true
+          check-latest: true
+          cache: true
+      - run: rustup toolchain install stable --profile minimal
+      - uses: Swatinem/rust-cache@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: pnpm install
+      - run: pnpm nx affected --target=lint --parallel --max-parallel=3
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
@@ -64,87 +106,88 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
-      #      - name: Cache pnpm modules
-      #        uses: actions/cache@v2
-      #        with:
-      #          path: "**/node_nodules"
-      #          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-      #          restore-keys: |
-      #            ${{ runner.os }}-
-      #      - uses: pnpm/action-setup@v2.1.0
-      #        with:
-      #          version: 6.11.0
-      #          run_install: true
-      #      - run: git config --global user.email krupnik.yuri@gmail.com && git config --global user.name yurikrupnik
-      #      - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
-      #      - run: yarn add dotenv
-      #      - run: which nx
-      - uses: mansagroup/nrwl-nx-action@v3
+      - run: pnpm nx affected --target=build --parallel --max-parallel=3 --prod
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
         with:
-          targets: lint,build,test,docker-local
-#      - uses: mansagroup/nrwl-nx-action@v3
-#        with:
-#          targets: lint,build,test,docker-local
-#          affected: false
-#      - run: npx nx-cloud start-ci-run
-##      - run: pnpm nx run-many --target=e2e --all --skip-nx-cache
-#      - run: pnpm nx run-many --target=test --all --skip-nx-cache
-#      - run: pnpm nx run-many --target=docker-regular --all --skip-nx-cache
-#      - run: pnpm nx run-many --target=build --all
-#      - run: pnpm nx run-many --target=build --all --skip-nx-cache
-#      #      - run: yarn nx run-many --target=lint --parallel --max-parallel=4 --all
-#      - run: yarn lint
-#      - run: yarn build
-#      - run: yarn e2e
-        #      - run: yarn e2e -- --skip-nx-cache --verbose
-#      - name: Stop agents
-#        run: npx nx-cloud stop-all-agents
-#        if: ${{ always() }}
+          fetch-depth: 0
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: 1.19.4
+          check-latest: true
+          cache: true
+      - run: rustup toolchain install stable --profile minimal
+      - uses: Swatinem/rust-cache@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-#  agents:
-#    runs-on: ubuntu-latest
-#    name: Agent 1
-#    timeout-minutes: 20
-#    strategy:
-#      matrix:
-#        agent: [ 1, 2, 3 ]
-#    steps:
-#      - uses: actions/checkout@v3
-#      - name: Derive appropriate SHAs for base and head for `nx affected` commands
-#        uses: nrwl/nx-set-shas@v3
-#      - uses: actions/setup-go@v3
-#        with:
-#          go-version: '1.19.4'
-#          run_install: true
-#          check-latest: true
-#          cache: true
-#      - run: rustup toolchain install stable --profile minimal
-#      - run: rustup show
-#      - uses: Swatinem/rust-cache@v2
-#      - name: Use Node.js ${{ matrix.node-version }}
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: 18
-#      - uses: pnpm/action-setup@v2
-#        name: Install pnpm
-#        id: pnpm-install
-#        with:
-#          version: 7
-#          run_install: false
-#      - name: Get pnpm store directory
-#        id: pnpm-cache
-#        shell: bash
-#        run: |
-#          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-#
-#      - uses: actions/cache@v3
-#        name: Setup pnpm cache
-#        with:
-#          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-#          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-#          restore-keys: |
-#            ${{ runner.os }}-pnpm-store-
-#      - name: Installall dependencies
-#        run: pnpm install
-#      - name: Start Nx Agent ${{ matrix.agent }}
-#        run: npx nx-cloud start-agent
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: pnpm install
+      - run: pnpm nx affected --target=test --parallel --max-parallel=3§
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '1.19.4'
+          check-latest: true
+          cache: true
+      - run: rustup toolchain install stable --profile minimal
+      - uses: Swatinem/rust-cache@v2
+      - run: go version
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: pnpm install
+      - run: pnpm run cypress:install
+      - run: pnpm nx affected --target=e2e --parallel --max-parallel=3 --headless
