@@ -141,4 +141,4 @@ jobs:
         run: pnpm install
       - name: Start Nx Agent ${{ matrix.agent }}
         run: npx nx-cloud start-agent
-        run: which nx
+      - run: which nx
