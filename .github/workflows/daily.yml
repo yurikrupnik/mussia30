@@ -1,5 +1,5 @@
 name: Daily Ci
-oon:
+on:
   push:
     branches: [ "main" ]
   pull_request:
