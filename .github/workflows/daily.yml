@@ -28,7 +28,7 @@ jobs:
       #      - uses: extractions/setup-just@v1
       #        with:
       #          just-version: 0.8 # optional semver specification, otherwise latest
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+      - name: Derive appropriate SHAs for base and head for `nx run-many` commands
         uses: nrwl/nx-set-shas@v2
       - uses: actions/setup-go@v3
         with:
@@ -63,14 +63,14 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
-      - run: pnpm nx affected --target=lint --parallel --max-parallel=3
+      - run: pnpm nx run-many --target=lint --parallel --max-parallel=3
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+      - name: Derive appropriate SHAs for base and head for `nx run-many` commands
         uses: nrwl/nx-set-shas@v3
       - uses: actions/setup-go@v3
         with:
@@ -106,14 +106,14 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
-      - run: pnpm nx affected --target=build --parallel --max-parallel=3 --prod
+      - run: pnpm nx run-many --target=build --parallel --max-parallel=3 --prod
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+      - name: Derive appropriate SHAs for base and head for `nx run-many` commands
         uses: nrwl/nx-set-shas@v3
       - uses: actions/setup-go@v3
         with:
@@ -147,14 +147,14 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
-      - run: pnpm nx affected --target=test --parallel --max-parallel=3§
+      - run: pnpm nx run-many --target=test --parallel --max-parallel=3
   e2e:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+      - name: Derive appropriate SHAs for base and head for `nx run-many` commands
         uses: nrwl/nx-set-shas@v3
       - uses: actions/setup-go@v3
         with:
@@ -190,4 +190,4 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - run: pnpm run cypress:install
-      - run: pnpm nx affected --target=e2e --parallel --max-parallel=3 --headless
+      - run: pnpm nx run-many --target=e2e --parallel --max-parallel=3 --headless
