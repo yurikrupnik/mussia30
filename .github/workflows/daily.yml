@@ -93,25 +93,25 @@ jobs:
 #        run: npx nx-cloud stop-all-agents
 #        if: ${{ always() }}
 
-#  agents:
-#    runs-on: ubuntu-latest
-#    name: Agent 1
-#    timeout-minutes: 20
-#    strategy:
-#      matrix:
-#        agent: [ 1, 2, 3 ]
-#    steps:
-#      - uses: actions/checkout@v3
-#      - name: Derive appropriate SHAs for base and head for `nx affected` commands
-#        uses: nrwl/nx-set-shas@v3
-#      - uses: actions/setup-go@v3
-#        with:
-#          go-version: '1.19.4'
-#          run_install: true
-#          check-latest: true
-#          cache: true
-#      - run: rustup toolchain install stable --profile minimal
-#      - run: rustup show
+  agents:
+    runs-on: ubuntu-latest
+    name: Agent 1
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        agent: [ 1, 2, 3 ]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '1.19.4'
+          run_install: true
+          check-latest: true
+          cache: true
+      - run: rustup toolchain install stable --profile minimal
+      - run: rustup show
 #      - uses: Swatinem/rust-cache@v2
 #      - name: Use Node.js ${{ matrix.node-version }}
 #        uses: actions/setup-node@v3
