@@ -80,9 +80,9 @@ jobs:
       #      - run: yarn add dotenv
       #      - run: which nx
       - run: npx nx-cloud start-ci-run
-      - run: pnpm nx run-many --target=e2e --all --skip-nx-cache
-      - run: pnpm nx run-many --target=test --all --skip-nx-cache
-      - run: pnpm nx run-many --target=lint --all --skip-nx-cache
+#      - run: pnpm nx run-many --target=e2e --all --skip-nx-cache
+#      - run: pnpm nx run-many --target=test --all --skip-nx-cache
+#      - run: pnpm nx run-many --target=lint --all --skip-nx-cache
       - run: pnpm nx run-many --target=build --all --skip-nx-cache
 #      #      - run: yarn nx run-many --target=lint --parallel --max-parallel=4 --all
 #      - run: yarn lint
