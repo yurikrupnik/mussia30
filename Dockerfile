@@ -2,7 +2,7 @@
 # Done!
 FROM node:18-alpine AS node
 WORKDIR /app
-#COPY ./_proto .
+# ADD ./_proto/users.proto ./_proto
 ARG DIST_PATH
 RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
 ENV NODE_ENV=$NODE_ENV

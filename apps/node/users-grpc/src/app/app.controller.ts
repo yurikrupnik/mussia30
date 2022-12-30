@@ -5,8 +5,9 @@ import { AppService } from './app.service';
 // import { User } from '@mussia30/node/nest/users-api';
 import { users } from '@mussia30/node/grpc';
 
-users.AppControllerControllerMethods();
+// users.AppControllerControllerMethods();
 @Controller()
+// export class AppController implements users.AppControllerController {
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -29,8 +30,11 @@ export class AppController {
         return { data: res };
       });
   }
-  @GrpcMethod('AppController', 'GetUser')
-  // @GrpcStreamMethod('AppController')
+  // getUser(body: users.GetUserRequestDto) {
+  //
+  // }
+  // @GrpcMethod('AppController', 'GetUser')
+  // // @GrpcStreamMethod('AppController')
   getUser(body: users.GetUserRequestDto, metadata: Metadata) {
     // console.log({ metadata });
     return this.appService.findById(body.id, body.projection);

@@ -13,63 +13,10 @@ import {
   SwaggerGetDecorators,
 } from '@mussia30/node/nest/swagger';
 import { OmitType, PartialType } from '@nestjs/swagger';
-import { Metadata, MetadataOptions } from '@grpc/grpc-js';
+import { Metadata } from '@grpc/grpc-js';
 // import { GrpcStreamCall } from '@nestjs/microservices';
 import { users, service, commons } from '@mussia30/node/grpc';
-import {
-  APP_CONTROLLER_SERVICE_NAME,
-  APP_PACKAGE_NAME,
-  AppControllerClient,
-  DeleteUserRequestDto,
-  GetUserRequestDto,
-  GetUsersRequestDto,
-  UpdateUserRequestDto,
-  Users,
-  VoidResponse,
-} from '../../../../../libs/node/grpc/src/_proto/users';
-// const { UpdateUserRequestDto, AppControllerController } = users;
-
-interface GetDto {
-  data: User[];
-}
-
-export interface IGrpcService {
-  getUsers(query: GetItemsRequestDto): Observable<GetDto>;
-  GetUsersStream(query: GetItemsRequestDto): Observable<GetDto>;
-  createUser(body: Partial<User>): Observable<User>;
-  getUser(body: GetItemRequestDto): Observable<User>;
-  deleteUser(body: Omit<GetItemRequestDto, 'projection'>): Observable<User>;
-}
-
-export interface CopyWithoutMetadata {
-  createUser(request: User): Promise<User> | Observable<User> | User;
-
-  getUser(request: GetUserRequestDto): Promise<User> | Observable<User> | User;
-
-  deleteUser(
-    request: DeleteUserRequestDto
-  ): Promise<VoidResponse> | Observable<VoidResponse> | VoidResponse;
-
-  updateUser(
-    request: UpdateUserRequestDto
-  ): Promise<User> | Observable<User> | User;
-
-  getUsers(
-    request: GetUsersRequestDto
-  ): Promise<Users> | Observable<Users> | Users;
-
-  getUsersStream(request: GetUsersRequestDto): Observable<User>;
-}
-
-interface GetItemsRequestDto {
-  limit: number;
-  projection: Array<string> | null;
-}
-
-interface GetItemRequestDto {
-  id: string;
-  projection: Array<string> | null;
-}
+import * as process from 'process';
 
 enum Projection {
   name = 'name',
@@ -79,7 +26,7 @@ enum Projection {
   provider = 'provider',
 }
 
-export class CreateUserDto extends OmitType(User, ['_id'] as const) {}
+// export class CreateUserDto extends OmitType(User, ['_id'] as const) {}
 
 @Controller('grpc-users')
 export class GrpcController {
@@ -88,6 +35,7 @@ export class GrpcController {
     options: {
       package: users.APP_PACKAGE_NAME, // "app"
       protoPath: join(process.cwd(), '_proto/users.proto'),
+      // protoPath: join(__dirname, '_proto/users.proto'),
     },
   })
   private client: ClientGrpc;
