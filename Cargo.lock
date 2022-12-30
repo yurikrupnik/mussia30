@@ -2604,6 +2604,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "users_grpc"
+version = "0.1.0"
+
+[[package]]
 name = "utoipa"
 version = "2.4.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
