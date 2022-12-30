@@ -3,7 +3,7 @@ import { Body, Controller, Param, Query } from '@nestjs/common';
 // import { CreateRedisUserDto } from './dto/create-redis-user.dto';
 // import { UpdateRedisUserDto } from './dto/update-redis-user.dto';
 import { Client, ClientGrpc, Transport } from '@nestjs/microservices';
-import { Observable, map } from 'rxjs';
+import { map } from 'rxjs';
 import { join } from 'path';
 import { User } from '@mussia30/node/nest/users-api';
 import {
@@ -15,7 +15,7 @@ import {
 import { OmitType, PartialType } from '@nestjs/swagger';
 import { Metadata } from '@grpc/grpc-js';
 // import { GrpcStreamCall } from '@nestjs/microservices';
-import { users, service, commons } from '@mussia30/node/grpc';
+import { users } from '@mussia30/node/grpc';
 import * as process from 'process';
 
 enum Projection {
