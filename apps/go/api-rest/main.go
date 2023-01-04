@@ -36,7 +36,8 @@ func updateById[T any](c *fiber.Ctx) error {
 	//  if err != nil {
 	//    return c.Status(fiber.StatusBadRequest).JSON(err.Error())
 	//  }
-	return c.SendString("updated")
+	return c.SendString("All goods")
+	//return c.SendString("updated")
 }
 
 func main() {
@@ -51,7 +52,7 @@ func main() {
 	app.Use(cors.New())
 
 	app.Get("/api/test", updateById[go_models_user.User])
-	app.Get("/api/a", updateById[go_models_user.User])
+	app.Get("/api/av", updateById[go_models_user.User])
 	apiGroup := app.Group("api")
 	//	users.New[users.User](apiGroup, db, userCollection)
 	go_generic_api.New[go_models_user.User](apiGroup, db, userCollection)

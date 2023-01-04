@@ -86,17 +86,20 @@ async fn main() -> std::io::Result<()> {
     // create_swagger_func_way();
     // todo struct to document
     // todo move swagger to other file
-    let uri = env::var("MONGODB_URI").unwrap_or_else(|_| "mongodb://localhost:27017".into());
+    let uri = env::var("MONGO_URI").unwrap_or_else(|_| "mongodb://localhost:27017".into());
+    print!("uri is {}", uri);
     let client = Client::with_uri_str(uri).await.expect("failed to connect");
     let store = web::Data::new(todo::TodoStore::default());
     // data here
     let client_data = web::Data::new(client); // used for product api
-
+                                              // let port = env::var("PORT").map()
+    let port = env::var("PORT").unwrap_or_else(|_| "8080".into());
+    let addr = ("0.0.0.0", port.parse::<u16>().unwrap());
     HttpServer::new(move || {
         let cors = Cors::default()
             // .allowed_origin("http://localhost:5173")
             .allowed_origin_fn(|origin, _req_head| {
-                print!("origin {}, url {}", origin.is_empty(), _req_head.uri);
+                print!("origins {}, url {}", origin.is_empty(), _req_head.uri);
                 true
             })
             .allowed_methods(vec!["GET", "POST", "DELETE", "PUT"])
@@ -123,7 +126,7 @@ async fn main() -> std::io::Result<()> {
                 SwaggerUi::new("/swagger-ui/{_:.*}").url("/api-doc/openapi.json", openapi.clone()),
             )
     })
-    .bind(("0.0.0.0", 8080))?
+    .bind(addr)?
     .run()
     .await
 }

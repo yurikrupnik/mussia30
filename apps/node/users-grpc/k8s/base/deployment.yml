@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-users-grpc
+#  namespace: mussia30
+  labels:
+    app: node-users-grpc
+    version: v1
+spec:
+  replicas: 1
+
+  template:
+    metadata:
+      name: node-users-grpc
+      labels:
+        app: node-users-grpc
+        version: v1
+      annotations:
+        "linkerd.io/inject": "enabled"
+        "consul.hashicorp.com/connect-inject": "true"
+        "consul.hashicorp.com/connect-service": "node-users-grpc"
+        "consul.hashicorp.com/connect-service-protocol": "http"
+        "consul.hashicorp.com/service-meta-version": "v.1.1"
+        "prometheus.io/scrape": "true"
+        "prometheus.io/port": "9102"
+    spec:
+      serviceAccountName: node-users-grpc
+      containers:
+        - name: node-users-grpc
+          #          image: europe-west1-docker.pkg.dev/maya-mussia/nx-go-playground/go-api-rest:latest
+          image: yurikrupnik/node-users-grpc:latest
+          imagePullPolicy: IfNotPresent
+          #          command: [ "node", "main.js" ]
+          #            - node
+          #            - main.js
+          env:
+            - name: MONGO_URI
+              value: mongodb+srv://yurikrupnik:T4eXKj1RBI4VnszC@cluster0.rdmew.mongodb.net/
+            #            - name: PROJECT_ID
+            #              value: mussia14
+            #            - name: FIREBASE_DATABASE_URL
+            #              valueFrom:
+            #                secretKeyRef:
+            #                  key: firebase-database-url
+            #                  name: firebase-secret
+            #            - name: FIREBASE_PRIVATE_KEY
+            #              valueFrom:
+            #                secretKeyRef:
+            #                  key: firebase-private-key
+            #                  name: firebase-secret
+            #            - name: FIREBASE_CLIENT_EMAIL
+            #              valueFrom:
+            #                secretKeyRef:
+            #                  key: firebase-client-email
+          #                  name: firebase-secret
+
+
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: node-users-grpc
+      version: v1

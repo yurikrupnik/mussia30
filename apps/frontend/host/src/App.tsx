@@ -6,6 +6,7 @@ import 'virtual:windi.css';
 const About = lazy(() => import('./routes/about'));
 const Users = lazy(() => import('./routes/users'));
 const Home = lazy(() => import('./routes/home'));
+const Todos = lazy(() => import('./routes/todos'));
 
 function App() {
   return (
@@ -15,12 +16,14 @@ function App() {
       <nav>
         <Link href="/about">About</Link>
         <Link href="/user">Users</Link>
+        <Link href="/todos">Todos</Link>
         <Link href="/">Home</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/user" element={<Users />} />
         <Route path="/about" element={<About />} />
+        <Route path="/todos" element={<Todos />} />
         {/*<Route path="/*all" element={<NotFound />} />*/}
       </Routes>
     </div>

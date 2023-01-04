@@ -2,11 +2,13 @@ package go_generic_api
 
 import (
 	"context"
+	"fmt"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
+	"os"
 )
 
 type mongoStore[T any] struct {
@@ -14,9 +16,13 @@ type mongoStore[T any] struct {
 }
 
 func newMongoStore[T any](db string, url string) (UserSvc[T], error) {
-	//uri := os.Getenv("mongo_uri")
+	uri := os.Getenv("MONGO_URI")
+	if len(url) == 0 {
+		url = "mongodb://localhost:27017"
+	}
+	fmt.Printf("Mongodb uri %v", url)
 	//uri := "mongodb+srv://yurikrupnik:T4eXKj1RBI4VnszC@cluster0.rdmew.mongodb.net/"
-	uri := "mongodb://localhost:27017"
+	//uri := "mongodb://localhost:27017"
 	//uri := "http://host.docker.internal:27017"
 	//uri := "mongodb://localhost/db" // compose local gow run main.go
 	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))

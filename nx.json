@@ -28,5 +28,22 @@
   "implicitDependencies": {
     "go.mod": "*"
   },
-  "plugins": ["@nxrs/cargo"]
+  "plugins": ["@nxrs/cargo"],
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "css",
+        "linter": "eslint",
+        "bundler": "vite",
+        "babel": true
+      },
+      "component": {
+        "style": "css"
+      },
+      "library": {
+        "style": "css",
+        "linter": "eslint"
+      }
+    }
+  }
 }

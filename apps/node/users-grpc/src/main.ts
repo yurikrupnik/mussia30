@@ -6,11 +6,13 @@ import { join } from 'path';
 
 const logger = new Logger('Main');
 
+const s = join(process.cwd(), '_proto/users.proto');
+console.log({ s });
 const microserviceOptions = {
   transport: Transport.GRPC,
   options: {
     package: 'app',
-    protoPath: join(process.cwd(), '_proto/users.proto'),
+    protoPath: s,
   },
 };
 

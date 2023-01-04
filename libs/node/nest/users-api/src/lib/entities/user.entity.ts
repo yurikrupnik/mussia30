@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { IsEmail, IsOptional, IsMongoId } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-
+import { users } from '@mussia30/node/grpc';
 // import { Factory } from 'nestjs-seeder';
 
 export type UserDocument = User & Document;

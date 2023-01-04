@@ -3,6 +3,7 @@ import { Connection, FilterQuery, Model, QueryOptions } from 'mongoose';
 import { User, UserDocument } from '@mussia30/node/nest/users-api';
 import { handleError } from '@mussia30/node/nest/errors';
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
+import { users } from '@mussia30/node/grpc';
 
 @Injectable()
 export class AppService {
@@ -23,7 +24,7 @@ export class AppService {
     return this.model.findById(id, projection);
   }
 
-  create(createEntityData: Partial<User>): Promise<User> {
+  create(createEntityData: Partial<users.User>): Promise<User> {
     const entity = new this.model(createEntityData);
     return entity.save().catch(handleError);
   }

@@ -25,3 +25,6 @@ validator = { version = "0.16", features = ["derive"] }
 actix-cors = "0.6.4"
 ts-rs = { version = "6.2.1", features = ["serde-compat"] }
 serde_derive = "1.0.152"
+
+#[build]
+#target = ["x86_64-unknown-linux-gnu", "i686-unknown-linux-gnu", "aarch64-apple-darwin"]
