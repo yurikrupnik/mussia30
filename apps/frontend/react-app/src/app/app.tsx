@@ -8,6 +8,8 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import toggleMachine from './xstate';
 
 import Users from './routes/users';
+import Main from './routes/main';
+import Login from './routes/login';
 export const GlobalStateContext = createContext({});
 
 const queryClient = new QueryClient();
@@ -36,22 +38,8 @@ export function App() {
           </ul>
         </div>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <div>
-                <h2>Main</h2>
-              </div>
-            }
-          />
-          <Route
-            path="/page-2"
-            element={
-              <div>
-                <Link to="/">Click here to go back to root page.</Link>
-              </div>
-            }
-          />
+          <Route path="/" element={<Main />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/users" element={<Users />} />
         </Routes>
         {/* END: routes */}
@@ -59,51 +47,6 @@ export function App() {
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
-  // return (
-  //   <QueryClientProvider client={queryClient}>
-  //     <ReactQueryDevtools client={queryClient}>
-  //       <ReactQueryDevtools initialIsOpen={false} />
-  //       <GlobalStateContext.Provider value={{ toggleService }}>
-  //         {/* START: routes */}
-  //         {/* These routes and navigation have been generated for you */}
-  //         {/* Feel free to move and update them to fit your needs */}
-  //         <div role="navigation">
-  //           <ul>
-  //             <li>
-  //               <Link to="/">Home</Link>
-  //             </li>
-  //             <li>
-  //               <Link to="/page-2">Page 2</Link>
-  //             </li>
-  //             <li>
-  //               <Link to="/users">Users</Link>
-  //             </li>
-  //           </ul>
-  //         </div>
-  //         <Routes>
-  //           <Route
-  //             path="/"
-  //             element={
-  //               <div>
-  //                 <h2>Main</h2>
-  //               </div>
-  //             }
-  //           />
-  //           <Route
-  //             path="/page-2"
-  //             element={
-  //               <div>
-  //                 <Link to="/">Click here to go back to root page.</Link>
-  //               </div>
-  //             }
-  //           />
-  //           <Route path="/users" element={<Users />} />
-  //         </Routes>
-  //         {/* END: routes */}
-  //       </GlobalStateContext.Provider>
-  //     </ReactQueryDevtools>
-  //   </QueryClientProvider>
-  // );
 }
 
 export default App;
