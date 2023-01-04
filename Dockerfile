@@ -7,6 +7,7 @@ ARG DIST_PATH
 RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
 ENV NODE_ENV=$NODE_ENV
 COPY ./$DIST_PATH .
+#COPY _proto/users.proto ./_proto/users.proto
 RUN npm install
 ENV PORT=8080
 EXPOSE ${PORT}

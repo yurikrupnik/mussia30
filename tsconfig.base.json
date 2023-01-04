@@ -40,6 +40,9 @@
       "@mussia30/node/nest/validations": [
         "libs/node/nest/validations/src/index.ts"
       ],
+      "@mussia30/node/state-machines": [
+        "libs/node/state-machines/src/index.ts"
+      ],
       "@mussia30/node/ts-utils": ["libs/node/ts-utils/src/index.ts"]
     }
   },
