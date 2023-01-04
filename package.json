@@ -68,7 +68,7 @@
     "@nestjs/swagger": "^6.1.4",
     "@nestjs/terminus": "^9.1.4",
     "@solidjs/router": "^0.6.0",
-    "@tanstack/solid-query": "4.20.4",
+    "@tanstack/solid-query": "4.20.9",
     "axios": "^1.2.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
