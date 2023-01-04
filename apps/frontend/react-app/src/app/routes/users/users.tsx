@@ -51,7 +51,7 @@ const fetchMachine =
     id: 'fetch',
     initial: 'idle',
     context: {
-      userId: 42,
+      userId: 0,
       user: undefined,
       error: undefined,
     },
