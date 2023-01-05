@@ -5,30 +5,36 @@ import { Observable } from "rxjs";
 
 export const protobufPackage = "app";
 
-export interface getUsersRequestDto {
+export interface GetUsersRequestDto {
   limit: string;
   projection: string[];
 }
 
-export interface updateUserRequestDto {
+export interface UpdateUserRequestDto {
   id: string;
 }
 
 export interface VoidResponse {
 }
 
-export interface deleteUserRequestDto {
+export interface DeleteUserRequestDto {
   id: string;
 }
 
-export interface getUserRequestDto {
+export interface GetUserRequestDto {
   id: string;
   projection: string[];
 }
 
 export interface User {
-  Id?: string | undefined;
+  /**
+   * mongodb object id - 24 2len chars
+   *  string id = 1;
+   */
+  Id: string;
+  /** user personal name */
   name: string;
+  /** user email address */
   email: string;
   tenantId: string;
   role: string;
@@ -51,15 +57,17 @@ export interface AppControllerClient {
 
   createUser(request: User, metadata: Metadata, ...rest: any): Observable<User>;
 
-  getUser(request: getUserRequestDto, metadata: Metadata, ...rest: any): Observable<User>;
+  /** my get user method */
 
-  deleteUser(request: deleteUserRequestDto, metadata: Metadata, ...rest: any): Observable<VoidResponse>;
+  getUser(request: GetUserRequestDto, metadata: Metadata, ...rest: any): Observable<User>;
 
-  updateUser(request: updateUserRequestDto, metadata: Metadata, ...rest: any): Observable<User>;
+  deleteUser(request: DeleteUserRequestDto, metadata: Metadata, ...rest: any): Observable<VoidResponse>;
 
-  getUsers(request: getUsersRequestDto, metadata: Metadata, ...rest: any): Observable<Users>;
+  updateUser(request: UpdateUserRequestDto, metadata: Metadata, ...rest: any): Observable<User>;
 
-  getUsersStream(request: getUsersRequestDto, metadata: Metadata, ...rest: any): Observable<User>;
+  getUsers(request: GetUsersRequestDto, metadata: Metadata, ...rest: any): Observable<Users>;
+
+  getUsersStream(request: GetUsersRequestDto, metadata: Metadata, ...rest: any): Observable<User>;
 }
 
 /** Declare a service for each controller you have */
@@ -69,19 +77,21 @@ export interface AppControllerController {
 
   createUser(request: User, metadata: Metadata, ...rest: any): Promise<User> | Observable<User> | User;
 
-  getUser(request: getUserRequestDto, metadata: Metadata, ...rest: any): Promise<User> | Observable<User> | User;
+  /** my get user method */
+
+  getUser(request: GetUserRequestDto, metadata: Metadata, ...rest: any): Promise<User> | Observable<User> | User;
 
   deleteUser(
-    request: deleteUserRequestDto,
+    request: DeleteUserRequestDto,
     metadata: Metadata,
     ...rest: any
   ): Promise<VoidResponse> | Observable<VoidResponse> | VoidResponse;
 
-  updateUser(request: updateUserRequestDto, metadata: Metadata, ...rest: any): Promise<User> | Observable<User> | User;
+  updateUser(request: UpdateUserRequestDto, metadata: Metadata, ...rest: any): Promise<User> | Observable<User> | User;
 
-  getUsers(request: getUsersRequestDto, metadata: Metadata, ...rest: any): Promise<Users> | Observable<Users> | Users;
+  getUsers(request: GetUsersRequestDto, metadata: Metadata, ...rest: any): Promise<Users> | Observable<Users> | Users;
 
-  getUsersStream(request: getUsersRequestDto, metadata: Metadata, ...rest: any): Observable<User>;
+  getUsersStream(request: GetUsersRequestDto, metadata: Metadata, ...rest: any): Observable<User>;
 }
 
 export function AppControllerControllerMethods() {

@@ -19,33 +19,33 @@
 #![allow(unused_results)]
 #![allow(unused_mut)]
 
-//! Generated file from `_proto/users.proto`
+//! Generated file from `_proto/products.proto`
 
 /// Generated files are compatible only with the same version
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_2_0;
 
 #[derive(PartialEq,Clone,Default,Debug)]
-// @@protoc_insertion_point(message:app.GetUsersRequestDto)
-pub struct GetUsersRequestDto {
+// @@protoc_insertion_point(message:products.ListRequestDto)
+pub struct ListRequestDto {
     // message fields
-    // @@protoc_insertion_point(field:app.GetUsersRequestDto.limit)
+    // @@protoc_insertion_point(field:products.ListRequestDto.limit)
     pub limit: ::std::string::String,
-    // @@protoc_insertion_point(field:app.GetUsersRequestDto.projection)
+    // @@protoc_insertion_point(field:products.ListRequestDto.projection)
     pub projection: ::std::vec::Vec<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:app.GetUsersRequestDto.special_fields)
+    // @@protoc_insertion_point(special_field:products.ListRequestDto.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a GetUsersRequestDto {
-    fn default() -> &'a GetUsersRequestDto {
-        <GetUsersRequestDto as ::protobuf::Message>::default_instance()
+impl<'a> ::std::default::Default for &'a ListRequestDto {
+    fn default() -> &'a ListRequestDto {
+        <ListRequestDto as ::protobuf::Message>::default_instance()
     }
 }
 
-impl GetUsersRequestDto {
-    pub fn new() -> GetUsersRequestDto {
+impl ListRequestDto {
+    pub fn new() -> ListRequestDto {
         ::std::default::Default::default()
     }
 
@@ -54,24 +54,24 @@ impl GetUsersRequestDto {
         let mut oneofs = ::std::vec::Vec::with_capacity(0);
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "limit",
-            |m: &GetUsersRequestDto| { &m.limit },
-            |m: &mut GetUsersRequestDto| { &mut m.limit },
+            |m: &ListRequestDto| { &m.limit },
+            |m: &mut ListRequestDto| { &mut m.limit },
         ));
         fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
             "projection",
-            |m: &GetUsersRequestDto| { &m.projection },
-            |m: &mut GetUsersRequestDto| { &mut m.projection },
+            |m: &ListRequestDto| { &m.projection },
+            |m: &mut ListRequestDto| { &mut m.projection },
         ));
-        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<GetUsersRequestDto>(
-            "GetUsersRequestDto",
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<ListRequestDto>(
+            "ListRequestDto",
             fields,
             oneofs,
         )
     }
 }
 
-impl ::protobuf::Message for GetUsersRequestDto {
-    const NAME: &'static str = "GetUsersRequestDto";
+impl ::protobuf::Message for ListRequestDto {
+    const NAME: &'static str = "ListRequestDto";
 
     fn is_initialized(&self) -> bool {
         true
@@ -128,8 +128,8 @@ impl ::protobuf::Message for GetUsersRequestDto {
         &mut self.special_fields
     }
 
-    fn new() -> GetUsersRequestDto {
-        GetUsersRequestDto::new()
+    fn new() -> ListRequestDto {
+        ListRequestDto::new()
     }
 
     fn clear(&mut self) {
@@ -138,8 +138,8 @@ impl ::protobuf::Message for GetUsersRequestDto {
         self.special_fields.clear();
     }
 
-    fn default_instance() -> &'static GetUsersRequestDto {
-        static instance: GetUsersRequestDto = GetUsersRequestDto {
+    fn default_instance() -> &'static ListRequestDto {
+        static instance: ListRequestDto = ListRequestDto {
             limit: ::std::string::String::new(),
             projection: ::std::vec::Vec::new(),
             special_fields: ::protobuf::SpecialFields::new(),
@@ -148,42 +148,42 @@ impl ::protobuf::Message for GetUsersRequestDto {
     }
 }
 
-impl ::protobuf::MessageFull for GetUsersRequestDto {
+impl ::protobuf::MessageFull for ListRequestDto {
     fn descriptor() -> ::protobuf::reflect::MessageDescriptor {
         static descriptor: ::protobuf::rt::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::Lazy::new();
-        descriptor.get(|| file_descriptor().message_by_package_relative_name("GetUsersRequestDto").unwrap()).clone()
+        descriptor.get(|| file_descriptor().message_by_package_relative_name("ListRequestDto").unwrap()).clone()
     }
 }
 
-impl ::std::fmt::Display for GetUsersRequestDto {
+impl ::std::fmt::Display for ListRequestDto {
     fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
 
-impl ::protobuf::reflect::ProtobufValue for GetUsersRequestDto {
+impl ::protobuf::reflect::ProtobufValue for ListRequestDto {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
 #[derive(PartialEq,Clone,Default,Debug)]
-// @@protoc_insertion_point(message:app.UpdateUserRequestDto)
-pub struct UpdateUserRequestDto {
+// @@protoc_insertion_point(message:products.UpdateRequestDto)
+pub struct UpdateRequestDto {
     // message fields
-    // @@protoc_insertion_point(field:app.UpdateUserRequestDto.id)
+    // @@protoc_insertion_point(field:products.UpdateRequestDto.id)
     pub id: ::std::string::String,
     // special fields
-    // @@protoc_insertion_point(special_field:app.UpdateUserRequestDto.special_fields)
+    // @@protoc_insertion_point(special_field:products.UpdateRequestDto.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a UpdateUserRequestDto {
-    fn default() -> &'a UpdateUserRequestDto {
-        <UpdateUserRequestDto as ::protobuf::Message>::default_instance()
+impl<'a> ::std::default::Default for &'a UpdateRequestDto {
+    fn default() -> &'a UpdateRequestDto {
+        <UpdateRequestDto as ::protobuf::Message>::default_instance()
     }
 }
 
-impl UpdateUserRequestDto {
-    pub fn new() -> UpdateUserRequestDto {
+impl UpdateRequestDto {
+    pub fn new() -> UpdateRequestDto {
         ::std::default::Default::default()
     }
 
@@ -192,19 +192,19 @@ impl UpdateUserRequestDto {
         let mut oneofs = ::std::vec::Vec::with_capacity(0);
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "id",
-            |m: &UpdateUserRequestDto| { &m.id },
-            |m: &mut UpdateUserRequestDto| { &mut m.id },
+            |m: &UpdateRequestDto| { &m.id },
+            |m: &mut UpdateRequestDto| { &mut m.id },
         ));
-        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<UpdateUserRequestDto>(
-            "UpdateUserRequestDto",
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<UpdateRequestDto>(
+            "UpdateRequestDto",
             fields,
             oneofs,
         )
     }
 }
 
-impl ::protobuf::Message for UpdateUserRequestDto {
-    const NAME: &'static str = "UpdateUserRequestDto";
+impl ::protobuf::Message for UpdateRequestDto {
+    const NAME: &'static str = "UpdateRequestDto";
 
     fn is_initialized(&self) -> bool {
         true
@@ -252,8 +252,8 @@ impl ::protobuf::Message for UpdateUserRequestDto {
         &mut self.special_fields
     }
 
-    fn new() -> UpdateUserRequestDto {
-        UpdateUserRequestDto::new()
+    fn new() -> UpdateRequestDto {
+        UpdateRequestDto::new()
     }
 
     fn clear(&mut self) {
@@ -261,8 +261,8 @@ impl ::protobuf::Message for UpdateUserRequestDto {
         self.special_fields.clear();
     }
 
-    fn default_instance() -> &'static UpdateUserRequestDto {
-        static instance: UpdateUserRequestDto = UpdateUserRequestDto {
+    fn default_instance() -> &'static UpdateRequestDto {
+        static instance: UpdateRequestDto = UpdateRequestDto {
             id: ::std::string::String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -270,28 +270,28 @@ impl ::protobuf::Message for UpdateUserRequestDto {
     }
 }
 
-impl ::protobuf::MessageFull for UpdateUserRequestDto {
+impl ::protobuf::MessageFull for UpdateRequestDto {
     fn descriptor() -> ::protobuf::reflect::MessageDescriptor {
         static descriptor: ::protobuf::rt::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::Lazy::new();
-        descriptor.get(|| file_descriptor().message_by_package_relative_name("UpdateUserRequestDto").unwrap()).clone()
+        descriptor.get(|| file_descriptor().message_by_package_relative_name("UpdateRequestDto").unwrap()).clone()
     }
 }
 
-impl ::std::fmt::Display for UpdateUserRequestDto {
+impl ::std::fmt::Display for UpdateRequestDto {
     fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
 
-impl ::protobuf::reflect::ProtobufValue for UpdateUserRequestDto {
+impl ::protobuf::reflect::ProtobufValue for UpdateRequestDto {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
 #[derive(PartialEq,Clone,Default,Debug)]
-// @@protoc_insertion_point(message:app.VoidResponse)
+// @@protoc_insertion_point(message:products.VoidResponse)
 pub struct VoidResponse {
     // special fields
-    // @@protoc_insertion_point(special_field:app.VoidResponse.special_fields)
+    // @@protoc_insertion_point(special_field:products.VoidResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -391,13 +391,13 @@ impl ::protobuf::reflect::ProtobufValue for VoidResponse {
 }
 
 #[derive(PartialEq,Clone,Default,Debug)]
-// @@protoc_insertion_point(message:app.DeleteUserRequestDto)
+// @@protoc_insertion_point(message:products.DeleteUserRequestDto)
 pub struct DeleteUserRequestDto {
     // message fields
-    // @@protoc_insertion_point(field:app.DeleteUserRequestDto.id)
+    // @@protoc_insertion_point(field:products.DeleteUserRequestDto.id)
     pub id: ::std::string::String,
     // special fields
-    // @@protoc_insertion_point(special_field:app.DeleteUserRequestDto.special_fields)
+    // @@protoc_insertion_point(special_field:products.DeleteUserRequestDto.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -513,15 +513,15 @@ impl ::protobuf::reflect::ProtobufValue for DeleteUserRequestDto {
 }
 
 #[derive(PartialEq,Clone,Default,Debug)]
-// @@protoc_insertion_point(message:app.GetUserRequestDto)
+// @@protoc_insertion_point(message:products.GetUserRequestDto)
 pub struct GetUserRequestDto {
     // message fields
-    // @@protoc_insertion_point(field:app.GetUserRequestDto.id)
+    // @@protoc_insertion_point(field:products.GetUserRequestDto.id)
     pub id: ::std::string::String,
-    // @@protoc_insertion_point(field:app.GetUserRequestDto.projection)
+    // @@protoc_insertion_point(field:products.GetUserRequestDto.projection)
     pub projection: ::std::vec::Vec<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:app.GetUserRequestDto.special_fields)
+    // @@protoc_insertion_point(special_field:products.GetUserRequestDto.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -653,105 +653,52 @@ impl ::protobuf::reflect::ProtobufValue for GetUserRequestDto {
 }
 
 #[derive(PartialEq,Clone,Default,Debug)]
-// @@protoc_insertion_point(message:app.User)
-pub struct User {
+// @@protoc_insertion_point(message:products.Product)
+pub struct Product {
     // message fields
-    ///   mongodb object id - 24 2len chars
-    ///   string id = 1;
-    // @@protoc_insertion_point(field:app.User._id)
+    // @@protoc_insertion_point(field:products.Product._id)
     pub _id: ::std::string::String,
-    ///   user personal name
-    // @@protoc_insertion_point(field:app.User.name)
+    // @@protoc_insertion_point(field:products.Product.name)
     pub name: ::std::string::String,
-    ///   user email address
-    // @@protoc_insertion_point(field:app.User.email)
-    pub email: ::std::string::String,
-    // @@protoc_insertion_point(field:app.User.tenantId)
-    pub tenantId: ::std::string::String,
-    // @@protoc_insertion_point(field:app.User.role)
-    pub role: ::std::string::String,
-    // @@protoc_insertion_point(field:app.User.provider)
-    pub provider: ::std::string::String,
-    // @@protoc_insertion_point(field:app.User.password)
-    pub password: ::std::string::String,
-    // @@protoc_insertion_point(field:app.User.updatedAt)
-    pub updatedAt: ::std::string::String,
-    // @@protoc_insertion_point(field:app.User.createdAt)
-    pub createdAt: ::std::string::String,
     // special fields
-    // @@protoc_insertion_point(special_field:app.User.special_fields)
+    // @@protoc_insertion_point(special_field:products.Product.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a User {
-    fn default() -> &'a User {
-        <User as ::protobuf::Message>::default_instance()
+impl<'a> ::std::default::Default for &'a Product {
+    fn default() -> &'a Product {
+        <Product as ::protobuf::Message>::default_instance()
     }
 }
 
-impl User {
-    pub fn new() -> User {
+impl Product {
+    pub fn new() -> Product {
         ::std::default::Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(9);
+        let mut fields = ::std::vec::Vec::with_capacity(2);
         let mut oneofs = ::std::vec::Vec::with_capacity(0);
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "_id",
-            |m: &User| { &m._id },
-            |m: &mut User| { &mut m._id },
+            |m: &Product| { &m._id },
+            |m: &mut Product| { &mut m._id },
         ));
         fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "name",
-            |m: &User| { &m.name },
-            |m: &mut User| { &mut m.name },
+            |m: &Product| { &m.name },
+            |m: &mut Product| { &mut m.name },
         ));
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "email",
-            |m: &User| { &m.email },
-            |m: &mut User| { &mut m.email },
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "tenantId",
-            |m: &User| { &m.tenantId },
-            |m: &mut User| { &mut m.tenantId },
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "role",
-            |m: &User| { &m.role },
-            |m: &mut User| { &mut m.role },
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "provider",
-            |m: &User| { &m.provider },
-            |m: &mut User| { &mut m.provider },
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "password",
-            |m: &User| { &m.password },
-            |m: &mut User| { &mut m.password },
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "updatedAt",
-            |m: &User| { &m.updatedAt },
-            |m: &mut User| { &mut m.updatedAt },
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
-            "createdAt",
-            |m: &User| { &m.createdAt },
-            |m: &mut User| { &mut m.createdAt },
-        ));
-        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<User>(
-            "User",
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<Product>(
+            "Product",
             fields,
             oneofs,
         )
     }
 }
 
-impl ::protobuf::Message for User {
-    const NAME: &'static str = "User";
+impl ::protobuf::Message for Product {
+    const NAME: &'static str = "Product";
 
     fn is_initialized(&self) -> bool {
         true
@@ -765,27 +712,6 @@ impl ::protobuf::Message for User {
                 },
                 18 => {
                     self.name = is.read_string()?;
-                },
-                26 => {
-                    self.email = is.read_string()?;
-                },
-                34 => {
-                    self.tenantId = is.read_string()?;
-                },
-                42 => {
-                    self.role = is.read_string()?;
-                },
-                50 => {
-                    self.provider = is.read_string()?;
-                },
-                58 => {
-                    self.password = is.read_string()?;
-                },
-                66 => {
-                    self.updatedAt = is.read_string()?;
-                },
-                74 => {
-                    self.createdAt = is.read_string()?;
                 },
                 tag => {
                     ::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -805,27 +731,6 @@ impl ::protobuf::Message for User {
         if !self.name.is_empty() {
             my_size += ::protobuf::rt::string_size(2, &self.name);
         }
-        if !self.email.is_empty() {
-            my_size += ::protobuf::rt::string_size(3, &self.email);
-        }
-        if !self.tenantId.is_empty() {
-            my_size += ::protobuf::rt::string_size(4, &self.tenantId);
-        }
-        if !self.role.is_empty() {
-            my_size += ::protobuf::rt::string_size(5, &self.role);
-        }
-        if !self.provider.is_empty() {
-            my_size += ::protobuf::rt::string_size(6, &self.provider);
-        }
-        if !self.password.is_empty() {
-            my_size += ::protobuf::rt::string_size(7, &self.password);
-        }
-        if !self.updatedAt.is_empty() {
-            my_size += ::protobuf::rt::string_size(8, &self.updatedAt);
-        }
-        if !self.createdAt.is_empty() {
-            my_size += ::protobuf::rt::string_size(9, &self.createdAt);
-        }
         my_size += ::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -837,27 +742,6 @@ impl ::protobuf::Message for User {
         }
         if !self.name.is_empty() {
             os.write_string(2, &self.name)?;
-        }
-        if !self.email.is_empty() {
-            os.write_string(3, &self.email)?;
-        }
-        if !self.tenantId.is_empty() {
-            os.write_string(4, &self.tenantId)?;
-        }
-        if !self.role.is_empty() {
-            os.write_string(5, &self.role)?;
-        }
-        if !self.provider.is_empty() {
-            os.write_string(6, &self.provider)?;
-        }
-        if !self.password.is_empty() {
-            os.write_string(7, &self.password)?;
-        }
-        if !self.updatedAt.is_empty() {
-            os.write_string(8, &self.updatedAt)?;
-        }
-        if !self.createdAt.is_empty() {
-            os.write_string(9, &self.createdAt)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -871,76 +755,62 @@ impl ::protobuf::Message for User {
         &mut self.special_fields
     }
 
-    fn new() -> User {
-        User::new()
+    fn new() -> Product {
+        Product::new()
     }
 
     fn clear(&mut self) {
         self._id.clear();
         self.name.clear();
-        self.email.clear();
-        self.tenantId.clear();
-        self.role.clear();
-        self.provider.clear();
-        self.password.clear();
-        self.updatedAt.clear();
-        self.createdAt.clear();
         self.special_fields.clear();
     }
 
-    fn default_instance() -> &'static User {
-        static instance: User = User {
+    fn default_instance() -> &'static Product {
+        static instance: Product = Product {
             _id: ::std::string::String::new(),
             name: ::std::string::String::new(),
-            email: ::std::string::String::new(),
-            tenantId: ::std::string::String::new(),
-            role: ::std::string::String::new(),
-            provider: ::std::string::String::new(),
-            password: ::std::string::String::new(),
-            updatedAt: ::std::string::String::new(),
-            createdAt: ::std::string::String::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
     }
 }
 
-impl ::protobuf::MessageFull for User {
+impl ::protobuf::MessageFull for Product {
     fn descriptor() -> ::protobuf::reflect::MessageDescriptor {
         static descriptor: ::protobuf::rt::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::Lazy::new();
-        descriptor.get(|| file_descriptor().message_by_package_relative_name("User").unwrap()).clone()
+        descriptor.get(|| file_descriptor().message_by_package_relative_name("Product").unwrap()).clone()
     }
 }
 
-impl ::std::fmt::Display for User {
+impl ::std::fmt::Display for Product {
     fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
 
-impl ::protobuf::reflect::ProtobufValue for User {
+impl ::protobuf::reflect::ProtobufValue for Product {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
 #[derive(PartialEq,Clone,Default,Debug)]
-// @@protoc_insertion_point(message:app.Users)
-pub struct Users {
+// @@protoc_insertion_point(message:products.Products)
+pub struct Products {
     // message fields
-    // @@protoc_insertion_point(field:app.Users.data)
-    pub data: ::std::vec::Vec<User>,
+    // @@protoc_insertion_point(field:products.Products.data)
+    pub data: ::std::vec::Vec<Product>,
     // special fields
-    // @@protoc_insertion_point(special_field:app.Users.special_fields)
+    // @@protoc_insertion_point(special_field:products.Products.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a Users {
-    fn default() -> &'a Users {
-        <Users as ::protobuf::Message>::default_instance()
+impl<'a> ::std::default::Default for &'a Products {
+    fn default() -> &'a Products {
+        <Products as ::protobuf::Message>::default_instance()
     }
 }
 
-impl Users {
-    pub fn new() -> Users {
+impl Products {
+    pub fn new() -> Products {
         ::std::default::Default::default()
     }
 
@@ -949,19 +819,19 @@ impl Users {
         let mut oneofs = ::std::vec::Vec::with_capacity(0);
         fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
             "data",
-            |m: &Users| { &m.data },
-            |m: &mut Users| { &mut m.data },
+            |m: &Products| { &m.data },
+            |m: &mut Products| { &mut m.data },
         ));
-        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<Users>(
-            "Users",
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<Products>(
+            "Products",
             fields,
             oneofs,
         )
     }
 }
 
-impl ::protobuf::Message for Users {
-    const NAME: &'static str = "Users";
+impl ::protobuf::Message for Products {
+    const NAME: &'static str = "Products";
 
     fn is_initialized(&self) -> bool {
         true
@@ -1010,8 +880,8 @@ impl ::protobuf::Message for Users {
         &mut self.special_fields
     }
 
-    fn new() -> Users {
-        Users::new()
+    fn new() -> Products {
+        Products::new()
     }
 
     fn clear(&mut self) {
@@ -1019,8 +889,8 @@ impl ::protobuf::Message for Users {
         self.special_fields.clear();
     }
 
-    fn default_instance() -> &'static Users {
-        static instance: Users = Users {
+    fn default_instance() -> &'static Products {
+        static instance: Products = Products {
             data: ::std::vec::Vec::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
@@ -1028,121 +898,96 @@ impl ::protobuf::Message for Users {
     }
 }
 
-impl ::protobuf::MessageFull for Users {
+impl ::protobuf::MessageFull for Products {
     fn descriptor() -> ::protobuf::reflect::MessageDescriptor {
         static descriptor: ::protobuf::rt::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::Lazy::new();
-        descriptor.get(|| file_descriptor().message_by_package_relative_name("Users").unwrap()).clone()
+        descriptor.get(|| file_descriptor().message_by_package_relative_name("Products").unwrap()).clone()
     }
 }
 
-impl ::std::fmt::Display for Users {
+impl ::std::fmt::Display for Products {
     fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
 
-impl ::protobuf::reflect::ProtobufValue for Users {
+impl ::protobuf::reflect::ProtobufValue for Products {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x12_proto/users.proto\x12\x03app\"J\n\x12GetUsersRequestDto\x12\x14\n\
-    \x05limit\x18\x01\x20\x01(\tR\x05limit\x12\x1e\n\nprojection\x18\x02\x20\
-    \x03(\tR\nprojection\"&\n\x14UpdateUserRequestDto\x12\x0e\n\x02id\x18\
-    \x01\x20\x01(\tR\x02id\"\x0e\n\x0cVoidResponse\"&\n\x14DeleteUserRequest\
-    Dto\x12\x0e\n\x02id\x18\x01\x20\x01(\tR\x02id\"C\n\x11GetUserRequestDto\
-    \x12\x0e\n\x02id\x18\x01\x20\x01(\tR\x02id\x12\x1e\n\nprojection\x18\x02\
-    \x20\x03(\tR\nprojection\"\xe5\x01\n\x04User\x12\x0f\n\x03_id\x18\x01\
-    \x20\x01(\tR\x02Id\x12\x12\n\x04name\x18\x02\x20\x01(\tR\x04name\x12\x14\
-    \n\x05email\x18\x03\x20\x01(\tR\x05email\x12\x1a\n\x08tenantId\x18\x04\
-    \x20\x01(\tR\x08tenantId\x12\x12\n\x04role\x18\x05\x20\x01(\tR\x04role\
-    \x12\x1a\n\x08provider\x18\x06\x20\x01(\tR\x08provider\x12\x1a\n\x08pass\
-    word\x18\x07\x20\x01(\tR\x08password\x12\x1c\n\tupdatedAt\x18\x08\x20\
-    \x01(\tR\tupdatedAt\x12\x1c\n\tcreatedAt\x18\t\x20\x01(\tR\tcreatedAt\"&\
-    \n\x05Users\x12\x1d\n\x04data\x18\x01\x20\x03(\x0b2\t.app.UserR\x04data2\
-    \xc6\x02\n\rAppController\x12$\n\nCreateUser\x12\t.app.User\x1a\t.app.Us\
-    er\"\0\x12.\n\x07GetUser\x12\x16.app.GetUserRequestDto\x1a\t.app.User\"\
-    \0\x12<\n\nDeleteUser\x12\x19.app.DeleteUserRequestDto\x1a\x11.app.VoidR\
-    esponse\"\0\x124\n\nUpdateUser\x12\x19.app.UpdateUserRequestDto\x1a\t.ap\
-    p.User\"\0\x121\n\x08GetUsers\x12\x17.app.GetUsersRequestDto\x1a\n.app.U\
-    sers\"\0\x128\n\x0eGetUsersStream\x12\x17.app.GetUsersRequestDto\x1a\t.a\
-    pp.User\"\00\x01J\xb5\r\n\x06\x12\x04\0\05\x01\n\x08\n\x01\x0c\x12\x03\0\
-    \0\x12\n\x08\n\x01\x02\x12\x03\x02\0\x0c\n<\n\x02\x06\0\x12\x04\x05\0\
-    \x0e\x01\x1a0\x20Declare\x20a\x20service\x20for\x20each\x20controller\
-    \x20you\x20have\n\n\n\n\x03\x06\0\x01\x12\x03\x05\x08\x15\nE\n\x04\x06\0\
-    \x02\0\x12\x03\x07\x02)\x1a8\x20Declare\x20an\x20rpc\x20for\x20each\x20m\
-    ethod\x20that\x20is\x20called\x20via\x20gRPC\n\n\x0c\n\x05\x06\0\x02\0\
-    \x01\x12\x03\x07\x06\x10\n\x0c\n\x05\x06\0\x02\0\x02\x12\x03\x07\x12\x16\
-    \n\x0c\n\x05\x06\0\x02\0\x03\x12\x03\x07!%\n\"\n\x04\x06\0\x02\x01\x12\
-    \x03\t\x023\x1a\x15\x20\x20my\x20get\x20user\x20method\n\n\x0c\n\x05\x06\
-    \0\x02\x01\x01\x12\x03\t\x06\r\n\x0c\n\x05\x06\0\x02\x01\x02\x12\x03\t\
-    \x0f\x20\n\x0c\n\x05\x06\0\x02\x01\x03\x12\x03\t+/\n\x0b\n\x04\x06\0\x02\
-    \x02\x12\x03\n\x02A\n\x0c\n\x05\x06\0\x02\x02\x01\x12\x03\n\x06\x10\n\
-    \x0c\n\x05\x06\0\x02\x02\x02\x12\x03\n\x12&\n\x0c\n\x05\x06\0\x02\x02\
-    \x03\x12\x03\n1=\n\x0b\n\x04\x06\0\x02\x03\x12\x03\x0b\x029\n\x0c\n\x05\
-    \x06\0\x02\x03\x01\x12\x03\x0b\x06\x10\n\x0c\n\x05\x06\0\x02\x03\x02\x12\
-    \x03\x0b\x12&\n\x0c\n\x05\x06\0\x02\x03\x03\x12\x03\x0b15\n\x0b\n\x04\
-    \x06\0\x02\x04\x12\x03\x0c\x026\n\x0c\n\x05\x06\0\x02\x04\x01\x12\x03\
-    \x0c\x06\x0e\n\x0c\n\x05\x06\0\x02\x04\x02\x12\x03\x0c\x10\"\n\x0c\n\x05\
-    \x06\0\x02\x04\x03\x12\x03\x0c-2\n\x0b\n\x04\x06\0\x02\x05\x12\x03\r\x02\
-    B\n\x0c\n\x05\x06\0\x02\x05\x01\x12\x03\r\x06\x14\n\x0c\n\x05\x06\0\x02\
-    \x05\x02\x12\x03\r\x16(\n\x0c\n\x05\x06\0\x02\x05\x06\x12\x03\r39\n\x0c\
-    \n\x05\x06\0\x02\x05\x03\x12\x03\r:>\n\n\n\x02\x04\0\x12\x04\x10\0\x13\
-    \x01\n\n\n\x03\x04\0\x01\x12\x03\x10\x08\x1a\n\x0b\n\x04\x04\0\x02\0\x12\
-    \x03\x11\x02\x13\n\x0c\n\x05\x04\0\x02\0\x05\x12\x03\x11\x02\x08\n\x0c\n\
-    \x05\x04\0\x02\0\x01\x12\x03\x11\t\x0e\n\x0c\n\x05\x04\0\x02\0\x03\x12\
-    \x03\x11\x11\x12\n\x0b\n\x04\x04\0\x02\x01\x12\x03\x12\x02!\n\x0c\n\x05\
-    \x04\0\x02\x01\x04\x12\x03\x12\x02\n\n\x0c\n\x05\x04\0\x02\x01\x05\x12\
-    \x03\x12\x0b\x11\n\x0c\n\x05\x04\0\x02\x01\x01\x12\x03\x12\x12\x1c\n\x0c\
-    \n\x05\x04\0\x02\x01\x03\x12\x03\x12\x1f\x20\n\n\n\x02\x04\x01\x12\x04\
-    \x15\0\x17\x01\n\n\n\x03\x04\x01\x01\x12\x03\x15\x08\x1c\n\x0b\n\x04\x04\
-    \x01\x02\0\x12\x03\x16\x02\x10\n\x0c\n\x05\x04\x01\x02\0\x05\x12\x03\x16\
-    \x02\x08\n\x0c\n\x05\x04\x01\x02\0\x01\x12\x03\x16\t\x0b\n\x0c\n\x05\x04\
-    \x01\x02\0\x03\x12\x03\x16\x0e\x0f\n\t\n\x02\x04\x02\x12\x03\x19\0\x17\n\
-    \n\n\x03\x04\x02\x01\x12\x03\x19\x08\x14\n\n\n\x02\x04\x03\x12\x04\x1a\0\
-    \x1c\x01\n\n\n\x03\x04\x03\x01\x12\x03\x1a\x08\x1c\n\x0b\n\x04\x04\x03\
-    \x02\0\x12\x03\x1b\x02\x10\n\x0c\n\x05\x04\x03\x02\0\x05\x12\x03\x1b\x02\
-    \x08\n\x0c\n\x05\x04\x03\x02\0\x01\x12\x03\x1b\t\x0b\n\x0c\n\x05\x04\x03\
-    \x02\0\x03\x12\x03\x1b\x0e\x0f\n\n\n\x02\x04\x04\x12\x04\x1e\0!\x01\n\n\
-    \n\x03\x04\x04\x01\x12\x03\x1e\x08\x19\n\x0b\n\x04\x04\x04\x02\0\x12\x03\
-    \x1f\x02\x10\n\x0c\n\x05\x04\x04\x02\0\x05\x12\x03\x1f\x02\x08\n\x0c\n\
-    \x05\x04\x04\x02\0\x01\x12\x03\x1f\t\x0b\n\x0c\n\x05\x04\x04\x02\0\x03\
-    \x12\x03\x1f\x0e\x0f\n\x0b\n\x04\x04\x04\x02\x01\x12\x03\x20\x02!\n\x0c\
-    \n\x05\x04\x04\x02\x01\x04\x12\x03\x20\x02\n\n\x0c\n\x05\x04\x04\x02\x01\
-    \x05\x12\x03\x20\x0b\x11\n\x0c\n\x05\x04\x04\x02\x01\x01\x12\x03\x20\x12\
-    \x1c\n\x0c\n\x05\x04\x04\x02\x01\x03\x12\x03\x20\x1f\x20\n\n\n\x02\x04\
-    \x05\x12\x04#\01\x01\n\n\n\x03\x04\x05\x01\x12\x03#\x08\x0c\nB\n\x04\x04\
-    \x05\x02\0\x12\x03&\x02\x11\x1a5\x20\x20mongodb\x20object\x20id\x20-\x20\
-    24\x202len\x20chars\n\x20\x20string\x20id\x20=\x201;\n\n\x0c\n\x05\x04\
-    \x05\x02\0\x05\x12\x03&\x02\x08\n\x0c\n\x05\x04\x05\x02\0\x01\x12\x03&\t\
-    \x0c\n\x0c\n\x05\x04\x05\x02\0\x03\x12\x03&\x0f\x10\n\"\n\x04\x04\x05\
-    \x02\x01\x12\x03(\x02\x12\x1a\x15\x20\x20user\x20personal\x20name\n\n\
-    \x0c\n\x05\x04\x05\x02\x01\x05\x12\x03(\x02\x08\n\x0c\n\x05\x04\x05\x02\
-    \x01\x01\x12\x03(\t\r\n\x0c\n\x05\x04\x05\x02\x01\x03\x12\x03(\x10\x11\n\
-    \"\n\x04\x04\x05\x02\x02\x12\x03*\x02\x13\x1a\x15\x20\x20user\x20email\
-    \x20address\n\n\x0c\n\x05\x04\x05\x02\x02\x05\x12\x03*\x02\x08\n\x0c\n\
-    \x05\x04\x05\x02\x02\x01\x12\x03*\t\x0e\n\x0c\n\x05\x04\x05\x02\x02\x03\
-    \x12\x03*\x11\x12\n\x0b\n\x04\x04\x05\x02\x03\x12\x03+\x02\x16\n\x0c\n\
-    \x05\x04\x05\x02\x03\x05\x12\x03+\x02\x08\n\x0c\n\x05\x04\x05\x02\x03\
-    \x01\x12\x03+\t\x11\n\x0c\n\x05\x04\x05\x02\x03\x03\x12\x03+\x14\x15\n\
-    \x0b\n\x04\x04\x05\x02\x04\x12\x03,\x02\x12\n\x0c\n\x05\x04\x05\x02\x04\
-    \x05\x12\x03,\x02\x08\n\x0c\n\x05\x04\x05\x02\x04\x01\x12\x03,\t\r\n\x0c\
-    \n\x05\x04\x05\x02\x04\x03\x12\x03,\x10\x11\n\x0b\n\x04\x04\x05\x02\x05\
-    \x12\x03-\x02\x16\n\x0c\n\x05\x04\x05\x02\x05\x05\x12\x03-\x02\x08\n\x0c\
-    \n\x05\x04\x05\x02\x05\x01\x12\x03-\t\x11\n\x0c\n\x05\x04\x05\x02\x05\
-    \x03\x12\x03-\x14\x15\n\x0b\n\x04\x04\x05\x02\x06\x12\x03.\x02\x16\n\x0c\
-    \n\x05\x04\x05\x02\x06\x05\x12\x03.\x02\x08\n\x0c\n\x05\x04\x05\x02\x06\
-    \x01\x12\x03.\t\x11\n\x0c\n\x05\x04\x05\x02\x06\x03\x12\x03.\x14\x15\n\
-    \x0b\n\x04\x04\x05\x02\x07\x12\x03/\x02\x17\n\x0c\n\x05\x04\x05\x02\x07\
-    \x05\x12\x03/\x02\x08\n\x0c\n\x05\x04\x05\x02\x07\x01\x12\x03/\t\x12\n\
-    \x0c\n\x05\x04\x05\x02\x07\x03\x12\x03/\x15\x16\n\x0b\n\x04\x04\x05\x02\
-    \x08\x12\x030\x02\x17\n\x0c\n\x05\x04\x05\x02\x08\x05\x12\x030\x02\x08\n\
-    \x0c\n\x05\x04\x05\x02\x08\x01\x12\x030\t\x12\n\x0c\n\x05\x04\x05\x02\
-    \x08\x03\x12\x030\x15\x16\n\n\n\x02\x04\x06\x12\x043\05\x01\n\n\n\x03\
-    \x04\x06\x01\x12\x033\x08\r\n\x0b\n\x04\x04\x06\x02\0\x12\x034\x02\x19\n\
-    \x0c\n\x05\x04\x06\x02\0\x04\x12\x034\x02\n\n\x0c\n\x05\x04\x06\x02\0\
-    \x06\x12\x034\x0b\x0f\n\x0c\n\x05\x04\x06\x02\0\x01\x12\x034\x10\x14\n\
-    \x0c\n\x05\x04\x06\x02\0\x03\x12\x034\x17\x18b\x06proto3\
+    \n\x15_proto/products.proto\x12\x08products\"F\n\x0eListRequestDto\x12\
+    \x14\n\x05limit\x18\x01\x20\x01(\tR\x05limit\x12\x1e\n\nprojection\x18\
+    \x02\x20\x03(\tR\nprojection\"\"\n\x10UpdateRequestDto\x12\x0e\n\x02id\
+    \x18\x01\x20\x01(\tR\x02id\"\x0e\n\x0cVoidResponse\"&\n\x14DeleteUserReq\
+    uestDto\x12\x0e\n\x02id\x18\x01\x20\x01(\tR\x02id\"C\n\x11GetUserRequest\
+    Dto\x12\x0e\n\x02id\x18\x01\x20\x01(\tR\x02id\x12\x1e\n\nprojection\x18\
+    \x02\x20\x03(\tR\nprojection\".\n\x07Product\x12\x0f\n\x03_id\x18\x01\
+    \x20\x01(\tR\x02Id\x12\x12\n\x04name\x18\x02\x20\x01(\tR\x04name\"1\n\
+    \x08Products\x12%\n\x04data\x18\x01\x20\x03(\x0b2\x11.products.ProductR\
+    \x04data2\xf5\x02\n\x12ProductsController\x120\n\x06Create\x12\x11.produ\
+    cts.Product\x1a\x11.products.Product\"\0\x127\n\x03Get\x12\x1b.products.\
+    GetUserRequestDto\x1a\x11.products.Product\"\0\x12B\n\x06Delete\x12\x1e.\
+    products.DeleteUserRequestDto\x1a\x16.products.VoidResponse\"\0\x129\n\
+    \x06Update\x12\x1a.products.UpdateRequestDto\x1a\x11.products.Product\"\
+    \0\x126\n\x04List\x12\x18.products.ListRequestDto\x1a\x12.products.Produ\
+    cts\"\0\x12=\n\nListStream\x12\x18.products.ListRequestDto\x1a\x11.produ\
+    cts.Product\"\00\x01J\xb8\t\n\x06\x12\x04\0\0)\x01\n\x08\n\x01\x0c\x12\
+    \x03\0\0\x12\n\x08\n\x01\x02\x12\x03\x02\0\x11\n<\n\x02\x06\0\x12\x04\
+    \x05\0\r\x01\x1a0\x20Declare\x20a\x20service\x20for\x20each\x20controlle\
+    r\x20you\x20have\n\n\n\n\x03\x06\0\x01\x12\x03\x05\x08\x1a\nE\n\x04\x06\
+    \0\x02\0\x12\x03\x07\x02+\x1a8\x20Declare\x20an\x20rpc\x20for\x20each\
+    \x20method\x20that\x20is\x20called\x20via\x20gRPC\n\n\x0c\n\x05\x06\0\
+    \x02\0\x01\x12\x03\x07\x06\x0c\n\x0c\n\x05\x06\0\x02\0\x02\x12\x03\x07\
+    \x0e\x15\n\x0c\n\x05\x06\0\x02\0\x03\x12\x03\x07\x20'\n\x0b\n\x04\x06\0\
+    \x02\x01\x12\x03\x08\x022\n\x0c\n\x05\x06\0\x02\x01\x01\x12\x03\x08\x06\
+    \t\n\x0c\n\x05\x06\0\x02\x01\x02\x12\x03\x08\x0b\x1c\n\x0c\n\x05\x06\0\
+    \x02\x01\x03\x12\x03\x08'.\n\x0b\n\x04\x06\0\x02\x02\x12\x03\t\x02=\n\
+    \x0c\n\x05\x06\0\x02\x02\x01\x12\x03\t\x06\x0c\n\x0c\n\x05\x06\0\x02\x02\
+    \x02\x12\x03\t\x0e\"\n\x0c\n\x05\x06\0\x02\x02\x03\x12\x03\t-9\n\x0b\n\
+    \x04\x06\0\x02\x03\x12\x03\n\x024\n\x0c\n\x05\x06\0\x02\x03\x01\x12\x03\
+    \n\x06\x0c\n\x0c\n\x05\x06\0\x02\x03\x02\x12\x03\n\x0e\x1e\n\x0c\n\x05\
+    \x06\0\x02\x03\x03\x12\x03\n)0\n\x0b\n\x04\x06\0\x02\x04\x12\x03\x0b\x02\
+    1\n\x0c\n\x05\x06\0\x02\x04\x01\x12\x03\x0b\x06\n\n\x0c\n\x05\x06\0\x02\
+    \x04\x02\x12\x03\x0b\x0c\x1a\n\x0c\n\x05\x06\0\x02\x04\x03\x12\x03\x0b%-\
+    \n\x0b\n\x04\x06\0\x02\x05\x12\x03\x0c\x02=\n\x0c\n\x05\x06\0\x02\x05\
+    \x01\x12\x03\x0c\x06\x10\n\x0c\n\x05\x06\0\x02\x05\x02\x12\x03\x0c\x12\
+    \x20\n\x0c\n\x05\x06\0\x02\x05\x06\x12\x03\x0c+1\n\x0c\n\x05\x06\0\x02\
+    \x05\x03\x12\x03\x0c29\n\n\n\x02\x04\0\x12\x04\x0f\0\x12\x01\n\n\n\x03\
+    \x04\0\x01\x12\x03\x0f\x08\x16\n\x0b\n\x04\x04\0\x02\0\x12\x03\x10\x02\
+    \x13\n\x0c\n\x05\x04\0\x02\0\x05\x12\x03\x10\x02\x08\n\x0c\n\x05\x04\0\
+    \x02\0\x01\x12\x03\x10\t\x0e\n\x0c\n\x05\x04\0\x02\0\x03\x12\x03\x10\x11\
+    \x12\n\x0b\n\x04\x04\0\x02\x01\x12\x03\x11\x02!\n\x0c\n\x05\x04\0\x02\
+    \x01\x04\x12\x03\x11\x02\n\n\x0c\n\x05\x04\0\x02\x01\x05\x12\x03\x11\x0b\
+    \x11\n\x0c\n\x05\x04\0\x02\x01\x01\x12\x03\x11\x12\x1c\n\x0c\n\x05\x04\0\
+    \x02\x01\x03\x12\x03\x11\x1f\x20\n\n\n\x02\x04\x01\x12\x04\x14\0\x16\x01\
+    \n\n\n\x03\x04\x01\x01\x12\x03\x14\x08\x18\n\x0b\n\x04\x04\x01\x02\0\x12\
+    \x03\x15\x02\x10\n\x0c\n\x05\x04\x01\x02\0\x05\x12\x03\x15\x02\x08\n\x0c\
+    \n\x05\x04\x01\x02\0\x01\x12\x03\x15\t\x0b\n\x0c\n\x05\x04\x01\x02\0\x03\
+    \x12\x03\x15\x0e\x0f\n\t\n\x02\x04\x02\x12\x03\x18\0\x17\n\n\n\x03\x04\
+    \x02\x01\x12\x03\x18\x08\x14\n\n\n\x02\x04\x03\x12\x04\x19\0\x1b\x01\n\n\
+    \n\x03\x04\x03\x01\x12\x03\x19\x08\x1c\n\x0b\n\x04\x04\x03\x02\0\x12\x03\
+    \x1a\x02\x10\n\x0c\n\x05\x04\x03\x02\0\x05\x12\x03\x1a\x02\x08\n\x0c\n\
+    \x05\x04\x03\x02\0\x01\x12\x03\x1a\t\x0b\n\x0c\n\x05\x04\x03\x02\0\x03\
+    \x12\x03\x1a\x0e\x0f\n\n\n\x02\x04\x04\x12\x04\x1d\0\x20\x01\n\n\n\x03\
+    \x04\x04\x01\x12\x03\x1d\x08\x19\n\x0b\n\x04\x04\x04\x02\0\x12\x03\x1e\
+    \x02\x10\n\x0c\n\x05\x04\x04\x02\0\x05\x12\x03\x1e\x02\x08\n\x0c\n\x05\
+    \x04\x04\x02\0\x01\x12\x03\x1e\t\x0b\n\x0c\n\x05\x04\x04\x02\0\x03\x12\
+    \x03\x1e\x0e\x0f\n\x0b\n\x04\x04\x04\x02\x01\x12\x03\x1f\x02!\n\x0c\n\
+    \x05\x04\x04\x02\x01\x04\x12\x03\x1f\x02\n\n\x0c\n\x05\x04\x04\x02\x01\
+    \x05\x12\x03\x1f\x0b\x11\n\x0c\n\x05\x04\x04\x02\x01\x01\x12\x03\x1f\x12\
+    \x1c\n\x0c\n\x05\x04\x04\x02\x01\x03\x12\x03\x1f\x1f\x20\n\n\n\x02\x04\
+    \x05\x12\x04\"\0%\x01\n\n\n\x03\x04\x05\x01\x12\x03\"\x08\x0f\n\x0b\n\
+    \x04\x04\x05\x02\0\x12\x03#\x02\x11\n\x0c\n\x05\x04\x05\x02\0\x05\x12\
+    \x03#\x02\x08\n\x0c\n\x05\x04\x05\x02\0\x01\x12\x03#\t\x0c\n\x0c\n\x05\
+    \x04\x05\x02\0\x03\x12\x03#\x0f\x10\n\x0b\n\x04\x04\x05\x02\x01\x12\x03$\
+    \x02\x12\n\x0c\n\x05\x04\x05\x02\x01\x05\x12\x03$\x02\x08\n\x0c\n\x05\
+    \x04\x05\x02\x01\x01\x12\x03$\t\r\n\x0c\n\x05\x04\x05\x02\x01\x03\x12\
+    \x03$\x10\x11\n\n\n\x02\x04\x06\x12\x04'\0)\x01\n\n\n\x03\x04\x06\x01\
+    \x12\x03'\x08\x10\n\x0b\n\x04\x04\x06\x02\0\x12\x03(\x02\x1c\n\x0c\n\x05\
+    \x04\x06\x02\0\x04\x12\x03(\x02\n\n\x0c\n\x05\x04\x06\x02\0\x06\x12\x03(\
+    \x0b\x12\n\x0c\n\x05\x04\x06\x02\0\x01\x12\x03(\x13\x17\n\x0c\n\x05\x04\
+    \x06\x02\0\x03\x12\x03(\x1a\x1bb\x06proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file
@@ -1161,13 +1006,13 @@ pub fn file_descriptor() -> &'static ::protobuf::reflect::FileDescriptor {
         let generated_file_descriptor = generated_file_descriptor_lazy.get(|| {
             let mut deps = ::std::vec::Vec::with_capacity(0);
             let mut messages = ::std::vec::Vec::with_capacity(7);
-            messages.push(GetUsersRequestDto::generated_message_descriptor_data());
-            messages.push(UpdateUserRequestDto::generated_message_descriptor_data());
+            messages.push(ListRequestDto::generated_message_descriptor_data());
+            messages.push(UpdateRequestDto::generated_message_descriptor_data());
             messages.push(VoidResponse::generated_message_descriptor_data());
             messages.push(DeleteUserRequestDto::generated_message_descriptor_data());
             messages.push(GetUserRequestDto::generated_message_descriptor_data());
-            messages.push(User::generated_message_descriptor_data());
-            messages.push(Users::generated_message_descriptor_data());
+            messages.push(Product::generated_message_descriptor_data());
+            messages.push(Products::generated_message_descriptor_data());
             let mut enums = ::std::vec::Vec::with_capacity(0);
             ::protobuf::reflect::GeneratedFileDescriptor::new_generated(
                 file_descriptor_proto(),
