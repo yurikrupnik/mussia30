@@ -1,15 +1,9 @@
 import { For, createResource } from 'solid-js';
 import axios from 'axios';
-// import { User, UserDocument } from '@nx-go-playground/api/usesssrs';
+// import { User, UserDocument } from '@nx-go-playground/api/users';
 
 function getUsers() {
-  return (
-    axios
-      .get('http://localhost:8080/api/users')
-      // .get('http://localhost:4000/api/users')
-      // .get('/api/projects')
-      .then((r: any) => r.data)
-  );
+  return axios.get('http://localhost:8080/api/users').then((r: any) => r.data);
 }
 function deleteUser(id: string) {
   return axios.delete(`http://localhost:8080/api/users/${id}`);
