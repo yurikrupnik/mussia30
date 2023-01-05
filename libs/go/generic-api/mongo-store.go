@@ -7,6 +7,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
+	go_shared "mussia30/libs/go/shared"
 )
 
 type mongoStore[T any] struct {
@@ -14,11 +15,7 @@ type mongoStore[T any] struct {
 }
 
 func newMongoStore[T any](db string, url string) (UserSvc[T], error) {
-	//uri := os.Getenv("mongo_uri")
-	//uri := "mongodb+srv://yurikrupnik:T4eXKj1RBI4VnszC@cluster0.rdmew.mongodb.net/"
-	uri := "mongodb://localhost:27017"
-	//uri := "http://host.docker.internal:27017"
-	//uri := "mongodb://localhost/db" // compose local gow run main.go
+	uri := go_shared.Getenv("MONGO_URI", "mongodb://localhost:27017")
 	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
 	con := client.Database(db).Collection(url)
 	if err != nil {
