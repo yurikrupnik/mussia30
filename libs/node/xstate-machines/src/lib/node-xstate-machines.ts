@@ -44,3 +44,27 @@ export const toggleMachine = createMachine<ToggleMachineContext>(
     },
   }
 );
+
+interface TestMachineContext {
+  count: number;
+  disabledCount: number;
+}
+
+export const testMachine = createMachine<TestMachineContext>({
+  id: 'toggle',
+  initial: 'inactive',
+  context: {
+    count: 0,
+    disabledCount: 0,
+  },
+  states: {
+    inactive: {
+      entry: assign({ disabledCount: (ctx) => ctx.disabledCount + 1 }),
+      on: { TOGGLE: 'active' },
+    },
+    active: {
+      entry: assign({ count: (ctx) => ctx.count + 1 }),
+      on: { TOGGLE: 'inactive' },
+    },
+  },
+});

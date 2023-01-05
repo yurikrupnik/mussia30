@@ -9,15 +9,13 @@ function getUsers() {
 function deleteUser(id: string) {
   return axios.delete(`/api/users/${id}`);
 }
+import { useMachine } from '../../hooks/useMachine';
+import { testMachine } from '@mussia30/node/xstate-machines';
 
 const Users = () => {
+  const [state, send] = useMachine(testMachine);
   // const [data, setData] = createSignal([]);
   const [data, { refetch }] = createResource(getUsers, { initialValue: [] });
-  // console.log('data', data());
-  // createEffect(() => {
-  //   // getUsers();
-  //   //   .then(setData);
-  // });
 
   const deleteItem = (id: string) => {
     deleteUser(id).then(() => {
@@ -27,6 +25,12 @@ const Users = () => {
   return (
     <div>
       <h1 class="text-3xl font-bold underline">Users</h1>
+      <button onClick={() => send('TOGGLE')}>
+        Click me ({state.matches('active') ? '✅' : '❌'})
+      </button>{' '}
+      <code>
+        Toggled <strong>{state.context.count}</strong> times
+      </code>
       <div>
         data here
         <For each={data()}>
