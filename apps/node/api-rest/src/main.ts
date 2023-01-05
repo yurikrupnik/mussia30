@@ -10,7 +10,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     bufferLogs: true,
   });
-  const globalPrefix = 'apis';
+  const globalPrefix = 'api';
   // start custom config here
   app.enableCors();
 
@@ -35,7 +35,6 @@ async function bootstrap() {
   app.enableShutdownHooks();
 
   // end custom config here
-
   const logger = app.get(Logger);
   const docs = app.get(SwaggerModule);
   docs.setup(app, globalPrefix, 'Rest API', 'General use api');
