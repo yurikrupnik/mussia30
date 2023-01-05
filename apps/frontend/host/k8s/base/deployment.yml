@@ -31,8 +31,8 @@ spec:
             - containerPort: 80
               name: http
           #          image: europe-west1-docker.pkg.dev/maya-mussia/nx-go-playground/frontend-host:latest
-#          image: yurikrupnik/frontend-host:latest
-          image: nginx:latest
+          image: yurikrupnik/frontend-host:latest
+#          image: nginx:latest
           imagePullPolicy: IfNotPresent
           volumeMounts:
 #            #            - mountPath: /etc/nginx/conf.d
