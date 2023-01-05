@@ -65,8 +65,8 @@ FROM debian:buster-slim AS rust
 #ARG DIST_PATH
 #RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
 #COPY $DIST_PATH /bin/
-COPY target/release/api_rest1 /bin/
+COPY target/release/api_rest /bin/
 ENV PORT=8080
 EXPOSE ${PORT}
-CMD api_rest1
+CMD api_rest
 #ENTRYPOINT ["/bin/bash", "/bin/api_rest1"]
