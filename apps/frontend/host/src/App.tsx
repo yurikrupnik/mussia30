@@ -13,9 +13,9 @@ function App() {
       <h1 class="text-3xl font-bold underline">Welcome frontend-host</h1>
       {/*<Button>my mui button</Button>*/}
       <nav>
+        <Link href="/">Home</Link>
         <Link href="/about">About</Link>
         <Link href="/user">Users</Link>
-        <Link href="/">Home</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
