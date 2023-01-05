@@ -4,15 +4,15 @@
 
 local_resource('pnpm', cmd='pnpm install', deps=['package.json', 'pnpm-lock.yaml'], labels=['pnpm'])
 
-local_resource('proto-generate', cmd='just proto-generate', deps=['_proto/users.proto', "_proto/products.proto"], labels=['just'])
+local_resource('proto-generate', cmd='just proto-generate', deps=['_proto/'], labels=['just'])
 
 # include('./k8s/helm/Tiltfile')
 
 include('./apps/go/api-rest/Tiltfile')
 include('./apps/node/api-rest/Tiltfile')
 include('./apps/frontend/host/Tiltfile')
-include('./apps/node/users-grpc/Tiltfile')
-include('./apps/rust/api-rest/Tiltfile')
+# include('./apps/node/users-grpc/Tiltfile')
+# include('./apps/rust/api-rest/Tiltfile')
 # include('./apps/rust/users-grpc/Tiltfile')
 # include('./apps/infra/commdands/Tiltfile')
 
