@@ -9,7 +9,12 @@ import {
   MachineOptions,
 } from 'xstate';
 import { useMachine } from '../../components/useMachine';
+
 // import { json } from 'stream/consumers';
+import {
+  promiseMachine as Mac1,
+  fetchMachine as Mac2,
+} from '@mussia30/node/state-machines';
 
 function getUsersGrpc() {
   return (
@@ -109,6 +114,9 @@ interface ToggleContext {
 }
 
 // 5 parts states, events, transitions
+// enum EventObj {
+//   focusTitle,
+// }
 
 const toggleMachine = createMachine<ToggleContext>(
   {
