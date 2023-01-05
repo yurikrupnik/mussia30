@@ -9,8 +9,6 @@ function getUsers() {
   return (
     axios
       .get('http://localhost:8080/api/users')
-      // .get('http://localhost:4000/api/users')
-      // .get('/api/projects')
       .then((r: any) => r.data)
   );
 }
@@ -22,7 +20,7 @@ interface MyChildMachineContext {
   data: Array<any>;
   // data: Array<User>;
 }
-const myChildMachine = 
+const myChildMachine =
 /** @xstate-layout N4IgpgJg5mDOIC5QFsCeBhAFgSwDYQFkBDAYxwDswA6UgF2wDcwBiCAe0qu3IbYGtqMWgFVYYAE6wA2gAYAuolAAHNrGz0OikAA9EAdgCsVGQCYAHAE49ANgAstmbZMXrFgDQhUia0dtmTegDMZrYWfkEyBgC+UR5oWHiEpBTUdIwsEuJs4lRKuES0AGbZyFRCohLS8loqahrkWroIhsbmVnYOTi7unogAtAZmVHqWgWGBI9bWJgCMMzGxIORsEHBa8Tj4xGTcYDWq6tiaSDr9JgYmVGYGkSOBMmYzkbZ6Hl4IfTMGtlQGVgZ6J4GG5hJwxOIYTZJHacQpEPCQfZ1I4NE5NQIOKjmG6hWzBF4+axvM4zKhjPQyQKBVwzBzTaKLDaJbYpKiwACuJBIcHgJ1qh2OoHRmOxjnGIRsBiJvQQT0uZkMMgsFhm-hmbXBICZW2SuxoJHoTCRAtRQrOjiuNwBZnuj2erxlfWseioc1VFgueMCJmsNoWUSAA */
 createMachine({
   id: 'myChildMachine',
@@ -34,14 +32,14 @@ createMachine({
     active: {
       // fetchingList: {
         // entry: {},
-        
+
         invoke: { // TODO context is making it seen as error
           id: 'getUsers',
           src: "getUsers",
           // src: getUsers,
           // onDone: "success",
           // onEntry: "getUsers",
-          
+
           // onDone: 'loaded',
           // after: {
           //   5000: 'timedOut',
@@ -51,11 +49,11 @@ createMachine({
             actions: assign({
               data: (_context, event) => {
                 console.log("event", event.data); // log event
-                
+
                 return event.data;
               },
             }),
-            
+
             description: "After successful action execution"
           },
           states: {
