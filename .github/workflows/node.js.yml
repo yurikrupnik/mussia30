@@ -17,6 +17,7 @@ jobs:
       - uses: extractions/setup-just@v1
         with:
           just-version: 0.8 # optional semver specification, otherwise latest
+      - run: just daily
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v2
       - uses: actions/setup-go@v3
