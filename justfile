@@ -1,5 +1,5 @@
 set export
-set shell := ["fish", "-c"]
+set shell := ["sh", "-c"]
 
 default:
     @just --list --unsorted
