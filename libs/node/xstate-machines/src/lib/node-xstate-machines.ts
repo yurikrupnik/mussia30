@@ -5,7 +5,7 @@ function getUsers() {
 }
 
 // const myChildMachine = createMachine({
-//   id: 'myChildMachine',
+//   id: 'myChildMachines',
 //   initial: 'active',
 //   states: {
 //     active: {},
