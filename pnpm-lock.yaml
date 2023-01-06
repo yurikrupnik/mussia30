@@ -83,7 +83,7 @@ specifiers:
   solid-jest: ^0.2.0
   solid-js: ^1.3.3
   solid-testing-library: ^0.5.0
-  swc-loader: 0.1.15
+  swc-loader: 0.2.3
   ts-jest: 29.0.3
   ts-node: 10.9.1
   ts-proto: ^1.136.1
@@ -185,7 +185,7 @@ devDependencies:
   solid-jest: 0.2.0_dy3nnz72mhgodvozh7ogjwhpre
   solid-js: 1.6.6
   solid-testing-library: 0.5.0_solid-js@1.6.6
-  swc-loader: 0.1.15_gyzimtxqgxuicuv6kqhpgce7ve
+  swc-loader: 0.2.3_gyzimtxqgxuicuv6kqhpgce7ve
   ts-jest: 29.0.3_jgcrazg63n7mkdjrxsk5jv2npy
   ts-node: 10.9.1_cz75aytqfdzjifvahdysfr3rmm
   ts-proto: 1.136.1
@@ -13751,14 +13751,13 @@ packages:
     resolution: {integrity: sha512-V3eIa28lwB6gg7/wfNvAbjwJYmDXy1Jo1POjyTzlB6wPcHiGlRxq39TSjYGVjQrUSAzpv+a7nzp7mDxgNy57xA==}
     dev: false
 
-  /swc-loader/0.1.15_gyzimtxqgxuicuv6kqhpgce7ve:
-    resolution: {integrity: sha512-cn1WPIeQJvXM4bbo3OwdEIapsQ4uUGOfyFj0h2+2+brT0k76DCGnZXDE2KmcqTd2JSQ+b61z2NPMib7eEwMYYw==}
+  /swc-loader/0.2.3_gyzimtxqgxuicuv6kqhpgce7ve:
+    resolution: {integrity: sha512-D1p6XXURfSPleZZA/Lipb3A8pZ17fP4NObZvFCDjK/OKljroqDpPmsBdTraWhVBqUNpcWBQY1imWdoPScRlQ7A==}
     peerDependencies:
-      '@swc/core': ^1.2.52
+      '@swc/core': ^1.2.147
       webpack: '>=2'
     dependencies:
       '@swc/core': 1.3.24
-      loader-utils: 2.0.4
       webpack: 5.75.0_@swc+core@1.3.24
     dev: true
 
