@@ -1,0 +1,9 @@
+resources:
+  - service-account.yaml
+  - service.yml
+  - deployment.yml
+  # - ingress.yaml
+commonLabels:
+  demo: node-users-grpc-label
+  service: node-users-grpc
+  my-type: server

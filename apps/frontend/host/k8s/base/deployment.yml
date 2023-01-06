@@ -32,9 +32,10 @@ spec:
               name: http
           #          image: europe-west1-docker.pkg.dev/maya-mussia/nx-go-playground/frontend-host:latest
           image: yurikrupnik/frontend-host:latest
+#          image: nginx:latest
           imagePullPolicy: IfNotPresent
           volumeMounts:
-            #            - mountPath: /etc/nginx/conf.d
+#            #            - mountPath: /etc/nginx/conf.d
             - mountPath: /etc/nginx/templates
               name: nginx-config
           env: # not` working only front end
@@ -53,32 +54,16 @@ spec:
                 configMapKeyRef:
                   key: upstream_name
                   name: proxy-envs
-          #          command: [ "node", "main.js" ]
-          #            - node
-          #            - main.js
-#          env:
-#            - name: MONGO_URI
-#              value: mongodb+srv://yurikrupnik:T4eXKj1RBI4VnszC@cluster0.rdmew.mongodb.net/
-            #            - name: PROJECT_ID
-            #              value: mussia14
-            #            - name: FIREBASE_DATABASE_URL
-            #              valueFrom:
-            #                secretKeyRef:
-            #                  key: firebase-database-url
-            #                  name: firebase-secret
-            #            - name: FIREBASE_PRIVATE_KEY
-            #              valueFrom:
-            #                secretKeyRef:
-            #                  key: firebase-private-key
-            #                  name: firebase-secret
-            #            - name: FIREBASE_CLIENT_EMAIL
-            #              valueFrom:
-            #                secretKeyRef:
-            #                  key: firebase-client-email
-          #                  name: firebase-secret
 
 
       restartPolicy: Always
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: nginx-config
+        - name: proxy-envs
+          configMap:
+            name: proxy-envs
   selector:
     matchLabels:
       app: frontend-host

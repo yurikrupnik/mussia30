@@ -26,15 +26,15 @@
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_2_0;
 
 #[derive(PartialEq,Clone,Default,Debug)]
-// @@protoc_insertion_point(message:app.getUsersRequestDto)
+// @@protoc_insertion_point(message:app.GetUsersRequestDto)
 pub struct GetUsersRequestDto {
     // message fields
-    // @@protoc_insertion_point(field:app.getUsersRequestDto.limit)
+    // @@protoc_insertion_point(field:app.GetUsersRequestDto.limit)
     pub limit: ::std::string::String,
-    // @@protoc_insertion_point(field:app.getUsersRequestDto.projection)
+    // @@protoc_insertion_point(field:app.GetUsersRequestDto.projection)
     pub projection: ::std::vec::Vec<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:app.getUsersRequestDto.special_fields)
+    // @@protoc_insertion_point(special_field:app.GetUsersRequestDto.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -63,7 +63,7 @@ impl GetUsersRequestDto {
             |m: &mut GetUsersRequestDto| { &mut m.projection },
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<GetUsersRequestDto>(
-            "getUsersRequestDto",
+            "GetUsersRequestDto",
             fields,
             oneofs,
         )
@@ -71,7 +71,7 @@ impl GetUsersRequestDto {
 }
 
 impl ::protobuf::Message for GetUsersRequestDto {
-    const NAME: &'static str = "getUsersRequestDto";
+    const NAME: &'static str = "GetUsersRequestDto";
 
     fn is_initialized(&self) -> bool {
         true
@@ -151,7 +151,7 @@ impl ::protobuf::Message for GetUsersRequestDto {
 impl ::protobuf::MessageFull for GetUsersRequestDto {
     fn descriptor() -> ::protobuf::reflect::MessageDescriptor {
         static descriptor: ::protobuf::rt::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::Lazy::new();
-        descriptor.get(|| file_descriptor().message_by_package_relative_name("getUsersRequestDto").unwrap()).clone()
+        descriptor.get(|| file_descriptor().message_by_package_relative_name("GetUsersRequestDto").unwrap()).clone()
     }
 }
 
@@ -166,13 +166,13 @@ impl ::protobuf::reflect::ProtobufValue for GetUsersRequestDto {
 }
 
 #[derive(PartialEq,Clone,Default,Debug)]
-// @@protoc_insertion_point(message:app.updateUserRequestDto)
+// @@protoc_insertion_point(message:app.UpdateUserRequestDto)
 pub struct UpdateUserRequestDto {
     // message fields
-    // @@protoc_insertion_point(field:app.updateUserRequestDto.id)
+    // @@protoc_insertion_point(field:app.UpdateUserRequestDto.id)
     pub id: ::std::string::String,
     // special fields
-    // @@protoc_insertion_point(special_field:app.updateUserRequestDto.special_fields)
+    // @@protoc_insertion_point(special_field:app.UpdateUserRequestDto.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -196,7 +196,7 @@ impl UpdateUserRequestDto {
             |m: &mut UpdateUserRequestDto| { &mut m.id },
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<UpdateUserRequestDto>(
-            "updateUserRequestDto",
+            "UpdateUserRequestDto",
             fields,
             oneofs,
         )
@@ -204,7 +204,7 @@ impl UpdateUserRequestDto {
 }
 
 impl ::protobuf::Message for UpdateUserRequestDto {
-    const NAME: &'static str = "updateUserRequestDto";
+    const NAME: &'static str = "UpdateUserRequestDto";
 
     fn is_initialized(&self) -> bool {
         true
@@ -273,7 +273,7 @@ impl ::protobuf::Message for UpdateUserRequestDto {
 impl ::protobuf::MessageFull for UpdateUserRequestDto {
     fn descriptor() -> ::protobuf::reflect::MessageDescriptor {
         static descriptor: ::protobuf::rt::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::Lazy::new();
-        descriptor.get(|| file_descriptor().message_by_package_relative_name("updateUserRequestDto").unwrap()).clone()
+        descriptor.get(|| file_descriptor().message_by_package_relative_name("UpdateUserRequestDto").unwrap()).clone()
     }
 }
 
@@ -391,13 +391,13 @@ impl ::protobuf::reflect::ProtobufValue for VoidResponse {
 }
 
 #[derive(PartialEq,Clone,Default,Debug)]
-// @@protoc_insertion_point(message:app.deleteUserRequestDto)
+// @@protoc_insertion_point(message:app.DeleteUserRequestDto)
 pub struct DeleteUserRequestDto {
     // message fields
-    // @@protoc_insertion_point(field:app.deleteUserRequestDto.id)
+    // @@protoc_insertion_point(field:app.DeleteUserRequestDto.id)
     pub id: ::std::string::String,
     // special fields
-    // @@protoc_insertion_point(special_field:app.deleteUserRequestDto.special_fields)
+    // @@protoc_insertion_point(special_field:app.DeleteUserRequestDto.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -421,7 +421,7 @@ impl DeleteUserRequestDto {
             |m: &mut DeleteUserRequestDto| { &mut m.id },
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<DeleteUserRequestDto>(
-            "deleteUserRequestDto",
+            "DeleteUserRequestDto",
             fields,
             oneofs,
         )
@@ -429,7 +429,7 @@ impl DeleteUserRequestDto {
 }
 
 impl ::protobuf::Message for DeleteUserRequestDto {
-    const NAME: &'static str = "deleteUserRequestDto";
+    const NAME: &'static str = "DeleteUserRequestDto";
 
     fn is_initialized(&self) -> bool {
         true
@@ -498,7 +498,7 @@ impl ::protobuf::Message for DeleteUserRequestDto {
 impl ::protobuf::MessageFull for DeleteUserRequestDto {
     fn descriptor() -> ::protobuf::reflect::MessageDescriptor {
         static descriptor: ::protobuf::rt::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::Lazy::new();
-        descriptor.get(|| file_descriptor().message_by_package_relative_name("deleteUserRequestDto").unwrap()).clone()
+        descriptor.get(|| file_descriptor().message_by_package_relative_name("DeleteUserRequestDto").unwrap()).clone()
     }
 }
 
@@ -513,15 +513,15 @@ impl ::protobuf::reflect::ProtobufValue for DeleteUserRequestDto {
 }
 
 #[derive(PartialEq,Clone,Default,Debug)]
-// @@protoc_insertion_point(message:app.getUserRequestDto)
+// @@protoc_insertion_point(message:app.GetUserRequestDto)
 pub struct GetUserRequestDto {
     // message fields
-    // @@protoc_insertion_point(field:app.getUserRequestDto.id)
+    // @@protoc_insertion_point(field:app.GetUserRequestDto.id)
     pub id: ::std::string::String,
-    // @@protoc_insertion_point(field:app.getUserRequestDto.projection)
+    // @@protoc_insertion_point(field:app.GetUserRequestDto.projection)
     pub projection: ::std::vec::Vec<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:app.getUserRequestDto.special_fields)
+    // @@protoc_insertion_point(special_field:app.GetUserRequestDto.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -550,7 +550,7 @@ impl GetUserRequestDto {
             |m: &mut GetUserRequestDto| { &mut m.projection },
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<GetUserRequestDto>(
-            "getUserRequestDto",
+            "GetUserRequestDto",
             fields,
             oneofs,
         )
@@ -558,7 +558,7 @@ impl GetUserRequestDto {
 }
 
 impl ::protobuf::Message for GetUserRequestDto {
-    const NAME: &'static str = "getUserRequestDto";
+    const NAME: &'static str = "GetUserRequestDto";
 
     fn is_initialized(&self) -> bool {
         true
@@ -638,7 +638,7 @@ impl ::protobuf::Message for GetUserRequestDto {
 impl ::protobuf::MessageFull for GetUserRequestDto {
     fn descriptor() -> ::protobuf::reflect::MessageDescriptor {
         static descriptor: ::protobuf::rt::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::Lazy::new();
-        descriptor.get(|| file_descriptor().message_by_package_relative_name("getUserRequestDto").unwrap()).clone()
+        descriptor.get(|| file_descriptor().message_by_package_relative_name("GetUserRequestDto").unwrap()).clone()
     }
 }
 
@@ -656,10 +656,14 @@ impl ::protobuf::reflect::ProtobufValue for GetUserRequestDto {
 // @@protoc_insertion_point(message:app.User)
 pub struct User {
     // message fields
+    ///   mongodb object id - 24 2len chars
+    ///   string id = 1;
     // @@protoc_insertion_point(field:app.User._id)
-    pub _id: ::std::option::Option<::std::string::String>,
+    pub _id: ::std::string::String,
+    ///   user personal name
     // @@protoc_insertion_point(field:app.User.name)
     pub name: ::std::string::String,
+    ///   user email address
     // @@protoc_insertion_point(field:app.User.email)
     pub email: ::std::string::String,
     // @@protoc_insertion_point(field:app.User.tenantId)
@@ -693,7 +697,7 @@ impl User {
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
         let mut fields = ::std::vec::Vec::with_capacity(9);
         let mut oneofs = ::std::vec::Vec::with_capacity(0);
-        fields.push(::protobuf::reflect::rt::v2::make_option_accessor::<_, _>(
+        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
             "_id",
             |m: &User| { &m._id },
             |m: &mut User| { &mut m._id },
@@ -757,7 +761,7 @@ impl ::protobuf::Message for User {
         while let Some(tag) = is.read_raw_tag_or_eof()? {
             match tag {
                 10 => {
-                    self._id = ::std::option::Option::Some(is.read_string()?);
+                    self._id = is.read_string()?;
                 },
                 18 => {
                     self.name = is.read_string()?;
@@ -795,8 +799,8 @@ impl ::protobuf::Message for User {
     #[allow(unused_variables)]
     fn compute_size(&self) -> u64 {
         let mut my_size = 0;
-        if let Some(v) = self._id.as_ref() {
-            my_size += ::protobuf::rt::string_size(1, &v);
+        if !self._id.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self._id);
         }
         if !self.name.is_empty() {
             my_size += ::protobuf::rt::string_size(2, &self.name);
@@ -828,8 +832,8 @@ impl ::protobuf::Message for User {
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::Result<()> {
-        if let Some(v) = self._id.as_ref() {
-            os.write_string(1, v)?;
+        if !self._id.is_empty() {
+            os.write_string(1, &self._id)?;
         }
         if !self.name.is_empty() {
             os.write_string(2, &self.name)?;
@@ -872,7 +876,7 @@ impl ::protobuf::Message for User {
     }
 
     fn clear(&mut self) {
-        self._id = ::std::option::Option::None;
+        self._id.clear();
         self.name.clear();
         self.email.clear();
         self.tenantId.clear();
@@ -886,7 +890,7 @@ impl ::protobuf::Message for User {
 
     fn default_instance() -> &'static User {
         static instance: User = User {
-            _id: ::std::option::Option::None,
+            _id: ::std::string::String::new(),
             name: ::std::string::String::new(),
             email: ::std::string::String::new(),
             tenantId: ::std::string::String::new(),
@@ -1042,102 +1046,103 @@ impl ::protobuf::reflect::ProtobufValue for Users {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x12_proto/users.proto\x12\x03app\"J\n\x12getUsersRequestDto\x12\x14\n\
+    \n\x12_proto/users.proto\x12\x03app\"J\n\x12GetUsersRequestDto\x12\x14\n\
     \x05limit\x18\x01\x20\x01(\tR\x05limit\x12\x1e\n\nprojection\x18\x02\x20\
-    \x03(\tR\nprojection\"&\n\x14updateUserRequestDto\x12\x0e\n\x02id\x18\
-    \x01\x20\x01(\tR\x02id\"\x0e\n\x0cVoidResponse\"&\n\x14deleteUserRequest\
-    Dto\x12\x0e\n\x02id\x18\x01\x20\x01(\tR\x02id\"C\n\x11getUserRequestDto\
+    \x03(\tR\nprojection\"&\n\x14UpdateUserRequestDto\x12\x0e\n\x02id\x18\
+    \x01\x20\x01(\tR\x02id\"\x0e\n\x0cVoidResponse\"&\n\x14DeleteUserRequest\
+    Dto\x12\x0e\n\x02id\x18\x01\x20\x01(\tR\x02id\"C\n\x11GetUserRequestDto\
     \x12\x0e\n\x02id\x18\x01\x20\x01(\tR\x02id\x12\x1e\n\nprojection\x18\x02\
-    \x20\x03(\tR\nprojection\"\xf2\x01\n\x04User\x12\x14\n\x03_id\x18\x01\
-    \x20\x01(\tH\0R\x02Id\x88\x01\x01\x12\x12\n\x04name\x18\x02\x20\x01(\tR\
-    \x04name\x12\x14\n\x05email\x18\x03\x20\x01(\tR\x05email\x12\x1a\n\x08te\
-    nantId\x18\x04\x20\x01(\tR\x08tenantId\x12\x12\n\x04role\x18\x05\x20\x01\
-    (\tR\x04role\x12\x1a\n\x08provider\x18\x06\x20\x01(\tR\x08provider\x12\
-    \x1a\n\x08password\x18\x07\x20\x01(\tR\x08password\x12\x1c\n\tupdatedAt\
-    \x18\x08\x20\x01(\tR\tupdatedAt\x12\x1c\n\tcreatedAt\x18\t\x20\x01(\tR\t\
-    createdAtB\x06\n\x04X_id\"&\n\x05Users\x12\x1d\n\x04data\x18\x01\x20\x03\
-    (\x0b2\t.app.UserR\x04data2\xc6\x02\n\rAppController\x12$\n\nCreateUser\
-    \x12\t.app.User\x1a\t.app.User\"\0\x12.\n\x07GetUser\x12\x16.app.getUser\
-    RequestDto\x1a\t.app.User\"\0\x12<\n\nDeleteUser\x12\x19.app.deleteUserR\
-    equestDto\x1a\x11.app.VoidResponse\"\0\x124\n\nupdateUser\x12\x19.app.up\
-    dateUserRequestDto\x1a\t.app.User\"\0\x121\n\x08GetUsers\x12\x17.app.get\
-    UsersRequestDto\x1a\n.app.Users\"\0\x128\n\x0eGetUsersStream\x12\x17.app\
-    .getUsersRequestDto\x1a\t.app.User\"\00\x01J\xc7\x0c\n\x06\x12\x04\0\0/\
-    \x01\n\x08\n\x01\x0c\x12\x03\0\0\x12\n\x08\n\x01\x02\x12\x03\x02\0\x0c\n\
-    <\n\x02\x06\0\x12\x04\x05\0\r\x01\x1a0\x20Declare\x20a\x20service\x20for\
-    \x20each\x20controller\x20you\x20have\n\n\n\n\x03\x06\0\x01\x12\x03\x05\
-    \x08\x15\nE\n\x04\x06\0\x02\0\x12\x03\x07\x02)\x1a8\x20Declare\x20an\x20\
-    rpc\x20for\x20each\x20method\x20that\x20is\x20called\x20via\x20gRPC\n\n\
-    \x0c\n\x05\x06\0\x02\0\x01\x12\x03\x07\x06\x10\n\x0c\n\x05\x06\0\x02\0\
-    \x02\x12\x03\x07\x12\x16\n\x0c\n\x05\x06\0\x02\0\x03\x12\x03\x07!%\n\x0b\
-    \n\x04\x06\0\x02\x01\x12\x03\x08\x023\n\x0c\n\x05\x06\0\x02\x01\x01\x12\
-    \x03\x08\x06\r\n\x0c\n\x05\x06\0\x02\x01\x02\x12\x03\x08\x0f\x20\n\x0c\n\
-    \x05\x06\0\x02\x01\x03\x12\x03\x08+/\n\x0b\n\x04\x06\0\x02\x02\x12\x03\t\
-    \x02A\n\x0c\n\x05\x06\0\x02\x02\x01\x12\x03\t\x06\x10\n\x0c\n\x05\x06\0\
-    \x02\x02\x02\x12\x03\t\x12&\n\x0c\n\x05\x06\0\x02\x02\x03\x12\x03\t1=\n\
-    \x0b\n\x04\x06\0\x02\x03\x12\x03\n\x029\n\x0c\n\x05\x06\0\x02\x03\x01\
-    \x12\x03\n\x06\x10\n\x0c\n\x05\x06\0\x02\x03\x02\x12\x03\n\x12&\n\x0c\n\
-    \x05\x06\0\x02\x03\x03\x12\x03\n15\n\x0b\n\x04\x06\0\x02\x04\x12\x03\x0b\
-    \x026\n\x0c\n\x05\x06\0\x02\x04\x01\x12\x03\x0b\x06\x0e\n\x0c\n\x05\x06\
-    \0\x02\x04\x02\x12\x03\x0b\x10\"\n\x0c\n\x05\x06\0\x02\x04\x03\x12\x03\
-    \x0b-2\n\x0b\n\x04\x06\0\x02\x05\x12\x03\x0c\x02B\n\x0c\n\x05\x06\0\x02\
-    \x05\x01\x12\x03\x0c\x06\x14\n\x0c\n\x05\x06\0\x02\x05\x02\x12\x03\x0c\
-    \x16(\n\x0c\n\x05\x06\0\x02\x05\x06\x12\x03\x0c39\n\x0c\n\x05\x06\0\x02\
-    \x05\x03\x12\x03\x0c:>\n\n\n\x02\x04\0\x12\x04\x0e\0\x11\x01\n\n\n\x03\
-    \x04\0\x01\x12\x03\x0e\x08\x1a\n\x0b\n\x04\x04\0\x02\0\x12\x03\x0f\x02\
-    \x13\n\x0c\n\x05\x04\0\x02\0\x05\x12\x03\x0f\x02\x08\n\x0c\n\x05\x04\0\
-    \x02\0\x01\x12\x03\x0f\t\x0e\n\x0c\n\x05\x04\0\x02\0\x03\x12\x03\x0f\x11\
-    \x12\n\x0b\n\x04\x04\0\x02\x01\x12\x03\x10\x02!\n\x0c\n\x05\x04\0\x02\
-    \x01\x04\x12\x03\x10\x02\n\n\x0c\n\x05\x04\0\x02\x01\x05\x12\x03\x10\x0b\
-    \x11\n\x0c\n\x05\x04\0\x02\x01\x01\x12\x03\x10\x12\x1c\n\x0c\n\x05\x04\0\
-    \x02\x01\x03\x12\x03\x10\x1f\x20\n\n\n\x02\x04\x01\x12\x04\x13\0\x15\x01\
-    \n\n\n\x03\x04\x01\x01\x12\x03\x13\x08\x1c\n\x0b\n\x04\x04\x01\x02\0\x12\
-    \x03\x14\x02\x10\n\x0c\n\x05\x04\x01\x02\0\x05\x12\x03\x14\x02\x08\n\x0c\
-    \n\x05\x04\x01\x02\0\x01\x12\x03\x14\t\x0b\n\x0c\n\x05\x04\x01\x02\0\x03\
-    \x12\x03\x14\x0e\x0f\n\t\n\x02\x04\x02\x12\x03\x17\0\x17\n\n\n\x03\x04\
-    \x02\x01\x12\x03\x17\x08\x14\n\n\n\x02\x04\x03\x12\x04\x18\0\x1a\x01\n\n\
-    \n\x03\x04\x03\x01\x12\x03\x18\x08\x1c\n\x0b\n\x04\x04\x03\x02\0\x12\x03\
-    \x19\x02\x10\n\x0c\n\x05\x04\x03\x02\0\x05\x12\x03\x19\x02\x08\n\x0c\n\
-    \x05\x04\x03\x02\0\x01\x12\x03\x19\t\x0b\n\x0c\n\x05\x04\x03\x02\0\x03\
-    \x12\x03\x19\x0e\x0f\n\n\n\x02\x04\x04\x12\x04\x1c\0\x1f\x01\n\n\n\x03\
-    \x04\x04\x01\x12\x03\x1c\x08\x19\n\x0b\n\x04\x04\x04\x02\0\x12\x03\x1d\
-    \x02\x10\n\x0c\n\x05\x04\x04\x02\0\x05\x12\x03\x1d\x02\x08\n\x0c\n\x05\
-    \x04\x04\x02\0\x01\x12\x03\x1d\t\x0b\n\x0c\n\x05\x04\x04\x02\0\x03\x12\
-    \x03\x1d\x0e\x0f\n\x0b\n\x04\x04\x04\x02\x01\x12\x03\x1e\x02!\n\x0c\n\
-    \x05\x04\x04\x02\x01\x04\x12\x03\x1e\x02\n\n\x0c\n\x05\x04\x04\x02\x01\
-    \x05\x12\x03\x1e\x0b\x11\n\x0c\n\x05\x04\x04\x02\x01\x01\x12\x03\x1e\x12\
-    \x1c\n\x0c\n\x05\x04\x04\x02\x01\x03\x12\x03\x1e\x1f\x20\n\n\n\x02\x04\
-    \x05\x12\x04!\0+\x01\n\n\n\x03\x04\x05\x01\x12\x03!\x08\x0c\n\x0b\n\x04\
-    \x04\x05\x02\0\x12\x03\"\x02\x1a\n\x0c\n\x05\x04\x05\x02\0\x04\x12\x03\"\
-    \x02\n\n\x0c\n\x05\x04\x05\x02\0\x05\x12\x03\"\x0b\x11\n\x0c\n\x05\x04\
-    \x05\x02\0\x01\x12\x03\"\x12\x15\n\x0c\n\x05\x04\x05\x02\0\x03\x12\x03\"\
-    \x18\x19\n\x0b\n\x04\x04\x05\x02\x01\x12\x03#\x02\x12\n\x0c\n\x05\x04\
-    \x05\x02\x01\x05\x12\x03#\x02\x08\n\x0c\n\x05\x04\x05\x02\x01\x01\x12\
-    \x03#\t\r\n\x0c\n\x05\x04\x05\x02\x01\x03\x12\x03#\x10\x11\n\x0b\n\x04\
-    \x04\x05\x02\x02\x12\x03$\x02\x13\n\x0c\n\x05\x04\x05\x02\x02\x05\x12\
-    \x03$\x02\x08\n\x0c\n\x05\x04\x05\x02\x02\x01\x12\x03$\t\x0e\n\x0c\n\x05\
-    \x04\x05\x02\x02\x03\x12\x03$\x11\x12\n\x0b\n\x04\x04\x05\x02\x03\x12\
-    \x03%\x02\x16\n\x0c\n\x05\x04\x05\x02\x03\x05\x12\x03%\x02\x08\n\x0c\n\
-    \x05\x04\x05\x02\x03\x01\x12\x03%\t\x11\n\x0c\n\x05\x04\x05\x02\x03\x03\
-    \x12\x03%\x14\x15\n\x0b\n\x04\x04\x05\x02\x04\x12\x03&\x02\x12\n\x0c\n\
-    \x05\x04\x05\x02\x04\x05\x12\x03&\x02\x08\n\x0c\n\x05\x04\x05\x02\x04\
-    \x01\x12\x03&\t\r\n\x0c\n\x05\x04\x05\x02\x04\x03\x12\x03&\x10\x11\n\x0b\
-    \n\x04\x04\x05\x02\x05\x12\x03'\x02\x16\n\x0c\n\x05\x04\x05\x02\x05\x05\
-    \x12\x03'\x02\x08\n\x0c\n\x05\x04\x05\x02\x05\x01\x12\x03'\t\x11\n\x0c\n\
-    \x05\x04\x05\x02\x05\x03\x12\x03'\x14\x15\n\x0b\n\x04\x04\x05\x02\x06\
-    \x12\x03(\x02\x16\n\x0c\n\x05\x04\x05\x02\x06\x05\x12\x03(\x02\x08\n\x0c\
-    \n\x05\x04\x05\x02\x06\x01\x12\x03(\t\x11\n\x0c\n\x05\x04\x05\x02\x06\
-    \x03\x12\x03(\x14\x15\n\x0b\n\x04\x04\x05\x02\x07\x12\x03)\x02\x17\n\x0c\
-    \n\x05\x04\x05\x02\x07\x05\x12\x03)\x02\x08\n\x0c\n\x05\x04\x05\x02\x07\
-    \x01\x12\x03)\t\x12\n\x0c\n\x05\x04\x05\x02\x07\x03\x12\x03)\x15\x16\n\
-    \x0b\n\x04\x04\x05\x02\x08\x12\x03*\x02\x17\n\x0c\n\x05\x04\x05\x02\x08\
-    \x05\x12\x03*\x02\x08\n\x0c\n\x05\x04\x05\x02\x08\x01\x12\x03*\t\x12\n\
-    \x0c\n\x05\x04\x05\x02\x08\x03\x12\x03*\x15\x16\n\n\n\x02\x04\x06\x12\
-    \x04-\0/\x01\n\n\n\x03\x04\x06\x01\x12\x03-\x08\r\n\x0b\n\x04\x04\x06\
-    \x02\0\x12\x03.\x02\x19\n\x0c\n\x05\x04\x06\x02\0\x04\x12\x03.\x02\n\n\
-    \x0c\n\x05\x04\x06\x02\0\x06\x12\x03.\x0b\x0f\n\x0c\n\x05\x04\x06\x02\0\
-    \x01\x12\x03.\x10\x14\n\x0c\n\x05\x04\x06\x02\0\x03\x12\x03.\x17\x18b\
-    \x06proto3\
+    \x20\x03(\tR\nprojection\"\xe5\x01\n\x04User\x12\x0f\n\x03_id\x18\x01\
+    \x20\x01(\tR\x02Id\x12\x12\n\x04name\x18\x02\x20\x01(\tR\x04name\x12\x14\
+    \n\x05email\x18\x03\x20\x01(\tR\x05email\x12\x1a\n\x08tenantId\x18\x04\
+    \x20\x01(\tR\x08tenantId\x12\x12\n\x04role\x18\x05\x20\x01(\tR\x04role\
+    \x12\x1a\n\x08provider\x18\x06\x20\x01(\tR\x08provider\x12\x1a\n\x08pass\
+    word\x18\x07\x20\x01(\tR\x08password\x12\x1c\n\tupdatedAt\x18\x08\x20\
+    \x01(\tR\tupdatedAt\x12\x1c\n\tcreatedAt\x18\t\x20\x01(\tR\tcreatedAt\"&\
+    \n\x05Users\x12\x1d\n\x04data\x18\x01\x20\x03(\x0b2\t.app.UserR\x04data2\
+    \xc6\x02\n\rAppController\x12$\n\nCreateUser\x12\t.app.User\x1a\t.app.Us\
+    er\"\0\x12.\n\x07GetUser\x12\x16.app.GetUserRequestDto\x1a\t.app.User\"\
+    \0\x12<\n\nDeleteUser\x12\x19.app.DeleteUserRequestDto\x1a\x11.app.VoidR\
+    esponse\"\0\x124\n\nUpdateUser\x12\x19.app.UpdateUserRequestDto\x1a\t.ap\
+    p.User\"\0\x121\n\x08GetUsers\x12\x17.app.GetUsersRequestDto\x1a\n.app.U\
+    sers\"\0\x128\n\x0eGetUsersStream\x12\x17.app.GetUsersRequestDto\x1a\t.a\
+    pp.User\"\00\x01J\xb5\r\n\x06\x12\x04\0\05\x01\n\x08\n\x01\x0c\x12\x03\0\
+    \0\x12\n\x08\n\x01\x02\x12\x03\x02\0\x0c\n<\n\x02\x06\0\x12\x04\x05\0\
+    \x0e\x01\x1a0\x20Declare\x20a\x20service\x20for\x20each\x20controller\
+    \x20you\x20have\n\n\n\n\x03\x06\0\x01\x12\x03\x05\x08\x15\nE\n\x04\x06\0\
+    \x02\0\x12\x03\x07\x02)\x1a8\x20Declare\x20an\x20rpc\x20for\x20each\x20m\
+    ethod\x20that\x20is\x20called\x20via\x20gRPC\n\n\x0c\n\x05\x06\0\x02\0\
+    \x01\x12\x03\x07\x06\x10\n\x0c\n\x05\x06\0\x02\0\x02\x12\x03\x07\x12\x16\
+    \n\x0c\n\x05\x06\0\x02\0\x03\x12\x03\x07!%\n\"\n\x04\x06\0\x02\x01\x12\
+    \x03\t\x023\x1a\x15\x20\x20my\x20get\x20user\x20method\n\n\x0c\n\x05\x06\
+    \0\x02\x01\x01\x12\x03\t\x06\r\n\x0c\n\x05\x06\0\x02\x01\x02\x12\x03\t\
+    \x0f\x20\n\x0c\n\x05\x06\0\x02\x01\x03\x12\x03\t+/\n\x0b\n\x04\x06\0\x02\
+    \x02\x12\x03\n\x02A\n\x0c\n\x05\x06\0\x02\x02\x01\x12\x03\n\x06\x10\n\
+    \x0c\n\x05\x06\0\x02\x02\x02\x12\x03\n\x12&\n\x0c\n\x05\x06\0\x02\x02\
+    \x03\x12\x03\n1=\n\x0b\n\x04\x06\0\x02\x03\x12\x03\x0b\x029\n\x0c\n\x05\
+    \x06\0\x02\x03\x01\x12\x03\x0b\x06\x10\n\x0c\n\x05\x06\0\x02\x03\x02\x12\
+    \x03\x0b\x12&\n\x0c\n\x05\x06\0\x02\x03\x03\x12\x03\x0b15\n\x0b\n\x04\
+    \x06\0\x02\x04\x12\x03\x0c\x026\n\x0c\n\x05\x06\0\x02\x04\x01\x12\x03\
+    \x0c\x06\x0e\n\x0c\n\x05\x06\0\x02\x04\x02\x12\x03\x0c\x10\"\n\x0c\n\x05\
+    \x06\0\x02\x04\x03\x12\x03\x0c-2\n\x0b\n\x04\x06\0\x02\x05\x12\x03\r\x02\
+    B\n\x0c\n\x05\x06\0\x02\x05\x01\x12\x03\r\x06\x14\n\x0c\n\x05\x06\0\x02\
+    \x05\x02\x12\x03\r\x16(\n\x0c\n\x05\x06\0\x02\x05\x06\x12\x03\r39\n\x0c\
+    \n\x05\x06\0\x02\x05\x03\x12\x03\r:>\n\n\n\x02\x04\0\x12\x04\x10\0\x13\
+    \x01\n\n\n\x03\x04\0\x01\x12\x03\x10\x08\x1a\n\x0b\n\x04\x04\0\x02\0\x12\
+    \x03\x11\x02\x13\n\x0c\n\x05\x04\0\x02\0\x05\x12\x03\x11\x02\x08\n\x0c\n\
+    \x05\x04\0\x02\0\x01\x12\x03\x11\t\x0e\n\x0c\n\x05\x04\0\x02\0\x03\x12\
+    \x03\x11\x11\x12\n\x0b\n\x04\x04\0\x02\x01\x12\x03\x12\x02!\n\x0c\n\x05\
+    \x04\0\x02\x01\x04\x12\x03\x12\x02\n\n\x0c\n\x05\x04\0\x02\x01\x05\x12\
+    \x03\x12\x0b\x11\n\x0c\n\x05\x04\0\x02\x01\x01\x12\x03\x12\x12\x1c\n\x0c\
+    \n\x05\x04\0\x02\x01\x03\x12\x03\x12\x1f\x20\n\n\n\x02\x04\x01\x12\x04\
+    \x15\0\x17\x01\n\n\n\x03\x04\x01\x01\x12\x03\x15\x08\x1c\n\x0b\n\x04\x04\
+    \x01\x02\0\x12\x03\x16\x02\x10\n\x0c\n\x05\x04\x01\x02\0\x05\x12\x03\x16\
+    \x02\x08\n\x0c\n\x05\x04\x01\x02\0\x01\x12\x03\x16\t\x0b\n\x0c\n\x05\x04\
+    \x01\x02\0\x03\x12\x03\x16\x0e\x0f\n\t\n\x02\x04\x02\x12\x03\x19\0\x17\n\
+    \n\n\x03\x04\x02\x01\x12\x03\x19\x08\x14\n\n\n\x02\x04\x03\x12\x04\x1a\0\
+    \x1c\x01\n\n\n\x03\x04\x03\x01\x12\x03\x1a\x08\x1c\n\x0b\n\x04\x04\x03\
+    \x02\0\x12\x03\x1b\x02\x10\n\x0c\n\x05\x04\x03\x02\0\x05\x12\x03\x1b\x02\
+    \x08\n\x0c\n\x05\x04\x03\x02\0\x01\x12\x03\x1b\t\x0b\n\x0c\n\x05\x04\x03\
+    \x02\0\x03\x12\x03\x1b\x0e\x0f\n\n\n\x02\x04\x04\x12\x04\x1e\0!\x01\n\n\
+    \n\x03\x04\x04\x01\x12\x03\x1e\x08\x19\n\x0b\n\x04\x04\x04\x02\0\x12\x03\
+    \x1f\x02\x10\n\x0c\n\x05\x04\x04\x02\0\x05\x12\x03\x1f\x02\x08\n\x0c\n\
+    \x05\x04\x04\x02\0\x01\x12\x03\x1f\t\x0b\n\x0c\n\x05\x04\x04\x02\0\x03\
+    \x12\x03\x1f\x0e\x0f\n\x0b\n\x04\x04\x04\x02\x01\x12\x03\x20\x02!\n\x0c\
+    \n\x05\x04\x04\x02\x01\x04\x12\x03\x20\x02\n\n\x0c\n\x05\x04\x04\x02\x01\
+    \x05\x12\x03\x20\x0b\x11\n\x0c\n\x05\x04\x04\x02\x01\x01\x12\x03\x20\x12\
+    \x1c\n\x0c\n\x05\x04\x04\x02\x01\x03\x12\x03\x20\x1f\x20\n\n\n\x02\x04\
+    \x05\x12\x04#\01\x01\n\n\n\x03\x04\x05\x01\x12\x03#\x08\x0c\nB\n\x04\x04\
+    \x05\x02\0\x12\x03&\x02\x11\x1a5\x20\x20mongodb\x20object\x20id\x20-\x20\
+    24\x202len\x20chars\n\x20\x20string\x20id\x20=\x201;\n\n\x0c\n\x05\x04\
+    \x05\x02\0\x05\x12\x03&\x02\x08\n\x0c\n\x05\x04\x05\x02\0\x01\x12\x03&\t\
+    \x0c\n\x0c\n\x05\x04\x05\x02\0\x03\x12\x03&\x0f\x10\n\"\n\x04\x04\x05\
+    \x02\x01\x12\x03(\x02\x12\x1a\x15\x20\x20user\x20personal\x20name\n\n\
+    \x0c\n\x05\x04\x05\x02\x01\x05\x12\x03(\x02\x08\n\x0c\n\x05\x04\x05\x02\
+    \x01\x01\x12\x03(\t\r\n\x0c\n\x05\x04\x05\x02\x01\x03\x12\x03(\x10\x11\n\
+    \"\n\x04\x04\x05\x02\x02\x12\x03*\x02\x13\x1a\x15\x20\x20user\x20email\
+    \x20address\n\n\x0c\n\x05\x04\x05\x02\x02\x05\x12\x03*\x02\x08\n\x0c\n\
+    \x05\x04\x05\x02\x02\x01\x12\x03*\t\x0e\n\x0c\n\x05\x04\x05\x02\x02\x03\
+    \x12\x03*\x11\x12\n\x0b\n\x04\x04\x05\x02\x03\x12\x03+\x02\x16\n\x0c\n\
+    \x05\x04\x05\x02\x03\x05\x12\x03+\x02\x08\n\x0c\n\x05\x04\x05\x02\x03\
+    \x01\x12\x03+\t\x11\n\x0c\n\x05\x04\x05\x02\x03\x03\x12\x03+\x14\x15\n\
+    \x0b\n\x04\x04\x05\x02\x04\x12\x03,\x02\x12\n\x0c\n\x05\x04\x05\x02\x04\
+    \x05\x12\x03,\x02\x08\n\x0c\n\x05\x04\x05\x02\x04\x01\x12\x03,\t\r\n\x0c\
+    \n\x05\x04\x05\x02\x04\x03\x12\x03,\x10\x11\n\x0b\n\x04\x04\x05\x02\x05\
+    \x12\x03-\x02\x16\n\x0c\n\x05\x04\x05\x02\x05\x05\x12\x03-\x02\x08\n\x0c\
+    \n\x05\x04\x05\x02\x05\x01\x12\x03-\t\x11\n\x0c\n\x05\x04\x05\x02\x05\
+    \x03\x12\x03-\x14\x15\n\x0b\n\x04\x04\x05\x02\x06\x12\x03.\x02\x16\n\x0c\
+    \n\x05\x04\x05\x02\x06\x05\x12\x03.\x02\x08\n\x0c\n\x05\x04\x05\x02\x06\
+    \x01\x12\x03.\t\x11\n\x0c\n\x05\x04\x05\x02\x06\x03\x12\x03.\x14\x15\n\
+    \x0b\n\x04\x04\x05\x02\x07\x12\x03/\x02\x17\n\x0c\n\x05\x04\x05\x02\x07\
+    \x05\x12\x03/\x02\x08\n\x0c\n\x05\x04\x05\x02\x07\x01\x12\x03/\t\x12\n\
+    \x0c\n\x05\x04\x05\x02\x07\x03\x12\x03/\x15\x16\n\x0b\n\x04\x04\x05\x02\
+    \x08\x12\x030\x02\x17\n\x0c\n\x05\x04\x05\x02\x08\x05\x12\x030\x02\x08\n\
+    \x0c\n\x05\x04\x05\x02\x08\x01\x12\x030\t\x12\n\x0c\n\x05\x04\x05\x02\
+    \x08\x03\x12\x030\x15\x16\n\n\n\x02\x04\x06\x12\x043\05\x01\n\n\n\x03\
+    \x04\x06\x01\x12\x033\x08\r\n\x0b\n\x04\x04\x06\x02\0\x12\x034\x02\x19\n\
+    \x0c\n\x05\x04\x06\x02\0\x04\x12\x034\x02\n\n\x0c\n\x05\x04\x06\x02\0\
+    \x06\x12\x034\x0b\x0f\n\x0c\n\x05\x04\x06\x02\0\x01\x12\x034\x10\x14\n\
+    \x0c\n\x05\x04\x06\x02\0\x03\x12\x034\x17\x18b\x06proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file
