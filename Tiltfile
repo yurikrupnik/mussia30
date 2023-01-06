@@ -11,7 +11,7 @@ local_resource('proto-generate', cmd='just proto-generate', deps=['_proto/'], la
 include('./apps/go/api-rest/Tiltfile')
 include('./apps/node/api-rest/Tiltfile')
 include('./apps/frontend/host/Tiltfile')
-# include('./apps/node/users-grpc/Tiltfile')
+include('./apps/node/users-grpc/Tiltfile')
 # include('./apps/rust/api-rest/Tiltfile')
 # include('./apps/rust/users-grpc/Tiltfile')
 # include('./apps/infra/commdands/Tiltfile')
