@@ -39,7 +39,7 @@ specifiers:
   '@types/jest': 29.2.5
   '@types/lodash': ^4.14.191
   '@types/node': 18.11.9
-  '@types/react': 18.0.25
+  '@types/react': 18.0.26
   '@types/react-dom': 18.0.10
   '@types/react-router-dom': 5.3.3
   '@typescript-eslint/eslint-plugin': ^5.36.1
@@ -113,7 +113,7 @@ dependencies:
   '@nestjs/terminus': 9.1.4_dlpilwsl2p7zgokgwpl3gxnbru
   '@solidjs/router': 0.6.0_solid-js@1.6.6
   '@tanstack/solid-query': 4.20.9_solid-js@1.6.6
-  '@xstate/react': 3.0.1_2y6n7j7lbb2n4v2fpaisq2ajom
+  '@xstate/react': 3.0.1_usupc6fv4xloi57sjg5n7lyavq
   axios: 1.2.1
   class-transformer: 0.5.1
   class-validator: 0.14.0
@@ -159,7 +159,7 @@ devDependencies:
   '@types/jest': 29.2.5
   '@types/lodash': 4.14.191
   '@types/node': 18.11.9
-  '@types/react': 18.0.25
+  '@types/react': 18.0.26
   '@types/react-dom': 18.0.10
   '@types/react-router-dom': 5.3.3
   '@typescript-eslint/eslint-plugin': 5.47.0_ojtuyx3ww4vqganj7irav5mrxe
@@ -5357,14 +5357,14 @@ packages:
   /@types/react-dom/18.0.10:
     resolution: {integrity: sha512-E42GW/JA4Qv15wQdqJq8DL4JhNpB3prJgjgapN3qJT9K2zO5IIAQh4VXvCEDupoqAwnz0cY4RlXeC/ajX5SFHg==}
     dependencies:
-      '@types/react': 18.0.25
+      '@types/react': 18.0.26
     dev: true
 
   /@types/react-router-dom/5.3.3:
     resolution: {integrity: sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 18.0.25
+      '@types/react': 18.0.26
       '@types/react-router': 5.1.20
     dev: true
 
@@ -5372,11 +5372,11 @@ packages:
     resolution: {integrity: sha512-jGjmu/ZqS7FjSH6owMcD5qpq19+1RS9DeVRqfl1FeBMxTDQAGwlMWOcs52NDoXaNKyG3d1cYQFMs9rCrb88o9Q==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 18.0.25
+      '@types/react': 18.0.26
     dev: true
 
-  /@types/react/18.0.25:
-    resolution: {integrity: sha512-xD6c0KDT4m7n9uD4ZHi02lzskaiqcBxf4zi+tXZY98a04wvc0hi/TcCPC2FOESZi51Nd7tlUeOJY8RofL799/g==}
+  /@types/react/18.0.26:
+    resolution: {integrity: sha512-hCR3PJQsAIXyxhTNSiDFY//LhnMZWpNNr5etoCqx/iUfGc5gXWtQR2Phl908jVR6uPXacojQWTg4qRpkxTuGug==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
@@ -5771,7 +5771,7 @@ packages:
       - supports-color
     dev: true
 
-  /@xstate/react/3.0.1_2y6n7j7lbb2n4v2fpaisq2ajom:
+  /@xstate/react/3.0.1_usupc6fv4xloi57sjg5n7lyavq:
     resolution: {integrity: sha512-/tq/gg92P9ke8J+yDNDBv5/PAxBvXJf2cYyGDByzgtl5wKaxKxzDT82Gj3eWlCJXkrBg4J5/V47//gRJuVH2fA==}
     peerDependencies:
       '@xstate/fsm': ^2.0.0
@@ -5784,7 +5784,7 @@ packages:
         optional: true
     dependencies:
       react: 18.2.0
-      use-isomorphic-layout-effect: 1.1.2_fan5qbzahqtxlm5dzefqlqx5ia
+      use-isomorphic-layout-effect: 1.1.2_kzbn2opkn2327fwg5yzwzya5o4
       use-sync-external-store: 1.2.0_react@18.2.0
       xstate: 4.35.1
     transitivePeerDependencies:
@@ -14309,7 +14309,7 @@ packages:
       requires-port: 1.0.0
     dev: true
 
-  /use-isomorphic-layout-effect/1.1.2_fan5qbzahqtxlm5dzefqlqx5ia:
+  /use-isomorphic-layout-effect/1.1.2_kzbn2opkn2327fwg5yzwzya5o4:
     resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
     peerDependencies:
       '@types/react': '*'
@@ -14318,7 +14318,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@types/react': 18.0.25
+      '@types/react': 18.0.26
       react: 18.2.0
     dev: false
 
