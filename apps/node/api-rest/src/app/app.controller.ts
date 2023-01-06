@@ -16,7 +16,7 @@ import { OmitType, PartialType } from '@nestjs/swagger';
 import { Metadata } from '@grpc/grpc-js';
 // import { GrpcStreamCall } from '@nestjs/microservices';
 import { users } from '@mussia30/node/grpc';
-import * as process from 'process';
+// import * as process from 'process';
 
 enum Projection {
   name = 'name',
@@ -37,7 +37,6 @@ export class GrpcController {
     transport: Transport.GRPC,
     options: {
       package: users.APP_PACKAGE_NAME,
-      // protoPath: join(process.cwd(), '_proto/users.proto'),
       protoPath: join(__dirname, 'assets/users.proto'),
       // url,
     },

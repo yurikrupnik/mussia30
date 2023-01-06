@@ -13,7 +13,6 @@ const microserviceOptions = {
   transport: Transport.GRPC,
   options: {
     package: users.APP_PACKAGE_NAME,
-    // protoPath: join(process.cwd(), '_proto/users.proto'),
     protoPath: join(__dirname, 'assets/users.proto'),
     // url: '0.0.0.0:8080',
     // url,
