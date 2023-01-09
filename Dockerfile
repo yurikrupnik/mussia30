@@ -1,6 +1,6 @@
 
 # Done!
-FROM node:18-alpine AS node
+FROM node:19-alpine AS node
 WORKDIR /app
 ARG DIST_PATH
 RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
@@ -12,7 +12,7 @@ EXPOSE ${PORT}
 CMD ["node", "main.js"]
 
 # Done!
-FROM node:18-alpine AS bun
+FROM node:19-alpine AS bun
 WORKDIR /app
 ARG DIST_PATH
 # RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
