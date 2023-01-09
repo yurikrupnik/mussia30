@@ -1,5 +1,6 @@
 [workspace]
 members = [
+    "apps/rust/users-redis",
     "apps/rust/users-grpc",
     "libs/rust/grpc",
     "libs/rust/graphql/starwars",
