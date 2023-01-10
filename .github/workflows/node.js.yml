@@ -223,5 +223,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
+      - name: Login to DockerHub Registry
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 #      - run: pnpm nx affected --target=build --parallel --max-parallel=3
       - run: pnpm nx affected --target=docker --parallel --max-parallel=3
