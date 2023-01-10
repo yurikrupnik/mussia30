@@ -52,7 +52,7 @@ WORKDIR /
 #ARG DIST_PATH
 #RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
 #COPY $DIST_PATH /bin/
-COPY target/release/api_rest /bin/
+#COPY target/release/api_rest /bin/
 ENV PORT=8080
 EXPOSE ${PORT}
 CMD api_rest

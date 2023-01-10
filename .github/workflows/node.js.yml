@@ -98,6 +98,8 @@ jobs:
         run: pnpm install
       - run: pnpm nx affected --target=build --parallel --max-parallel=3 --prod
       - run: ls target/release
+      - run: ls dist/apps/go
+      - run: ls dist/apps/node
   test:
     runs-on: ubuntu-latest
     steps:
