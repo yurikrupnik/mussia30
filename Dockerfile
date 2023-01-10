@@ -11,17 +11,6 @@ ENV PORT=8080
 EXPOSE ${PORT}
 CMD ["node", "main.js"]
 
-# Done!
-FROM node:18-alpine AS bun
-WORKDIR /app
-ARG DIST_PATH
-# RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
-ENV NODE_ENV=$NODE_ENV
-COPY ./$DIST_PATH .
-RUN npm install
-ENV PORT=8080
-EXPOSE ${PORT}
-CMD ["bun", "main.js"]
 
 # Done
 FROM nginx:alpine AS nginx
