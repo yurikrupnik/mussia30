@@ -77,8 +77,8 @@ use utoipa_swagger_ui::SwaggerUi;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    env::set_var("RUST_LOG", "debug");
-    env::set_var("RUST_BACKTRACE", "1");
+    // env::set_var("RUST_LOG", "debug");
+    // env::set_var("RUST_BACKTRACE", "1");
     env_logger::init_from_env(Env::default().default_filter_or("info"));
 
     let openapi = ApiDoc::openapi();
