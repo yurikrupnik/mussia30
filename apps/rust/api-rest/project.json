@@ -35,7 +35,35 @@
         "noDeps": true
       }
     },
-    "docker-regular": {
+    "docker": {
+      "executor": "@nx-tools/nx-container:build",
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ],
+      "options": {
+        "push": true,
+        "file": "./Dockerfile",
+        "target": "rust",
+        "platforms": ["linux/amd64", "linux/arm64"],
+        "build-args": ["DIST_PATH=target/release/api_rest"],
+        "metadata": {
+          "images": [
+            "yurikrupnik/rust-api-rest"
+          ]
+        }
+      }
+    },
+    "docker-buildx": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "docker buildx build --target rust --build-arg DIST_PATH=target/release/api_rest . -t yurikrupnik/rust-api-rest"
+      }
+    },
+    "docker-normal": {
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "dependsOn": [
@@ -47,7 +75,7 @@
       "options": {
         "parallel": false,
         "commands": [
-          "docker build --target alpine --build-arg DIST_PATH=dist/apps/rust/api-rest . -t yurikrupnik/rust-api-rest",
+          "docker build --target rust --build-arg DIST_PATH=target/release/api_rest . -t yurikrupnik/rust-api-rest",
           "docker push yurikrupnik/rust-api-rest"
         ]
       }
