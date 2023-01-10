@@ -1,6 +1,6 @@
 
 # Done!
-FROM node:16-alpine AS node
+FROM node:18-alpine AS node
 WORKDIR /app
 ARG DIST_PATH
 RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
