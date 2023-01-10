@@ -242,3 +242,4 @@ jobs:
           GOOS: linux
           GOARCH: amd64
           CGO_ENABLED: 0
+      - run: ls target/release
