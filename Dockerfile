@@ -48,8 +48,7 @@ ENTRYPOINT ["/app"]
 
 FROM debian:buster-slim AS rust
 #FROM alpine AS rust
-#FROM alpine AS rust
-#WORKDIR /
+WORKDIR /
 #ARG DIST_PATH
 #RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
 #COPY $DIST_PATH /bin/
