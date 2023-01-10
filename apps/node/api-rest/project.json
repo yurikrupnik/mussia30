@@ -56,24 +56,48 @@
         "passWithNoTests": true
       }
     },
-    "docker-regular": {
+    "docker": {
+      "executor": "@nx-tools/nx-container:build",
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ],
+      "options": {
+        "push": true,
+        "file": "./Dockerfile",
+        "target": "node",
+        "platforms": ["linux/amd64", "linux/arm64"],
+        "build-args": ["DIST_PATH=dist/apps/node/api-rest"],
+        "metadata": {
+          "images": [
+            "yurikrupnik/node-api-rest"
+          ]
+        }
+      }
+    },
+    "docker-buildx": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "docker buildx build --target node --build-arg DIST_PATH=dist/apps/node/api-rest . -t yurikrupnik/node-api-rest"
+      }
+    },
+    "docker-normal": {
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "dependsOn": [
         {
           "target": "build",
           "projects": "self"
-        },
-        {
-          "target": "lint",
-          "projects": "self"
         }
       ],
       "options": {
         "parallel": false,
         "commands": [
-          "docker buildx build --target node --build-arg DIST_PATH=dist/apps/node/api-rest . -t yurikrupnik/node-api-rest --push",
-          "echo hello"
+          "docker build --target node --build-arg DIST_PATH=dist/apps/node/api-rest . -t yurikrupnik/node-api-rest",
+          "docker push yurikrupnik/node-api-rest"
         ]
       }
     }
