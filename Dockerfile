@@ -47,13 +47,12 @@ ENTRYPOINT ["/app"]
 
 
 FROM debian:buster-slim AS rust
-#FROM alpine AS rust
 WORKDIR /
-#ARG DIST_PATH
+ARG DIST_PATH
 RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
-COPY $DIST_PATH /bin/
+COPY $DIST_PATH /bin/app
 #COPY target/release/api_rest /bin/
 ENV PORT=8080
 EXPOSE ${PORT}
-CMD api_rest
+CMD app
 #ENTRYPOINT ["/bin/bash", "/bin/api_rest1"]

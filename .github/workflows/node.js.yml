@@ -97,10 +97,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - run: pnpm nx affected --target=build --parallel --max-parallel=3 --prod
-      - run: ls target
-      - run: ls target/release
-      - run: ls dist/apps/go
-      - run: ls dist/apps/node
   test:
     runs-on: ubuntu-latest
     steps:
@@ -246,5 +242,3 @@ jobs:
           GOOS: linux
           GOARCH: amd64
           CGO_ENABLED: 0
-#      - run: ls target
-      - run: ls target/release
