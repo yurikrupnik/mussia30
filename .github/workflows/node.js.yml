@@ -247,4 +247,4 @@ jobs:
           GOARCH: amd64
           CGO_ENABLED: 0
 #      - run: ls target
-#      - run: ls target/release
+      - run: ls target/release
