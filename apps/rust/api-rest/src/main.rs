@@ -82,10 +82,6 @@ async fn main() -> std::io::Result<()> {
     env_logger::init_from_env(Env::default().default_filter_or("info"));
 
     let openapi = ApiDoc::openapi();
-    // println!("{}", ApiDoc::openapi().to_pretty_json().unwrap());
-    // create_swagger_func_way();
-    // todo struct to document
-    // todo move swagger to other file
     let uri = env::var("MONGODB_URI").unwrap_or_else(|_| "mongodb://localhost:27017".into());
     let client = Client::with_uri_str(uri).await.expect("failed to connect");
     let store = web::Data::new(todo::TodoStore::default());
