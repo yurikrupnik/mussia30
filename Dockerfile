@@ -47,7 +47,7 @@ ENTRYPOINT ["/app"]
 FROM debian:buster-slim AS rust
 WORKDIR /
 ARG DIST_PATH
-RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
+#RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
 #COPY $DIST_PATH /bin/app
 COPY target/release/api_rest /bin/
 ENV PORT=8080
