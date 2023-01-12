@@ -55,4 +55,3 @@ COPY $DIST_PATH /bin/app
 ENV PORT=8080
 EXPOSE ${PORT}
 CMD app
-#ENTRYPOINT ["/bin/bash", "/bin/api_rest1"]
