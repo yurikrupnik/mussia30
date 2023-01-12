@@ -37,13 +37,7 @@
     },
     "docker": {
       "executor": "@nx-tools/nx-container:build",
-      "dependsOn": [
-        {
-          "target": "build",
-          "projects": "self",
-          "params": "forward"
-        }
-      ],
+      "dependsOn": [],
       "options": {
         "push": true,
         "file": "./Dockerfile",
@@ -55,31 +49,6 @@
             "yurikrupnik/rust-api-rest"
           ]
         }
-      }
-    },
-    "docker-buildx": {
-      "executor": "@nrwl/workspace:run-commands",
-      "outputs": [],
-      "options": {
-        "command": "docker buildx build --target rust --build-arg DIST_PATH=target/release/api_rest . -t yurikrupnik/rust-api-rest"
-      }
-    },
-    "docker-normal": {
-      "executor": "@nrwl/workspace:run-commands",
-      "outputs": [],
-      "dependsOn": [
-        {
-          "target": "build",
-          "projects": "self",
-          "params": "forward"
-        }
-      ],
-      "options": {
-        "parallel": false,
-        "commands": [
-          "docker build --target rust --build-arg DIST_PATH=target/release/api_rest . -t yurikrupnik/rust-api-rest",
-          "docker push yurikrupnik/rust-api-rest"
-        ]
       }
     }
   },

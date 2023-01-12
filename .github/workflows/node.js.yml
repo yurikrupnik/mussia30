@@ -234,6 +234,8 @@ jobs:
         uses: docker/setup-buildx-action@v2
         with:
           version: v0.7.0
+      - name: Pre build for docker
+        run: pnpm nx affected --target=build --parallel --max-parallel=3 --prod
       - name: Build docker images
         run: pnpm nx affected --target=docker --parallel --max-parallel=3 --prod
         env:
