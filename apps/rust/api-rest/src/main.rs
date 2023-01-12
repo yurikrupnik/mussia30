@@ -87,7 +87,7 @@ async fn main() -> std::io::Result<()> {
     let client = Client::with_uri_str(uri).await.expect("failed to connect");
     let store = web::Data::new(todo::TodoStore::default());
     // data here
-    let client_data = web::Data::new(client); // used for product api
+    let client_data = web::Data::new(client);
 
     HttpServer::new(move || {
         let cors = Cors::default()
