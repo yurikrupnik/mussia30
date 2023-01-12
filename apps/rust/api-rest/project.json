@@ -53,7 +53,9 @@
           "images": [
             "yurikrupnik/rust-api-rest"
           ]
-        }
+        },
+        "cache-from": ["type=gha"],
+        "cache-to": ["type=gha,mode=max"]
       }
     },
     "docker-buildx": {
