@@ -236,6 +236,8 @@ jobs:
           version: v0.7.0
       - name: Pre build for docker
         run: pnpm nx affected --target=build --parallel --max-parallel=3 --prod
+      - run: ls target
+      - run: ls dist
       - name: Build docker images
         run: pnpm nx affected --target=docker --parallel --max-parallel=3 --prod
         env:

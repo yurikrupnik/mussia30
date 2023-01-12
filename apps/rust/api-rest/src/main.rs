@@ -26,7 +26,7 @@ use utoipa_swagger_ui::SwaggerUi;
 //         name: "lightning".to_string(),
 //     }
 // }
-//
+
 // fn create_swagger_func_way() {
 //     // utoipa::openapi::OpenApiBuilder::new()
 //     let s = utoipa::openapi::PathsBuilder::new().path(
