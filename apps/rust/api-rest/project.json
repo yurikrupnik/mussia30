@@ -47,7 +47,7 @@
         "push": true,
         "file": "./Dockerfile",
         "target": "rust",
-        "platforms": ["linux/amd64"],
+        "platforms": ["linux/amd64", "linux/arm64"],
         "build-args": ["DIST_PATH=target/release/api_rest"],
         "metadata": {
           "images": [
