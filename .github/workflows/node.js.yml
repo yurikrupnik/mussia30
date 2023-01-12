@@ -241,7 +241,7 @@ jobs:
           GOARCH: amd64
           CGO_ENABLED: 0
       - name: Build docker images
-        run: pnpm nx affected --target=docker --parallel --max-parallel=3 --prod
+        run: pnpm nx affected --target=docker --parallel --max-parallel=3
         env:
           TAG: ${{ steps.vars.outputs.sha_short }}
           INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
