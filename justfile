@@ -1,5 +1,6 @@
 set export
 set shell := ["sh", "-c"]
+GCP_PROJECT := `gcloud config get-value project`
 
 default:
     @just --list --unsorted
@@ -11,7 +12,7 @@ proto-generate:
   protoc --rust_out ./libs/rust/grpc/src/generated --plugin=node_modules/ts-proto/protoc-gen-ts_proto --ts_proto_opt=nestJs=true,addGrpcMetadata=true,addNestjsRestParameter=true --ts_proto_out=./libs/node/grpc/src ./_proto/* --ts_proto_opt=esModuleInterop=true
 # daily github actions
 daily:
-  echo sjal
+  echo "daily stuff"
 
 #local-mongodb-docker-compose:
 #  echo stam

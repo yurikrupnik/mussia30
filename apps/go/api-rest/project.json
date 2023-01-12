@@ -25,16 +25,17 @@
     "lint": {
       "executor": "@nx-go/nx-go:lint"
     },
-    "docker-local": {
+    "docker": {
       "executor": "@nx-tools/nx-container:build",
       "dependsOn": [
         {
           "target": "build",
-          "projects": "self"
+          "projects": "self",
+          "params": "forward"
         }
       ],
       "options": {
-        "push": false,
+        "push": true,
         "file": "./Dockerfile",
         "target": "alpine",
         "platforms": ["linux/amd64", "linux/arm64"],
@@ -46,20 +47,21 @@
         }
       }
     },
-    "docker": {
+    "docker-buildx": {
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "options": {
         "command": "docker buildx build --target alpine --build-arg DIST_PATH=dist/apps/go/api-rest . -t yurikrupnik/go-api-rest"
       }
     },
-    "docker-regular": {
+    "docker-normal": {
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "dependsOn": [
         {
           "target": "build",
-          "projects": "self"
+          "projects": "self",
+          "params": "forward"
         }
       ],
       "options": {
