@@ -11,7 +11,7 @@ use std::env;
 use swagger::ApiDoc;
 use utoipa::OpenApi;
 use utoipa_swagger_ui::SwaggerUi;
-// use utoipa::path;
+// use utoipa::path;s
 
 // #[warn(dead_code)]
 // struct Pet {
