@@ -240,6 +240,7 @@ jobs:
           GOOS: linux
           GOARCH: amd64
           CGO_ENABLED: 0
+      - run: ls
       - name: Build docker images
         run: pnpm nx affected --target=docker --parallel --max-parallel=3
         env:
