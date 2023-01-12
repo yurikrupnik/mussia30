@@ -40,7 +40,8 @@
       "dependsOn": [
         {
           "target": "build",
-          "projects": "self"
+          "projects": "self",
+          "params": "forward"
         }
       ],
       "options": {
@@ -71,7 +72,8 @@
       "dependsOn": [
         {
           "target": "build",
-          "projects": "self"
+          "projects": "self",
+          "params": "forward"
         }
       ],
       "options": {

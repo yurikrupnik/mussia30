@@ -235,7 +235,7 @@ jobs:
         with:
           version: v0.7.0
       - name: Build docker images
-        run: pnpm nx affected --target=docker --parallel --max-parallel=3
+        run: pnpm nx affected --target=docker --parallel --max-parallel=3 --prod
         env:
           TAG: ${{ steps.vars.outputs.sha_short }}
           INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
