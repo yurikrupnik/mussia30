@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rust-api-rest
+  labels:
+    app: rust-api-rest
+    version: v1
+spec:
+  replicas: 1
+
+  template:
+    metadata:
+      name: rust-api-rest
+      labels:
+        app: rust-api-rest
+        version: v1
+      annotations:
+        "linkerd.io/inject": "enabled"
+        "consul.hashicorp.com/connect-inject": "true"
+        "consul.hashicorp.com/connect-service": "rust-api-rest"
+        "consul.hashicorp.com/connect-service-protocol": "http"
+        "consul.hashicorp.com/service-meta-version": "v.1.1"
+        "prometheus.io/scrape": "true"
+        "prometheus.io/port": "9102"
+    spec:
+      serviceAccountName: rust-api-rest
+      containers:
+        - name: rust-api-rest
+          image: yurikrupnik/rust-api-rest:main
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: MONrust_URI
+              value: monrustdb+srv://yurikrupnik:T4eXKj1RBI4VnszC@cluster0.rdmew.monrustdb.net/
+
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: rust-api-rest
+      version: v1
