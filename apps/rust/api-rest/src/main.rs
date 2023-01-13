@@ -26,7 +26,7 @@ use utoipa_swagger_ui::SwaggerUi;
 //         name: "lightning".to_string(),
 //     }
 // }
-//
+
 // fn create_swagger_func_way() {
 //     // utoipa::openapi::OpenApiBuilder::new()
 //     let s = utoipa::openapi::PathsBuilder::new().path(
@@ -87,7 +87,7 @@ async fn main() -> std::io::Result<()> {
     let client = Client::with_uri_str(uri).await.expect("failed to connect");
     let store = web::Data::new(todo::TodoStore::default());
     // data here
-    let client_data = web::Data::new(client); // used for product api
+    let client_data = web::Data::new(client);
 
     HttpServer::new(move || {
         let cors = Cors::default()
