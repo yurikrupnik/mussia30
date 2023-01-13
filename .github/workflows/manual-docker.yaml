@@ -1,3 +1,5 @@
+name: Manual Docker
+
 on:
   workflow_dispatch:
     inputs:
