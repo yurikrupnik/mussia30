@@ -52,3 +52,28 @@ COPY $DIST_PATH /bin/app
 ENV PORT=8080
 EXPOSE ${PORT}
 CMD app
+
+#FROM rust AS rust-app
+##RUN apt update && apt upgrade
+##RUN apt install curl -y
+##RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+##RUN apt-get install nodejs
+##RUN apt-get install build-essential -y
+##RUN npm i -g pnpm
+#WORKDIR /app
+##COPY package.json .
+##COPY pnpm-lock.yaml .
+###RUN pnpm i
+#COPY . .
+#RUN cargo build --release --bin api_rest
+##ENV PORT=8080
+##EXPOSE ${PORT}
+##RUN curl https://sh.rustup.rs -sSf | sh
+##RUN pnpm nx run api_rest:build --prod
+#
+#
+#FROM debian:buster-slim AS rust-final
+#COPY --from=rust-app app/target/release/api_rest ./bin/app
+#ENV PORT=8080
+#EXPOSE ${PORT}
+#CMD app
