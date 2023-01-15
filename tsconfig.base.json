@@ -43,7 +43,8 @@
       "@mussia30/node/ts-utils": ["libs/node/ts-utils/src/index.ts"],
       "@mussia30/node/xstate-machines": [
         "libs/node/xstate-machines/src/index.ts"
-      ]
+      ],
+      "@mussia30/platform/cdk8s": ["libs/platform/cdk8s/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

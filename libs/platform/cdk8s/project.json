@@ -1,0 +1,51 @@
+{
+  "name": "platform-cdk8s",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/platform/cdk8s/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/platform/cdk8s",
+        "tsConfig": "libs/platform/cdk8s/tsconfig.lib.json",
+        "packageJson": "libs/platform/cdk8s/package.json",
+        "main": "libs/platform/cdk8s/src/index.ts",
+        "assets": ["libs/platform/cdk8s/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/platform/cdk8s/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/platform/cdk8s/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "import": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "cdk8s import",
+        "cwd": "libs/platform/cdk8s"
+      }
+    },
+    "synth": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "cdk8s synth",
+        "cwd": "libs/platform/cdk8s"
+      }
+    }
+  },
+  "tags": []
+}

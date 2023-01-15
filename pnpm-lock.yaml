@@ -19,6 +19,7 @@ specifiers:
   '@nrwl/cypress': 15.5.1
   '@nrwl/eslint-plugin-nx': 15.5.1
   '@nrwl/jest': 15.5.1
+  '@nrwl/js': 15.5.1
   '@nrwl/linter': 15.5.1
   '@nrwl/nest': 15.5.1
   '@nrwl/next': ^15.2.4
@@ -50,8 +51,11 @@ specifiers:
   '@vitest/ui': ^0.27.0
   '@xstate/react': ^3.0.1
   axios: ^1.2.1
+  cdk8s: ^2.6.18
+  cdk8s-plus-25: ^2.3.22
   class-transformer: ^0.5.1
   class-validator: ^0.14.0
+  constructs: ^10.1.219
   cypress: ^12.0.0
   eslint: ~8.31.0
   eslint-config-prettier: 8.6.0
@@ -117,8 +121,11 @@ dependencies:
   '@tanstack/solid-query': 4.22.0_solid-js@1.6.6
   '@xstate/react': 3.0.1_usupc6fv4xloi57sjg5n7lyavq
   axios: 1.2.1
+  cdk8s: 2.6.18_constructs@10.1.219
+  cdk8s-plus-25: 2.3.22_wczduoqdalgsjng47psgmsjdvy
   class-transformer: 0.5.1
   class-validator: 0.14.0
+  constructs: 10.1.219
   express: 4.18.2
   faker: 6.6.6
   firebase-admin: 11.4.1_@firebase+app-types@0.9.0
@@ -144,6 +151,7 @@ devDependencies:
   '@nrwl/cypress': 15.5.1_wugbkmpxbydua3nvwxceg72sfy
   '@nrwl/eslint-plugin-nx': 15.5.1_imips7mqa3pxm6bfqh47ynfo5u
   '@nrwl/jest': 15.5.1_ls2qfp7yurpcsygloaoblca3hm
+  '@nrwl/js': 15.5.1_zo7mcsrdhgufzgjgtiemvi7mq4
   '@nrwl/linter': 15.5.1_eum3h2fmghp66y72b4k5suapv4
   '@nrwl/nest': 15.5.1_mk7c3vp2gwqu4wmhxzbb2q4xxa
   '@nrwl/next': 15.4.1_3hupdnfkoo7chhltnc6mpp5hie
@@ -6823,6 +6831,32 @@ packages:
     dev: false
     optional: true
 
+  /cdk8s-plus-25/2.3.22_wczduoqdalgsjng47psgmsjdvy:
+    resolution: {integrity: sha512-HaWWpLOlRqsTmR23yYxIK/xQ3YtIX/hdOJj4jErLPcIUVf50xz3b2q1kafxdcoP+QFVp7WVNfybdMagJRY/B8A==}
+    engines: {node: '>= 14.17.0'}
+    peerDependencies:
+      cdk8s: ^2.6.17
+      constructs: ^10.1.218
+    dependencies:
+      cdk8s: 2.6.18_constructs@10.1.219
+      constructs: 10.1.219
+    dev: false
+    bundledDependencies:
+      - minimatch
+
+  /cdk8s/2.6.18_constructs@10.1.219:
+    resolution: {integrity: sha512-8I0twfKkA7j3F3MBhpgJSAXg3VtaOblXB2TdeULydQX7DucTRKn8NJa76mxoTYygl5C6rJrghfVwNjM/hWVPCg==}
+    engines: {node: '>= 14.17.0'}
+    peerDependencies:
+      constructs: ^10
+    dependencies:
+      constructs: 10.1.219
+    dev: false
+    bundledDependencies:
+      - fast-json-patch
+      - follow-redirects
+      - yaml
+
   /chai/4.3.7:
     resolution: {integrity: sha512-HLnAzZ2iupm25PlN0xFreAlBA5zaBSv3og0DdeGA4Ar6h6rJ3A0rolRUKJhSF2V10GZKDgWF/VmAEsNWjCRB+A==}
     engines: {node: '>=4'}
@@ -7114,6 +7148,11 @@ packages:
 
   /consola/2.15.3:
     resolution: {integrity: sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==}
+
+  /constructs/10.1.219:
+    resolution: {integrity: sha512-6AfiIOVLFDNxwyW01FvS1YSKj71zxA3vXGXZ4LmXrwYHPRk8fAjmyFNJRxASUdfpUQF0A86IF28aescF3FFx3Q==}
+    engines: {node: '>= 14.17.0'}
+    dev: false
 
   /content-disposition/0.5.4:
     resolution: {integrity: sha512-FveZTNuGw04cxlAiWbzi6zTAL/lhehaWbTtgluJh4/E95DqMwTmha3KZN1aAWA8cFIhHzMZUvLevkw5Rqk+tSQ==}
