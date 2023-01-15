@@ -64,7 +64,7 @@ specifiers:
   eslint-plugin-jsx-a11y: 6.7.1
   eslint-plugin-react: 7.32.00
   eslint-plugin-react-hooks: 4.6.0
-  eslint-plugin-solid: 0.9.2
+  eslint-plugin-solid: 0.9.3
   express: ^4.18.2
   faker: ^6.6.6
   firebase-admin: ^11.4.1
@@ -187,7 +187,7 @@ devDependencies:
   eslint-plugin-jsx-a11y: 6.7.1_eslint@8.32.0
   eslint-plugin-react: 7.32.0_eslint@8.32.0
   eslint-plugin-react-hooks: 4.6.0_eslint@8.32.0
-  eslint-plugin-solid: 0.9.2_7uibuqfxkfaozanbtbziikiqje
+  eslint-plugin-solid: 0.9.3_7uibuqfxkfaozanbtbziikiqje
   jest: 29.3.1_odkjkoia5xunhxkdrka32ib6vi
   jest-environment-jsdom: 29.3.1
   jsdom: 21.0.0
@@ -8224,8 +8224,8 @@ packages:
       string.prototype.matchall: 4.0.8
     dev: true
 
-  /eslint-plugin-solid/0.9.2_7uibuqfxkfaozanbtbziikiqje:
-    resolution: {integrity: sha512-VXraPfVa1iUtZulPiAMxlvnVjUZRgQmGLN7bFGuAedc1sstdtW5nDAKAGKzPXour5SJf9GwJnVJNvqx4X9jyjQ==}
+  /eslint-plugin-solid/0.9.3_7uibuqfxkfaozanbtbziikiqje:
+    resolution: {integrity: sha512-UoCoFwN5FjkspugmBTZrQYgX0Vr9eaPufY3Hl1sVqGhpmlLCkPua1Mgt+BW/d1q1k1XotAZhu0gIiWOKiJ/KBw==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
