@@ -89,7 +89,7 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/swagger": "^6.1.4",
     "@nestjs/terminus": "^9.1.4",
-    "@solidjs/router": "^0.6.0",
+    "@solidjs/router": "^0.7.0",
     "@tanstack/solid-query": "4.22.0",
     "@xstate/react": "^3.0.1",
     "axios": "^1.2.1",
