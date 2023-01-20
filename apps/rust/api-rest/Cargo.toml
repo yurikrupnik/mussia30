@@ -15,7 +15,7 @@ mongo = { path = "../../../libs/rust/mongo" }
 tokio = { version = "1.24.2", features = ["macros", "rt-multi-thread"] } # Macros for easy project setup and testing, multi-threaded runtime for best utilization of resources
 futures = "0.3"
 thiserror = "1.0.38"
-async-trait = { version = "0.1.61" }
+async-trait = { version = "0.1.62" }
 rand = "0.8"
 utoipa = { version = "2.4.2", features = ["actix_extras"] }
 utoipa-swagger-ui = { version = "3.0.1", features = ["actix-web"] }
