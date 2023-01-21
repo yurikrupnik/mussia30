@@ -44,11 +44,24 @@ EXPOSE ${PORT}
 ENTRYPOINT ["/app"]
 
 
-FROM debian:buster-slim AS rust
+#FROM debian:buster-slim AS rust
+FROM ubuntu AS rust
 WORKDIR /
 ARG DIST_PATH
 RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
-COPY $DIST_PATH /bin/app
+COPY $DIST_PATH ./app
 ENV PORT=8080
 EXPOSE ${PORT}
-CMD app
+CMD ["./app"]
+
+FROM rust:latest AS builder
+WORKDIR /app
+COPY . .
+RUN cd apps/rust/api-rest
+RUN cargo build --release
+
+FROM ubuntu:latest AS rust-test
+COPY --from=builder /app/target/release/api_rest ./app
+ENV PORT=8080
+EXPOSE ${PORT}
+CMD ["./app"]

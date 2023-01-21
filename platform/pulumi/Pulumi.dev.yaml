@@ -1,0 +1,8 @@
+config:
+  aws:project: aris
+  gcp:project: mussia30
+  gcp:zone: me-west1
+  pulumi:nodeCount: "5"
+  pulumi:nodeMachineType: n1-standard-2
+  pulumi:password:
+    secure: AAABAIkWBwVtfAI8BWy0D9ALfrdWwR5FWXD/EHo1FJ2w1CXbYQ==
