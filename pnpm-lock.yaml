@@ -60,7 +60,7 @@ specifiers:
   eslint: ~8.32.0
   eslint-config-prettier: 8.6.0
   eslint-plugin-cypress: ^2.10.3
-  eslint-plugin-import: 2.27.4
+  eslint-plugin-import: 2.27.5
   eslint-plugin-jsx-a11y: 6.7.1
   eslint-plugin-react: 7.32.00
   eslint-plugin-react-hooks: 4.6.0
@@ -183,7 +183,7 @@ devDependencies:
   eslint: 8.32.0
   eslint-config-prettier: 8.6.0_eslint@8.32.0
   eslint-plugin-cypress: 2.12.1_eslint@8.32.0
-  eslint-plugin-import: 2.27.4_tollsk63fsrdjhkfjqnxczdv4q
+  eslint-plugin-import: 2.27.5_tollsk63fsrdjhkfjqnxczdv4q
   eslint-plugin-jsx-a11y: 6.7.1_eslint@8.32.0
   eslint-plugin-react: 7.32.0_eslint@8.32.0
   eslint-plugin-react-hooks: 4.6.0_eslint@8.32.0
@@ -8130,8 +8130,8 @@ packages:
       globals: 11.12.0
     dev: true
 
-  /eslint-plugin-import/2.27.4_tollsk63fsrdjhkfjqnxczdv4q:
-    resolution: {integrity: sha512-Z1jVt1EGKia1X9CnBCkpAOhWy8FgQ7OmJ/IblEkT82yrFU/xJaxwujaTzLWqigewwynRQ9mmHfX9MtAfhxm0sA==}
+  /eslint-plugin-import/2.27.5_tollsk63fsrdjhkfjqnxczdv4q:
+    resolution: {integrity: sha512-LmEt3GVofgiGuiE+ORpnvP+kAm3h6MLZJ4Q5HCyHADofsb4VzXFsRiWj3c0OFiV+3DWFh0qg3v9gcPlfc3zRow==}
     engines: {node: '>=4'}
     peerDependencies:
       '@typescript-eslint/parser': '*'
