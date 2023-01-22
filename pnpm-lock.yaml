@@ -72,7 +72,7 @@ specifiers:
   ioredis: ^5.2.4
   jest: 29.3.1
   jest-environment-jsdom: 29.3.1
-  jsdom: ~21.0.0
+  jsdom: ~21.1.0
   lodash: ^4.17.21
   mongoose: ^6.8.1
   mongoose-paginate-v2: ^1.7.1
@@ -177,7 +177,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.47.0_77n3fxq7qmcdvrvcdsnyvvrc3i
   '@typescript-eslint/parser': 5.47.0_7uibuqfxkfaozanbtbziikiqje
   '@vitejs/plugin-react': 3.0.1_vite@4.0.3
-  '@vitest/coverage-c8': 0.27.0_elr7lcr4kg7yg2p26wn26kmtpq
+  '@vitest/coverage-c8': 0.27.0_427bzg7asy4nghbce6qdhz5rze
   '@vitest/ui': 0.27.0
   cypress: 12.2.0
   eslint: 8.32.0
@@ -190,7 +190,7 @@ devDependencies:
   eslint-plugin-solid: 0.9.3_7uibuqfxkfaozanbtbziikiqje
   jest: 29.3.1_odkjkoia5xunhxkdrka32ib6vi
   jest-environment-jsdom: 29.3.1
-  jsdom: 21.0.0
+  jsdom: 21.1.0
   nx: 15.5.3_@swc+core@1.3.24
   prettier: 2.8.1
   react-test-renderer: 18.2.0_react@18.2.0
@@ -207,7 +207,7 @@ devDependencies:
   vite-plugin-solid: 2.5.0_solid-js@1.6.6+vite@4.0.3
   vite-plugin-windicss: 1.8.10_vite@4.0.3
   vite-tsconfig-paths: 4.0.3_p2fwcaxbionflq6hjivvbcsv5a
-  vitest: 0.27.0_elr7lcr4kg7yg2p26wn26kmtpq
+  vitest: 0.27.0_427bzg7asy4nghbce6qdhz5rze
   windicss: 3.5.6
 
 packages:
@@ -4384,7 +4384,7 @@ packages:
       dotenv: 10.0.0
       enquirer: 2.3.6
       vite: 4.0.3_ln3zd37likqum747dljlxbzdm4
-      vitest: 0.27.0_elr7lcr4kg7yg2p26wn26kmtpq
+      vitest: 0.27.0_427bzg7asy4nghbce6qdhz5rze
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
@@ -5757,11 +5757,11 @@ packages:
       - supports-color
     dev: true
 
-  /@vitest/coverage-c8/0.27.0_elr7lcr4kg7yg2p26wn26kmtpq:
+  /@vitest/coverage-c8/0.27.0_427bzg7asy4nghbce6qdhz5rze:
     resolution: {integrity: sha512-jO/TAz/qUP1ssfIj6Gg1FxTRkOD5tJBiP3mwKayaqGunMsknCmxWVuFrgF1XH+FGZWLnFzR2InTjYxlyGNSgzQ==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.27.0_elr7lcr4kg7yg2p26wn26kmtpq
+      vitest: 0.27.0_427bzg7asy4nghbce6qdhz5rze
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -10802,8 +10802,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /jsdom/21.0.0:
-    resolution: {integrity: sha512-AIw+3ZakSUtDYvhwPwWHiZsUi3zHugpMEKlNPaurviseYoBqo0zBd3zqoUi3LPCNtPFlEP8FiW9MqCZdjb2IYA==}
+  /jsdom/21.1.0:
+    resolution: {integrity: sha512-m0lzlP7qOtthD918nenK3hdItSd2I+V3W9IrBcB36sqDwG+KnUs66IF5GY7laGWUnlM9vTsD0W1QwSEBYWWcJg==}
     engines: {node: '>=14'}
     peerDependencies:
       canvas: ^2.5.0
@@ -14695,7 +14695,7 @@ packages:
       vite: 4.0.3_ln3zd37likqum747dljlxbzdm4
     dev: true
 
-  /vitest/0.27.0_elr7lcr4kg7yg2p26wn26kmtpq:
+  /vitest/0.27.0_427bzg7asy4nghbce6qdhz5rze:
     resolution: {integrity: sha512-BnOa7T6CnXVC6UgcAsvFOZ2Dtvqkt+/Nl6CRgh4qVT70vElf65XwEL6zMRyTF+h2QXJziEkxYdrLo5WCxckMLQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -14726,7 +14726,7 @@ packages:
       cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
-      jsdom: 21.0.0
+      jsdom: 21.1.0
       local-pkg: 0.4.2
       picocolors: 1.0.0
       source-map: 0.6.1
