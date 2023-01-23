@@ -30,7 +30,7 @@ specifiers:
   '@nrwl/workspace': 15.5.3
   '@nx-go/nx-go': ^2.7.0
   '@nx-tools/container-metadata': ^4.0.2
-  '@nx-tools/nx-container': 4.0.2
+  '@nx-tools/nx-container': 4.0.3
   '@nxext/solid': ^14.0.2
   '@nxrs/cargo': ^0.3.3
   '@solidjs/router': ^0.7.0
@@ -162,7 +162,7 @@ devDependencies:
   '@nrwl/workspace': 15.5.3_5erp7s5pjv2bgp4q5vumz6nfmm
   '@nx-go/nx-go': 2.7.0
   '@nx-tools/container-metadata': 4.0.2_23l6csg5patgt4veb34jja36ja
-  '@nx-tools/nx-container': 4.0.2_23l6csg5patgt4veb34jja36ja
+  '@nx-tools/nx-container': 4.0.3_23l6csg5patgt4veb34jja36ja
   '@nxext/solid': 14.0.2_3rrrla3cvxqqqazcf56glxjlwu
   '@nxrs/cargo': 0.3.3_@nrwl+devkit@15.5.3
   '@swc/core': 1.3.24
@@ -4685,14 +4685,24 @@ packages:
       colorette: 2.0.19
     dev: true
 
-  /@nx-tools/nx-container/4.0.2_23l6csg5patgt4veb34jja36ja:
-    resolution: {integrity: sha512-Cu/BZ0lMruSX1hLuNxirSK5wtIGGwAQCV531UvAYdQX4JgiG88zHfoZqV8eEVccZifB0YfQnryRpQB8lyj13eA==}
+  /@nx-tools/core/4.0.3_@nrwl+devkit@15.5.3:
+    resolution: {integrity: sha512-u5t5WxbokjzRKerXIJ3vCmSTb9w7ibua5LExoqN3EuL526ZDWw/FigMtVkmqNN/fGtXvBAmFV/R5skPqlv6gCQ==}
+    peerDependencies:
+      '@nrwl/devkit': ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
+    dependencies:
+      '@actions/exec': 1.1.1
+      '@nrwl/devkit': 15.5.3_nx@15.5.3+typescript@4.9.4
+      colorette: 2.0.19
+    dev: true
+
+  /@nx-tools/nx-container/4.0.3_23l6csg5patgt4veb34jja36ja:
+    resolution: {integrity: sha512-M+TAsQaKdHLzvpKN4AR6Kz99Sn+GwE1wRpTpgibnjEUSL/Uk6MBVHvRlQLEclsRF07LYazu7SguQkp6he9PNJg==}
     peerDependencies:
       '@nrwl/devkit': ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
       dotenv: '>=10.0.0'
     dependencies:
       '@nrwl/devkit': 15.5.3_nx@15.5.3+typescript@4.9.4
-      '@nx-tools/core': 4.0.2_@nrwl+devkit@15.5.3
+      '@nx-tools/core': 4.0.3_@nrwl+devkit@15.5.3
       '@swc/helpers': 0.4.14
       csv-parse: 4.16.3
       dotenv: 16.0.3
