@@ -25,8 +25,9 @@ run-titl-cluster:
 
 create-local-cluster:
   -ctlptl create cluster kind --registry=ctlptl-registry
-  just install-linkerd
-  just run-titl-cluster
+  tilt up
+#  just install-linkerd
+#  just run-titl-cluster
 
 install-linkerd:
   linkerd install --crds | kubectl apply -f -

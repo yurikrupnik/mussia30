@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "lodash": "npm:lodash",
+    "react": "npm:react",
+    "solid-js": "npm:solid-js"
+  }
+}

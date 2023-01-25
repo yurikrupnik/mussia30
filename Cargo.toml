@@ -8,3 +8,6 @@ members = [
     "apps/rust/api-graphql",
     "apps/rust/api-rest"
 ]
+
+# Above this line should be the contents of your Cargo.toml file
+
