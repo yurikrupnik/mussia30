@@ -16,12 +16,23 @@ include('./apps/node/users-grpc/Tiltfile')
 # include('./apps/rust/users-grpc/Tiltfile')
 # include('./apps/infra/commdands/Tiltfile')
 
-# k8s_yaml(kustomize('k8s/base'))
-# k8s_resource("go-api-rest", port_forwards="5001:8080")
+//# k8s_yaml(kustomize('k8s/base'))
+//# k8s_resource("go-api-rest", port_forwards="5001:8080")
 
 load('ext://uibutton', 'cmd_button', 'location', 'text_input', 'bool_input')
 
-
+cmd_button(name='bazel-build',
+    argv=['sh', '-c','bazel build'],
+    text='NX',
+    location=location.NAV,
+    requires_confirmation=True,
+    inputs=[
+    text_input('type', placeholder='Enter your nx command type', default="affected"),
+    text_input('TARGET', placeholder='Enter your nx command target', default="test"),
+    bool_input('SKIP_CASHE', true_string='--skip-nx-cache', false_string=''),
+    text_input('cores', placeholder='Enter value or --max-parallel', default="2"),
+    ],
+    icon_name='travel_explore')
 cmd_button(name='NX',
         argv=['sh', '-c','pnpm nx $type --parallel --max-parallel=$cores $SKIP_CASHE --target=$TARGET'],
         text='NX',
@@ -34,7 +45,7 @@ cmd_button(name='NX',
             text_input('cores', placeholder='Enter value or --max-parallel', default="2"),
         ],
         icon_name='travel_explore')
-    
+
 cmd_button(name='Graph',
         argv=['sh', '-c','pnpm nx affected:dep-graph'],
         text='Graph',
