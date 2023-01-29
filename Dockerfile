@@ -43,7 +43,7 @@ COPY $DIST_PATH ./app
 EXPOSE ${PORT}
 ENTRYPOINT ["/app"]
 
-FROM denoland/deno:1.29.4 AS deno
+FROM denoland/deno:1.30.0 AS deno
 # The port that your application listens to.
 EXPOSE 1993
 WORKDIR /app
