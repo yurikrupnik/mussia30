@@ -74,7 +74,8 @@ async fn main() -> anyhow::Result<()> {
     {
       let nodes: Api<Node> = Api::all(client.clone());
       let spec = create_spec(nodes.clone()).await;
-      println!("omg spec!!! {:?}", spec);
+      // println!("omg spec!!! {:?}", spec);
+      println!("omg spec!!! {spec:?}");
       let topologys: Api<Topology> = Api::default_namespaced(client.clone());
       // println!("omg topologys!!! {:?}", topologys);
       println!("omg topologys!!! {topologys:?}");
