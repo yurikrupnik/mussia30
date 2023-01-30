@@ -34,7 +34,7 @@ struct TopologyStatus {
   pub is_good: bool,
 }
 
-const crdName : &str = "topologies.yurikrupnik.dev";
+const CRD_NAME : &str = "topologies.yurikrupnik.dev";
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
@@ -45,11 +45,11 @@ async fn main() -> anyhow::Result<()> {
   // 0. Ensure the CRD is installed, could do this once
   let crds: Api<CustomResourceDefinition> = Api::all(client.clone());
   info!("Creating crd: {}", serde_yaml::to_string(&Topology::crd())?);
-  crds.patch(crdName, &ssapply, &Patch::Apply(Topology::crd()))
+  crds.patch(CRD_NAME, &ssapply, &Patch::Apply(Topology::crd()))
     .await?;
 
   info!("Waiting for the api-server to accept the CRD");
-  let establish = await_condition(crds, crdName, conditions::is_crd_established());
+  let establish = await_condition(crds, CRD_NAME, conditions::is_crd_established());
   let _ = tokio::time::timeout(std::time::Duration::from_secs(10), establish).await?;
 
   // Let's get the current node topology
@@ -70,35 +70,32 @@ async fn main() -> anyhow::Result<()> {
   let obs = watcher(topologys, ListParams::default()).applied_objects();
   pin_mut!(obs);
   while let Some(o) = obs.try_next().await? {
-    match o {
-      _Node => {
-        let nodes: Api<Node> = Api::all(client.clone());
-        let spec = create_spec(nodes.clone()).await;
-        println!("omg spec!!! {:?}", spec);
-        let topologys: Api<Topology> = Api::default_namespaced(client.clone());
-        println!("omg topologys!!! {:?}", topologys);
+    let _node = o;
+    {
+      let nodes: Api<Node> = Api::all(client.clone());
+      let spec = create_spec(nodes.clone()).await;
+      println!("omg spec!!! {:?}", spec);
+      let topologys: Api<Topology> = Api::default_namespaced(client.clone());
+      println!("omg topologys!!! {:?}", topologys);
 
-        let tt = topologys.patch("default",
-                                 &ssapply,
-                                 &Patch::Apply(&Topology::new("default",
-                                                              spec))).await?;
-      }
-
-
+      let _tt = topologys.patch("default",
+                               &ssapply,
+                               &Patch::Apply(&Topology::new("default",
+                                                            spec))).await?;
     }
   }
 
   Ok(())
 }
 async fn create_spec(nodes: Api<Node>) -> TopologySpec {
-  nodes.list(&ListParams::default()).await;
+  nodes.list(&ListParams::default()).await.expect("TODO: panic message");
   let node_list = nodes.list(&ListParams::default()).await.unwrap();
   let mut node_names = Vec::new();
   for node in node_list {
     node_names.push(node.metadata.name.unwrap());
   }
-  return TopologySpec {
+  TopologySpec {
     name: "default".to_string(),
     nodes: node_names,
-  };
+  }
 }
