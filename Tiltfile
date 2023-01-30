@@ -2,11 +2,15 @@
 #k8s_yaml(local('helm template --set key1=val1,key2=val2 ./charts/main-chart'))
 #watch_file('/charts/main-chart')
 
+# include('./k8s/helm/Tiltfile')
+
 local_resource('pnpm', cmd='pnpm install', deps=['package.json', 'pnpm-lock.yaml'], labels=['pnpm'])
 
 local_resource('proto-generate', cmd='just proto-generate', deps=['_proto/'], labels=['just'])
 
-# include('./k8s/helm/Tiltfile')
+# local_resource('k9s', cmd='k9s', labels=['k9s'])
+
+# local_resource('kube-logs', serve_cmd='kubectl get pods', labels=['k9s'])
 
 include('./apps/go/api-rest/Tiltfile')
 include('./apps/node/api-rest/Tiltfile')
