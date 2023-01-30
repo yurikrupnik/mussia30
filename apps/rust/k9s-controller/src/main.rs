@@ -58,8 +58,8 @@ async fn main() -> anyhow::Result<()> {
   let topologys: Api<Topology> = Api::default_namespaced(client.clone());
 
   let spec = create_spec(nodes).await;
-  println!("dama {:?}", spec);
-
+  // println!("dama {:?}", spec);
+  println!("dama {spec:?}");
   let tt = topologys.patch("default", &ssapply,
                            &Patch::Apply(&Topology::new("default", spec))).await?;
 
