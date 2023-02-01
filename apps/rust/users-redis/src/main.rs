@@ -92,7 +92,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     // 2) Set / Get Key
     con.set("my_key", "Hello world!").await?;
     let result: String = con.get("my_key").await?;
-    println!("->> my_key: {}\n", result);
+    println!("->> my_key: {result}\n");
 
     // 3) xadd to redis stream
     con.xadd(
@@ -102,7 +102,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     )
     .await?;
     let len: i32 = con.xlen("my_stream").await?;
-    println!("->> my_stream len {}\n", len);
+    println!("->> my_stream len {len}\n");
 
     // 4) xrevrange the read stream
     let result: Option<StreamRangeReply> = con.xrevrange_count("my_stream", "+", "-", 10).await?;
