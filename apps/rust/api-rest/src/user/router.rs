@@ -24,7 +24,8 @@ where
 {
     move |cfg: &mut web::ServiceConfig| {
         block_on(inits::<T>(cfg, db, collection));
-        let url = format!("/{}", collection);
+        // let url = format!("/{}", collection);
+        let url = format!("/{collection}");
         cfg.service(
             web::scope(url.as_str())
                 .service(

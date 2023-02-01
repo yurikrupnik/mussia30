@@ -53,7 +53,7 @@ pub async fn get_product(client: web::Data<Client>, path: web::Path<String>) -> 
     let result = collection.find_one(filter, None).await;
     match result {
         Ok(Some(payload)) => HttpResponse::Ok().json(payload),
-        Ok(None) => HttpResponse::NotFound().body(format!("No product found with id {}", obj_id)),
+        Ok(None) => HttpResponse::NotFound().body(format!("No product found with id {obj_id}")),
         Err(err) => HttpResponse::InternalServerError().body(err.to_string()),
     }
 }

@@ -4,9 +4,6 @@ use anyhow::Ok;
 use schemars::JsonSchema;
 use futures::{pin_mut, TryStreamExt};
 
-//extern crate pretty_env_logger;
-//#[macro_use] extern crate log;
-
 use serde::{Deserialize, Serialize};
 use tracing::*;
 use apiexts::CustomResourceDefinition;
