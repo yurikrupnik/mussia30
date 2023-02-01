@@ -1,5 +1,7 @@
 [workspace]
 members = [
+    "apps/rust/k8s-operator",
+    "apps/rust/book-controller",
     "apps/rust/k9s-controller",
     "apps/rust/users-redis",
     "apps/rust/users-grpc",

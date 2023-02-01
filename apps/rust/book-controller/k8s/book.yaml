@@ -1,0 +1,9 @@
+
+apiVersion: example.technosophos.com/v1
+kind: Book
+metadata:
+  name: moby-dick
+spec:
+  title: Moby Dick
+  authors:
+    - Herman Melville
