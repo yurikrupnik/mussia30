@@ -17,7 +17,7 @@ pub struct MyObj {
 // does not work, returns 400, works with regular actix
 async fn index(msg: ProtoBuf<MyObj>) -> Result<HttpResponse> {
     log::info!("model: {msg:?}");
-    println!("model {:?}", msg);
+    println!("model {msg:?}");
     // HttpResponse::Ok().await
     HttpResponse::Ok().protobuf(msg.0) // <- send response
 }

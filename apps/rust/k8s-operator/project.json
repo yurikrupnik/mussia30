@@ -1,8 +1,8 @@
 {
-  "name": "k9s_controller",
+  "name": "k8s_operator",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/rust/k9s-controller/src",
+  "sourceRoot": "apps/rust/k8s-operator/src",
   "targets": {
     "build": {
       "executor": "@nxrs/cargo:build",
@@ -20,7 +20,7 @@
       "outputs": [],
       "options": {
         "command": "cargo watch -x run",
-        "cwd": "apps/rust/k9s-controller/"
+        "cwd": "apps/rust/k8s-operator/"
       }
     },
     "test": {

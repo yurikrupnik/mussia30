@@ -36,7 +36,7 @@ pub async fn add_product(client: web::Data<Client>, body: web::Json<Product>) ->
     let res = collection.find_one(doc! {"_id": new_id}, None).await;
     match res {
         Ok(Some(payload)) => HttpResponse::Created().json(payload),
-        Ok(None) => HttpResponse::NotFound().body(format!("No user found with id {}", new_id)),
+        Ok(None) => HttpResponse::NotFound().body(format!("No user found with id {new_id}")),
         Err(err) => HttpResponse::InternalServerError().body(err.to_string()),
     }
 }
@@ -53,7 +53,7 @@ pub async fn get_product(client: web::Data<Client>, path: web::Path<String>) -> 
     let result = collection.find_one(filter, None).await;
     match result {
         Ok(Some(payload)) => HttpResponse::Ok().json(payload),
-        Ok(None) => HttpResponse::NotFound().body(format!("No product found with id {}", obj_id)),
+        Ok(None) => HttpResponse::NotFound().body(format!("No product found with id {obj_id}")),
         Err(err) => HttpResponse::InternalServerError().body(err.to_string()),
     }
 }
