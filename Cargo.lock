@@ -1900,26 +1900,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "k9s_controller"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "backoff",
- "futures",
- "k8s-openapi",
- "kube",
- "log",
- "schemars",
- "serde",
- "serde_json",
- "serde_yaml 0.9.17",
- "thiserror",
- "tokio",
- "tracing",
- "tracing-subscriber",
-]
-
-[[package]]
 name = "kube"
 version = "0.78.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"

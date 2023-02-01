@@ -133,7 +133,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 for stream_key in reply.keys {
                     println!("->> xread block: {}", stream_key.key);
                     for stream_id in stream_key.ids {
-                        println!("  ->> StreamId: {:?}", stream_id);
+                        println!("  ->> StreamId: {stream_id:?}");
                     }
                 }
                 println!();
