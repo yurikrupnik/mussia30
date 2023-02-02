@@ -9,5 +9,5 @@ edition = "2021"
 mongodb = "2.3.1"
 serde = "1.0.152"
 async-trait = { version = "0.1.64" }
-futures = "0.3.25"
+futures = "0.3.26"
 utoipa = { version = "2.4.2" }
