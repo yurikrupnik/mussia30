@@ -35,7 +35,7 @@ specifiers:
   '@nxrs/cargo': ^0.3.3
   '@solidjs/router': ^0.7.0
   '@swc/core': ^1.2.173
-  '@tanstack/solid-query': 4.22.4
+  '@tanstack/solid-query': 4.24.4
   '@testing-library/react': 13.4.0
   '@types/express': ^4.17.15
   '@types/jest': 29.2.6
@@ -118,7 +118,7 @@ dependencies:
   '@nestjs/swagger': 6.1.4_4fhhxyztwhblafku3krlstrun4
   '@nestjs/terminus': 9.1.4_dlpilwsl2p7zgokgwpl3gxnbru
   '@solidjs/router': 0.7.0_solid-js@1.6.6
-  '@tanstack/solid-query': 4.22.4_solid-js@1.6.6
+  '@tanstack/solid-query': 4.24.4_solid-js@1.6.6
   '@xstate/react': 3.0.1_ggbhzilqd24pucptsw366vpqcq
   axios: 1.2.1
   cdk8s: 2.6.18_constructs@10.1.219
@@ -5245,16 +5245,16 @@ packages:
       tslib: 2.4.1
     dev: true
 
-  /@tanstack/query-core/4.22.4:
-    resolution: {integrity: sha512-t79CMwlbBnj+yL82tEcmRN93bL4U3pae2ota4t5NN2z3cIeWw74pzdWrKRwOfTvLcd+b30tC+ciDlfYOKFPGUw==}
+  /@tanstack/query-core/4.24.4:
+    resolution: {integrity: sha512-9dqjv9eeB6VHN7lD3cLo16ZAjfjCsdXetSAD5+VyKqLUvcKTL0CklGQRJu+bWzdrS69R6Ea4UZo8obHYZnG6aA==}
     dev: false
 
-  /@tanstack/solid-query/4.22.4_solid-js@1.6.6:
-    resolution: {integrity: sha512-QMumuG4xO3HJgLNXeh9bthjdBd+k54osJ6fma3vxCJD0jpYEaL6f74S/hJzgVb/pS0cjoI3X0SLapHKefSYgcQ==}
+  /@tanstack/solid-query/4.24.4_solid-js@1.6.6:
+    resolution: {integrity: sha512-aAFNJ3liO0JiBwhAiE/1uwvViz0fokCMwUILUlueHuCZ95LDq+I9Pw9pYjoXLyPoFfp36N398AyV8pALZqbDRg==}
     peerDependencies:
       solid-js: ^1.5.7
     dependencies:
-      '@tanstack/query-core': 4.22.4
+      '@tanstack/query-core': 4.24.4
       solid-js: 1.6.6
     dev: false
 
