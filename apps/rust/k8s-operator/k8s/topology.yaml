@@ -8,10 +8,10 @@ metadata:
 apiVersion: yurikrupnik.dev/v1
 kind: Topology
 metadata:
-  name: aris
+  name: yur
 #  namespace: shit
 spec:
-  image: nginx
+  image: yurissss
   name: "Moby Dick"
   info: "all good"
   nodes:
