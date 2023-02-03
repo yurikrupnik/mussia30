@@ -10,7 +10,7 @@ use k8s_openapi::{apiextensions_apiserver::pkg::apis::apiextensions::v1 as apiex
 use k8s_openapi::api::core::v1::Pod;
 
 use kube::{
-  api::{Api, Patch, PatchParams, ResourceExt,ListParams},
+  api::{Api, Patch, PatchParams,ListParams},
   runtime::wait::{await_condition, conditions},
   runtime::{watcher, WatchStreamExt},
   Client, CustomResourceExt,
@@ -59,7 +59,7 @@ async fn main() -> anyhow::Result<()> {
   let obs = watcher(topologys, ListParams::default()).applied_objects();
   pin_mut!(obs);
   while let Some(o) = obs.try_next().await? {
-    let Node = o;
+    let _node = o;
     {
       let nodes: Api<Node> = Api::all(client.clone());
       let spec = create_spec(nodes.clone()).await;
@@ -68,7 +68,7 @@ async fn main() -> anyhow::Result<()> {
       let pods: Api<Pod> = Api::default_namespaced(client.clone());
       println!("omg pods!!! {pods:?}");
       println!("omg topologys!!! {topologys:?}");
-      let tt = topologys.patch("default",
+      let _tt = topologys.patch("default",
                                &ssapply,
                                &Patch::Apply(&Topology::new("default", spec))).await?;
     }
