@@ -19,7 +19,7 @@ async-trait = { version = "0.1.64" }
 rand = "0.8"
 utoipa = { version = "2.4.2", features = ["actix_extras"] }
 utoipa-swagger-ui = { version = "3.0.1", features = ["actix-web"] }
-serde_json = { version = "1.0.92", features = ["arbitrary_precision"] }
+serde_json = { version = "1.0.93", features = ["arbitrary_precision"] }
 plurals = "0.4.0"
 validator = { version = "0.16", features = ["derive"] }
 actix-cors = "0.6.4"
