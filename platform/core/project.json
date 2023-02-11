@@ -1,0 +1,40 @@
+{
+  "name": "core",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "platform/core/src",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["platform/core/**/*.ts"]
+      }
+    },
+    "test-a": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx vitest --run",
+        "cwd": "platform/core"
+      }
+    },
+    "up": {
+      "executor": "@wanews/nx-pulumi:up",
+      "options": {
+        "buildTargets": []
+      }
+    },
+    "refresh": {
+      "executor": "@wanews/nx-pulumi:refresh",
+      "options": {
+        "buildTargets": []
+      }
+    },
+    "destroy": {
+      "executor": "@wanews/nx-pulumi:destroy",
+      "options": {
+        "buildTargets": []
+      }
+    }
+  },
+  "tags": ["devops"]
+}

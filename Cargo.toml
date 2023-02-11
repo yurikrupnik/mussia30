@@ -2,6 +2,7 @@
 members = [
     "apps/rust/k8s-operator",
     "apps/rust/book-controller",
+    "apps/rust/my-operator",
     "apps/rust/users-redis",
     "apps/rust/users-grpc",
     "libs/rust/grpc",

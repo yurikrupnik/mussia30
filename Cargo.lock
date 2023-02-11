@@ -2236,6 +2236,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "my_operator"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "backoff",
+ "clap",
+ "futures",
+ "k8s-openapi",
+ "kube",
+ "kube-derive",
+ "log",
+ "schemars",
+ "serde",
+ "serde_derive",
+ "serde_json",
+ "serde_yaml 0.9.17",
+ "thiserror",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "nu-ansi-term"
 version = "0.46.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"

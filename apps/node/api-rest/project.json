@@ -72,9 +72,7 @@
         "platforms": ["linux/amd64", "linux/arm64"],
         "build-args": ["DIST_PATH=dist/apps/node/api-rest"],
         "metadata": {
-          "images": [
-            "yurikrupnik/node-api-rest"
-          ]
+          "images": ["yurikrupnik/node-api-rest"]
         }
       }
     },
@@ -101,6 +99,12 @@
           "docker build --target node --build-arg DIST_PATH=dist/apps/node/api-rest . -t yurikrupnik/node-api-rest",
           "docker push yurikrupnik/node-api-rest"
         ]
+      }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx run node-api-rest-infrastructure:up"]
       }
     }
   },

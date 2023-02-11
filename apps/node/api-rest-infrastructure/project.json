@@ -1,0 +1,40 @@
+{
+  "name": "node-api-rest-infrastructure",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/node/api-rest-infrastructure/src",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/node/api-rest-infrastructure/**/*.ts"]
+      }
+    },
+    "test-a": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx vitest --run",
+        "cwd": "apps/node/api-rest-infrastructure"
+      }
+    },
+    "up": {
+      "executor": "@wanews/nx-pulumi:up",
+      "options": {
+        "buildTargets": [
+          {
+            "project": "node-api-rest",
+            "target": "build"
+          }
+        ]
+      }
+    },
+    "destroy": {
+      "executor": "@wanews/nx-pulumi:destroy"
+    },
+    "refresh": {
+      "executor": "@wanews/nx-pulumi:refresh"
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["node-api-rest"]
+}
