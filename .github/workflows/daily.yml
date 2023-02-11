@@ -59,7 +59,13 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
-      - run: pnpm nx run-many --target=lint --parallel --max-parallel=3 --all --skip-nx-cache
+      - name: Nx Cloud - Lint Job
+        uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.11.3
+        with:
+          number-of-agents: 3
+          parallel-commands-on-agents: |
+            pnpm nx run-many --target=lint --parallel --max-parallel=3 --all --skip-nx-cache
+#      - run: pnpm nx run-many --target=lint --parallel --max-parallel=3 --all --skip-nx-cache
   build:
     runs-on: ubuntu-latest
     steps:
@@ -102,7 +108,13 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
-      - run: pnpm nx run-many --target=build --parallel --max-parallel=3 --prod --all --skip-nx-cache
+      - name: Nx Cloud - Build Job
+        uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.11.3
+        with:
+          number-of-agents: 3
+          parallel-commands-on-agents: |
+            pnpm nx run-many --target=build --parallel --max-parallel=3 --prod --all --skip-nx-cache
+#      - run: pnpm nx run-many --target=build --parallel --max-parallel=3 --prod --all --skip-nx-cache
   test:
     runs-on: ubuntu-latest
     steps:
@@ -143,7 +155,13 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
-      - run: pnpm nx run-many --target=test --parallel --max-parallel=3 --all --skip-nx-cache
+      - name: Nx Cloud - Lint Job
+        uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.11.3
+        with:
+          number-of-agents: 3
+          parallel-commands-on-agents: |
+            pnpm nx run-many --target=test --parallel --max-parallel=3 --all --skip-nx-cache --configuration=ci
+#      - run: pnpm nx run-many --target=test --parallel --max-parallel=3 --all --skip-nx-cache
   e2e:
     runs-on: ubuntu-latest
     steps:
@@ -186,4 +204,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - run: pnpm run cypress:install
-      - run: pnpm nx run-many --target=e2e --parallel --max-parallel=3 --headless --all --skip-nx-cache
+      - name: Nx Cloud - Lint Job
+        uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.11.3
+        with:
+          number-of-agents: 3
+          parallel-commands-on-agents: |
+            pnpm nx run-many --target=e2e --parallel --max-parallel=3 --headless --all --skip-nx-cache
+#      - run: pnpm nx run-many --target=e2e --parallel --max-parallel=3 --headless --all --skip-nx-cache
+  agents:
+    name: Nx Cloud - Agents
+    uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.11.3
+    with:
+      number-of-agents: 3
