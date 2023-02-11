@@ -1,0 +1,6 @@
+config:
+  core:nodeCount: "2"
+  core:nodeMachineType: n1-standard-2
+  gcp:project: mussia30
+  gcp:region: me-west1
+  gcp:zone: me-west1-b
