@@ -3,7 +3,14 @@
   "compilerOptions": {
     "outDir": "./bin",
     "rootDir": "./src",
-    "types": ["node"]
+    "types": [
+      "jest",
+      "node"
+    ]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ]
 }
+

@@ -10,11 +10,11 @@
         "lintFilePatterns": ["platform/core/**/*.ts"]
       }
     },
-    "test": {
+    "test-a": {
       "executor": "nx:run-commands",
       "options": {
         "command": "npx vitest --run",
-        "cwd": "libs/platform/core"
+        "cwd": "platform/core"
       }
     },
     "up": {
