@@ -1,0 +1,40 @@
+{
+  "name": "my_operator",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/rust/my-operator/src",
+  "targets": {
+    "build": {
+      "executor": "@nxrs/cargo:build",
+      "options": {
+        "release": false
+      },
+      "configurations": {
+        "production": {
+          "release": true
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "cargo watch -x run",
+        "cwd": "apps/rust/my-operator/"
+      }
+    },
+    "test": {
+      "executor": "@nxrs/cargo:test",
+      "options": {}
+    },
+    "lint": {
+      "executor": "@nxrs/cargo:clippy",
+      "options": {
+        "fix": false,
+        "failOnWarnings": true,
+        "noDeps": true
+      }
+    }
+  },
+  "tags": []
+}
