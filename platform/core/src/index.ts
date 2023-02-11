@@ -9,16 +9,16 @@ const static_site = new gcp.storage.Bucket("static-site", {
       "HEAD",
       "PUT",
       "POST",
-      "DELETE",
+      "DELETE"
     ],
     origins: ["http://image-store.com"],
-    responseHeaders: ["*"],
+    responseHeaders: ["*"]
   }],
   forceDestroy: true,
   location: "EU",
   uniformBucketLevelAccess: true,
   website: {
     mainPageSuffix: "index.html",
-    notFoundPage: "404.html",
-  },
+    notFoundPage: "404.html"
+  }
 });
