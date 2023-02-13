@@ -37,7 +37,7 @@ specifiers:
   '@pulumi/pulumi': ^3.54.0
   '@solidjs/router': ^0.7.0
   '@swc/core': ^1.2.173
-  '@tanstack/solid-query': 4.24.4
+  '@tanstack/solid-query': 4.24.6
   '@testing-library/react': 13.4.0
   '@types/express': ^4.17.15
   '@types/jest': 29.4.0
@@ -123,7 +123,7 @@ dependencies:
   '@pulumi/gcp': 6.49.0
   '@pulumi/pulumi': 3.54.0
   '@solidjs/router': 0.7.0_solid-js@1.6.6
-  '@tanstack/solid-query': 4.24.4_solid-js@1.6.6
+  '@tanstack/solid-query': 4.24.6_solid-js@1.6.6
   '@xstate/react': 3.0.1_ggbhzilqd24pucptsw366vpqcq
   axios: 1.2.1
   cdk8s: 2.6.18_constructs@10.1.219
@@ -5481,16 +5481,16 @@ packages:
       tslib: 2.4.1
     dev: true
 
-  /@tanstack/query-core/4.24.4:
-    resolution: {integrity: sha512-9dqjv9eeB6VHN7lD3cLo16ZAjfjCsdXetSAD5+VyKqLUvcKTL0CklGQRJu+bWzdrS69R6Ea4UZo8obHYZnG6aA==}
+  /@tanstack/query-core/4.24.6:
+    resolution: {integrity: sha512-Tfru6YTDTCpX7dKVwHp/sosw/dNjEdzrncduUjIkQxn7n7u+74HT2ZrGtwwrU6Orws4x7zp3FKRqBPWVVhpx9w==}
     dev: false
 
-  /@tanstack/solid-query/4.24.4_solid-js@1.6.6:
-    resolution: {integrity: sha512-aAFNJ3liO0JiBwhAiE/1uwvViz0fokCMwUILUlueHuCZ95LDq+I9Pw9pYjoXLyPoFfp36N398AyV8pALZqbDRg==}
+  /@tanstack/solid-query/4.24.6_solid-js@1.6.6:
+    resolution: {integrity: sha512-ksUfW4Lwwl85kogQuP46oyqPGBqbSfNMRTu9Ey3FDPjfYzObW4j9opI3TjRoSkOapqVg5KOaobhzu8N2Wp0JBg==}
     peerDependencies:
       solid-js: ^1.5.7
     dependencies:
-      '@tanstack/query-core': 4.24.4
+      '@tanstack/query-core': 4.24.6
       solid-js: 1.6.6
     dev: false
 
