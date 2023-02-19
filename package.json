@@ -93,7 +93,7 @@
     "@pulumi/gcp": "^6.49.0",
     "@pulumi/pulumi": "^3.54.0",
     "@solidjs/router": "^0.7.0",
-    "@tanstack/solid-query": "4.24.6",
+    "@tanstack/solid-query": "4.24.9",
     "@xstate/react": "^3.0.1",
     "axios": "^1.2.1",
     "cdk8s": "^2.6.18",
