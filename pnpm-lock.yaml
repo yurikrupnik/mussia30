@@ -37,7 +37,7 @@ specifiers:
   '@pulumi/pulumi': ^3.54.0
   '@solidjs/router': ^0.7.0
   '@swc/core': ^1.2.173
-  '@tanstack/solid-query': 4.24.9
+  '@tanstack/solid-query': 4.24.10
   '@testing-library/react': 14.0.0
   '@types/express': ^4.17.15
   '@types/jest': 29.4.0
@@ -123,7 +123,7 @@ dependencies:
   '@pulumi/gcp': 6.49.0
   '@pulumi/pulumi': 3.54.0
   '@solidjs/router': 0.7.0_solid-js@1.6.6
-  '@tanstack/solid-query': 4.24.9_solid-js@1.6.6
+  '@tanstack/solid-query': 4.24.10_solid-js@1.6.6
   '@xstate/react': 3.0.1_ggbhzilqd24pucptsw366vpqcq
   axios: 1.2.1
   cdk8s: 2.6.18_constructs@10.1.219
@@ -161,7 +161,7 @@ devDependencies:
   '@nrwl/nest': 15.7.2_ghqbpilw3xvm35jvahdrpn5fjy
   '@nrwl/next': 15.4.1_cyu4gcyqul453ou7bwp5hvnn5m
   '@nrwl/node': 15.7.2_ghqbpilw3xvm35jvahdrpn5fjy
-  '@nrwl/nx-cloud': 15.0.3
+  '@nrwl/nx-cloud': 15.1.0
   '@nrwl/react': 15.7.2_qkfbnhs3hmtkqhwu7k75h6bole
   '@nrwl/vite': 15.7.2_jmhemsp5oagjq3d7reamttv5me
   '@nrwl/workspace': 15.7.2_edtmtblgytq5scjiwbhmrddtjq
@@ -4369,8 +4369,8 @@ packages:
       - webpack-cli
     dev: true
 
-  /@nrwl/nx-cloud/15.0.3:
-    resolution: {integrity: sha512-KvwM8/IbCOlbWIzi+Tm14tJkEdQK3ruN6TPUmeKnkeFZsJyoFw4GCyKJMOLs8y4MQokHgskg3nbF822JLR9xJg==}
+  /@nrwl/nx-cloud/15.1.0:
+    resolution: {integrity: sha512-QcMlPZ+DBzTWcoWSziyrENYhBLfE5MSns3M5qJB8EClg9/vomepA+NLOLWB+/O0sfdeBGFKlvFyrjf+CnVaB2A==}
     hasBin: true
     dependencies:
       axios: 0.21.4
@@ -5575,16 +5575,16 @@ packages:
       tslib: 2.4.1
     dev: true
 
-  /@tanstack/query-core/4.24.9:
-    resolution: {integrity: sha512-pZQ2NpdaHzx8gPPkAPh06d6zRkjfonUzILSYBXrdHDapP2eaBbGsx5L4/dMF+fyAglFzQZdDDzZgAykbM20QVw==}
+  /@tanstack/query-core/4.24.10:
+    resolution: {integrity: sha512-2QywqXEAGBIUoTdgn1lAB4/C8QEqwXHj2jrCLeYTk2xVGtLiPEUD8jcMoeB2noclbiW2mMt4+Fq7fZStuz3wAQ==}
     dev: false
 
-  /@tanstack/solid-query/4.24.9_solid-js@1.6.6:
-    resolution: {integrity: sha512-pGeNCgAJZU4FNRRm74Mpihuq4KQSWMBlKwEhNCJEIg/9agprpxgfKhXDzVYRzk5pkUIxC7nUkOFqLQSZhAe7bA==}
+  /@tanstack/solid-query/4.24.10_solid-js@1.6.6:
+    resolution: {integrity: sha512-pwP5vhfcDkwToxRFCXmIr9xFVOGPjanmgrZ5mUge5JE4xAy90lRV4KF36H6QOu0sZ4qwKgh9JcLrVtIcJP1E1g==}
     peerDependencies:
       solid-js: ^1.5.7
     dependencies:
-      '@tanstack/query-core': 4.24.9
+      '@tanstack/query-core': 4.24.10
       solid-js: 1.6.6
     dev: false
 
