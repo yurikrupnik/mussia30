@@ -1,0 +1,27 @@
+bench = []
+test = []
+example = []
+
+[[bin]]
+path = "src/main.rs"
+name = "my-rust-state-machine"
+test = true
+doctest = true
+bench = true
+doc = true
+plugin = false
+proc-macro = false
+harness = true
+edition = "2021"
+required-features = []
+
+[package]
+name = "my-rust-state-machine"
+edition = "2021"
+version = "0.0.1"
+autobins = true
+autoexamples = true
+autotests = true
+autobenches = true
+
+[dependencies]

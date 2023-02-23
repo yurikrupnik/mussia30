@@ -6,11 +6,15 @@
 
 local_resource('pnpm', cmd='pnpm install', deps=['package.json', 'pnpm-lock.yaml'], labels=['pnpm'])
 
+# Generate code from proto files.
 local_resource('proto-generate', cmd='just proto-generate', deps=['_proto/'], labels=['just'])
+
 
 # local_resource('k9s', cmd='k9s', labels=['k9s'])
 
 # local_resource('kube-logs', serve_cmd='kubectl get pods', labels=['k9s'])
+# cdk8s creates
+include('./libs/platform/cdk8s/Tiltfile')
 
 include('./apps/go/api-rest/Tiltfile')
 include('./apps/node/api-rest/Tiltfile')
@@ -42,6 +46,15 @@ cmd_button(name='NX',
 cmd_button(name='Graph',
         argv=['sh', '-c','pnpm nx affected:dep-graph'],
         text='Graph',
+        location=location.NAV,
+        inputs=[
+            bool_input('AFFECTED', true_string='affected:', false_string=''),
+        ],
+        icon_name='grain')
+
+cmd_button(name='Speedtest',
+        argv=['sh', '-c','speedtest'],
+        text='Speedtest',
         location=location.NAV,
         inputs=[
             bool_input('AFFECTED', true_string='affected:', false_string=''),

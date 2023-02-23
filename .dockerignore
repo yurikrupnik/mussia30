@@ -1,0 +1,7 @@
+target
+Dockerfile
+.gitignore
+.github
+dist
+node_modules
+#./.github

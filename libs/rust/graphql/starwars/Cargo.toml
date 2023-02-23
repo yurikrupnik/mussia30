@@ -1,10 +1,31 @@
+bin = []
+bench = []
+test = []
+example = []
+
 [package]
 name = "starwars"
-version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+version = "0.0.1"
+autobins = true
+autoexamples = true
+autotests = true
+autobenches = true
 
 [dependencies]
-slab = "0.4.7"
 async-graphql = "5.0.5"
+slab = "0.4.7"
+
+[lib]
+path = "src/lib.rs"
+name = "starwars"
+test = true
+doctest = true
+bench = true
+doc = true
+plugin = false
+proc-macro = false
+harness = true
+edition = "2021"
+required-features = []
+crate-type = ["rlib"]

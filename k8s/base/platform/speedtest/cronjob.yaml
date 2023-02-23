@@ -1,0 +1,59 @@
+#apiVersion: batch/v1
+#kind: CronJob
+#metadata:
+#  name: aris-job
+#spec:
+#  schedule: "* * * * *"
+#  jobTemplate:
+#    spec:
+#      template:
+#        spec:
+#          containers:
+#            - name: openspeedtest
+#              image: openspeedtest/lates
+#              imagePullPolicy: IfNotPresent
+#              command:
+#                - /bin/sh
+#                - -c
+#                - date; echo Hello from the Kubernetes cluster
+#          restartPolicy: OnFailure
+#---
+#apiVersion: batch/v1
+#kind: CronJob
+#metadata:
+#  name: go-job
+#spec:
+#  schedule: "* * * * *"
+#  jobTemplate:
+#    spec:
+#      template:
+#        spec:
+#          containers:
+#            - name: go-commands
+#              image: go-commands/lates
+#              imagePullPolicy: IfNotPresent
+#              command:
+#                - /bin/sh
+#                - -c
+#                - date; echo Hello from the Kubernetes cluster
+#          restartPolicy: OnFailure
+#---
+apiVersion: batch/v1
+kind: Pod
+metadata:
+  name: stama
+spec:
+  schedule: "* 2 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: openspeedtest
+              image: openspeedtest/latest
+              imagePullPolicy: IfNotPresent
+          #              command:
+          #                - /bin/sh
+          #                - -c
+          #                - date; echo Hello from the Kubernetes cluster
+          restartPolicy: OnFailure

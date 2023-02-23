@@ -1,13 +1,38 @@
+bin = []
+bench = []
+test = []
+example = []
+
 [package]
 name = "mongo"
-version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+version = "0.0.1"
+autobins = true
+autoexamples = true
+autotests = true
+autobenches = true
 
 [dependencies]
+futures = "0.3.26"
 mongodb = "2.3.1"
 serde = "1.0.152"
-async-trait = { version = "0.1.64" }
-futures = "0.3.26"
-utoipa = { version = "2.4.2" }
+
+[dependencies.async-trait]
+version = "0.1.64"
+
+[dependencies.utoipa]
+version = "2.4.2"
+
+[lib]
+path = "src/lib.rs"
+name = "mongo"
+test = true
+doctest = true
+bench = true
+doc = true
+plugin = false
+proc-macro = false
+harness = true
+edition = "2021"
+required-features = []
+crate-type = ["rlib"]

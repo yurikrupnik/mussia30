@@ -10,6 +10,17 @@
         "lintFilePatterns": ["platform/core/**/*.ts"]
       }
     },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "options": {
+        "config": "platform/core/vite.config.ts"
+      },
+      "configurations": {
+        "watch": {
+          "watch": true
+        }
+      }
+    },
     "test-a": {
       "executor": "nx:run-commands",
       "options": {
@@ -33,6 +44,14 @@
       "executor": "@wanews/nx-pulumi:destroy",
       "options": {
         "buildTargets": []
+      }
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/platform/core"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/platform/core"
       }
     }
   },

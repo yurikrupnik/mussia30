@@ -4,6 +4,20 @@
   "projectType": "application",
   "sourceRoot": "apps/rust/api-rest/src",
   "targets": {
+    "chef": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "commands": [
+          "cargo install cargo-chef",
+          "cargo chef prepare --recipe-path recipe.json",
+          "cargo chef cook --release --recipe-path recipe.json",
+          ""
+        ],
+        "parallel": false,
+        "cwd": "apps/rust/api-rest/"
+      }
+    },
     "build": {
       "executor": "@nxrs/cargo:build",
       "options": {

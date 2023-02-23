@@ -14,7 +14,8 @@
         "main": "apps/node/dead-letter-subscription/src/main.ts",
         "tsConfig": "apps/node/dead-letter-subscription/tsconfig.app.json",
         "assets": ["apps/node/dead-letter-subscription/src/assets"],
-        "webpackConfig": "apps/node/dead-letter-subscription/webpack.config.js"
+        "webpackConfig": "apps/node/dead-letter-subscription/webpack.config.js",
+        "generatePackageJson": true
       },
       "configurations": {
         "production": {

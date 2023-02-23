@@ -1,0 +1,38 @@
+# add as git-hub action
+#- name: Install Task
+#  uses: arduino/setup-task@v1
+# https://taskfile.dev
+
+version: '3'
+
+env:
+  GREETING: Hey, there!
+
+
+tasks:
+  up:
+    dir: '{{.USER_WORKING_DIR}}'
+#    method: checksum
+#    platforms:
+#      -
+    summary: Load tilt up
+    preconditions:
+      - test -f docker-compose.yml
+    cmds:
+      - docker-compose up -d
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+  greet:
+    cmds:
+      - echo $GREETING
+    silent: true
+  kubectx:
+    cmds:
+      - kubectx
+  kubectl:
+    cmds:
+      - kubectl
+  nodes:
+    cmds:
+      - kubectl get nodes

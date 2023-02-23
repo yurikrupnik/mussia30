@@ -1,10 +1,31 @@
+bin = []
+bench = []
+test = []
+example = []
+
 [package]
 name = "grpc"
-version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+version = "0.0.1"
+autobins = true
+autoexamples = true
+autotests = true
+autobenches = true
 
 [dependencies]
-protoc-rust = "2.28.0"
 protobuf = "3.2.0"
+protoc-rust = "2.28.0"
+
+[lib]
+path = "src/lib.rs"
+name = "grpc"
+test = true
+doctest = true
+bench = true
+doc = true
+plugin = false
+proc-macro = false
+harness = true
+edition = "2021"
+required-features = []
+crate-type = ["rlib"]

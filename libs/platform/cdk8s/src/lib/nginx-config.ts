@@ -10,6 +10,7 @@ interface Backend {
   name: string;
   host: string;
   port: string;
+  url: string;
 }
 
 export function createNginxConfig(backends: Backend[]) {
@@ -23,7 +24,7 @@ upstream ${be.name} {
 
   const apis = backends.map((be) => {
     return `
-        location /api {
+        location /api/${be.url} {
             proxy_redirect  http://${be.name}/  /api/;
             proxy_pass http://${be.name};
         }

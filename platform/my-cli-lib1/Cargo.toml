@@ -1,0 +1,29 @@
+bin = []
+bench = []
+test = []
+example = []
+
+[package]
+name = "my-cli-lib1"
+edition = "2021"
+version = "0.0.1"
+autobins = true
+autoexamples = true
+autotests = true
+autobenches = true
+
+[dependencies]
+
+[lib]
+path = "src/lib.rs"
+name = "my_cli_lib1"
+test = true
+doctest = true
+bench = true
+doc = true
+plugin = false
+proc-macro = false
+harness = true
+edition = "2021"
+required-features = []
+crate-type = ["rlib"]

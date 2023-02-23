@@ -10,11 +10,31 @@ import { Construct } from 'constructs';
 // when array of imports in tsconfig.base.json, does not show type but works also
 // import { IntOrString } from '@nx-multi-cloud/imports/k8s';
 import { IntOrString } from '../imports/k8s';
+// import {} from '../imports/networking.istio.io';
+// import {} from '../imports/security.istio.io';
+import {} from '../imports/rollouts.kruise.io';
+// import {} from '../imports/apps.kruise.io';
+// import {} from '../imports/core.oam.dev';
+import {
+  EventBus,
+  EventBusProps,
+  EventSource,
+  EventSourceProps,
+  SensorProps,
+  Sensor,
+} from '../imports/argoproj.io';
+import {} from '../imports/dapr.io';
+
+// const s = new Sensor('dfs', {});
+// import { Provider, ProviderProps } from '../imports/pkg.crossplane.io';
+import {} from '../imports/external-secrets.io';
 import { ConfigMap, Namespace, ServiceAccount } from 'cdk8s-plus-25';
 // import { doit } from '@nx-multi-cloud/k8s-shit';
 // import { platformCdk8s } from '@mussia30/platform/cdk8s';
 // fails
 import { WebService } from './lib/platform-cdk8s';
+
+// export const deploymentName = deployment.metadata.name;
 
 export class MyChart extends Chart {
   constructor(scope: Construct, id: string, props: ChartProps = {}) {

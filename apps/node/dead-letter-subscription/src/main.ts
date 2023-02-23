@@ -1,22 +1,22 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
+// import { Storage } from "@google-cloud/storage";
+//
+// const storage = new Storage();
 
-import { Logger } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
+// /**
+//  * Triggered from a change to a Cloud Storage bucket.
+//  *
+//  * @param {!Object} event Event payload.
+//  * @param {!Object} context Metadata for the event.
+//  */
+// const deadLetterSubscription = (event: any, context: any) => {
+//   const gcsEvent = event;
+//   console.log(`Processing file: ${gcsEvent.name}`);
+//   console.log(`Processing file: ${context}`);
+// };
 
-import { AppModule } from './app/app.module';
+const deadLetterSubscription = (req, res) => {
+  const message = req.query.message || req.body.message || 'Hello Sela1111!';
+  res.status(200).send(message);
+};
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
-  const port = process.env.PORT || 3333;
-  await app.listen(port);
-  Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
-  );
-}
-
-bootstrap();
+export { deadLetterSubscription };

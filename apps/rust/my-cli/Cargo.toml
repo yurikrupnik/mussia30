@@ -1,0 +1,53 @@
+bench = []
+test = []
+example = []
+
+[[bin]]
+path = "src/main.rs"
+name = "my_cli"
+test = true
+doctest = true
+bench = true
+doc = true
+plugin = false
+proc-macro = false
+harness = true
+edition = "2021"
+required-features = []
+
+[package]
+name = "my_cli"
+edition = "2021"
+version = "0.0.1"
+autobins = true
+autoexamples = true
+autotests = true
+autobenches = true
+
+[dependencies]
+owo-colors = "3.5.0"
+palette = "0.6.1"
+rand = "0.8.5"
+thiserror = "1.0.37"
+
+[dependencies.clap]
+version = "4.0.4"
+features = ["derive"]
+
+[dependencies.miette]
+version = "5.3.0"
+features = ["fancy"]
+
+[lib]
+path = "src/lib.rs"
+name = "my_cli"
+test = true
+doctest = true
+bench = true
+doc = true
+plugin = false
+proc-macro = false
+harness = true
+edition = "2021"
+required-features = []
+crate-type = ["rlib"]
