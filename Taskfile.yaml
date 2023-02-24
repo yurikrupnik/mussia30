@@ -1,0 +1,30 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+  up:
+    cmds:
+      - ctlptl create cluster k3d --registry=ctlptl-registry
+      - helm install kube-prometheus bitnami/kube-prometheus -n prometheus --create-namespace --set installCRDs=true
+      - kubectl create namespace argocd
+      - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+      - kubectl wait --for condition=Available=True --timeout=300s deployment/argocd-server --namespace argocd
+      - kubectl apply -f k8s/argocd/apps.yaml
+
+#      - just install-linkerd
+#      - just install-viz
+      - tilt up
+  get-secret:
+    kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+  down:
+    cmds:
+      - tilt down
+      - ctlptl delete cluster k3d
