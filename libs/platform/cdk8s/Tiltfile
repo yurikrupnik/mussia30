@@ -1,0 +1,45 @@
+load('ext://uibutton', 'cmd_button', 'location', 'text_input', 'bool_input')
+
+
+cmd_button(name='Speedtest',
+        argv=['sh', '-c','speedtest'],
+        text='Speedtest',
+        location=location.NAV,
+        inputs=[
+            bool_input('AFFECTED', true_string='affected:', false_string=''),
+        ],
+        # labels = ["just"],
+        icon_name='grain')
+
+local_resource(
+  'platform-cdk8s:import',
+  dir="../../..",
+  cmd='pnpm nx run platform-cdk8s:import',
+  deps=['./cdk8s.yaml'],
+  resource_deps=["pnpm"],
+  ignore=["k8s"],
+  env={"GOOS":"linux","GOARCH":"amd64"},
+  labels=["cdk8s"],
+)        
+
+local_resource(
+  'build:platform-cdk8s',
+  dir="../../..",
+  cmd='pnpm nx run platform-cdk8s:build',
+  deps=['./src', './cdk8s.yaml'],
+  resource_deps=["platform-cdk8s:import"],
+  ignore=["k8s"],
+  env={"GOOS":"linux","GOARCH":"amd64"},
+  labels=["cdk8s"],
+)   
+
+local_resource(
+  'synth:platform-cdk8s',
+  dir="../../..",
+  cmd='pnpm nx run platform-cdk8s:synth',
+  deps=['./src'],
+  resource_deps=["platform-cdk8s:build"],
+  ignore=["k8s"],
+  env={"GOOS":"linux","GOARCH":"amd64"},
+  labels=["cdk8s"],
+)     

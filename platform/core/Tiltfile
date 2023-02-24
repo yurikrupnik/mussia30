@@ -1,0 +1,1 @@
+# pnpm nx run core:destroy --stack aris --yes

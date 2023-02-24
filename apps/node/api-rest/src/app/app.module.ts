@@ -5,6 +5,7 @@ import { UsersModule } from '@mussia30/node/nest/users-api';
 import { SwaggerModule } from '@mussia30/node/nest/swagger';
 import { HealthModule } from '@mussia30/node/nest/health';
 import { LoggerModule } from '@mussia30/node/nest/logger';
+// import { KubectlController } from './kubectl.controller';
 //import { AuthModule } from '@mussia14/backend/auth';
 // import { TcpUserController } from './tcp/tcp-users.controller';
 // import { PostsController } from './posts/posts.controller';
@@ -31,6 +32,7 @@ import { GrpcController } from './app.controller'; // grpc controller
   ],
   controllers: [
     // PostsController,
+    // KubectlController,
     RedisUserController,
     // TcpUserController,
     GrpcController,
