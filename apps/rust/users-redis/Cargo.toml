@@ -17,5 +17,5 @@ redis = { version = "0.22.3", features = ["tokio-comp"]  }
 tokio = { version = "1.25.0", features = ["full"] }
 
 [dev-dependencies]
-actix-test = "0.1.0"
+actix-test = "0.1.1"
 time = "0.3.20"
