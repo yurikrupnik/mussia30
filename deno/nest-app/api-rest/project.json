@@ -1,0 +1,77 @@
+{
+  "name": "go-api-rest",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/go/api-rest",
+  "targets": {
+    "build": {
+      "executor": "@nx-go/nx-go:build",
+      "options": {
+        "outputPath": "dist/apps/go/api-rest",
+        "main": "apps/go/api-rest/main.go"
+      }
+    },
+    "serve": {
+      "executor": "@nx-go/nx-go:serve",
+      "options": {
+        "cmd": "gow",
+        "cwd": ".",
+        "main": "apps/go/api-rest/main.go"
+      }
+    },
+    "test": {
+      "executor": "@nx-go/nx-go:test"
+    },
+    "lint": {
+      "executor": "@nx-go/nx-go:lint"
+    },
+    "docker": {
+      "executor": "@nx-tools/nx-container:build",
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self",
+          "params": "forward"
+        }
+      ],
+      "options": {
+        "push": true,
+        "file": "./Dockerfile",
+        "target": "alpine",
+        "platforms": ["linux/amd64", "linux/arm64"],
+        "build-args": ["DIST_PATH=dist/apps/go/api-rest"],
+        "metadata": {
+          "images": [
+            "yurikrupnik/go-api-rest"
+          ]
+        }
+      }
+    },
+    "docker-buildx": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "docker buildx build --target alpine --build-arg DIST_PATH=dist/apps/go/api-rest . -t yurikrupnik/go-api-rest"
+      }
+    },
+    "docker-normal": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self",
+          "params": "forward"
+        }
+      ],
+      "options": {
+        "parallel": false,
+        "commands": [
+          "docker build --target alpine --build-arg DIST_PATH=dist/apps/go/api-rest . -t yurikrupnik/go-api-rest",
+          "docker push yurikrupnik/go-api-rest"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

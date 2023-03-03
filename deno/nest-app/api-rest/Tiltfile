@@ -1,9 +1,9 @@
 
 local_resource(
-  'build-node-api-rest',
+  'build-users-api',
   dir="../../..",
-  cmd='pnpm nx run node-api-rest:build',
-  deps=['.', '../../../libs/node'],
+  cmd='pnpm nx run go-api-rest:build',
+  deps=['.', '../../../libs/go'],
   resource_deps=["pnpm"],
   ignore=["k8s"],
   env={"GOOS":"linux","GOARCH":"amd64"},
@@ -11,11 +11,11 @@ local_resource(
 )
 
 docker_build(
-  "yurikrupnik/node-api-rest",
+  "yurikrupnik/go-api-rest",
   "../../..",
-  target="node",
-  build_args={"DIST_PATH":"dist/apps/node/api-rest"},
-  only=["dist/apps/node/api-rest"],
+  target="alpine",
+  build_args={"DIST_PATH":"dist/apps/go/api-rest"},
+  only=["dist/apps/go/api-rest"],
   # live_update=[
   #   sync('./dist/apps/users/api', '/app'),
   #   # sync('../../../dist/apps/users/api', '/app')
@@ -24,5 +24,5 @@ docker_build(
 
 k8s_yaml(kustomize('k8s/base'))
 
-k8s_resource("node-api-rest", port_forwards="5010:8080")
+k8s_resource("go-api-rest", port_forwards="5001:8080")
 

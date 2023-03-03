@@ -7994,7 +7994,7 @@ export class ApplicationSetSpecStrategyRollingSyncStepsMaxUpdate {
   public static fromString(value: string): ApplicationSetSpecStrategyRollingSyncStepsMaxUpdate {
     return new ApplicationSetSpecStrategyRollingSyncStepsMaxUpdate(value);
   }
-  private constructor(public readonly value: any) {
+  private constructor(public readonly value: number | string) {
   }
 }
 

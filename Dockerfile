@@ -53,7 +53,9 @@ USER deno
 # Ideally cache deps.ts will download and compile _all_ external files used in main.ts.
 COPY import_map.json .
 RUN deno cache import_map.json
-COPY main.ts .
+COPY $DIST_PATH ./app
+COPY _proto ./app
+# COPY main.ts .
 # These steps will be re-run upon each file change in your working directory:
 #ADD . .
 # Compile the main app so that it doesn't need to be compiled each startup/entry.

@@ -797,13 +797,13 @@ export function toJson_ClusterExternalSecretSpecExternalSecretSpecDataFromSource
  */
 export enum ClusterExternalSecretSpecExternalSecretSpecTargetCreationPolicy {
   /** Owner */
-  OWNER = 'Owner',
+  OWNER = "Owner",
   /** Orphan */
-  ORPHAN = 'Orphan',
+  ORPHAN = "Orphan",
   /** Merge */
-  MERGE = 'Merge',
+  MERGE = "Merge",
   /** None */
-  NONE = 'None',
+  NONE = "None",
 }
 
 /**
@@ -814,11 +814,11 @@ export enum ClusterExternalSecretSpecExternalSecretSpecTargetCreationPolicy {
  */
 export enum ClusterExternalSecretSpecExternalSecretSpecTargetDeletionPolicy {
   /** Delete */
-  DELETE = 'Delete',
+  DELETE = "Delete",
   /** Merge */
-  MERGE = 'Merge',
+  MERGE = "Merge",
   /** Retain */
-  RETAIN = 'Retain',
+  RETAIN = "Retain",
 }
 
 /**
@@ -2379,9 +2379,9 @@ export function toJson_ClusterSecretStoreSpecProviderAwsAuth(obj: ClusterSecretS
  */
 export enum ClusterSecretStoreSpecProviderAwsService {
   /** SecretsManager */
-  SECRETS_MANAGER = 'SecretsManager',
+  SECRETS_MANAGER = "SecretsManager",
   /** ParameterStore */
-  PARAMETER_STORE = 'ParameterStore',
+  PARAMETER_STORE = "ParameterStore",
 }
 
 /**
@@ -2428,11 +2428,11 @@ export function toJson_ClusterSecretStoreSpecProviderAzurekvAuthSecretRef(obj: C
  */
 export enum ClusterSecretStoreSpecProviderAzurekvAuthType {
   /** ServicePrincipal */
-  SERVICE_PRINCIPAL = 'ServicePrincipal',
+  SERVICE_PRINCIPAL = "ServicePrincipal",
   /** ManagedIdentity */
-  MANAGED_IDENTITY = 'ManagedIdentity',
+  MANAGED_IDENTITY = "ManagedIdentity",
   /** WorkloadIdentity */
-  WORKLOAD_IDENTITY = 'WorkloadIdentity',
+  WORKLOAD_IDENTITY = "WorkloadIdentity",
 }
 
 /**
@@ -2874,9 +2874,9 @@ export function toJson_ClusterSecretStoreSpecProviderVaultCaProvider(obj: Cluste
  */
 export enum ClusterSecretStoreSpecProviderVaultVersion {
   /** v1 */
-  V1 = 'v1',
+  V1 = "v1",
   /** v2 */
-  V2 = 'v2',
+  V2 = "v2",
 }
 
 /**
@@ -3941,9 +3941,9 @@ export function toJson_ClusterSecretStoreSpecProviderVaultAuthTokenSecretRef(obj
  */
 export enum ClusterSecretStoreSpecProviderVaultCaProviderType {
   /** Secret */
-  SECRET = 'Secret',
+  SECRET = "Secret",
   /** ConfigMap */
-  CONFIG_MAP = 'ConfigMap',
+  CONFIG_MAP = "ConfigMap",
 }
 
 /**
@@ -3953,9 +3953,9 @@ export enum ClusterSecretStoreSpecProviderVaultCaProviderType {
  */
 export enum ClusterSecretStoreSpecProviderWebhookCaProviderType {
   /** Secret */
-  SECRET = 'Secret',
+  SECRET = "Secret",
   /** ConfigMap */
-  CONFIG_MAP = 'ConfigMap',
+  CONFIG_MAP = "ConfigMap",
 }
 
 /**
@@ -4910,9 +4910,9 @@ export function toJson_ClusterSecretStoreSpecProviderKubernetesAuthTokenBearerTo
  */
 export enum ClusterSecretStoreSpecProviderKubernetesServerCaProviderType {
   /** Secret */
-  SECRET = 'Secret',
+  SECRET = "Secret",
   /** ConfigMap */
-  CONFIG_MAP = 'ConfigMap',
+  CONFIG_MAP = "ConfigMap",
 }
 
 /**
@@ -5914,6 +5914,13 @@ export function toJson_ClusterSecretStoreV1Beta1SpecProviderAlibaba(obj: Cluster
  */
 export interface ClusterSecretStoreV1Beta1SpecProviderAws {
   /**
+   * AdditionalRoles is a chained list of Role ARNs which the SecretManager provider will sequentially assume before assuming Role
+   *
+   * @schema ClusterSecretStoreV1Beta1SpecProviderAws#additionalRoles
+   */
+  readonly additionalRoles?: string[];
+
+  /**
    * Auth defines the information necessary to authenticate against AWS if not set aws sdk will infer credentials from your environment see: https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/configuring-sdk.html#specifying-credentials
    *
    * @schema ClusterSecretStoreV1Beta1SpecProviderAws#auth
@@ -5950,6 +5957,7 @@ export interface ClusterSecretStoreV1Beta1SpecProviderAws {
 export function toJson_ClusterSecretStoreV1Beta1SpecProviderAws(obj: ClusterSecretStoreV1Beta1SpecProviderAws | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
+    'additionalRoles': obj.additionalRoles?.map(y => y),
     'auth': toJson_ClusterSecretStoreV1Beta1SpecProviderAwsAuth(obj.auth),
     'region': obj.region,
     'role': obj.role,
@@ -6888,9 +6896,9 @@ export function toJson_ClusterSecretStoreV1Beta1SpecProviderAwsAuth(obj: Cluster
  */
 export enum ClusterSecretStoreV1Beta1SpecProviderAwsService {
   /** SecretsManager */
-  SECRETS_MANAGER = 'SecretsManager',
+  SECRETS_MANAGER = "SecretsManager",
   /** ParameterStore */
-  PARAMETER_STORE = 'ParameterStore',
+  PARAMETER_STORE = "ParameterStore",
 }
 
 /**
@@ -6937,11 +6945,11 @@ export function toJson_ClusterSecretStoreV1Beta1SpecProviderAzurekvAuthSecretRef
  */
 export enum ClusterSecretStoreV1Beta1SpecProviderAzurekvAuthType {
   /** ServicePrincipal */
-  SERVICE_PRINCIPAL = 'ServicePrincipal',
+  SERVICE_PRINCIPAL = "ServicePrincipal",
   /** ManagedIdentity */
-  MANAGED_IDENTITY = 'ManagedIdentity',
+  MANAGED_IDENTITY = "ManagedIdentity",
   /** WorkloadIdentity */
-  WORKLOAD_IDENTITY = 'WorkloadIdentity',
+  WORKLOAD_IDENTITY = "WorkloadIdentity",
 }
 
 /**
@@ -6951,13 +6959,13 @@ export enum ClusterSecretStoreV1Beta1SpecProviderAzurekvAuthType {
  */
 export enum ClusterSecretStoreV1Beta1SpecProviderAzurekvEnvironmentType {
   /** PublicCloud */
-  PUBLIC_CLOUD = 'PublicCloud',
+  PUBLIC_CLOUD = "PublicCloud",
   /** USGovernmentCloud */
-  US_GOVERNMENT_CLOUD = 'USGovernmentCloud',
+  US_GOVERNMENT_CLOUD = "USGovernmentCloud",
   /** ChinaCloud */
-  CHINA_CLOUD = 'ChinaCloud',
+  CHINA_CLOUD = "ChinaCloud",
   /** GermanCloud */
-  GERMAN_CLOUD = 'GermanCloud',
+  GERMAN_CLOUD = "GermanCloud",
 }
 
 /**
@@ -7039,15 +7047,15 @@ export function toJson_ClusterSecretStoreV1Beta1SpecProviderDopplerAuth(obj: Clu
  */
 export enum ClusterSecretStoreV1Beta1SpecProviderDopplerFormat {
   /** json */
-  JSON = 'json',
+  JSON = "json",
   /** dotnet-json */
-  DOTNET_JSON = 'dotnet-json',
+  DOTNET_JSON = "dotnet-json",
   /** env */
-  ENV = 'env',
+  ENV = "env",
   /** yaml */
-  YAML = 'yaml',
+  YAML = "yaml",
   /** docker */
-  DOCKER = 'docker',
+  DOCKER = "docker",
 }
 
 /**
@@ -7057,15 +7065,15 @@ export enum ClusterSecretStoreV1Beta1SpecProviderDopplerFormat {
  */
 export enum ClusterSecretStoreV1Beta1SpecProviderDopplerNameTransformer {
   /** upper-camel */
-  UPPER_CAMEL = 'upper-camel',
+  UPPER_CAMEL = "upper-camel",
   /** camel */
-  CAMEL = 'camel',
+  CAMEL = "camel",
   /** lower-snake */
-  LOWER_SNAKE = 'lower-snake',
+  LOWER_SNAKE = "lower-snake",
   /** tf-var */
-  TF_VAR = 'tf-var',
+  TF_VAR = "tf-var",
   /** dotnet-env */
-  DOTNET_ENV = 'dotnet-env',
+  DOTNET_ENV = "dotnet-env",
 }
 
 /**
@@ -7534,9 +7542,9 @@ export function toJson_ClusterSecretStoreV1Beta1SpecProviderVaultCaProvider(obj:
  */
 export enum ClusterSecretStoreV1Beta1SpecProviderVaultVersion {
   /** v1 */
-  V1 = 'v1',
+  V1 = "v1",
   /** v2 */
-  V2 = 'v2',
+  V2 = "v2",
 }
 
 /**
@@ -8827,9 +8835,9 @@ export function toJson_ClusterSecretStoreV1Beta1SpecProviderVaultAuthTokenSecret
  */
 export enum ClusterSecretStoreV1Beta1SpecProviderVaultCaProviderType {
   /** Secret */
-  SECRET = 'Secret',
+  SECRET = "Secret",
   /** ConfigMap */
-  CONFIG_MAP = 'ConfigMap',
+  CONFIG_MAP = "ConfigMap",
 }
 
 /**
@@ -8839,9 +8847,9 @@ export enum ClusterSecretStoreV1Beta1SpecProviderVaultCaProviderType {
  */
 export enum ClusterSecretStoreV1Beta1SpecProviderWebhookCaProviderType {
   /** Secret */
-  SECRET = 'Secret',
+  SECRET = "Secret",
   /** ConfigMap */
-  CONFIG_MAP = 'ConfigMap',
+  CONFIG_MAP = "ConfigMap",
 }
 
 /**
@@ -9931,9 +9939,9 @@ export function toJson_ClusterSecretStoreV1Beta1SpecProviderKubernetesAuthTokenB
  */
 export enum ClusterSecretStoreV1Beta1SpecProviderKubernetesServerCaProviderType {
   /** Secret */
-  SECRET = 'Secret',
+  SECRET = "Secret",
   /** ConfigMap */
-  CONFIG_MAP = 'ConfigMap',
+  CONFIG_MAP = "ConfigMap",
 }
 
 /**
@@ -11755,13 +11763,13 @@ export function toJson_ExternalSecretV1Beta1SpecDataFromSourceRef(obj: ExternalS
  */
 export enum ExternalSecretV1Beta1SpecTargetCreationPolicy {
   /** Owner */
-  OWNER = 'Owner',
+  OWNER = "Owner",
   /** Orphan */
-  ORPHAN = 'Orphan',
+  ORPHAN = "Orphan",
   /** Merge */
-  MERGE = 'Merge',
+  MERGE = "Merge",
   /** None */
-  NONE = 'None',
+  NONE = "None",
 }
 
 /**
@@ -11772,11 +11780,11 @@ export enum ExternalSecretV1Beta1SpecTargetCreationPolicy {
  */
 export enum ExternalSecretV1Beta1SpecTargetDeletionPolicy {
   /** Delete */
-  DELETE = 'Delete',
+  DELETE = "Delete",
   /** Merge */
-  MERGE = 'Merge',
+  MERGE = "Merge",
   /** Retain */
-  RETAIN = 'Retain',
+  RETAIN = "Retain",
 }
 
 /**
@@ -13762,9 +13770,9 @@ export function toJson_SecretStoreSpecProviderAwsAuth(obj: SecretStoreSpecProvid
  */
 export enum SecretStoreSpecProviderAwsService {
   /** SecretsManager */
-  SECRETS_MANAGER = 'SecretsManager',
+  SECRETS_MANAGER = "SecretsManager",
   /** ParameterStore */
-  PARAMETER_STORE = 'ParameterStore',
+  PARAMETER_STORE = "ParameterStore",
 }
 
 /**
@@ -13811,11 +13819,11 @@ export function toJson_SecretStoreSpecProviderAzurekvAuthSecretRef(obj: SecretSt
  */
 export enum SecretStoreSpecProviderAzurekvAuthType {
   /** ServicePrincipal */
-  SERVICE_PRINCIPAL = 'ServicePrincipal',
+  SERVICE_PRINCIPAL = "ServicePrincipal",
   /** ManagedIdentity */
-  MANAGED_IDENTITY = 'ManagedIdentity',
+  MANAGED_IDENTITY = "ManagedIdentity",
   /** WorkloadIdentity */
-  WORKLOAD_IDENTITY = 'WorkloadIdentity',
+  WORKLOAD_IDENTITY = "WorkloadIdentity",
 }
 
 /**
@@ -14257,9 +14265,9 @@ export function toJson_SecretStoreSpecProviderVaultCaProvider(obj: SecretStoreSp
  */
 export enum SecretStoreSpecProviderVaultVersion {
   /** v1 */
-  V1 = 'v1',
+  V1 = "v1",
   /** v2 */
-  V2 = 'v2',
+  V2 = "v2",
 }
 
 /**
@@ -15324,9 +15332,9 @@ export function toJson_SecretStoreSpecProviderVaultAuthTokenSecretRef(obj: Secre
  */
 export enum SecretStoreSpecProviderVaultCaProviderType {
   /** Secret */
-  SECRET = 'Secret',
+  SECRET = "Secret",
   /** ConfigMap */
-  CONFIG_MAP = 'ConfigMap',
+  CONFIG_MAP = "ConfigMap",
 }
 
 /**
@@ -15336,9 +15344,9 @@ export enum SecretStoreSpecProviderVaultCaProviderType {
  */
 export enum SecretStoreSpecProviderWebhookCaProviderType {
   /** Secret */
-  SECRET = 'Secret',
+  SECRET = "Secret",
   /** ConfigMap */
-  CONFIG_MAP = 'ConfigMap',
+  CONFIG_MAP = "ConfigMap",
 }
 
 /**
@@ -16293,9 +16301,9 @@ export function toJson_SecretStoreSpecProviderKubernetesAuthTokenBearerToken(obj
  */
 export enum SecretStoreSpecProviderKubernetesServerCaProviderType {
   /** Secret */
-  SECRET = 'Secret',
+  SECRET = "Secret",
   /** ConfigMap */
-  CONFIG_MAP = 'ConfigMap',
+  CONFIG_MAP = "ConfigMap",
 }
 
 /**
@@ -17297,6 +17305,13 @@ export function toJson_SecretStoreV1Beta1SpecProviderAlibaba(obj: SecretStoreV1B
  */
 export interface SecretStoreV1Beta1SpecProviderAws {
   /**
+   * AdditionalRoles is a chained list of Role ARNs which the SecretManager provider will sequentially assume before assuming Role
+   *
+   * @schema SecretStoreV1Beta1SpecProviderAws#additionalRoles
+   */
+  readonly additionalRoles?: string[];
+
+  /**
    * Auth defines the information necessary to authenticate against AWS if not set aws sdk will infer credentials from your environment see: https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/configuring-sdk.html#specifying-credentials
    *
    * @schema SecretStoreV1Beta1SpecProviderAws#auth
@@ -17333,6 +17348,7 @@ export interface SecretStoreV1Beta1SpecProviderAws {
 export function toJson_SecretStoreV1Beta1SpecProviderAws(obj: SecretStoreV1Beta1SpecProviderAws | undefined): Record<string, any> | undefined {
   if (obj === undefined) { return undefined; }
   const result = {
+    'additionalRoles': obj.additionalRoles?.map(y => y),
     'auth': toJson_SecretStoreV1Beta1SpecProviderAwsAuth(obj.auth),
     'region': obj.region,
     'role': obj.role,
@@ -18271,9 +18287,9 @@ export function toJson_SecretStoreV1Beta1SpecProviderAwsAuth(obj: SecretStoreV1B
  */
 export enum SecretStoreV1Beta1SpecProviderAwsService {
   /** SecretsManager */
-  SECRETS_MANAGER = 'SecretsManager',
+  SECRETS_MANAGER = "SecretsManager",
   /** ParameterStore */
-  PARAMETER_STORE = 'ParameterStore',
+  PARAMETER_STORE = "ParameterStore",
 }
 
 /**
@@ -18320,11 +18336,11 @@ export function toJson_SecretStoreV1Beta1SpecProviderAzurekvAuthSecretRef(obj: S
  */
 export enum SecretStoreV1Beta1SpecProviderAzurekvAuthType {
   /** ServicePrincipal */
-  SERVICE_PRINCIPAL = 'ServicePrincipal',
+  SERVICE_PRINCIPAL = "ServicePrincipal",
   /** ManagedIdentity */
-  MANAGED_IDENTITY = 'ManagedIdentity',
+  MANAGED_IDENTITY = "ManagedIdentity",
   /** WorkloadIdentity */
-  WORKLOAD_IDENTITY = 'WorkloadIdentity',
+  WORKLOAD_IDENTITY = "WorkloadIdentity",
 }
 
 /**
@@ -18334,13 +18350,13 @@ export enum SecretStoreV1Beta1SpecProviderAzurekvAuthType {
  */
 export enum SecretStoreV1Beta1SpecProviderAzurekvEnvironmentType {
   /** PublicCloud */
-  PUBLIC_CLOUD = 'PublicCloud',
+  PUBLIC_CLOUD = "PublicCloud",
   /** USGovernmentCloud */
-  US_GOVERNMENT_CLOUD = 'USGovernmentCloud',
+  US_GOVERNMENT_CLOUD = "USGovernmentCloud",
   /** ChinaCloud */
-  CHINA_CLOUD = 'ChinaCloud',
+  CHINA_CLOUD = "ChinaCloud",
   /** GermanCloud */
-  GERMAN_CLOUD = 'GermanCloud',
+  GERMAN_CLOUD = "GermanCloud",
 }
 
 /**
@@ -18422,15 +18438,15 @@ export function toJson_SecretStoreV1Beta1SpecProviderDopplerAuth(obj: SecretStor
  */
 export enum SecretStoreV1Beta1SpecProviderDopplerFormat {
   /** json */
-  JSON = 'json',
+  JSON = "json",
   /** dotnet-json */
-  DOTNET_JSON = 'dotnet-json',
+  DOTNET_JSON = "dotnet-json",
   /** env */
-  ENV = 'env',
+  ENV = "env",
   /** yaml */
-  YAML = 'yaml',
+  YAML = "yaml",
   /** docker */
-  DOCKER = 'docker',
+  DOCKER = "docker",
 }
 
 /**
@@ -18440,15 +18456,15 @@ export enum SecretStoreV1Beta1SpecProviderDopplerFormat {
  */
 export enum SecretStoreV1Beta1SpecProviderDopplerNameTransformer {
   /** upper-camel */
-  UPPER_CAMEL = 'upper-camel',
+  UPPER_CAMEL = "upper-camel",
   /** camel */
-  CAMEL = 'camel',
+  CAMEL = "camel",
   /** lower-snake */
-  LOWER_SNAKE = 'lower-snake',
+  LOWER_SNAKE = "lower-snake",
   /** tf-var */
-  TF_VAR = 'tf-var',
+  TF_VAR = "tf-var",
   /** dotnet-env */
-  DOTNET_ENV = 'dotnet-env',
+  DOTNET_ENV = "dotnet-env",
 }
 
 /**
@@ -18917,9 +18933,9 @@ export function toJson_SecretStoreV1Beta1SpecProviderVaultCaProvider(obj: Secret
  */
 export enum SecretStoreV1Beta1SpecProviderVaultVersion {
   /** v1 */
-  V1 = 'v1',
+  V1 = "v1",
   /** v2 */
-  V2 = 'v2',
+  V2 = "v2",
 }
 
 /**
@@ -20210,9 +20226,9 @@ export function toJson_SecretStoreV1Beta1SpecProviderVaultAuthTokenSecretRef(obj
  */
 export enum SecretStoreV1Beta1SpecProviderVaultCaProviderType {
   /** Secret */
-  SECRET = 'Secret',
+  SECRET = "Secret",
   /** ConfigMap */
-  CONFIG_MAP = 'ConfigMap',
+  CONFIG_MAP = "ConfigMap",
 }
 
 /**
@@ -20222,9 +20238,9 @@ export enum SecretStoreV1Beta1SpecProviderVaultCaProviderType {
  */
 export enum SecretStoreV1Beta1SpecProviderWebhookCaProviderType {
   /** Secret */
-  SECRET = 'Secret',
+  SECRET = "Secret",
   /** ConfigMap */
-  CONFIG_MAP = 'ConfigMap',
+  CONFIG_MAP = "ConfigMap",
 }
 
 /**
@@ -21314,9 +21330,9 @@ export function toJson_SecretStoreV1Beta1SpecProviderKubernetesAuthTokenBearerTo
  */
 export enum SecretStoreV1Beta1SpecProviderKubernetesServerCaProviderType {
   /** Secret */
-  SECRET = 'Secret',
+  SECRET = "Secret",
   /** ConfigMap */
-  CONFIG_MAP = 'ConfigMap',
+  CONFIG_MAP = "ConfigMap",
 }
 
 /**

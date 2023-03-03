@@ -103,9 +103,9 @@ export class WebService extends Construct {
         metadata: {
           finalizers: [],
           labels: {
-            label1: IntOrString.fromString('label-value1').value,
-            label3: IntOrString.fromString('label-value3').value,
-            label2: 'label-value2',
+            // label1: IntOrString.fromString('label-value1').value,
+            // label3: IntOrString.fromString('label-value3').value,
+            // label2: 'label-value2',
           },
           name: 'nginx-config',
           annotations: {
