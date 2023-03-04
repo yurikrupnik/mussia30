@@ -35,6 +35,7 @@ specifiers:
   '@nxext/solid': ^14.0.2
   '@nxrs/cargo': ^0.3.3
   '@pulumi/gcp': ^6.49.0
+  '@pulumi/mongodbatlas': ^3.7.0
   '@pulumi/pulumi': ^3.54.0
   '@solidjs/router': ^0.7.0
   '@swc/core': ^1.2.173
@@ -125,6 +126,7 @@ dependencies:
   '@nestjs/swagger': 6.1.4_4fhhxyztwhblafku3krlstrun4
   '@nestjs/terminus': 9.1.4_dlpilwsl2p7zgokgwpl3gxnbru
   '@pulumi/gcp': 6.49.0
+  '@pulumi/mongodbatlas': 3.7.0
   '@pulumi/pulumi': 3.54.0
   '@solidjs/router': 0.7.0_solid-js@1.6.6
   '@tanstack/solid-query': 4.24.10_solid-js@1.6.6
@@ -5235,6 +5237,15 @@ packages:
       '@pulumi/pulumi': 3.54.0
       '@types/express': 4.17.15
       read-package-json: 2.1.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@pulumi/mongodbatlas/3.7.0:
+    resolution: {integrity: sha512-MJmEx6wHHiaUdgI+F/iYu7+LIL69Al7hX1IjrO95l7Df983ljwoYD9aOmDTk8vKC3KxezicHxE1UsFNfUgdg3g==}
+    requiresBuild: true
+    dependencies:
+      '@pulumi/pulumi': 3.54.0
     transitivePeerDependencies:
       - supports-color
     dev: false

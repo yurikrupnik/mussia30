@@ -6,9 +6,9 @@ import { FunctionArgs } from '@pulumi/gcp/cloudfunctions';
 // import { Service } from '@pulumi/gcp/projects';
 // import { ResourceOptions } from "@pulumi/pulumi/resource";
 
-export interface GcpFunction  {
+export interface GcpFunction {
   name: string;
-  functionArgs: FunctionArgs,
+  functionArgs: FunctionArgs;
   // region: string;
   path: string;
   bucket: Bucket;
@@ -25,7 +25,7 @@ export class GcpFunctionResource extends pulumi.ComponentResource {
     opts?: pulumi.ResourceOptions
   ) {
     super('mussia30:code:function:', name, {}, opts);
-    const { functionArgs, bucket, path, member} = gcpFunction;
+    const { functionArgs, bucket, path, member } = gcpFunction;
 
     const archive = new gcp.storage.BucketObject(
       name,
@@ -47,7 +47,7 @@ export class GcpFunctionResource extends pulumi.ComponentResource {
         entryPoint: camelCase(name),
         name,
         // environmentVariables,
-        ...functionArgs
+        ...functionArgs,
         // serviceAccountEmail: '',
       },
       { parent: this, ...opts }

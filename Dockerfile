@@ -2,6 +2,7 @@
 # Done!
 FROM node:18-alpine AS node
 WORKDIR /app
+#COPY _proto ./app
 ARG DIST_PATH
 RUN test -n "$DIST_PATH" || (echo "DIST_PATH not set" && false)
 ENV NODE_ENV=$NODE_ENV
@@ -51,8 +52,8 @@ WORKDIR /app
 USER deno
 # Cache the dependencies as a layer (the following two steps are re-run only when deps.ts is modified).
 # Ideally cache deps.ts will download and compile _all_ external files used in main.ts.
-COPY import_map.json .
-RUN deno cache import_map.json
+COPY deno.json .
+#RUN deno cache deno.json
 COPY $DIST_PATH ./app
 COPY _proto ./app
 # COPY main.ts .

@@ -4,7 +4,7 @@
 
 # include('./k8s/helm/Tiltfile')
 
-local_resource('pnpm', cmd='pnpm install', deps=['package.json'], labels=['pnpm'])
+# local_resource('pnpm', cmd='pnpm install', deps=['package.json'], labels=['pnpm'])
 
 local_resource('proto-generate', cmd='just proto-generate', deps=['_proto/'], labels=['just'])
 
