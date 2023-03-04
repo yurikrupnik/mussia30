@@ -4,18 +4,24 @@
 
 # include('./k8s/helm/Tiltfile')
 
-local_resource('pnpm', cmd='pnpm install', deps=['package.json', 'pnpm-lock.yaml'], labels=['pnpm'])
+# local_resource('pnpm', cmd='pnpm install', deps=['package.json'], labels=['pnpm'])
 
 local_resource('proto-generate', cmd='just proto-generate', deps=['_proto/'], labels=['just'])
 
-# local_resource('k9s', cmd='k9s', labels=['k9s'])
 
-# local_resource('kube-logs', serve_cmd='kubectl get pods', labels=['k9s'])
+# local_resource('kubse-logs', serve_cmd='kubectl get pods -A', labels=['k9s'])
 
 include('./apps/go/api-rest/Tiltfile')
 include('./apps/node/api-rest/Tiltfile')
 include('./apps/frontend/host/Tiltfile')
 include('./apps/node/users-grpc/Tiltfile')
+
+# include('./deno/nest-app/Tiltfile')
+
+# Platform creating k8s assets
+include('./libs/platform/cdk8s/Tiltfile')
+# k8s_resource("argocd-server-59d9b8cb46-r28tk", port_forwards="3065:8080")
+
 # include('./apps/rust/api-rest/Tiltfile')
 # include('./apps/rust/users-grpc/Tiltfile')
 # include('./apps/infra/commdands/Tiltfile')

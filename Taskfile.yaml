@@ -12,19 +12,36 @@ tasks:
     silent: true
   up:
     cmds:
-      - ctlptl create cluster k3d --registry=ctlptl-registry
+      - ctlptl create cluster k3d --name=k3d-pod-cluster --registry=ctlptl-registry
+      - helm install kube-prometheus bitnami/kube-prometheus -n prometheus --create-namespace --set installCRDs=true
+      - ctlptl create cluster k3d --name=k3d-dev-cluster --registry=ctlptl-registry
       - helm install kube-prometheus bitnami/kube-prometheus -n prometheus --create-namespace --set installCRDs=true
       - kubectl create namespace argocd
       - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
       - kubectl wait --for condition=Available=True --timeout=300s deployment/argocd-server --namespace argocd
-      - kubectl apply -f k8s/argocd/apps.yaml
-
+#      - kubectl apply -f k8s/argocd/apps.yaml
+#      - istioctl install --set profile=default --verify -y # change this to helm
+#      - kubectl label namespace default istio-injection=enabled
+#      - kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.15/samples/bookinfo/platform/kube/bookinfo.yaml --wait
+#      - kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.15/samples/bookinfo/networking/bookinfo-gateway.yaml
+#      - kubectl apply -f https://raw.githubusercontent.com/istio/istio/master/samples/addons/prometheus.yaml
+#      - kubectl apply -f https://raw.githubusercontent.com/istio/istio/master/samples/addons/grafana.yaml
+#      - kubectl apply -f https://raw.githubusercontent.com/istio/istio/master/samples/addons/kiali.yaml
+#      - kubectl apply -f https://raw.githubusercontent.com/istio/istio/master/samples/addons/jaeger.yaml
+      - kubeshark tap &
 #      - just install-linkerd
 #      - just install-viz
       - tilt up
+#      - open argocd ui
   get-secret:
     kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
   down:
     cmds:
+      - kubeshark clean
       - tilt down
-      - ctlptl delete cluster k3d
+      - ctlptl delete cluster k3d-pod-cluster
+      - ctlptl delete cluster k3d-dev-cluster
+  gke-cluster:
+    cmds:
+      - gcloud beta container --project "yuri-sandbox" clusters create "cluster-1" --no-enable-basic-auth --cluster-version "1.24.9-gke.3200" --release-channel "regular" --machine-type "e2-standard-4" --image-type "COS_CONTAINERD" --disk-type "pd-balanced" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "3" --logging=SYSTEM,WORKLOAD --monitoring=SYSTEM --enable-ip-alias --network "projects/yuri-sandbox/global/networks/default" --subnetwork "projects/yuri-sandbox/regions/europe-central2/subnetworks/default" --no-enable-intra-node-visibility --default-max-pods-per-node "110" --no-enable-master-authorized-networks --addons HorizontalPodAutoscaling,HttpLoadBalancing,CloudRun,GcePersistentDiskCsiDriver,ConfigConnector,GcpFilestoreCsiDriver --enable-autoupgrade --enable-autorepair --max-surge-upgrade 1 --max-unavailable-upgrade 0 --maintenance-window-start "2023-03-01T22:00:00Z" --maintenance-window-end "2023-03-02T22:00:00Z" --maintenance-window-recurrence "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR,SA,SU" --labels mesh_id=proj-394442038451 --enable-managed-prometheus --workload-pool "yuri-sandbox.svc.id.goog" --enable-shielded-nodes --node-locations "europe-central2-a","europe-central2-b","europe-central2-c"
+      - gcloud container --project "yuri-sandbox" clusters create-auto "autopilot-cluster-1" --region "us-central1" --release-channel "regular" --network "projects/yuri-sandbox/global/networks/default" --subnetwork "projects/yuri-sandbox/regions/us-central1/subnetworks/default" --cluster-ipv4-cidr "/17" --services-ipv4-cidr "/22" --labels mesh_id=proj-394442038451

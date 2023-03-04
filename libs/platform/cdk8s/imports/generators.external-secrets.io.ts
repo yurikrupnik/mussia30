@@ -205,13 +205,13 @@ export function toJson_AcrAccessTokenSpecAuth(obj: AcrAccessTokenSpecAuth | unde
  */
 export enum AcrAccessTokenSpecEnvironmentType {
   /** PublicCloud */
-  PUBLIC_CLOUD = 'PublicCloud',
+  PUBLIC_CLOUD = "PublicCloud",
   /** USGovernmentCloud */
-  US_GOVERNMENT_CLOUD = 'USGovernmentCloud',
+  US_GOVERNMENT_CLOUD = "USGovernmentCloud",
   /** ChinaCloud */
-  CHINA_CLOUD = 'ChinaCloud',
+  CHINA_CLOUD = "ChinaCloud",
   /** GermanCloud */
-  GERMAN_CLOUD = 'GermanCloud',
+  GERMAN_CLOUD = "GermanCloud",
 }
 
 /**

@@ -24,10 +24,6 @@ metadata:
   annotations:
     annotation1: annotation1
     annotation2: annotation2
-  labels:
-    label1: label-value1
-    label2: label-value2
-    label3: label-value3
   name: nginx-config
   namespace: users
 ---
