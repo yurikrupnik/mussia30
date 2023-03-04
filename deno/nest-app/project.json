@@ -4,7 +4,7 @@
   "sourceRoot": "deno/nest-app/src",
   "projectType": "application",
   "targets": {
-    "test": {
+    "tests": {
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "options": {
@@ -29,7 +29,7 @@
         }
       }
     },
-    "lint": {
+    "lints": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {

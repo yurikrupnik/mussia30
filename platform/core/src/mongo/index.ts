@@ -20,7 +20,7 @@ export interface MongoInstance {
   // dependsOn?: Promise<Array<Service>>
 }
 
-export class GcpFunctionResource extends pulumi.ComponentResource {
+export class MongoInstanceResource extends pulumi.ComponentResource {
   constructor(
     name: string,
     mongoInstance: MongoInstance,
@@ -28,6 +28,6 @@ export class GcpFunctionResource extends pulumi.ComponentResource {
   ) {
     super('mussia30:code:function:', name, {}, opts);
     const { functionArgs, bucket, path, member } = mongoInstance;
-    new mongodbatlas.Cluster('fd', {});
+    // new mongodbatlas.Cluster('fd', {});
   }
 }
