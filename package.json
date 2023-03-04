@@ -32,6 +32,7 @@
     "@nx-tools/nx-container": "4.0.3",
     "@nxext/solid": "^14.0.2",
     "@nxrs/cargo": "^0.3.3",
+    "@rxap/plugin-kaniko": "^15.0.0",
     "@swc/core": "^1.2.173",
     "@testing-library/react": "14.0.0",
     "@types/express": "^4.17.15",

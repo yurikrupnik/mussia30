@@ -37,6 +37,7 @@ specifiers:
   '@pulumi/gcp': ^6.49.0
   '@pulumi/mongodbatlas': ^3.7.0
   '@pulumi/pulumi': ^3.54.0
+  '@rxap/plugin-kaniko': ^15.0.0
   '@solidjs/router': ^0.7.0
   '@swc/core': ^1.2.173
   '@tanstack/solid-query': 4.24.10
@@ -178,6 +179,7 @@ devDependencies:
   '@nx-tools/nx-container': 4.0.3_awpndcmcq5xbqqen3klfzmqcx4
   '@nxext/solid': 14.0.2_4tnpstyhykn52s5jy6hqtsvlfq
   '@nxrs/cargo': 0.3.3_@nrwl+devkit@15.7.2
+  '@rxap/plugin-kaniko': 15.0.0_@nrwl+workspace@15.7.2
   '@swc/core': 1.3.24
   '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
   '@types/express': 4.17.15
@@ -261,6 +263,16 @@ packages:
       '@jridgewell/trace-mapping': 0.3.17
     dev: true
 
+  /@angular-devkit/architect/0.1500.5:
+    resolution: {integrity: sha512-n1L3Q2d7HoWFRRqihu3BAUB5xZFfz8LqQoHpVNl6HN1ugtmvqDUDoKrpYVH9LCKCqfJW2Cxssy+FERiDsihIJQ==}
+    engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
+    dependencies:
+      '@angular-devkit/core': 15.0.5
+      rxjs: 6.6.7
+    transitivePeerDependencies:
+      - chokidar
+    dev: true
+
   /@angular-devkit/core/14.2.1:
     resolution: {integrity: sha512-lW8oNGuJqr4r31FWBjfWQYkSXdiOHBGOThIEtHvUVBKfPF/oVrupLueCUgBPel+NvxENXdo93uPsqHN7bZbmsQ==}
     engines: {node: ^14.15.0 || >=16.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
@@ -277,6 +289,38 @@ packages:
       source-map: 0.7.4
     dev: true
 
+  /@angular-devkit/core/15.0.5:
+    resolution: {integrity: sha512-SxLvbpqcQfb1qRykZjqRUG/8uC1FYpneyNV9S9YglXg4JhCFhfc9AnKxuu9Bm/O8V7FghOIlGWGglCdPHra0pw==}
+    engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
+    peerDependencies:
+      chokidar: ^3.5.2
+    peerDependenciesMeta:
+      chokidar:
+        optional: true
+    dependencies:
+      ajv: 8.11.0
+      ajv-formats: 2.1.1_ajv@8.11.0
+      jsonc-parser: 3.2.0
+      rxjs: 6.6.7
+      source-map: 0.7.4
+    dev: true
+
+  /@angular-devkit/core/15.2.1:
+    resolution: {integrity: sha512-m6lj5vvA/L21rUVm4PokK2SXZQE1Hjsw8AMNEaj+RlyVW36ISLm2TeeCdb441siBpLJkW+yA47bC2FUJ8HgsQQ==}
+    engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
+    peerDependencies:
+      chokidar: ^3.5.2
+    peerDependenciesMeta:
+      chokidar:
+        optional: true
+    dependencies:
+      ajv: 8.12.0
+      ajv-formats: 2.1.1_ajv@8.12.0
+      jsonc-parser: 3.2.0
+      rxjs: 6.6.7
+      source-map: 0.7.4
+    dev: true
+
   /@angular-devkit/schematics/14.2.1:
     resolution: {integrity: sha512-0U18FwDYt4zROBPrvewH6iBTkf2ozVHN4/gxUb9jWrqVw8mPU5AWc/iYxQLHBSinkr2Egjo1H/i9aBqgJSeh3g==}
     engines: {node: ^14.15.0 || >=16.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
@@ -284,6 +328,19 @@ packages:
       '@angular-devkit/core': 14.2.1
       jsonc-parser: 3.1.0
       magic-string: 0.26.2
+      ora: 5.4.1
+      rxjs: 6.6.7
+    transitivePeerDependencies:
+      - chokidar
+    dev: true
+
+  /@angular-devkit/schematics/15.2.1:
+    resolution: {integrity: sha512-XfUAGUC/tjQDzXaEJxkTvC7glJa4vmqGJ8RSCrRQYQOUZUASZtjEr6dIZEkWDN7zllcLuK/ULE4ITdcQ438LMQ==}
+    engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
+    dependencies:
+      '@angular-devkit/core': 15.2.1
+      jsonc-parser: 3.2.0
+      magic-string: 0.29.0
       ora: 5.4.1
       rxjs: 6.6.7
     transitivePeerDependencies:
@@ -5304,6 +5361,31 @@ packages:
       picomatch: 2.3.1
     dev: true
 
+  /@rxap/plugin-kaniko/15.0.0_@nrwl+workspace@15.7.2:
+    resolution: {integrity: sha512-fm+uWOdLno6n1KNkKs3gCxjlAdyWHnuQHAX8poatRRQ7V8yz1LcBiFYecl6jUke6I9pFXwebiPGCZ6yySSoyLA==}
+    peerDependencies:
+      '@nrwl/workspace': ^15.3.3
+    dependencies:
+      '@angular-devkit/architect': 0.1500.5
+      '@angular-devkit/core': 15.2.1
+      '@angular-devkit/schematics': 15.2.1
+      '@nrwl/workspace': 15.7.2_edtmtblgytq5scjiwbhmrddtjq
+      '@rxap/schematics-utilities': 15.0.0_bk25w77gresdwaygiemyqdewji
+      tslib: 2.4.1
+    transitivePeerDependencies:
+      - chokidar
+    dev: true
+
+  /@rxap/schematics-utilities/15.0.0_bk25w77gresdwaygiemyqdewji:
+    resolution: {integrity: sha512-ogfA3I/AeLPMEPFB0WFRaXzJLKBjfMcs3qQmiSwVsY5n5Q4hGJ5rsXHY5XaVhPPLoAJlje3mWKNV86Ws7scDkg==}
+    peerDependencies:
+      '@angular-devkit/schematics': ^15.0.3
+    dependencies:
+      '@angular-devkit/schematics': 15.2.1
+      semver: 7.3.8
+      tslib: 2.4.1
+    dev: true
+
   /@sinclair/typebox/0.24.51:
     resolution: {integrity: sha512-1P1OROm/rdubP5aFDSZQILU0vrLCJ4fvHt6EoqHEM+2D/G5MK3bIaymUKLit8Js9gbns5UyJnkP/TZROLw4tUA==}
     dev: true
@@ -6543,6 +6625,17 @@ packages:
       ajv: 8.11.2
     dev: true
 
+  /ajv-formats/2.1.1_ajv@8.12.0:
+    resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
+    peerDependencies:
+      ajv: ^8.0.0
+    peerDependenciesMeta:
+      ajv:
+        optional: true
+    dependencies:
+      ajv: 8.12.0
+    dev: true
+
   /ajv-keywords/3.5.2_ajv@6.12.6:
     resolution: {integrity: sha512-5p6WTN0DdTGVQk6VjcEju19IgaHudalcfabD7yhDGeA6bcQnmL+CpveLJq/3hvfwd1aof6L386Ougkx6RfyMIQ==}
     peerDependencies:
@@ -6579,6 +6672,15 @@ packages:
 
   /ajv/8.11.2:
     resolution: {integrity: sha512-E4bfmKAhGiSTvMfL1Myyycaub+cUEU2/IvpylXkUu7CHBkBj1f/ikdzbD7YQ6FKUbixDxeYvB/xY4fvyroDlQg==}
+    dependencies:
+      fast-deep-equal: 3.1.3
+      json-schema-traverse: 1.0.0
+      require-from-string: 2.0.2
+      uri-js: 4.4.1
+    dev: true
+
+  /ajv/8.12.0:
+    resolution: {integrity: sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==}
     dependencies:
       fast-deep-equal: 3.1.3
       json-schema-traverse: 1.0.0
@@ -12013,6 +12115,13 @@ packages:
 
   /magic-string/0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.4.14
+    dev: true
+
+  /magic-string/0.29.0:
+    resolution: {integrity: sha512-WcfidHrDjMY+eLjlU+8OvwREqHwpgCeKVBUpQ3OhYYuvfaYCUgcbuBzappNzZvg/v8onU3oQj+BYpkOJe9Iw4Q==}
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.14
