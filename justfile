@@ -5,6 +5,9 @@ GCP_PROJECT := `gcloud config get-value project`
 default:
     @just --list --unsorted
 
+fig-local-cluster:
+  rust-cli test
+
 # todo with all ts configs!
 # https://github.com/stephenh/ts-proto#nestjs-support
 # generate rust structs and ts interfaces
