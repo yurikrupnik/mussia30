@@ -7,6 +7,8 @@ default:
 
 fig-local-cluster:
   rust-cli test
+localip:
+  localip
 
 # todo with all ts configs!
 # https://github.com/stephenh/ts-proto#nestjs-support

@@ -1,0 +1,18 @@
+{
+  "plugins": ["@nxrs/cargo"],
+  "npmScope": "my-nx",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
+    }
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "accessToken": "MTVkYzllYjAtN2Y3Yy00OGI5LWFmOTEtMTA0MTM3YmZmZTAxfHJlYWQtd3JpdGU="
+      }
+    }
+  }
+}
