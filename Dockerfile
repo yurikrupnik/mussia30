@@ -60,10 +60,10 @@ COPY _proto ./app
 # These steps will be re-run upon each file change in your working directory:
 #ADD . .
 # Compile the main app so that it doesn't need to be compiled each startup/entry.
-RUN deno cache main.ts
+#RUN #deno cache main.ts
 ENV PORT=8080
 EXPOSE ${PORT}
-CMD ["run", "--allow-net", "main.ts"]
+CMD ["run", "--allow-net","--allow-env", "--allow-read", "main.ts"]
 
 
 FROM debian:buster-slim AS rust

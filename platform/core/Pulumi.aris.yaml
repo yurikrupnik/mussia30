@@ -1,5 +1,5 @@
 config:
-  core:nodeCount: "2"
+  core:nodeCount: "1"
   core:nodeMachineType: n1-standard-2
 #  gcp:project: mussia30
   gcp:project: yuri-sandbox

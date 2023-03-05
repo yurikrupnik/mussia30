@@ -1,6 +1,9 @@
 {
   "imports": {
-    "std/": "https://deno.land/std@0.174.0/"
+    "std/": "https://deno.land/std@0.174.0/",
+    "react": "npm:react",
+    "axios": "npm:axios",
+    "fastify": "npm:fastify"
   },
   "tasks": {
     "dev": "deno run --watch main.ts"

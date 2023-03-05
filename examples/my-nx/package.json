@@ -1,0 +1,14 @@
+{
+  "name": "my-nx",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "devDependencies": {
+    "@nrwl/nx-cloud": "latest",
+    "@nrwl/workspace": "15.8.5",
+    "@nxrs/cargo": "^0.3.3",
+    "nx": "15.8.5",
+    "prettier": "^2.6.2"
+  }
+}

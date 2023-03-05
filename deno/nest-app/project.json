@@ -39,18 +39,13 @@
     "docker": {
       "executor": "@nx-tools/nx-container:build",
       "dependsOn": [
-        {
-          "target": "build",
-          "projects": "self",
-          "params": "forward"
-        }
       ],
       "options": {
         "push": true,
         "file": "./Dockerfile",
         "target": "deno",
         "platforms": ["linux/amd64", "linux/arm64"],
-        "build-args": ["DIST_PATH=apps/deno/nest-app"],
+        "build-args": ["DIST_PATH=deno/nest-app"],
         "metadata": {
           "images": ["yurikrupnik/deno-nest-app"]
         }
