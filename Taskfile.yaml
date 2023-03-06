@@ -12,7 +12,7 @@ tasks:
     silent: true
   up:
     cmds:
-      - ctlptl create cluster k3d --name=k3d-pod-cluster --registry=ctlptl-registry
+      - ctlptl create cluster k3d --name=k3d-prod-cluster --registry=ctlptl-registry
       - helm install kube-prometheus bitnami/kube-prometheus -n prometheus --create-namespace --set installCRDs=true
       - ctlptl create cluster k3d --name=k3d-dev-cluster --registry=ctlptl-registry
       - helm install kube-prometheus bitnami/kube-prometheus -n prometheus --create-namespace --set installCRDs=true

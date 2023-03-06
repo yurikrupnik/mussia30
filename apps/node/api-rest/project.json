@@ -56,6 +56,23 @@
         "passWithNoTests": true
       }
     },
+    "kaniko": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self",
+          "params": "forward"
+        }
+      ],
+      "options": {
+        "parallel": false,
+        "commands": [
+          "docker build --target node --build-arg DIST_PATH=dist/apps/node/api-rest . -t yurikrupnik/node-api-rest"
+        ]
+      }
+    },
     "docker": {
       "executor": "@nx-tools/nx-container:build",
       "dependsOn": [
