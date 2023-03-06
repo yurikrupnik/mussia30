@@ -19,13 +19,15 @@ tasks:
 #      - add
     cmds:
       - docker images
+  get-secret:
+    kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
   up:
     summary: "Running task 1"
     cmds:
-      - ctlptl create cluster k3d --name=k3d-prod-cluster --registry=ctlptl-registry
+      - ctlptl create cluster k3d --name=k3d-local-prod-cluster --registry=ctlptl-registry
       - helm install kube-prometheus bitnami/kube-prometheus -n prometheus --create-namespace --set installCRDs=true
 #      - install argo mussia30 app, kustomize, helm
-      - ctlptl create cluster k3d --name=k3d-dev-cluster --registry=ctlptl-registry
+      - ctlptl create cluster k3d --name=k3d-local-dev-cluster --registry=ctlptl-registry
       - helm install kube-prometheus bitnami/kube-prometheus -n prometheus --create-namespace --set installCRDs=true
       - kubectl create namespace argocd
       - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -40,20 +42,17 @@ tasks:
 #      - kubectl apply -f https://raw.githubusercontent.com/istio/istio/master/samples/addons/kiali.yaml
 #      - kubectl apply -f https://raw.githubusercontent.com/istio/istio/master/samples/addons/jaeger.yaml
       - kubeshark tap &
-      - helm repo add datree-webhook https://datreeio.github.io/admission-webhook-datree
-      - helm repo update
-      - helm install -n datree datree-webhook datree-webhook/datree-admission-webhook --debug \
-        --create-namespace \
-        --set datree.token=fcf73422-dfe1-4d3e-8115-7d200aea2493 \
-        --set datree.clusterName=$(kubectl config current-context)
+#      - helm repo add datree-webhook https://datreeio.github.io/admission-webhook-datree
+#      - helm repo update
+#      - helm install -n datree datree-webhook datree-webhook/datree-admission-webhook --debug \
+#        --create-namespace \
+#        --set datree.token=fcf73422-dfe1-4d3e-8115-7d200aea2493 \
+#        --set datree.clusterName=$(kubectl config current-context)
 #      - just install-linkerd
 #      - just install-viz
       - tilt up
 #      - open argocd ui
 #  summary: "Running task general"
-  get-secret:
-
-    kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
   down:
     cmds:
       - kubeshark clean
