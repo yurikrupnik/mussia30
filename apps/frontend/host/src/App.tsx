@@ -6,6 +6,7 @@ import 'virtual:windi.css';
 const About = lazy(() => import('./routes/about'));
 const Users = lazy(() => import('./routes/users'));
 const Home = lazy(() => import('./routes/home'));
+const SecretManager = lazy(() => import('./routes/secretManager'));
 
 const NotFound = () => {
   return <div>error</div>;
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/user" element={<Users />} />
         <Route path="/about" element={<About />} />
+        <Route path="/secret-manager" element={<SecretManager />} />
         <Route path="/*all" element={<NotFound />} />
       </Routes>
     </div>

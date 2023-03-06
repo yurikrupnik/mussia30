@@ -224,4 +224,22 @@ jobs:
         run: pnpm install --no-frozen-lockfile
       - run: pnpm run cypress:install
       - run: pnpm nx affected --target=build --parallel --max-parallel=3 --prod
+      - name: Log into registry
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - run: pnpm nx affected --target=docker --parallel --max-parallel=3
+  datree:
+    runs-on: ubuntu-latest
+    env:
+      DATREE_TOKEN: ${{ secrets.DATREE_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Run Datree Policy Check
+        uses: datreeio/action-datree@main
+        with:
+          path: '**/*.yaml'
+          cliArguments: '--only-k8s-files'

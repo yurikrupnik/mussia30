@@ -69,7 +69,7 @@
       "options": {
         "parallel": false,
         "commands": [
-          "docker build --target node --build-arg DIST_PATH=dist/apps/node/api-rest . -t yurikrupnik/node-api-rest"
+          "docker build --target deno --build-arg DIST_PATH=dist/apps/node/api-rest . -t yurikrupnik/deno-api-rest"
         ]
       }
     },
