@@ -14,6 +14,9 @@ proto-generate:
 daily:
   echo "daily stuff"
 
+cloud:
+  gcloud builds submit --region=REGION --config [CONFIG_FILE_PATH] .
+
 #local-mongodb-docker-compose:
 #  echo stam
 # run mongodb in an k8s cluster
