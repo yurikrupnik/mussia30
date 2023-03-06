@@ -1,14 +1,34 @@
-use clap::Parser;
-mod gradient;
+// use clap::Parser;
+// mod gradient;
+// mod args;
+// mod ;
 // use gradient::{GradientOptions, GradientOptions}
 // use gen_color::{gradient, Cli, Commands};
-use miette::{Context, Result};
-use owo_colors::OwoColorize;
-use rand::Rng;
+// use miette::{Context, Result};
+use miette::{Result};
+// use owo_colors::OwoColorize;
+// use rand::Rng;
+
+// #[cfg(feature = "cargo")]
 
 fn main() -> Result<()> {
   // let cli = Cli::parse();
-
+  let cmd = clap::Command::new("dam")
+    .bin_name("dam")
+    .subcommand_required(true);
+    // .subcommand(
+    //   clap::command!("example").arg(
+    //     clap::arg!(--"manifest-path" <PATH>)
+    //       .value_parser(clap::value_parser!(std::path::PathBuf)),
+    //   ),
+    // );
+  let matches = cmd.get_matches();
+  let matches = match matches.subcommand() {
+    Some(("example", matches)) => matches,
+    _ => unreachable!("clap should ensure we don't get here"),
+  };
+  let manifest_path = matches.get_one::<std::path::PathBuf>("manifest-path");
+  println!("{:?}", manifest_path);
   println!("hello word");
   Ok(())
   // match &cli.command {
