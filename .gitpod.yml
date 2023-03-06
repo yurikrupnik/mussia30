@@ -8,6 +8,6 @@ tasks:
 #  - init: pnpm install && pnpm run build && go get && go build ./... && go test ./... && cargo build && brew install tilt kubectl helm
   - init: brew install tilt just && pnpm i && pnpm run build
 #    command: pnpm run start && go run . && cargo watch -x run
-    command: cargo run --bin api_rest
+    command: cargo build --bin api_rest --release
 
 
