@@ -1,8 +1,8 @@
 {
-  "name": "api_rest",
+  "name": "personal_cli",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/rust/api-rest/src",
+  "sourceRoot": "apps/rust/personal-cli/src",
   "targets": {
     "build": {
       "executor": "@nxrs/cargo:build",
@@ -20,7 +20,7 @@
       "outputs": [],
       "options": {
         "command": "cargo watch -x run",
-        "cwd": "apps/rust/api-rest/"
+        "cwd": "apps/rust/personal-cli/"
       }
     },
     "test": {
@@ -33,22 +33,6 @@
         "fix": false,
         "failOnWarnings": true,
         "noDeps": true
-      }
-    },
-    "docker": {
-      "executor": "@nx-tools/nx-container:build",
-      "dependsOn": [],
-      "options": {
-        "push": true,
-        "file": "./Dockerfile",
-        "target": "rust",
-        "platforms": ["linux/amd64", "linux/arm64"],
-        "build-args": ["DIST_PATH=target/release/api_rest"],
-        "metadata": {
-          "images": [
-            "yurikrupnik/rust-personal-cli"
-          ]
-        }
       }
     }
   },
