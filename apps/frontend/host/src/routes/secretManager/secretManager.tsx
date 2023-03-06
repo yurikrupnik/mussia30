@@ -1,6 +1,12 @@
-enum Providers {
+enum SecretManagerProviders {
   GCP_SECRET_MANAGER,
+  AWS_SECRET_MANAGER,
+  VAULT_SECRET_MANAGER,
+  LOCAL_SECRET_MANAGER,
+  PULUMI_SECRET_MANAGER,
 }
+
+const dropDownData = [{}];
 
 const SecretManager = () => {
   return <div>SecretManager</div>;
