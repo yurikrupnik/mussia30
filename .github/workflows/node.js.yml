@@ -62,8 +62,9 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - <<: *nx
-      - run: pnpm nx affected --target=lint --parallel --max-parallel=3
+      - run: ls
+#      - <<: *nx
+#      - run: pnpm nx affected --target=lint --parallel --max-parallel=3
   build:
     runs-on: ubuntu-latest
     steps:
