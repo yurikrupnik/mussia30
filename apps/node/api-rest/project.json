@@ -96,6 +96,13 @@
     "docker-buildx": {
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self",
+          "params": "forward"
+        }
+      ],
       "options": {
         "command": "docker buildx build --target node --build-arg DIST_PATH=dist/apps/node/api-rest . -t yurikrupnik/node-api-rest"
       }
