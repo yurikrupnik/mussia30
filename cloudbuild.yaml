@@ -15,3 +15,11 @@ availableSecrets:
       env: 'PASSWORD'
     - versionName: projects/PROJECT_ID/secrets/DOCKER_USERNAME_SECRET_NAME/versions/DOCKER_USERNAME_SECRET_VERSION
       env: 'USERNAME'
+#availableSecrets:
+#  inline:
+#    - kmsKeyName: projects/PROJECT_ID/locations/global/keyRings/USERNAME_KEYRING_NAME/cryptoKeys/USERNAME_KEY_NAME
+#      envMap:
+#        USERNAME: 'ENCRYPTED_USERNAME'
+#    - kmsKeyName: projects/PROJECT_ID/locations/global/keyRings/PASSWORD_KEYRING_NAME/cryptoKeys/PASSWORD_KEY_NAME
+#      envMap:
+#        PASSWORD: 'ENCRYPTED_PASSWORD'
