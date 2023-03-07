@@ -3,11 +3,34 @@
 # and commit this file to your remote git repository to share the goodness with others.
 
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
+#image: gitpod/workspace-full
+image:
+  file: scripts/.gitpod.Dockerfile
+  context: .
 
 tasks:
 #  - init: pnpm install && pnpm run build.yaml && go get && go build.yaml ./... && go test ./... && cargo build.yaml && brew install tilt kubectl helm
-  - init: brew install tilt just && pnpm i && pnpm run build.yaml
+  - name: t1
+    before: ls && echo Terminal1 Before command && brew install kind tilt just go-task
+    init: cargo build --bin api_rest
 #    command: pnpm run start && go run . && cargo watch -x run
-    command: cargo build.yaml --bin api_rest --release
+    command: cargo build --bin api_rest --release && kind create cluster && tilt up
+  - name: t2
+    before: ls && echo Terminal2
+    init: pnpm install && cargo build --bin api_rest
+    #    command: pnpm run start && go run . && cargo watch -x run
+    command: cargo run --bin api_rest --release &&
 
-
+ports:
+  - port: 3000
+    visibility: private
+    description: Local 3000 port
+    onOpen: open-browser
+  - port: 3001
+    visibility: public
+    description: Local 3001 port
+    onOpen: open-browser
+  - port: 10000
+    visibility: private
+    description: Local 10000 port
+    onOpen: open-browser

@@ -1,7 +1,7 @@
 // use clap::Parser;
 // mod gradient;
-mod args;
-use args::Cli;
+// mod args;
+// use args::Cli;
 // mod args;
 // mod ;
 // use gradient::{GradientOptions, GradientOptions}
@@ -14,7 +14,7 @@ use miette::{Result};
 // #[cfg(feature = "cargo")]
 
 fn main() -> Result<()> {
-  let cli = Cli::parse();
+  // let cli = Cli::parse();
   // let cmd = clap::Command::new("dam")
   //   .bin_name("dam")
   //   .subcommand_required(true);
@@ -30,7 +30,7 @@ fn main() -> Result<()> {
   //   _ => unreachable!("clap should ensure we don't get here"),
   // };
   // let manifest_path = matches.get_one::<std::path::PathBuf>("manifest-path");
-  println!("{:?}", manifest_path);
+  // println!("{:?}", manifest_path);
   println!("hello word");
   Ok(())
   // match &cli.command {
@@ -41,7 +41,7 @@ fn main() -> Result<()> {
     // Commands::Random => {
     //   let mut rng = rand::thread_rng();
     //
-    //   let color = owo_colors::Rgb(
+    //   let color = owo_colors::Rgb(l
     //     rng.gen_range(0..255),
     //     rng.gen_range(0..255),
     //     rng.gen_range(0..255),
