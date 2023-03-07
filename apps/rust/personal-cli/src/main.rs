@@ -1,7 +1,7 @@
 // use clap::Parser;
 // mod gradient;
-mod args;
-use args::Cli;
+// mod args;
+// use args::Cli;
 // mod args;
 // mod ;
 // use gradient::{GradientOptions, GradientOptions}
@@ -41,7 +41,7 @@ fn main() -> Result<()> {
     // Commands::Random => {
     //   let mut rng = rand::thread_rng();
     //
-    //   let color = owo_colors::Rgb(
+    //   let color = owo_colors::Rgb(l
     //     rng.gen_range(0..255),
     //     rng.gen_range(0..255),
     //     rng.gen_range(0..255),
