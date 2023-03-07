@@ -1,10 +1,14 @@
 name: Node.js CI
 
+defaults: &defaults
+#  working_directory: ~/tmp
+#  docker:
+#    - image: circleci/node:11
 #NX: &nx
-##  steps:
-#    - uses: actions/checkout@v3
-#      with:
-#        fetch-depth: 0
+  steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 #    - uses: extractions/setup-just@v1
 #      with:
 #        just-version: 0.8 # optional semver specification, otherwise latest
