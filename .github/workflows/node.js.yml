@@ -45,10 +45,10 @@ NX: &nx
     - name: Install dependencies
     - run: pnpm install --no-frozen-lockfile
 
-Computer:
-  steps:
-    <<: *nx
-  Price: 3000
+#Computer:
+#  steps:
+#    <<: *nx
+#  Price: 3000
 
 
 on:
