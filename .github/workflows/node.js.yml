@@ -54,8 +54,8 @@ name: Node.js CI
 on:
   push:
     branches: [ "main" ]
-  tags:
-    - '*.*.*'
+    tags:
+      - '*.*.*'
   pull_request:
     branches: [ "main" ]
 env:
