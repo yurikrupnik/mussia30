@@ -21,6 +21,8 @@ include('./apps/node/users-grpc/Tiltfile')
 
 # Platform creating k8s assets
 include('./libs/platform/cdk8s/Tiltfile')
+# Local Kubernetes Operator 
+include('./apps/rust/k8s-operator/Tiltfile')
 # k8s_resource("argocd-server-59d9b8cb46-r28tk", port_forwards="3065:8080")
 
 # include('./apps/rust/api-rest/Tiltfile')

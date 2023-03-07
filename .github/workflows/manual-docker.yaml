@@ -6,7 +6,7 @@ on:
       command:
         description: 'command to run'
         required: true
-        default: 'build'
+        default: 'build.yaml'
       tags:
         description: 'Test scenario tags'
         default: 'latest'
@@ -71,8 +71,8 @@ jobs:
         uses: docker/setup-buildx-action@v2
         with:
           version: v0.7.0
-      - name: Pre build for docker
-        run: pnpm nx run-many --target=build --parallel --max-parallel=3 --prod --skip-nx-cache
+      - name: Pre build.yaml for docker
+        run: pnpm nx run-many --target=build.yaml --parallel --max-parallel=3 --prod --skip-nx-cache
         env:
           GOOS: linux
           GOARCH: amd64

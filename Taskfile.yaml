@@ -2,14 +2,65 @@
 
 version: '3'
 
+includes:
+  docs: ./apps/frontend/host # will look for ./documentation/Taskfile.yml
+#  docker: ./Dockerfile
+
 vars:
-  GREETING: Hello, World!
+  GREETING: Hello, World! core
+  STATIC: static
+  DYNAMIC:
+    sh: echo "dynamic"
 
 tasks:
+  print-date:
+    cmds:
+      - echo {{now | date "2006-01-02"}}
+  pnpm:
+    cmds:
+      - pnpm {{.CLI_ARGS}}
+  greet:
+    deps: [print-date, foo, bar, docs:default]
+    dotenv: [ '.env', '{{.ENV}}/.env.', '{{.HOME}}/.env' ]
+    vars:
+      GCLOUD_CONFIG_LIST:
+        sh: gcloud config list
+      GIT_COMMIT:
+        sh: git log -n 1 --format=%h
+    env:
+      KEYNAME: DIFFERENT_VALUE
+#      GIT_COMMIT: 602979f
+    cmds:
+      - cmd: echo "all good here $GCLOUD_CONFIG_LIST"
+      - echo "Using $KEYNAME and endpoint $ENDPOINT"
+      - echo "Using GIT_COMMIT {{.GIT_COMMIT}}"
+      - echo "Using ENDPOINT $ENDPOINT"
+      - echo '{{OS}} {{ARCH}}'
+      - echo '{{if eq OS "windows"}}windows-command{{else}}unix-command{{end}}'
+      # This will be path/to/file on Unix but path\to\file on Windows
+      - echo '{{fromSlash "path/to/file"}}'
+#      - echo "Using commit $GIT_COMMIT"
+#      - go build -ldflags="-X main.Version={{.GIT_COMMIT}}" main.go
+#      - echo {{now | date "2006-01-02"}}
+#      - scripts/foo.sh
+#      - kubectl create secret docker-registry push-secret2 \
+#        --docker-server=$REGISTRY_SERVER \
+#        --docker-username=$REGISTRY_USER \
+#        --docker-password=$REGISTRY_PASSWORD
+  foo:
+    cmds:
+      - echo foo
+  bar:
+    cmds:
+      - echo bar
   default:
+    internal: false
+    deps: [foo, bar]
     cmds:
       - echo "{{.GREETING}}"
+      - echo "{{.GREETING}}"
     silent: true
+    summary: Default app
 #    try todo curcurrent runners
   local:
 #    sources:
@@ -21,16 +72,38 @@ tasks:
       - docker images
   get-secret:
     kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+  ctlptl-create: # todo! using tasks
+    summary: "Running local type of cluster by kind param/argument"
+    cmds:
+      - kind-local-cluster
+      - just create-local-cluster
+      - ctlptl create cluster kind --name=kind-local-prod-cluster --registry=ctlptl-registry
+  kind-create:
+    kind create cluster --name my-cluster --config cluster.yaml
+  up1:
+    summary: "Createing local dev env"
+    cmds:
+      -
   up:
     summary: "Running task 1"
     cmds:
-      - ctlptl create cluster k3d --name=k3d-local-prod-cluster --registry=ctlptl-registry
+      - kind create cluster --name my-local-kind-cluster --config cluster.yaml
       - helm install kube-prometheus bitnami/kube-prometheus -n prometheus --create-namespace --set installCRDs=true
+      - ctlptl create cluster kind --name=kind-local-prod-cluster --registry=ctlptl-registry
+      - helm install kube-prometheus bitnami/kube-prometheus -n prometheus --create-namespace --set installCRDs=true
+# create argocd app
+      - kubectl create namespace argocd
+      - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+#      -
 #      - install argo mussia30 app, kustomize, helm
       - ctlptl create cluster k3d --name=k3d-local-dev-cluster --registry=ctlptl-registry
       - helm install kube-prometheus bitnami/kube-prometheus -n prometheus --create-namespace --set installCRDs=true
+#      Duplicated
       - kubectl create namespace argocd
       - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+      - kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.44.0/release.yaml
+      - kubectl apply --filename https://github.com/shipwright-io/build/releases/download/v0.11.0/release.yaml
+      - kubectl apply --filename https://github.com/shipwright-io/build/releases/download/v0.11.0/sample-strategies.yaml
       - kubectl wait --for condition=Available=True --timeout=300s deployment/argocd-server --namespace argocd
 #      - kubectl apply -f k8s/argocd/apps.yaml
 #      - istioctl install --set profile=default --verify -y # change this to helm
@@ -54,12 +127,25 @@ tasks:
 #      - open argocd ui
 #  summary: "Running task general"
   down:
+    preconditions:
+      - docker ps
+    deps:
+      - get-secret
+    summary: Clean up kubernetes all clusters
     cmds:
       - kubeshark clean
       - tilt down
-      - ctlptl delete cluster k3d-prod-cluster
-      - ctlptl delete cluster k3d-dev-cluster
+      - ctlptl delete cluster k3d-local-prod-cluster
+      - ctlptl delete cluster k3d-local-dev-cluster
+#      - todo gke cluster
   gke-cluster:
     cmds:
       - gcloud beta container --project "yuri-sandbox" clusters create "cluster-1" --no-enable-basic-auth --cluster-version "1.24.9-gke.3200" --release-channel "regular" --machine-type "e2-standard-4" --image-type "COS_CONTAINERD" --disk-type "pd-balanced" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "3" --logging=SYSTEM,WORKLOAD --monitoring=SYSTEM --enable-ip-alias --network "projects/yuri-sandbox/global/networks/default" --subnetwork "projects/yuri-sandbox/regions/europe-central2/subnetworks/default" --no-enable-intra-node-visibility --default-max-pods-per-node "110" --no-enable-master-authorized-networks --addons HorizontalPodAutoscaling,HttpLoadBalancing,CloudRun,GcePersistentDiskCsiDriver,ConfigConnector,GcpFilestoreCsiDriver --enable-autoupgrade --enable-autorepair --max-surge-upgrade 1 --max-unavailable-upgrade 0 --maintenance-window-start "2023-03-01T22:00:00Z" --maintenance-window-end "2023-03-02T22:00:00Z" --maintenance-window-recurrence "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR,SA,SU" --labels mesh_id=proj-394442038451 --enable-managed-prometheus --workload-pool "yuri-sandbox.svc.id.goog" --enable-shielded-nodes --node-locations "europe-central2-a","europe-central2-b","europe-central2-c"
       - gcloud container --project "yuri-sandbox" clusters create-auto "autopilot-cluster-1" --region "us-central1" --release-channel "regular" --network "projects/yuri-sandbox/global/networks/default" --subnetwork "projects/yuri-sandbox/regions/us-central1/subnetworks/default" --cluster-ipv4-cidr "/17" --services-ipv4-cidr "/22" --labels mesh_id=proj-394442038451
+  build:
+    cmds:
+      - ls
+#      - go build -ldflags="-X main.Version={{.GIT_COMMIT}}" main.go
+    vars:
+      GIT_COMMIT:
+        sh: git log -n 1 --format=%h

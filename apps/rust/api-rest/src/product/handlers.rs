@@ -75,7 +75,7 @@ responses(
 pub async fn get_products(client: web::Data<Client>) -> impl Responder {
     let collection: Collection<Product> = client.database(DB_NAME).collection(Product::COLLECTION);
     // let filter = doc! {"name": "product 1".to_string()};
-    // let find_options = FindOptions::builder().sort(doc! { "title": 1,  }).build();
+    // let find_options = FindOptions::builder().sort(doc! { "title": 1,  }).build.yaml();
     // let projection = doc! {"userId": 1};
     let find_options = FindOptions::builder()
         // .projection(projection)

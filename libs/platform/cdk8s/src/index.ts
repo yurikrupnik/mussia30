@@ -10,7 +10,7 @@ import { Construct } from 'constructs';
 // when array of imports in tsconfig.base.json, does not show type but works also
 // import { IntOrString } from '@nx-multi-cloud/imports/k8s';
 import { IntOrString } from '../imports/k8s';
-import { ConfigMap, Namespace, ServiceAccount } from 'cdk8s-plus-25';
+import { ConfigMap, Namespace, ServiceAccount, Pod } from 'cdk8s-plus-25';
 // import { doit } from '@nx-multi-cloud/k8s-shit';
 // import { platformCdk8s } from '@mussia30/platform/cdk8s';
 // fails
@@ -47,6 +47,17 @@ export class MyChart extends Chart {
         // ownerReferences: ''
       },
     });
+
+    // const kaniko = new Pod(this, 'kaniko', {
+    //   volumes: [
+    //     {
+    //       // name: 'ads',
+    //       // config: "da",
+    //       // node: ""
+    //     },
+    //   ],
+    //   metadata: {},
+    // });
     // console.log('doit', doit());
     console.log('namespace', namespace);
     const serviceAccount = new ServiceAccount(this, 'sa', {
@@ -80,9 +91,9 @@ export class MyChart extends Chart {
       metadata: {
         finalizers: [],
         // labels: {
-          // label1: IntOrString.fromString('label-value1').value,
-          // label3: IntOrString.fromString('label-value3').value,
-          // label2: 'label-value2',
+        // label1: IntOrString.fromString('label-value1').value,
+        // label3: IntOrString.fromString('label-value3').value,
+        // label2: 'label-value2',
         // },
         name: 'nginx-config',
         annotations: {
