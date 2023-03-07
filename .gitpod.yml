@@ -5,9 +5,9 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
 tasks:
-#  - init: pnpm install && pnpm run build && go get && go build ./... && go test ./... && cargo build && brew install tilt kubectl helm
-  - init: brew install tilt just && pnpm i && pnpm run build
+#  - init: pnpm install && pnpm run build.yaml && go get && go build.yaml ./... && go test ./... && cargo build.yaml && brew install tilt kubectl helm
+  - init: brew install tilt just && pnpm i && pnpm run build.yaml
 #    command: pnpm run start && go run . && cargo watch -x run
-    command: cargo build --bin api_rest --release
+    command: cargo build.yaml --bin api_rest --release
 
 

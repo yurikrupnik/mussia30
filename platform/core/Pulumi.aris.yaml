@@ -1,6 +1,10 @@
 config:
+  core:GITHUB_PASSWORD:
+    secure: AAABABl0AVKmZ1klS3Lo3opzGmTeh/zKT2YuGGidmPZeObQEz4zy
   core:nodeCount: "2"
   core:nodeMachineType: n1-standard-2
+  core:password:
+    secure: AAABABaNidFTNqJCO2cd2MTMQzKK2ev8Qz5GrVQpM7UdbQJmeQ==
 #  gcp:project: mussia30
   gcp:project: yuri-sandbox
   gcp:region: me-west1

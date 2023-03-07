@@ -5,7 +5,7 @@ http_archive(
     name = "io_bazel_rules_go",
     sha256 = "19ef30b21eae581177e0028f6f4b1f54c66467017be33d211ab6fc81da01ea4d",
     urls = [
-        "https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.38.0/rules_go-v0.38.0.zip",
+        "https://mirror.bazel.build.yaml/github.com/bazelbuild/rules_go/releases/download/v0.38.0/rules_go-v0.38.0.zip",
         "https://github.com/bazelbuild/rules_go/releases/download/v0.38.0/rules_go-v0.38.0.zip",
     ],
 )
@@ -24,7 +24,7 @@ http_archive(
     name = "aspect_rules_deno",
     sha256 = "cfda7aeb308082a4525f391b66e81d4f15bd05c3f0a5131e4645e74ea1e32760",
     strip_prefix = "rules_deno-0.3.0",
-    url = "https://github.com/aspect-build/rules_deno/archive/refs/tags/v0.3.0.tar.gz",
+    url = "https://github.com/aspect-build.yaml/rules_deno/archive/refs/tags/v0.3.0.tar.gz",
 )
 
 ######################

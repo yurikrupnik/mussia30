@@ -13115,7 +13115,7 @@ packages:
     dependencies:
       lilconfig: 2.0.6
       postcss: 8.4.21
-      ts-node: 10.9.1_7jd2mjwtxbwesk3uaz3ryvyqda
+      ts-node: 10.9.1_wvs7ypnzbbufruxpisng72okhe
       yaml: 1.10.2
     dev: false
 

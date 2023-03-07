@@ -1,0 +1,21 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+  serve:
+    cmds:
+      - deno run --allow-all main.ts
+  test:
+    cmds:
+      - deno test
+  bench:
+    cmds:
+      - deno bench

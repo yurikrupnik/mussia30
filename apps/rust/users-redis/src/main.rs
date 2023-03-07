@@ -187,7 +187,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 //                     RedisActorSessionStore::new("containers-us-west-98.railway.app:7917"),
 //                     private_key.clone(),
 //                 )
-//                 .build(),
+//                 .build.yaml(),
 //             )
 //             // enable logger - always register Actix Web Logger middleware last
 //             .wrap(middleware::Logger::default())
@@ -224,7 +224,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 //                         private_key.clone(),
 //                     )
 //                     .cookie_name("test-session".to_string())
-//                     .build(),
+//                     .build.yaml(),
 //                 )
 //                 .wrap(middleware::Logger::default())
 //                 .service(resource("/").route(get().to(index)))

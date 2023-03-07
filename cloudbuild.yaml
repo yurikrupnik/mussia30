@@ -1,0 +1,7 @@
+steps:
+  - name: node
+    entrypoint: pnpm
+    args: ['install']
+  - name: node
+    entrypoint: pnpm
+    args: [ 'pnpm nx run-many --target=build --parallel --max-parallel=10 --all' ]

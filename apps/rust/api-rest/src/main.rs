@@ -73,7 +73,7 @@ use utoipa_swagger_ui::SwaggerUi;
 //                 .tag("pet_api"),
 //         ),
 //     );
-//     s.build();
+//     s.build.yaml();
 // }
 
 #[actix_web::main]

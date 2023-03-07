@@ -4,8 +4,9 @@
 
 # include('./k8s/helm/Tiltfile')
 
-# local_resource('pnpm', cmd='pnpm install', deps=['package.json'], labels=['pnpm'])
-
+local_resource('pnpm', cmd='pnpm install', deps=['package.json'], labels=['pnpm'])
+# local_resource('k8s-operator', cmd='cargo run --bin k8s_operator', deps=[''], labels=['cargo'])
+# local_resource('cargo-build-k8s_operator', cmd='cargo build --bin k8s_operator', deps=[''], labels=['cargo'])
 local_resource('proto-generate', cmd='just proto-generate', deps=['_proto/'], labels=['just'])
 
 
@@ -20,6 +21,8 @@ include('./apps/node/users-grpc/Tiltfile')
 
 # Platform creating k8s assets
 include('./libs/platform/cdk8s/Tiltfile')
+# Local Kubernetes Operator 
+include('./apps/rust/k8s-operator/Tiltfile')
 # k8s_resource("argocd-server-59d9b8cb46-r28tk", port_forwards="3065:8080")
 
 # include('./apps/rust/api-rest/Tiltfile')

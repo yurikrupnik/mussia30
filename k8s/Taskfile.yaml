@@ -1,9 +1,32 @@
 version: '3'
 
+vars:
+  GREETING: Hello from k8s
+  STATIC: static
+  DYNAMIC:
+    sh: echo "dynamic"
+
 tasks:
-  up:
-    dir: '{{.USER_WORKING_DIR}}'
-    preconditions:
-      - test -f docker-compose.yml
+  default:
     cmds:
-      - docker-compose up -d
+      - echo "{{.GREETING}}"
+      - deno run --allow-all main.ta
+    silent: true
+  kind-local-cluster:
+#    deps:
+#      -
+    summary: Create Kind Cluster
+    preconditions:
+      - test -f cluster.yaml
+    cmds:
+      - kind create cluster --name my-cluster --config cluster.yaml
+#      - ctlptl create cluster kind --name=kind-prod-cluster --registry=ctlptl-registry
+#      - ctlptl create cluster k3d --name=k3d-prod-cluster --registry=ctlptl-registry
+  up:
+#    dir: '{{.USER_WORKING_DIR}}'
+
+    preconditions:
+      - test -f Tiltfile
+    cmds:
+      - cat Tiltfile
+#      - cat WORKSPACE
