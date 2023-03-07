@@ -17,6 +17,7 @@ function App() {
     <div>
       <h1 class="text-3xl font-bold underline">Welcome frontend-host</h1>
       <h1 class="text-3xl font-bold underline">Welcome api</h1>
+      <div>Hello dear user :)</div>
       {/*<Button>my mui button</Button>*/}
       <nav>
         <Link href="/">Home</Link>
