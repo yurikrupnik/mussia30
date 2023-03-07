@@ -24,6 +24,10 @@ tasks:
 #    before: ls && echo Terminal2
 #    init: pnpm install && cargo build --bin api_rest
     #    command: pnpm run start && go run . && cargo watch -x run
+#    before: |
+#      ls
+#    init: |
+#      ls
     command: cargo run --bin api_rest --release &&
 ports:
   - port: 3000

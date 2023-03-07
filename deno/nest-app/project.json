@@ -47,7 +47,7 @@
       ],
       "options": {
         "push": true,
-        "file": "./Dockerfile",
+        "file": "./deno/nest-app/Dockerfile",
         "target": "deno",
         "platforms": ["linux/amd64", "linux/arm64"],
         "build-args": ["DIST_PATH=apps/deno/nest-app"],
