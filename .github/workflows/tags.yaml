@@ -1,9 +1,9 @@
 name: Tags Sember CI
 on:
-  tags:
-    - '*.*.*'
-#  push:
-#    branches: [ "main" ]
+#  tags:
+#    - '*.*.*'
+  push:
+    branches: [ "test" ]
 #  pull_request:
 #    branches: [ "main" ]
 #env:
