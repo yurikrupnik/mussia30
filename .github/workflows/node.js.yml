@@ -285,7 +285,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Container build
-        run: pnpm nx affected --target=container --parallel --max-parallel=3
+        run: pnpm nx affected --target=docker-buildx --parallel --max-parallel=3
         env:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.REPO_GITHUB_TOKEN }}
