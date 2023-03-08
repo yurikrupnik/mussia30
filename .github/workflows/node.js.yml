@@ -277,14 +277,14 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
-      - run: pnpm nx affected --target=build --parallel --max-parallel=3 --prod
+#      - run: pnpm nx affected --target=build --parallel --max-parallel=3 --prod
       - name: Log into registry
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Container build
-        run: pnpm nx affected --target=docker-buildx --parallel --max-parallel=3
+        run: pnpm nx affected --target=docker-buildx --parallel --max-parallel=3 --prod
         env:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.REPO_GITHUB_TOKEN }}
