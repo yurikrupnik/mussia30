@@ -13,13 +13,14 @@ tasks:
       - deno run --allow-all main.ta
     silent: true
   kind-local-cluster:
-#    deps:
-#      -
+#    dir: '{{.USER_WORKING_DIR}}'
+    dir: k8s
     summary: Create Kind Cluster
     preconditions:
       - test -f cluster.yaml
     cmds:
       - kind create cluster --name my-cluster --config cluster.yaml
+#      - ls
 #      - ctlptl create cluster kind --name=kind-prod-cluster --registry=ctlptl-registry
 #      - ctlptl create cluster k3d --name=k3d-prod-cluster --registry=ctlptl-registry
   up:

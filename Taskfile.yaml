@@ -3,6 +3,7 @@
 version: '3'
 
 includes:
+  k8s: ./k8s # will look for ./documentation/Taskfile.yml
   docs: ./apps/frontend/host # will look for ./documentation/Taskfile.yml
 #  docker: ./Dockerfile
 
@@ -13,6 +14,34 @@ vars:
     sh: echo "dynamic"
 
 tasks:
+  cluster:
+    deps:
+      - docs:default
+#      - k8s:install-argo
+#      - install-argo
+    cmds:
+      - kubectl info
+  install-argo:
+    cmds:
+      - kubectl create namespkace argocd
+      - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+#      - kubectl create namespace argo-rollouts
+#      - kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
+#      - kubectl create namespace argo
+#      - kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v<<ARGO_WORKFLOWS_VERSION>>/install.yaml
+#      - kubectl create namespace argo-events
+#      - kubectl apply -n argo-events -f https://raw.githubusercontent.com/argoproj/argo-events/stable/examples/eventbus/native.yaml
+#      - kubectl apply -n argo-events -f https://raw.githubusercontent.com/argoproj/argo-events/stable/examples/event-sources/webhook.yaml
+#    # sensor rbac
+#      - kubectl apply -n argo-events -f https://raw.githubusercontent.com/argoproj/argo-events/master/examples/rbac/sensor-rbac.yaml
+#    # workflow rbac
+#      - kubectl apply -n argo-events -f https://raw.githubusercontent.com/argoproj/argo-events/master/examples/rbac/workflow-rbac.yaml
+#    Create webhook sensor.
+#    - kubectl apply -n argo-events -f https://raw.githubusercontent.com/argoproj/argo-events/stable/examples/sensors/webhook.yaml
+#    Expose the event-source pod via Ingress
+#    kubectl -n argo-events port-forward $(kubectl -n argo-events get pod -l eventsource-name=webhook -o name) 12000:12000 &
+#    curl -d '{"message":"this is my first webhook"}' -H "Content-Type: application/json" -X POST http://localhost:12000/example
+#    kubectl -n argo-events get workflows | grep "webhook"
   print-date:
     cmds:
       - echo {{now | date "2006-01-02"}}
@@ -20,7 +49,7 @@ tasks:
     cmds:
       - pnpm {{.CLI_ARGS}}
   greet:
-    deps: [print-date, foo, bar, docs:default]
+    deps: [print-date, foo, bar, docs:default, k8s:kind-local-cluster]
     dotenv: [ '.env', '{{.ENV}}/.env.', '{{.HOME}}/.env' ]
     vars:
       GCLOUD_CONFIG_LIST:
@@ -39,6 +68,7 @@ tasks:
       - echo '{{if eq OS "windows"}}windows-command{{else}}unix-command{{end}}'
       # This will be path/to/file on Unix but path\to\file on Windows
       - echo '{{fromSlash "path/to/file"}}'
+      - task k8s:kind-local-cluster
 #      - echo "Using commit $GIT_COMMIT"
 #      - go build -ldflags="-X main.Version={{.GIT_COMMIT}}" main.go
 #      - echo {{now | date "2006-01-02"}}
@@ -82,6 +112,8 @@ tasks:
     kind create cluster --name my-cluster --config cluster.yaml
   up1:
     summary: "Createing local dev env"
+    deps:
+      - install-argo
     cmds:
       -
   up:
@@ -92,15 +124,11 @@ tasks:
       - ctlptl create cluster kind --name=kind-local-prod-cluster --registry=ctlptl-registry
       - helm install kube-prometheus bitnami/kube-prometheus -n prometheus --create-namespace --set installCRDs=true
 # create argocd app
-      - kubectl create namespace argocd
-      - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 #      -
 #      - install argo mussia30 app, kustomize, helm
       - ctlptl create cluster k3d --name=k3d-local-dev-cluster --registry=ctlptl-registry
       - helm install kube-prometheus bitnami/kube-prometheus -n prometheus --create-namespace --set installCRDs=true
 #      Duplicated
-      - kubectl create namespace argocd
-      - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
       - kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.44.0/release.yaml
       - kubectl apply --filename https://github.com/shipwright-io/build/releases/download/v0.11.0/release.yaml
       - kubectl apply --filename https://github.com/shipwright-io/build/releases/download/v0.11.0/sample-strategies.yaml
