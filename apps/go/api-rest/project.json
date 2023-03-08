@@ -58,7 +58,7 @@
         }
       ],
       "options": {
-        "command": "docker buildx build --target alpine --build-arg DIST_PATH=dist/apps/go/api-rest . -t yurikrupnik/go-api-rest"
+        "command": "docker buildx build --push --target alpine --build-arg DIST_PATH=dist/apps/go/api-rest . -t yurikrupnik/go-api-rest"
       }
     },
     "docker-normal": {
