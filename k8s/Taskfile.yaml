@@ -10,7 +10,7 @@ tasks:
   default:
     cmds:
       - echo "{{.GREETING}}"
-      - deno run --allow-all main.ta
+#      - deno run --allow-all main.ta
     silent: true
   kind-local-cluster:
 #    dir: '{{.USER_WORKING_DIR}}'

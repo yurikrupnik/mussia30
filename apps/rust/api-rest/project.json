@@ -5,7 +5,7 @@
   "sourceRoot": "apps/rust/api-rest/src",
   "targets": {
     "build": {
-      "executor": "@nxrs/cargo:build",
+      "executor": "@nxrs/carrust:build",
       "options": {
         "release": false
       },
@@ -19,16 +19,16 @@
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "options": {
-        "command": "cargo watch -x run",
+        "command": "carrust watch -x run",
         "cwd": "apps/rust/api-rest/"
       }
     },
     "test": {
-      "executor": "@nxrs/cargo:test",
+      "executor": "@nxrs/carrust:test",
       "options": {}
     },
     "lint": {
-      "executor": "@nxrs/cargo:clippy",
+      "executor": "@nxrs/carrust:clippy",
       "options": {
         "fix": false,
         "failOnWarnings": true,
@@ -48,6 +48,24 @@
             "yurikrupnik/rust-personal-cli"
           ]
         }
+      }
+    },
+    "docker-normal": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self",
+          "params": "forward"
+        }
+      ],
+      "options": {
+        "parallel": false,
+        "commands": [
+          "docker build --target alpine --build-arg DIST_PATH=dist/apps/rust/api-rest . -t yurikrupnik/rust-api-rest",
+          "docker push yurikrupnik/rust-api-rest"
+        ]
       }
     }
   },

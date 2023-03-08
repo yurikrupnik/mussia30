@@ -1,11 +1,13 @@
 #!/usr/bin/env just --justfile
 
 release:
-  deno
-  #cargo build --release
+  #deno
+  exa
+#  cargo build --release
 
 lint:
   cargo clippy
+  deno lint
 
 bin:
   cargo run --bin bin -- arg1
