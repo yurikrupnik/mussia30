@@ -277,7 +277,6 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
-      - run: pnpm run cypress:install
       - run: pnpm nx affected --target=build --parallel --max-parallel=3 --prod
       - name: Log into registry
         uses: docker/login-action@v1
