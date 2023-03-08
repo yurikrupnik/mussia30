@@ -20,7 +20,7 @@ tasks:
 #      - k8s:install-argo
 #      - install-argo
     cmds:
-      - kubectl info
+      - kubectl cluster-info
   install-argo:
     cmds:
       - kubectl create namespkace argocd
@@ -49,6 +49,7 @@ tasks:
     cmds:
       - pnpm {{.CLI_ARGS}}
   greet:
+    summary: My summary of greet
     deps: [print-date, foo, bar, docs:default, k8s:kind-local-cluster]
     dotenv: [ '.env', '{{.ENV}}/.env.', '{{.HOME}}/.env' ]
     vars:

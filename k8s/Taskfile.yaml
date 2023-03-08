@@ -25,9 +25,12 @@ tasks:
 #      - ctlptl create cluster k3d --name=k3d-prod-cluster --registry=ctlptl-registry
   up:
 #    dir: '{{.USER_WORKING_DIR}}'
-
+    deps:
+      - kind-local-cluster
     preconditions:
       - test -f Tiltfile
     cmds:
       - cat Tiltfile
+      - deno run --allow-all main.ts
+      - cargo run
 #      - cat WORKSPACE

@@ -1,0 +1,26 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "category": "C1",
+      "name": "category 1"
+    },
+    {
+      "id": 2,
+      "category": "C2",
+      "name": "category 2"
+    },
+    {
+      "id": 3,
+      "category": "C3",
+      "name": "category 3"
+    }
+  ],
+  "sales": [
+    {
+      "id": "4",
+      "quantity": 21,
+      "unit": "unit4"
+    }
+  ]
+}
