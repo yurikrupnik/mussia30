@@ -10,3 +10,7 @@ tasks:
     cmds:
       - echo "{{.GREETING}}"
     silent: true
+
+  foo:
+    cmds:
+      - sh foo.sh
