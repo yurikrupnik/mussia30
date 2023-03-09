@@ -37,7 +37,7 @@ async function bootstrap() {
   // end custom config here
   const logger = app.get(Logger);
   const docs = app.get(SwaggerModule);
-  docs.setup(app, globalPrefix, 'Nodejs Rest API', 'General use api docs!');
+  docs.setup(app, globalPrefix, 'Nodejs Rest API', 'General use api docss!');
 
   const port = configService.get('PORT') || 8080;
   await app.listen(port, () => {

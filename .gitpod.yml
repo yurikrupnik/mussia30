@@ -4,9 +4,9 @@
 
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 #image: gitpod/workspace-full
-image:
-  file: scripts/.gitpod.Dockerfile
-  context: .
+#image:
+#  file: scripts/.gitpod.Dockerfile
+#  context: .
 
 tasks:
 #  - init: pnpm install && pnpm run build.yaml && go get && go build.yaml ./... && go test ./... && cargo build.yaml && brew install tilt kubectl helm
@@ -20,7 +20,15 @@ tasks:
     init: pnpm install && cargo build --bin api_rest
     #    command: pnpm run start && go run . && cargo watch -x run
     command: cargo run --bin api_rest --release &&
-
+  - name: rust app 1
+#    before: ls && echo Terminal2
+#    init: pnpm install && cargo build --bin api_rest
+    #    command: pnpm run start && go run . && cargo watch -x run
+#    before: |
+#      ls
+#    init: |
+#      ls
+    command: cargo run --bin api_rest --release &&
 ports:
   - port: 3000
     visibility: private

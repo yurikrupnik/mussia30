@@ -10,5 +10,6 @@ members = [
     "libs/rust/graphql/starwars",
     "libs/rust/mongo",
     "apps/rust/api-graphql",
-    "apps/rust/api-rest"
+    "apps/rust/api-rest",
+    "k8s"
 ]

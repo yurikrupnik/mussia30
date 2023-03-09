@@ -69,7 +69,7 @@
       "options": {
         "parallel": false,
         "commands": [
-          "docker build --target deno --build-arg DIST_PATH=dist/apps/node/api-rest . -t yurikrupnik/deno-api-rest"
+          "docker build --target node --build-arg DIST_PATH=dist/apps/node/api-rest . -t yurikrupnik/deno-api-rest"
         ]
       }
     },
@@ -96,8 +96,15 @@
     "docker-buildx": {
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self",
+          "params": "forward"
+        }
+      ],
       "options": {
-        "command": "docker buildx build --target node --build-arg DIST_PATH=dist/apps/node/api-rest . -t yurikrupnik/node-api-rest"
+        "command": "docker buildx build --push --target node --build-arg DIST_PATH=dist/apps/node/api-rest . -t yurikrupnik/node-api-rest"
       }
     },
     "docker-normal": {

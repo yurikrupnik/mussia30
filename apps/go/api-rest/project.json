@@ -50,8 +50,15 @@
     "docker-buildx": {
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self",
+          "params": "forward"
+        }
+      ],
       "options": {
-        "command": "docker buildx build --target alpine --build-arg DIST_PATH=dist/apps/go/api-rest . -t yurikrupnik/go-api-rest"
+        "command": "docker buildx build --push --target alpine --build-arg DIST_PATH=dist/apps/go/api-rest . -t yurikrupnik/go-api-rest"
       }
     },
     "docker-normal": {

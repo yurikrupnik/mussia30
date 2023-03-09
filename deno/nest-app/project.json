@@ -47,7 +47,7 @@
       ],
       "options": {
         "push": true,
-        "file": "./Dockerfile",
+        "file": "./deno/nest-app/Dockerfile",
         "target": "deno",
         "platforms": ["linux/amd64", "linux/arm64"],
         "build-args": ["DIST_PATH=apps/deno/nest-app"],
@@ -60,7 +60,7 @@
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "options": {
-        "command": "docker buildx build --target node --build-arg DIST_PATH=dist/apps/node/api-rest . -t yurikrupnik/node-api-rest"
+        "command": "docker buildx build --push --target deno --build-arg DIST_PATH=deno/nest-app . -t yurikrupnik/deno-nest-app"
       }
     },
     "docker-normal": {
