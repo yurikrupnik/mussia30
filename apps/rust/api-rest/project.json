@@ -5,7 +5,7 @@
   "sourceRoot": "apps/rust/api-rest/src",
   "targets": {
     "build": {
-      "executor": "@nxrs/carrust:build",
+      "executor": "@nxrs/cargo:build",
       "options": {
         "release": false
       },
@@ -19,16 +19,16 @@
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "options": {
-        "command": "carrust watch -x run",
+        "command": "cargo watch -x run",
         "cwd": "apps/rust/api-rest/"
       }
     },
     "test": {
-      "executor": "@nxrs/carrust:test",
+      "executor": "@nxrs/cargo:test",
       "options": {}
     },
     "lint": {
-      "executor": "@nxrs/carrust:clippy",
+      "executor": "@nxrs/cargo:clippy",
       "options": {
         "fix": false,
         "failOnWarnings": true,
