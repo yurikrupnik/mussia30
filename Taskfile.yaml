@@ -3,17 +3,91 @@
 version: '3'
 
 includes:
-  k8s: ./k8s # will look for ./documentation/Taskfile.yml
-  docs: ./apps/frontend/host # will look for ./documentation/Taskfile.yml
+#  k8s: ./k8s # will look for ./documentation/Taskfile.yml
+  k8s: ./k8s
+  nx: ./taskfiles/Nx.yaml
+  cluster: ./platform/cluster
+  docs: ./apps/frontend/host
 #  docker: ./Dockerfile
 
 vars:
-  GREETING: Hello, World! core
+  USER_EMAIL: krupnik.yuri@gmail.com
+  GCP_PROJECT: new-mussia30
+  PROD_CLUSTER: gke-prod-cluster
+  STAGING_CLUSTER: kind-staging-cluster
+  DEV_CLUSTER: k3s-dev-cluster
+  LOCAL_CLUSTER: kind
+  LOCAL_REGISTRY: false
   STATIC: static
   DYNAMIC:
     sh: echo "dynamic"
 
 tasks:
+# start real commands
+
+  build-image-1:
+    cmds:
+      - task: build-image
+        vars:
+          DOCKER_IMAGE: image-1
+
+  build-image:
+    internal: true
+    cmds:
+#      - docker build --target alpine
+#      - --build-arg DIST_PATH=dist/apps/go/api-rest . -t yurikrupnik/go-api-rest
+      - docker build -t {{.DOCKER_IMAGE}} .
+  docker-clean-cache:
+    cmds:
+      - docker volume prune -f
+  docker-system-clean-cache:
+    cmds:
+      - docker system prune -fa
+  dev-local:
+    cmds:
+      - ls
+  nx:build:
+    cmds:
+      - pnpm run build
+  dev:
+    vars:
+      STATIC: static
+      GOOGLE_CLOUD_IT:
+        sh: gcloud auth print-identity-token
+      GOOGLE_CLOUD_AT:
+        sh: gcloud auth print-access-token
+    cmds:
+      - echo omg
+      - echo $PWD of dev task in main Taskfile.yaml
+      - echo $GCP_PROJECT
+      - echo $GREETING
+      - echo $USER_EMAIL
+      - echo $STAGING_CLUSTER
+      - echo $GOOGLE_CLOUD_IT
+      - echo $0 $1
+      - gcloud auth list
+#      - gcloud config set account $USER_EMAIL
+      - gcloud auth list
+      - task: install-argo
+#      - cargo run
+# end real commands
+#      - task: cluster:k3d-local-cluster
+#      - task: cluster:kind-local-cluster
+#    deps:
+#      - cluster:k3d-local-cluster
+#      - cluster:kind-local-cluster
+    env:
+      GREETING: Hey, there!
+      GCP_PROJECT: secret-here
+#      - cluster:k3d-local-cluster
+#      - cluster:kind-local-cluster
+#      - ls
+    aliases:
+      - d
+    summary: Local dev clusters, 1 for gitops with argo and second with tilt for local dev
+  up-dev:
+    cmds:
+      - echo das
   cluster:
     deps:
       - docs:default
@@ -42,15 +116,12 @@ tasks:
 #    kubectl -n argo-events port-forward $(kubectl -n argo-events get pod -l eventsource-name=webhook -o name) 12000:12000 &
 #    curl -d '{"message":"this is my first webhook"}' -H "Content-Type: application/json" -X POST http://localhost:12000/example
 #    kubectl -n argo-events get workflows | grep "webhook"
-  print-date:
-    cmds:
-      - echo {{now | date "2006-01-02"}}
   pnpm:
     cmds:
       - pnpm {{.CLI_ARGS}}
   greet:
     summary: My summary of greet
-    deps: [print-date, foo, bar, docs:default, k8s:kind-local-cluster]
+    deps: [foo, bar, docs:default, k8s:kind-local-cluster]
     dotenv: [ '.env', '{{.ENV}}/.env.', '{{.HOME}}/.env' ]
     vars:
       GCLOUD_CONFIG_LIST:
@@ -80,10 +151,14 @@ tasks:
 #        --docker-password=$REGISTRY_PASSWORD
   foo:
     cmds:
-      - echo foo
+      - kind create cluster
+      - defer: kind delete cluster
   bar:
     cmds:
       - echo bar
+  bar1:add:
+    cmds:
+      - echo bar1
   default:
     internal: false
     deps: [foo, bar]
@@ -96,21 +171,26 @@ tasks:
   local:
 #    sources:
 #      -
-#    aliases:
-#      - l
+    deps:
+      - foo
+    aliases:
+      - l
 #      - add
     cmds:
+      - echo '{{OS}} {{ARCH}}'
+      - mkdir -p tmpdir/
+      - defer: echo deffer!!
+      - echo 'Do work on tmpdir/'
       - docker images
-  get-secret:
-    kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+#  get-secret:
+#    kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
   ctlptl-create: # todo! using tasks
     summary: "Running local type of cluster by kind param/argument"
     cmds:
       - kind-local-cluster
       - just create-local-cluster
       - ctlptl create cluster kind --name=kind-local-prod-cluster --registry=ctlptl-registry
-  kind-create:
-    kind create cluster --name my-cluster --config cluster.yaml
+
   up1:
     summary: "Createing local dev env"
     deps:
@@ -158,8 +238,8 @@ tasks:
   down:
     preconditions:
       - docker ps
-    deps:
-      - get-secret
+#    deps:
+#      - get-secret
     summary: Clean up kubernetes all clusters
     cmds:
       - kubeshark clean

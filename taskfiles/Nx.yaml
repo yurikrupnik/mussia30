@@ -1,0 +1,17 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World! nx
+
+tasks:
+  default:
+
+    cmds:
+      - echo from Platform "{{.GREETING}}"
+    silent: true
+
+  build:
+    cmds:
+      - pnpm run build

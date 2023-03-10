@@ -7,9 +7,11 @@ imports:
   - github:argoproj/argo-cd
   - github:external-secrets/external-secrets
   - github:GoogleContainerTools/kaniko
+#  - github:kubernetes-sigs/kustomize
+  - github:kubevela/kubevela
 
-#  - github:crossplane/crossplane-runtime
 #  - github:crossplane/crossplane
+#  - github:crossplane/crossplane-runtime
 #  - github:dapr/dapr
 #  - github:kubevela/kubevela
 #  - github:argoproj/argo-cds

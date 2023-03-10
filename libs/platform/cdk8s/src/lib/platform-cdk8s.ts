@@ -151,7 +151,16 @@ export class WebService extends Construct {
           matchLabels: label,
         },
         template: {
-          metadata: { labels: label },
+          metadata: {
+            labels: label,  annotations: {
+              // should be on argo app
+              "argocd-image-updater.argoproj.io/image-list": "some/image:2.x-0",
+              "argocd-image-updater.argoproj.io/<image>.update-strategy": "semver",
+              "argocd-image-updater.argoproj.io/myimage.update-strategy": "latest",
+              "argocd-image-updater.argoproj.io/myimage.ignore-tags": "latest, master",
+              annotation2: 'annotation2',
+            }
+          },
           spec: {
             containers: [
               {

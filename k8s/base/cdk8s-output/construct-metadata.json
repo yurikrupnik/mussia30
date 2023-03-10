@@ -1,1 +1,0 @@
-{"version":"1.0.0","resources":{"users":{"path":"cdk8s-example/namespace/Resource"},"users-sa":{"path":"cdk8s-example/sa/Resource"},"nginx-config":{"path":"cdk8s-example/nginx-config/Resource"},"default-name-service":{"path":"cdk8s-example/web/service"},"default-name":{"path":"cdk8s-example/web/deployment"}}}
