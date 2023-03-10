@@ -4,9 +4,9 @@ version: '3'
 
 includes:
 #  k8s: ./k8s # will look for ./documentation/Taskfile.yml
-  k8s: ./k8s
+#  k8s: ./k8s
   nx: ./taskfiles/Nx.yaml
-  cluster: ./platform/cluster
+#  cluster: ./platform/cluster
   docs: ./apps/frontend/host
 #  docker: ./Dockerfile
 
@@ -22,9 +22,56 @@ vars:
   DYNAMIC:
     sh: echo "dynamic"
 
+env:
+
+  USER_EMAIL: a@gmail.com
 tasks:
 # start real commands
+  stop:
+    summary: Stop local dev env with 3 clusters.
+    cmds:
+      - echo $USER_EMAIL
+  start:
+    summary: Start local dev env with 3 clusters.
+    cmds:
+      - task: k3d-local-cluster:up
 
+  dev:
+    vars:
+      STATIC: static
+      GOOGLE_CLOUD_IT:
+        sh: gcloud auth print-identity-token
+      GOOGLE_CLOUD_AT:
+        sh: gcloud auth print-access-token
+    cmds:
+      - echo omg
+      - echo $PWD of dev task in main Taskfile.yaml
+      - echo $GCP_PROJECT
+      - echo $GREETING
+      - echo $USER_EMAIL
+      - echo $STAGING_CLUSTER
+      - echo $GOOGLE_CLOUD_IT
+      - echo $0 $1
+      - gcloud auth list
+      #      - gcloud config set account $USER_EMAIL
+      - gcloud auth list
+      - task: install-argo
+    #      - cargo run
+    # end real commands
+    #      - task: cluster:k3d-local-cluster
+    #      - task: cluster:kind-local-cluster
+    deps:
+      - cluster:k3d-local-cluster:up
+      - cluster:kind-local-cluster:up
+    env:
+      GREETING: Hey, there!
+      GCP_PROJECT: secret-here
+    #      - cluster:k3d-local-cluster
+    #      - cluster:kind-local-cluster
+    #      - ls
+    aliases:
+      - d
+    summary: Local dev clusters, 1 for gitops with argo and second with tilt for local dev
   build-image-1:
     cmds:
       - task: build-image
@@ -49,45 +96,6 @@ tasks:
   nx:build:
     cmds:
       - pnpm run build
-  dev:
-    vars:
-      STATIC: static
-      GOOGLE_CLOUD_IT:
-        sh: gcloud auth print-identity-token
-      GOOGLE_CLOUD_AT:
-        sh: gcloud auth print-access-token
-    cmds:
-      - echo omg
-      - echo $PWD of dev task in main Taskfile.yaml
-      - echo $GCP_PROJECT
-      - echo $GREETING
-      - echo $USER_EMAIL
-      - echo $STAGING_CLUSTER
-      - echo $GOOGLE_CLOUD_IT
-      - echo $0 $1
-      - gcloud auth list
-#      - gcloud config set account $USER_EMAIL
-      - gcloud auth list
-      - task: install-argo
-#      - cargo run
-# end real commands
-#      - task: cluster:k3d-local-cluster
-#      - task: cluster:kind-local-cluster
-#    deps:
-#      - cluster:k3d-local-cluster
-#      - cluster:kind-local-cluster
-    env:
-      GREETING: Hey, there!
-      GCP_PROJECT: secret-here
-#      - cluster:k3d-local-cluster
-#      - cluster:kind-local-cluster
-#      - ls
-    aliases:
-      - d
-    summary: Local dev clusters, 1 for gitops with argo and second with tilt for local dev
-  up-dev:
-    cmds:
-      - echo das
   cluster:
     deps:
       - docs:default
@@ -97,7 +105,7 @@ tasks:
       - kubectl cluster-info
   install-argo:
     cmds:
-      - kubectl create namespkace argocd
+      - kubectl create namespace argocd
       - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 #      - kubectl create namespace argo-rollouts
 #      - kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
@@ -156,9 +164,6 @@ tasks:
   bar:
     cmds:
       - echo bar
-  bar1:add:
-    cmds:
-      - echo bar1
   default:
     internal: false
     deps: [foo, bar]
