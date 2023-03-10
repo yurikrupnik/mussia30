@@ -11,5 +11,6 @@ members = [
     "libs/rust/mongo",
     "apps/rust/api-graphql",
     "apps/rust/api-rest",
+    "examples/personal-desktop-app",
     "k8s"
 ]
