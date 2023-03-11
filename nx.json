@@ -28,7 +28,7 @@
   "implicitDependencies": {
     "go.mod": "*"
   },
-  "plugins": ["@nxrs/cargo"],
+  "plugins": ["@nxrs/cargo", "@nrwl/deno"],
   "generators": {
     "@nrwl/react": {
       "application": {

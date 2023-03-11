@@ -1,5 +1,5 @@
 {
-  "name": "@deno/mussia30",
+  "name": "mussia30",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -17,6 +17,7 @@
     "@nestjs/testing": "^9.0.0",
     "@nrwl/cli": "15.7.2",
     "@nrwl/cypress": "15.7.2",
+    "@nrwl/deno": "^0.157.0",
     "@nrwl/eslint-plugin-nx": "15.7.2",
     "@nrwl/jest": "15.7.2",
     "@nrwl/js": "15.7.2",
@@ -48,7 +49,7 @@
     "@vitest/coverage-c8": "~0.28.0",
     "@vitest/ui": "^0.28.0",
     "@wanews/nx-pulumi": "^0.26.0",
-    "cypress": "12.6.0",
+    "cypress": "12.7.0",
     "eslint": "~8.35.0",
     "eslint-config-prettier": "8.6.0",
     "eslint-plugin-cypress": "^2.10.3",
@@ -96,7 +97,7 @@
     "@pulumi/gcp": "^6.49.0",
     "@pulumi/mongodbatlas": "^3.7.0",
     "@pulumi/pulumi": "^3.54.0",
-    "@solidjs/router": "^0.7.0",
+    "@solidjs/router": "^0.8.0",
     "@tanstack/solid-query": "4.24.10",
     "@xstate/react": "^3.0.1",
     "@xstate/solid": "^0.1.3",
