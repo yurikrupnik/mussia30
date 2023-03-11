@@ -18,6 +18,7 @@ specifiers:
   '@nestjs/testing': ^9.0.0
   '@nrwl/cli': 15.7.2
   '@nrwl/cypress': 15.7.2
+  '@nrwl/deno': ^0.157.0
   '@nrwl/eslint-plugin-nx': 15.7.2
   '@nrwl/jest': 15.7.2
   '@nrwl/js': 15.7.2
@@ -162,6 +163,7 @@ devDependencies:
   '@nestjs/testing': 9.2.1_dp4dfo6dfdynyltnibxzzh4imm
   '@nrwl/cli': 15.7.2_@swc+core@1.3.24
   '@nrwl/cypress': 15.7.2_lixtpldghuf3nkywtpomgg3v7u
+  '@nrwl/deno': 0.157.0_nx@15.7.2+typescript@4.9.5
   '@nrwl/eslint-plugin-nx': 15.7.2_nctlvikrpf2bbfy5rfkt5s75hy
   '@nrwl/jest': 15.7.2_qzc7tanx3idaig4fdudge4o7fi
   '@nrwl/js': 15.7.2_ec324lfwc32tf3fm75pdipcyla
@@ -4012,6 +4014,17 @@ packages:
       - typescript
     dev: true
 
+  /@nrwl/deno/0.157.0_nx@15.7.2+typescript@4.9.5:
+    resolution: {integrity: sha512-LW7thChQ08W6N/h/NDT7RPzXvVM2WuP+2qdzgsdlRKRJK5HQdYS/B/geic/AbzY52O+Ajj/mBFqb6LfxXJrStw==}
+    dependencies:
+      '@nrwl/devkit': 15.7.0_nx@15.7.2+typescript@4.9.5
+      '@swc/core': 1.3.24
+      fs-extra: 11.1.0
+    transitivePeerDependencies:
+      - nx
+      - typescript
+    dev: true
+
   /@nrwl/devkit/14.5.2_nx@15.7.2:
     resolution: {integrity: sha512-li94W0D5SQZ7tjMiq+CZLHTx6/Gos5l3lc6jAzW/FHfoiAaaWN2zOPoydBQY7uw5TC+MH1jBbv/49Nf4wmXGVA==}
     peerDependencies:
@@ -4057,6 +4070,21 @@ packages:
     resolution: {integrity: sha512-6AWWXyUpoqWkVARgUeARSmFanvgqlb81GN8SBwUQhezTbalOPmi0TsUN6n7MHAc611MAFE9eZBd+29UM+sFXeg==}
     peerDependencies:
       nx: '>= 14 <= 16'
+    dependencies:
+      '@phenomnomnominal/tsquery': 4.1.1_typescript@4.9.5
+      ejs: 3.1.8
+      ignore: 5.2.4
+      nx: 15.7.2_@swc+core@1.3.24
+      semver: 7.3.4
+      tslib: 2.4.1
+    transitivePeerDependencies:
+      - typescript
+    dev: true
+
+  /@nrwl/devkit/15.7.0_nx@15.7.2+typescript@4.9.5:
+    resolution: {integrity: sha512-aPh3xnSpP4HH8sU2ICuuhtBgp2k4ydfkW/uTOlK/BvT94++AJ/Aj8ZSJFWAd2IteFsMNynPz5c0jLO+MSTqRnA==}
+    peerDependencies:
+      nx: '>= 14.1 <= 16'
     dependencies:
       '@phenomnomnominal/tsquery': 4.1.1_typescript@4.9.5
       ejs: 3.1.8
