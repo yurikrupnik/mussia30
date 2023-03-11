@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: users
+spec: {}
+---
+apiVersion: v1
+kind: ServiceAccount
+automountServiceAccountToken: true
+metadata:
+  annotations:
+    annotations: annotation1
+  labels:
+    account: users-client
+  name: users-sa
+  namespace: users
+---
+apiVersion: v1
+kind: ConfigMap
+data:
+  stam: my data here
+immutable: false
+metadata:
+  annotations:
+    annotation1: annotation1
+    annotation2: annotation2
+  name: nginx-config
+  namespace: users
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: default-name-service
+  namespace: users
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: cdk8s-example-api-c8595c9a
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: default-name
+  namespace: users
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cdk8s-example-api-c8595c9a
+  template:
+    metadata:
+      annotations:
+        annotation2: annotation2
+        argocd-image-updater.argoproj.io/<image>.update-strategy: semver
+        argocd-image-updater.argoproj.io/image-list: some/image:2.x-0
+        argocd-image-updater.argoproj.io/myimage.ignore-tags: latest, master
+        argocd-image-updater.argoproj.io/myimage.update-strategy: latest
+      labels:
+        app: cdk8s-example-api-c8595c9a
+    spec:
+      containers:
+        - image: nginx
+          name: app
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /etc/nginx/templates
+              name: nginx-config

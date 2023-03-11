@@ -1,0 +1,9 @@
+apiVersion: core.oam.dev/v1alpha2
+kind: Application
+metadata:
+  annotations:
+    application: app11
+  labels:
+    application: app11
+  name: app11
+  namespace: app11
