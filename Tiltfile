@@ -5,7 +5,8 @@
 # include('./k8s/helm/Tiltfile')
 
 local_resource('task-start', cmd='task -a', deps=['package.json'], labels=['task'])
-local_resource('task-default', cmd='task', deps=['package.json'], labels=['task'])
+local_resource('local-tauri-app', cmd='cargo tauri dev', dir="/examples/personal-desktop-app" deps=['/examples/personal-desktop-app'], labels=['tauri'])
+local_resource('local-kubernetes-operator', cmd='cargo tauri dev', dir="/examples/personal-desktop-app" deps=['/examples/personal-desktop-app'], labels=['tauri'])
 
 local_resource('pnpm', cmd='pnpm install', deps=['package.json'], labels=['pnpm'])
 # local_resource('k8s-operator', cmd='cargo run --bin k8s_operator', deps=[''], labels=['cargo'])

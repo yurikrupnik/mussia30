@@ -1,6 +1,5 @@
 [workspace]
 members = [
-    "apps/rust/personal-cli",
     "apps/rust/k8s-operator",
     "apps/rust/book-controller",
     "apps/rust/my-operator",
@@ -11,6 +10,6 @@ members = [
     "libs/rust/mongo",
     "apps/rust/api-graphql",
     "apps/rust/api-rest",
-    "examples/personal-desktop-app",
+    "apps/rust/personal-cli",
     "k8s"
 ]
