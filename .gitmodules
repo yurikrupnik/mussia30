@@ -1,0 +1,3 @@
+[submodule "submodules/go-commands"]
+	path = submodules/go-commands
+	url = https://github.com/yurikrupnik/go-commands.git

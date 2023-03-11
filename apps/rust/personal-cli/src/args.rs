@@ -12,3 +12,4 @@ pub struct Cli {
   #[clap(short, long, value_parser, default_value_t = 1)]
   pub count: u8,
 }
+
