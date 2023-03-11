@@ -96,7 +96,7 @@
     "@pulumi/gcp": "^6.49.0",
     "@pulumi/mongodbatlas": "^3.7.0",
     "@pulumi/pulumi": "^3.54.0",
-    "@solidjs/router": "^0.7.0",
+    "@solidjs/router": "^0.8.0",
     "@tanstack/solid-query": "4.24.10",
     "@xstate/react": "^3.0.1",
     "@xstate/solid": "^0.1.3",

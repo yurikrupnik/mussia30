@@ -37,7 +37,7 @@ specifiers:
   '@pulumi/gcp': ^6.49.0
   '@pulumi/mongodbatlas': ^3.7.0
   '@pulumi/pulumi': ^3.54.0
-  '@solidjs/router': ^0.7.0
+  '@solidjs/router': ^0.8.0
   '@swc/core': ^1.2.173
   '@tanstack/solid-query': 4.24.10
   '@testing-library/react': 14.0.0
@@ -128,7 +128,7 @@ dependencies:
   '@pulumi/gcp': 6.49.0
   '@pulumi/mongodbatlas': 3.7.0
   '@pulumi/pulumi': 3.54.0
-  '@solidjs/router': 0.7.0_solid-js@1.6.6
+  '@solidjs/router': 0.8.0_solid-js@1.6.6
   '@tanstack/solid-query': 4.24.10_solid-js@1.6.6
   '@xstate/react': 3.0.1_v4higsmnkrpqz42ag2mxp773di
   '@xstate/solid': 0.1.3_fdmfjbdf577ly4stvl4fqxpkoa
@@ -169,7 +169,7 @@ devDependencies:
   '@nrwl/nest': 15.7.2_uwncfrmcpgrv2tbuhejhe2eoh4
   '@nrwl/next': 15.4.1_ct7uliabjr4xtn7fujv3qon7ha
   '@nrwl/node': 15.7.2_uwncfrmcpgrv2tbuhejhe2eoh4
-  '@nrwl/nx-cloud': 15.1.1
+  '@nrwl/nx-cloud': 15.2.1
   '@nrwl/react': 15.7.2_ec324lfwc32tf3fm75pdipcyla
   '@nrwl/vite': 15.7.2_vkybwj5c6qrb2ea4qan4hgzilu
   '@nrwl/workspace': 15.7.2_gfl5ty4jpffwnky7wmacm3edb4
@@ -4401,8 +4401,8 @@ packages:
       - webpack-cli
     dev: true
 
-  /@nrwl/nx-cloud/15.1.1:
-    resolution: {integrity: sha512-aIVb87PQpAjwdEaFksQ3rYgFq9MDaBG2KvYZcj/k+z2uWeWH84ha/opO37aCFLf5VXNiyJZGRb/+7vW7BFpNOw==}
+  /@nrwl/nx-cloud/15.2.1:
+    resolution: {integrity: sha512-T4ycGSx77TdvS0j6tKI/6zmh6YtsPHyfB2li+wDR+BW9wjGGqOTX1QvG3gf0k2enhA3dxLgYnmeDZoEUek6MOw==}
     hasBin: true
     dependencies:
       axios: 0.21.4
@@ -5341,8 +5341,8 @@ packages:
       '@sinonjs/commons': 1.8.6
     dev: true
 
-  /@solidjs/router/0.7.0_solid-js@1.6.6:
-    resolution: {integrity: sha512-8HI84twe5FjYRebSLMAhtkL9bRuTDIlxJK56kjfjU9WKGoUCTaWpCnkuj8Hqde1bWZ0X+GOZxKDfNkn1CjtjxA==}
+  /@solidjs/router/0.8.0_solid-js@1.6.6:
+    resolution: {integrity: sha512-gvKAfYbuq6rpuNM9E7qIRXOrUEHY4AoOiok3xo/Slw5ph+hvJ+gKRhQgW0Et8xcsq2NZcc4AvJF8VTBmXfwEyA==}
     peerDependencies:
       solid-js: ^1.5.3
     dependencies:
