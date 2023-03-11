@@ -160,7 +160,7 @@ fn determine_action(echo: &Echo) -> EchoAction {
 /// - `error`: A reference to the `kube::Error` that occurred during reconciliation.
 /// - `_context`: Unused argument. Context Data "injected" automatically by kube-rs.
 fn on_error(echo: Arc<Echo>, error: &Error, _context: Arc<ContextData>) -> Action {
-  eprintln!("Reconciliation error:\n{error:?}.\n{echo:?}");
+  eprintln!("Reconciliation error1:\n{error:?}.\n{echo:?}");
   Action::requeue(Duration::from_secs(5))
 }
 
