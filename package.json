@@ -114,7 +114,7 @@
     "helmet": "^6.0.1",
     "ioredis": "^5.2.4",
     "lodash": "^4.17.21",
-    "mongoose": "^6.8.1",
+    "mongoose": "^7.0.0",
     "mongoose-paginate-v2": "^1.7.1",
     "nestjs-seeder": "^0.3.0",
     "passport-firebase-jwt": "^1.2.1",
