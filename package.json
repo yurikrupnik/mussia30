@@ -46,8 +46,8 @@
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "@vitejs/plugin-react": "^3.0.0",
-    "@vitest/coverage-c8": "~0.28.0",
-    "@vitest/ui": "^0.28.0",
+    "@vitest/coverage-c8": "~0.29.0",
+    "@vitest/ui": "^0.29.0",
     "@wanews/nx-pulumi": "^0.26.0",
     "cypress": "12.7.0",
     "eslint": "~8.36.0",
@@ -77,7 +77,7 @@
     "vite-plugin-solid": "2.6.1",
     "vite-plugin-windicss": "^1.8.10",
     "vite-tsconfig-paths": "^4.0.2",
-    "vitest": "^0.28.0",
+    "vitest": "^0.29.0",
     "windicss": "^3.5.6"
   },
   "dependencies": {
