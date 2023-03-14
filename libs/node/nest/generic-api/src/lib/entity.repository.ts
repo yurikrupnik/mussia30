@@ -42,7 +42,7 @@ export abstract class EntityRepository<
     projection: any,
     config: QueryOptions
   ): Promise<Document<HydratedDocument<T>>[]> {
-    return this.model.find(query, projection, config).lean().catch(handleError);
+    return this.model.find(query, projection, config).catch(handleError);
   }
 
   create(createEntityData: CreateDto): Promise<T> {
