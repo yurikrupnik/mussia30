@@ -3,7 +3,7 @@ import {
   FilterQuery,
   Model,
   QueryOptions,
-  LeanDocument,
+  // LeanDocument,
   HydratedDocument,
   UpdateQuery,
 } from 'mongoose';
@@ -41,7 +41,7 @@ export abstract class EntityRepository<
     query: FilterQuery<T>,
     projection: any,
     config: QueryOptions
-  ): Promise<LeanDocument<HydratedDocument<T>>[]> {
+  ): Promise<Document<HydratedDocument<T>>[]> {
     return this.model.find(query, projection, config).lean().catch(handleError);
   }
 
