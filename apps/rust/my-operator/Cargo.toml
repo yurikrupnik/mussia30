@@ -11,7 +11,7 @@ maintenance = {"status" = "actively-developed" }
 [dependencies]
 kube = { version = "0.80.0", features = ["runtime", "derive"] }
 kube-derive = "0.80.0"
-serde_derive = "1.0.155"
+serde_derive = "1.0.156"
 k8s-openapi = { version = "0.17.0", features = ["v1_25"] }
 clap = { version = "4.1", features = ["derive"] }
 tokio = { version = "1.26.0", features = ["macros", "rt-multi-thread", "signal"] }
