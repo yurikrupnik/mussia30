@@ -14,9 +14,9 @@ tasks:
     cmds:
       - kubectl create namespace argocd
       - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-  create-example:
+  apply:
     cmds:
-      - ls
+      - kubectl apply -f apps.yaml
   get-secret:
     cmds:
       - pwd

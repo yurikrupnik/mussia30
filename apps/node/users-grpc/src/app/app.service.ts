@@ -17,7 +17,7 @@ export class AppService {
     projection: any,
     config: QueryOptions
   ) {
-    return this.model.find(query, projection, config).lean().catch(handleError);
+    return this.model.find(query, projection, config).catch(handleError);
   }
 
   findById(id: string, projection: any) {

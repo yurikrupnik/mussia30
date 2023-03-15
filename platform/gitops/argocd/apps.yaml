@@ -45,6 +45,29 @@ spec:
    automated:
      selfHeal: true
      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mussia30
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/yurikrupnik/mussia30.git
+    targetRevision: HEAD
+    path: k8s/base
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mussia30
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
 # ---
 #apiVersion: argoproj.io/v1alpha1
 #kind: Application
@@ -73,7 +96,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: go-commands
-  namespace: go-commands
+  namespace: argocd
 spec:
   project: default
   source:
@@ -82,7 +105,7 @@ spec:
     path: k8s/base
   destination:
     server: https://kubernetes.default.svc
-    namespace: nx-go-playground
+    namespace: go-commands
 
   syncPolicy:
     syncOptions:

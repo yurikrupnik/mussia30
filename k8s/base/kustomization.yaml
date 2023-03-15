@@ -5,14 +5,14 @@ resources:
 #  - ../base/../../apps/go/api-rest/k8s/base
 #  - ../base/../cdk8s-output/cdk8s-example.k8s.yaml
   - cdk8s-output/cdk8s-example.k8s.yaml
-  - cdk8s-output/
+  - ../../apps/go/api-rest/k8s/base
+#  - cdk8s-output/
 #  - cdk8s-output/shit.yaml
 #  - cdk8s-output/cdk8s-example.k8s.yaml
 #  - ../cdk8s-output/cdk8s-example.k8s.yaml
   #  - secrets.yaml
   #  - namespace.yaml
   #  manual jobs from helm to kubectl thro kustomize
-  - ../../apps/go/api-rest/k8s/base
   # - ../base/../../k8s/base/kubevela/base
   #  - ../base/vault/manifests/vault.yaml
   #  - storage.yaml

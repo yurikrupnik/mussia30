@@ -5,7 +5,8 @@ import {
   Connection,
   FilterQuery,
   HydratedDocument,
-  LeanDocument,
+  // LeanDocument,
+  Document,
   Model,
   QueryOptions,
 } from 'mongoose';
@@ -24,8 +25,8 @@ export class AppService {
     query: FilterQuery<UserDocument>,
     projection: any,
     config: QueryOptions
-  ): Promise<LeanDocument<HydratedDocument<UserDocument>>[]> {
-    return this.model.find(query, projection, config).lean().catch(handleError);
+  ): Promise<Document<HydratedDocument<UserDocument>>[]> {
+    return this.model.find(query, projection, config).catch(handleError);
   }
 
   create(createEntityData: Partial<User>): Promise<User> {

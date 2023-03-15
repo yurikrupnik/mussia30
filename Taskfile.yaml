@@ -23,14 +23,18 @@ vars:
     sh: echo "dynamic"
 
 env:
-
   USER_EMAIL: a@gmail.com
 tasks:
 # start real commands
   stop:
+#    deps:
+#      - task:
+#        vars:
+
     summary: Stop local dev env with 3 clusters.
     cmds:
       - echo $USER_EMAIL
+      - echo $DYNAMIC
   start:
     summary: Start local dev env with 3 clusters.
     cmds:

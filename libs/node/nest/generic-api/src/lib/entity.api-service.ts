@@ -2,7 +2,7 @@ import {
   Document,
   FilterQuery,
   QueryOptions,
-  LeanDocument,
+  // LeanDocument,
   HydratedDocument,
   UpdateQuery,
 } from 'mongoose';
@@ -20,7 +20,7 @@ export class CrudApiService<
     query: FilterQuery<T>,
     projection: any,
     config: QueryOptions
-  ): Promise<LeanDocument<HydratedDocument<T>>[]> {
+  ): Promise<Document<HydratedDocument<T>>[]> {
     return this.repository.findAll(query, projection, config);
   }
 
