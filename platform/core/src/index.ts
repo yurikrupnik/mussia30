@@ -1,9 +1,12 @@
 import { first } from 'lodash';
 import * as pulumi from '@pulumi/pulumi';
 import * as gcp from '@pulumi/gcp';
+import { ServicesResource } from './cloudServices';
+import { Providers } from './shared/types';
 // TODO! check activetate cloudbuild.googleapis.com for project 394442038451
 // import * as aws from '@pulumi/aws';
 // import * as k8s from '@pulumi/kubernetes';
+// import { } from '@mussia30/'
 
 // const appLabels = { app: 'nginx' };
 // const deployment = new k8s.apps.v1.Deployment('nginx', {
@@ -117,78 +120,33 @@ const eventsBucket = new gcp.storage.Bucket('events-bucket', {
   // website
 });
 
-// const awssss = new aws.s3.Bucket('aws_bucket', {
-//   versioning: {
-//     enabled: true,
-//   },
-//   forceDestroy: true,
-//   website: {},
-// });
+const funcBucket = new gcp.storage.Bucket(`${project}-func-bucket`, {
+  name: `${project}-func-bucket`,
+  location: 'eu',
+  // location: "EU",
+  // location: region,
+  forceDestroy: true,
+  versioning: {
+    enabled: true,
+  },
+  labels: {
+    type: 'code',
+  },
+});
 
-enum Provider {
-  'gcp',
-  'aws',
-  'azure',
-  'ali',
-}
+const dataset = new gcp.bigquery.Dataset('applications_events', {
+  datasetId: 'applications_events',
+  description: 'This is a test description',
+  friendlyName: 'Test logs',
+  location: region,
+  // defaultTableExpirationMs: 3600000,
+  labels: {
+    env: 'default',
+    name: 'aris-test',
+  },
+});
 
-interface ServicesResourceProps {
-  services: Array<string>;
-  project?: string;
-  provider?: Provider;
-}
-
-export class ServicesResource extends pulumi.ComponentResource {
-  // private googleServices:  pulumi.Output<string>;
-  // private googleServices: Service[];
-  // private googleServices: string;
-  constructor(
-    name: string,
-    // services: Array<string>,
-    servicesResourceProps: ServicesResourceProps,
-    opts?: pulumi.ResourceOptions
-  ) {
-    super('mussia30:core:service:', name, {}, opts);
-    servicesResourceProps.services.map((service) => {
-      // const serviceName = `${first(service.split('.'))}-service`;
-      // let action;
-      // if (servicesResourceProps.project === 'gcp') {
-      // action =
-      return new gcp.projects.Service(
-        service,
-        {
-          disableDependentServices: true,
-          // project,
-          service,
-        },
-        { parent: this, ...opts }
-      );
-      // } else if (servicesResourceProps.project === 'aws') {
-      // aws.serverless.Function
-      // aws.account.
-      // return new aws.s3.Bucket('bucket', {
-      //   forceDestroy: true,
-      // });
-      // }
-    });
-    // console.log('this.googleServices', this.googleServices);
-  }
-
-  // async init(services: Array<string>, services: ) {
-  //   // await this.services.map((service) => {
-  //   //   // const serviceName = `${first(service.split('.'))}-service`;
-  //   //   return new gcp.projects.Service(
-  //   //     service,
-  //   //     {
-  //   //       disableDependentServices: true,
-  //   //       // project,
-  //   //       service: service,
-  //   //     },
-  //   //     { parent: this }
-  //   //   );
-  //   // });
-  // }
-}
+const functionsPath = '../../dist/apps/node/';
 
 const servicesNames = [
   'cloudfunctions.googleapis.com',
@@ -198,55 +156,37 @@ const servicesNames = [
 const GcpFunctionServices = new ServicesResource(
   'GcpFunctionServices',
   // services: servicesNames,
-  { services: servicesNames, provider: Provider.gcp }
+  { services: servicesNames, provider: Providers.gcp }
   // servicesNames
 );
 
-// const AwsFunctionServices = new ServicesResource(
-//   'functionServices',
-//   // services: servicesNames,
-//   { services: servicesNames, provider: Provider.aws }
-//   // servicesNames
-// );
 
-// const GcpStorage = new GcpStorageResource(
-//   'GcpStorage',
-//   // services: servicesNames,
-//   { services: servicesNames, },
-//   // servicesNames
-// );
-//
-// const AwsStorage = new AwspStorageResource(
-//   'AwsStorage',
-//   // services: servicesNames,
-//   { services: servicesNames, provider: Provider.aws },
-//   // servicesNames
-// );
+const functions: GcpFunction[] = [
+  {
+    name: 'dead',
+    bucket: funcBucket,
+    path: functionsPath,
+    member: 'allUsers',
+    functionArgs: {
+      availableMemoryMb: 256,
+      region,
+      triggerHttp: true,
+      entryPoint: 'dead',
+      // name: "Aris",
+      // project,
+      sourceArchiveBucket: funcBucket.name,
+      eventTrigger: undefined,
+      runtime: 'nodejs18',
+    },
+  }
+];
 
-// const eventsServices = new ServicesResource(
-//   'eventsServices',
-//   {
-//     provider: Provider.gcp,
-//     services: ['pubsub.googleapis.com'],
-//   },
-//   {}
-// );
-
-// const functionsPath = '../../dist/apps/node/';
-
-// const funcBucket = new gcp.storage.Bucket(`${project}-func-bucket`, {
-//   name: `${project}-func-bucket`,
-//   location: 'eu',
-//   // location: "EU",
-//   // location: region,
-//   forceDestroy: true,
-//   versioning: {
-//     enabled: true,
-//   },
-//   labels: {
-//     type: 'code',
-//   },
-// });
+const funcs = functions.map((f) => {
+  return new GcpFunctionResource(f.name, f, {
+    dependsOn: GcpFunctionServices,
+    // parent: functionServices.googleServices[0],
+  });
+});
 
 // const myService = gcp.projects.getProjectService({
 //   service: "cloudfunctions.googleapis.com",
@@ -261,30 +201,10 @@ const GcpFunctionServices = new ServicesResource(
 // console.log('myService', myService);
 // console.log('myService1', myService1);
 
-const functions: GcpFunction[] = [
-  // {
-  //   name: 'dead-letter-subscription',
-  //   bucket: funcBucket,
-  //   path: functionsPath,
-  //   member: 'allUsers',
-  //   // dependsOn: services,
-  //   functionArgs: {
-  //     availableMemoryMb: 256,
-  //     region,
-  //     triggerHttp: trigger_http
-  //     // name: "Aris",
-  //     // project,
-  //     sourceArchiveBucket: funcBucket.name,
-  //     eventTrigger: undefined,
-  //     runtime: 'nodejs18',
-  //   },
-  // },
-];
-
 const computeServices = new ServicesResource(
   'computeServices',
   {
-    provider: Provider.gcp,
+    provider: Providers.gcp,
     services: ['compute.googleapis.com'],
   },
   {}
@@ -303,13 +223,6 @@ const computeServices = new ServicesResource(
 //   }
 //   // { dependsOn: computeServiceLocal }
 // );
-
-const funcs = functions.map((f) => {
-  return new GcpFunctionResource(f.name, f, {
-    dependsOn: GcpFunctionServices,
-    // parent: functionServices.googleServices[0],
-  });
-});
 
 // Promise.all(funcs);
 
@@ -349,4 +262,11 @@ const funcs = functions.map((f) => {
 //     // mainPageSuffix: 'index.html',
 //     // notFoundPage: '404.html',
 //   },
+// });
+// const awssss = new aws.s3.Bucket('aws_bucket', {
+//   versioning: {
+//     enabled: true,
+//   },
+//   forceDestroy: true,
+//   website: {},
 // });

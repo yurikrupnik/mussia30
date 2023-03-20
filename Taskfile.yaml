@@ -8,6 +8,7 @@ includes:
   nx: ./taskfiles/Nx.yaml
 #  cluster: ./platform/cluster
   docs: ./apps/frontend/host
+  crossplane: ./platform/crossplane
 #  docker: ./Dockerfile
 
 vars:
@@ -26,6 +27,13 @@ env:
   USER_EMAIL: a@gmail.com
 tasks:
 # start real commands
+  crossplane:
+    cmds:
+      - kind create cluster
+      - task: crossplane:install
+      - kubectl create secret generic gcp-secret -n crossplane-system --from-file=creds=./gcp-credentials.json
+      - task: crossplane:create-gcp-provider
+#      - task: crossplane:create-resources
   stop:
 #    deps:
 #      - task:

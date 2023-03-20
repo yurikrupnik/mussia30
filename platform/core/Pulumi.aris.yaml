@@ -5,7 +5,7 @@ config:
   core:nodeMachineType: n1-standard-2
   core:password:
     secure: AAABABaNidFTNqJCO2cd2MTMQzKK2ev8Qz5GrVQpM7UdbQJmeQ==
-#  gcp:project: mussia30
-  gcp:project: yuri-sandbox
+    #  gcp:project: mussia30
+  gcp:project: new-mussia30
   gcp:region: me-west1
   gcp:zone: me-west1-b

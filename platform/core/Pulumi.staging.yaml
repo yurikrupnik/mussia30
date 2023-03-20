@@ -1,0 +1,6 @@
+config:
+  core:machineType: n1-standard-2
+  core:nodeCount: "2"
+  gcp:project: new-mussia30
+  gcp:region: europe-central2
+  gcp:zone: europe-central2-b

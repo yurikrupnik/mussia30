@@ -13,6 +13,31 @@ spec:
     image: docker.io/yurikrupnik/sample-buildpacks-nodejs:latest
     credentials:
       name: push-secret
+---
+apiVersion: shipwright.io/v1alpha1
+kind: Build
+metadata:
+  name: buildpack-nodejs-build
+spec:
+  source:
+    url: https://github.com/shipwright-io/sample-nodejs
+    contextDir: source-build
+  strategy:
+    name: buildpacks-v3
+    kind: ClusterBuildStrategy
+  output:
+    image: docker.io/yurikrupnik/sample-buildpacks-nodejs1:latest
+    credentials:
+      name: push-secret
+#      name: regcred
+---
+apiVersion: shipwright.io/v1alpha1
+kind: BuildRun
+metadata:
+  generateName: buildpack-nodejs-buildrun-
+spec:
+  buildRef:
+    name: buildpack-nodejs-build
 #---
 #apiVersion: shipwright.io/v1alpha1
 #kind: Build

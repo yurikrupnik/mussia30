@@ -9,6 +9,8 @@ imports:
   - github:GoogleContainerTools/kaniko
 #  - github:kubernetes-sigs/kustomize
   - github:kubevela/kubevela
+  - github:upbound/provider-gcp
+
 #  - github:robusta-dev/robusta
 
 #  - github:crossplane/crossplane
