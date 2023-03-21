@@ -15,6 +15,11 @@ spec:
         - type: scaler
           properties:
             replicas: 1
+        - type: ingress
+          properties:
+            domain: localhost
+            http:
+              "/": 80
   policies:
     - name: target-default
       type: topology

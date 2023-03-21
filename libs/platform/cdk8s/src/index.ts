@@ -2,7 +2,9 @@ import { App, Chart, ChartProps, Helm } from 'cdk8s';
 // import { ConfigMap, Namespace, ServiceAccount } from 'cdk8s-plus-24';
 // import {MyChart}  from './src/deployment';
 import { Construct } from 'constructs';
-import {Application} from '../imports/core.oam.dev'
+import { Application } from '../imports/core.oam.dev';
+import { Bucket } from "../imports/storage.gcp.upbound.io";
+import { Topic, Schema } from "../imports/pubsub.gcp.upbound.io";
 // import {Application} from '../imports/standard.oam.dev'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -126,6 +128,80 @@ export class MyChart extends Chart {
 export class SecondChart extends Chart {
   constructor(scope: Construct, id: string, props: ChartProps = {}) {
     super(scope, id, props);
+
+    const b = new Bucket(this, 'dsasdas', {
+      spec: {
+        forProvider: {
+          location: "eu",
+          labels: {
+            lol: 'lol'
+          }
+        }
+      },
+      metadata: {
+
+      }
+    });
+
+    const schema = new Schema(this, 'example-schema', {
+      spec: {
+        forProvider: {
+          type: "AVRO",
+          definition: JSON.stringify({
+            "type" : "record",
+            "name" : "Avro",
+            "fields" : [
+              {
+                "name" : "StringField",
+                "type" : "string"
+              },
+              {
+                "name" : "FloatField",
+                "type" : "float"
+              },
+              {
+                "name" : "BooleanField",
+                "type" : "boolean"
+              }
+            ]
+          })
+        }
+      },
+      metadata: {
+
+      }
+    })
+
+    const topic = new Topic(this, 'example-topic', {
+      metadata: {
+
+      },
+      spec: {
+        forProvider: {
+          schemaSettings: [{
+            encoding: "AVRO",
+            schema: JSON.stringify({
+              "type" : "record",
+              "name" : "Avro",
+              "fields" : [
+                {
+                  "name" : "StringField",
+                  "type" : "string"
+                },
+                {
+                  "name" : "FloatField",
+                  "type" : "float"
+                },
+                {
+                  "name" : "BooleanField",
+                  "type" : "boolean"
+                }
+              ]
+            })
+          }],
+        }
+      }
+    })
     // TODO resolve - ref https://cdk8s.io/docs/latest/basics/helm/
     // new Helm(this, 'redis', {
     //   chart: 'bitnami/redis',
@@ -157,6 +233,7 @@ export class SecondChart extends Chart {
           application: "app11"
         },
         namespace: 'app11',
+
         // ownerReferences: [
         //   {
         //     // name: "dsas",
@@ -167,6 +244,22 @@ export class SecondChart extends Chart {
         //   }
         // ]
       },
+      spec: {
+        components: [
+          {
+            name: 'ads',
+            type: "webservice",
+            traits: [
+              {
+                name: 'sda',
+                properties: {
+
+                }
+              }
+            ]
+          }
+        ]
+      }
       // spec: {
         // components:
         // rolloutPlan: []

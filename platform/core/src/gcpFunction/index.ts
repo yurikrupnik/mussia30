@@ -34,17 +34,18 @@ export class GcpFunctionResource extends pulumi.ComponentResource {
         bucket: bucket.name,
         source: new pulumi.asset.FileArchive(`${path}${name}`),
       },
-      // opts
       { parent: this, ...opts } as pulumi.ResourceOptions
     );
+
     const func = new gcp.cloudfunctions.Function(
       name,
       {
+
         // sourceArchiveBucket: bucket.name,
         sourceArchiveObject: archive.name,
         // triggerHttp: eventTrigger ? undefined : true,
         // eventTrigger: eventTrigger ? eventTrigger : undefined,
-        entryPoint: camelCase(name),
+        // entryPoint: camelCase(name),
         name,
         // environmentVariables,
         ...functionArgs,

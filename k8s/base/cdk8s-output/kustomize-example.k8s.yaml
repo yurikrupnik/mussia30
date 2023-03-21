@@ -1,3 +1,32 @@
+apiVersion: storage.gcp.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  name: kustomize-example-dsasdas-c8ec8399
+spec:
+  forProvider:
+    labels:
+      lol: lol
+    location: eu
+---
+apiVersion: pubsub.gcp.upbound.io/v1beta1
+kind: Schema
+metadata:
+  name: kustomize-example-example-schema-c8d53db6
+spec:
+  forProvider:
+    definition: '{"type":"record","name":"Avro","fields":[{"name":"StringField","type":"string"},{"name":"FloatField","type":"float"},{"name":"BooleanField","type":"boolean"}]}'
+    type: AVRO
+---
+apiVersion: pubsub.gcp.upbound.io/v1beta1
+kind: Topic
+metadata:
+  name: kustomize-example-example-topic-c8c4c3ba
+spec:
+  forProvider:
+    schemaSettings:
+      - encoding: AVRO
+        schema: '{"type":"record","name":"Avro","fields":[{"name":"StringField","type":"string"},{"name":"FloatField","type":"float"},{"name":"BooleanField","type":"boolean"}]}'
+---
 apiVersion: core.oam.dev/v1alpha2
 kind: Application
 metadata:
