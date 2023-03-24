@@ -19,7 +19,6 @@ go_register_toolchains(version = "1.19.3")
 
 # Node
 # Deno
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
     name = "aspect_rules_deno",
     sha256 = "cfda7aeb308082a4525f391b66e81d4f15bd05c3f0a5131e4645e74ea1e32760",
@@ -55,7 +54,7 @@ http_archive(
     sha256 = "dc8d79fe9a5beb79d93e482eb807266a0e066e97a7b8c48d43ecf91f32a3a8f3",
     urls = ["https://github.com/bazelbuild/rules_rust/releases/download/0.19.0/rules_rust-v0.19.0.tar.gz"],
 )
-load("@rules_rust//rust:repositories.bzl", "rust_repositories", "rust_register_toolchains")
+load("@rules_rust//rust:repositories.bzl", "rust_repositories", "rust_register_toolchains", "rust_repository_set")
 rust_repositories(edition="2021")
 rust_register_toolchains()
 #load("//cargo:crates.bzl", "raze_fetch_remote_crates")

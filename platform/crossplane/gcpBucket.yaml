@@ -17,7 +17,8 @@
 apiVersion: storage.gcp.upbound.io/v1beta1
 kind: Bucket
 metadata:
-  generateName: crossplane-bucket-
+#  generateName: crossplane-bucket-
+  name: yuri-crossplane-bucket
   labels:
     docs.crossplane.io/example: provider-gcp
 spec:
@@ -46,3 +47,17 @@ spec:
   providerConfigRef:
     name: default
   deletionPolicy: Delete
+---
+apiVersion: s3.aws.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  annotations:
+    crossplane.io/external-name: test-channel-bucket
+    meta.upbound.io/example-id: configservice/v1beta1/awsconfigurationrecorderstatus
+  labels:
+    testing.upbound.io/example-name: b
+  name: test-channel-bucket-yuri
+spec:
+  forProvider:
+    forceDestroy: true
+    region: us-west-1

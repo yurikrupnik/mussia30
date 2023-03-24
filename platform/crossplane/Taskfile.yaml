@@ -24,6 +24,8 @@ tasks:
       - kubectl apply -f gcpProvider.yaml
       - kubectl wait "providers.pkg.crossplane.io/provider-gcp" --for=condition=Installed --timeout=180s
       - kubectl wait "providers.pkg.crossplane.io/provider-gcp" --for=condition=Healthy --timeout=180s
+      - kubectl wait "providers.pkg.crossplane.io/provider-aws" --for=condition=Installed --timeout=180s
+      - kubectl wait "providers.pkg.crossplane.io/provider-aws" --for=condition=Healthy --timeout=180s
       - kubectl get providers
       - kubectl apply -f gcpProviderConfig.yaml
   create-resources:
