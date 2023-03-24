@@ -32,6 +32,7 @@ tasks:
       - kind create cluster
       - task: crossplane:install
       - kubectl create secret generic gcp-secret -n crossplane-system --from-file=creds=./gcp-credentials.json
+      - kubectl create secret generic aws-secret -n crossplane-system --from-file=creds=./aws_creds.txt
       - task: crossplane:create-gcp-provider
 #      - task: crossplane:create-resources
   stop:
