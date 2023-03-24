@@ -36,3 +36,10 @@ metadata:
     application: app11
   name: app11
   namespace: app11
+spec:
+  components:
+    - name: ads
+      traits:
+        - name: sda
+          properties: {}
+      type: webservice
