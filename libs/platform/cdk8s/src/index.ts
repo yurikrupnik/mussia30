@@ -21,9 +21,10 @@ import { ConfigMap, Namespace, ServiceAccount, Pod } from 'cdk8s-plus-25';
 // import { platformCdk8s } from '@mussia30/platform/cdk8s';
 // fails
 import { WebService } from './lib/platform-cdk8s';
+// import { Bucket, BucketProps } from "../imports/storage.gcp.upbound.io";
 import { Topic, Schema } from "../imports/pubsub.gcp.upbound.io";
-import { Bucket as AWSBucket, BucketProps as AWSBucketProps } from "../imports/s3.aws.upbound.io";
-import { Bucket as GCSBucket, BucketProps as GCPBucketProps } from "../imports/storage.gcp.upbound.io";
+import { Bucket as AWSBucket, BucketProps as AWSBucketProps, BucketSpec as AWSBucketSpec, BucketSpecDeletionPolicy } from "../imports/s3.aws.upbound.io";
+import { Bucket as GCSBucket, BucketProps as GCPBucketProps, BucketSpec as GCPBucketSpec } from "../imports/storage.gcp.upbound.io";
 import { Queue } from "../imports/sqs.aws.upbound.io";
 import { Topic as SNSTopic } from "../imports/sns.aws.upbound.io";
 
@@ -149,14 +150,18 @@ export class SecondChart extends Chart {
             lol: 'lol',
             provider: 'gcp'
           },
-        }
+        },
+
+        deletionPolicy: BucketSpecDeletionPolicy.DELETE,
+        // deletionPolicy: BucketSpecDeletionPolicy.ORPHAN,
+        // deletionPolicy: "DELETE",
       },
       metadata: {
         labels: {
           provider: 'gcp',
           region: "eu"
         },
-      }
+      },
     });
     const s = new AWSBucket(this, 'first-aws-bucket', {
       spec: {
@@ -167,7 +172,8 @@ export class SecondChart extends Chart {
             provider: 'aws'
           },
           objectLockEnabled: false
-        }
+        },
+        deletionPolicy: BucketSpecDeletionPolicy.DELETE,
       },
       metadata: {
         labels: {
