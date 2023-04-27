@@ -4,7 +4,7 @@ resources:
   #  - ../../apps/go/api-rest
 #  - ../base/../../apps/go/api-rest/k8s/base
 #  - ../base/../cdk8s-output/cdk8s-example.k8s.yaml
-  - cdk8s-output/cdk8s-example.k8s.yaml
+#  - cdk8s-output/cdk8s-example.k8s.yaml
   - ../../apps/go/api-rest/k8s/base
 #  - cdk8s-output/
 #  - cdk8s-output/shit.yaml

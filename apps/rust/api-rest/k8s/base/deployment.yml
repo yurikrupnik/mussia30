@@ -29,7 +29,7 @@ spec:
           image: yurikrupnik/rust-api-rest:latest
           imagePullPolicy: IfNotPresent
           env:
-            - name: MONrust_URI
+            - name: MONGO_URI
               value: monrustdb+srv://yurikrupnik:T4eXKj1RBI4VnszC@cluster0.rdmew.monrustdb.net/
 
       restartPolicy: Always

@@ -1,19 +1,18 @@
 package main
 
 import (
-	"fmt"
-	"github.com/gofiber/fiber/v2"
-	"log"
-	go_fiber_helpers "mussia30/libs/go/fiber-helpers"
-	go_generic_api "mussia30/libs/go/generic-api"
-	go_models_user "mussia30/libs/go/models/user"
-	go_shared "mussia30/libs/go/shared"
+  "fmt"
+  "log"
+  go_fiber_helpers "mussia30/libs/go/fiber-helpers"
+  go_generic_api "mussia30/libs/go/generic-api"
+  go_models_user "mussia30/libs/go/models/user"
+  go_shared "mussia30/libs/go/shared"
 
-	"github.com/gofiber/fiber/v2/middleware/cors"
-	"github.com/gofiber/fiber/v2/middleware/logger"
-	"github.com/gofiber/fiber/v2/middleware/monitor"
-	"github.com/gofiber/fiber/v2/middleware/recover"
-	"go.mongodb.org/mongo-driver/bson/primitive"
+  "github.com/gofiber/fiber/v2/middleware/cors"
+  "github.com/gofiber/fiber/v2/middleware/logger"
+  "github.com/gofiber/fiber/v2/middleware/monitor"
+  "github.com/gofiber/fiber/v2/middleware/recover"
+  "go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type Project struct {
@@ -41,7 +40,7 @@ func main() {
 	app.Use(cors.New())
 
 	app.Get("/api/test", updateById[go_models_user.User])
-	app.Get("/api/d", updateById[go_models_user.User])
+	app.Get("/api/da", updateById[go_models_user.User])
 	apiGroup := app.Group("api")
 	//	users.New[users.User](apiGroup, db, userCollection)
 	go_generic_api.New[go_models_user.User](apiGroup, db, userCollection)
