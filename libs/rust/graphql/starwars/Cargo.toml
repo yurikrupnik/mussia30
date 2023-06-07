@@ -7,4 +7,4 @@ edition = "2021"
 
 [dependencies]
 slab = "0.4.8"
-async-graphql = "5.0.6"
+async-graphql = "5.0.10"
