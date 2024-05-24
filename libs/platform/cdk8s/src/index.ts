@@ -3,8 +3,10 @@ import { App, Chart, ChartProps, Helm } from 'cdk8s';
 // import {MyChart}  from './src/deployment';
 import { Construct } from 'constructs';
 import { Application } from '../imports/core.oam.dev';
-import { Bucket } from "../imports/storage.gcp.upbound.io";
-import { Topic, Schema } from "../imports/pubsub.gcp.upbound.io";
+// import {  } from "../imports/aws.upbound.io";
+// import { Topic, Schema } from "../imports/sql.gcp.upbound.io";
+// import { Topic, Schema } from "../imports/storage.gcp.upbound.io";
+// import { Topic, Schema } from "../imports/s3.aws.upbound.io";
 // import {Application} from '../imports/standard.oam.dev'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -19,6 +21,12 @@ import { ConfigMap, Namespace, ServiceAccount, Pod } from 'cdk8s-plus-25';
 // import { platformCdk8s } from '@mussia30/platform/cdk8s';
 // fails
 import { WebService } from './lib/platform-cdk8s';
+// import { Bucket, BucketProps } from "../imports/storage.gcp.upbound.io";
+import { Topic, Schema } from "../imports/pubsub.gcp.upbound.io";
+import { Bucket as AWSBucket, BucketProps as AWSBucketProps, BucketSpec as AWSBucketSpec, BucketSpecDeletionPolicy } from "../imports/s3.aws.upbound.io";
+import { Bucket as GCSBucket, BucketProps as GCPBucketProps, BucketSpec as GCPBucketSpec } from "../imports/storage.gcp.upbound.io";
+import { Queue } from "../imports/sqs.aws.upbound.io";
+import { Topic as SNSTopic } from "../imports/sns.aws.upbound.io";
 
 export class MyChart extends Chart {
   constructor(scope: Construct, id: string, props: ChartProps = {}) {
@@ -125,21 +133,53 @@ export class MyChart extends Chart {
   }
 }
 
+interface MulticloudStorage  {
+  GCPBucketProps: GCPBucketProps,
+  AWSBucketProps: AWSBucketProps
+}
+
 export class SecondChart extends Chart {
   constructor(scope: Construct, id: string, props: ChartProps = {}) {
     super(scope, id, props);
 
-    const b = new Bucket(this, 'dsasdas', {
+    const b = new GCSBucket(this, 'first-gcp-bucket', {
       spec: {
         forProvider: {
           location: "eu",
           labels: {
-            lol: 'lol'
-          }
-        }
+            lol: 'lol',
+            provider: 'gcp'
+          },
+        },
+
+        deletionPolicy: BucketSpecDeletionPolicy.DELETE,
+        // deletionPolicy: BucketSpecDeletionPolicy.ORPHAN,
+        // deletionPolicy: "DELETE",
       },
       metadata: {
-
+        labels: {
+          provider: 'gcp',
+          region: "eu"
+        },
+      },
+    });
+    const s = new AWSBucket(this, 'first-aws-bucket', {
+      spec: {
+        forProvider: {
+          forceDestroy: false,
+          region: 'eu',
+          tags: {
+            provider: 'aws'
+          },
+          objectLockEnabled: false
+        },
+        deletionPolicy: BucketSpecDeletionPolicy.DELETE,
+      },
+      metadata: {
+        labels: {
+          provider: 'aws',
+          region: "eu"
+        },
       }
     });
 
